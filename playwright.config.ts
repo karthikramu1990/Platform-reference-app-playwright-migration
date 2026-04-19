@@ -1,9 +1,9 @@
 import { defineConfig } from '@playwright/test';
-import config from './src/tests/testdata/config.json';
+import config from './tests/reference-app/testdata/config.json';
 
 export default defineConfig({
   globalTeardown: './global-teardown.ts',
-  testDir: './src/tests/spec',
+  testDir: './tests',
   snapshotDir: './imagevalidation',
   snapshotPathTemplate: '{snapshotDir}/{arg}{ext}',
   timeout: 300000,
@@ -18,14 +18,13 @@ export default defineConfig({
       suiteTitle: true,
       attachmentsBaseDirectory: './allure-results'
     }],
-    ['html', { outputFolder: './playwright-report', open: 'never' }],
-    ['list']
+['list']
   ],
   use: {
     baseURL: config.Environments[config.Env].RfUrl,
     headless: config.Headless === 'yes',
     screenshot: 'only-on-failure',
-    video: 'retain-on-failure',
+    video: 'on',
     trace: 'retain-on-failure',
     actionTimeout: 30000,
     navigationTimeout: 60000,
