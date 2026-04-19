@@ -1,0 +1,9 @@
+/ReferenceApplication3/
+/target/
+node_modules/
+allure-results/
+allure-report/
+playwright-report/
+test-results/
+C:/pw-test-results/
+*.log

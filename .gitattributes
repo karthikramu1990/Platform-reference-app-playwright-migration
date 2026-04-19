@@ -1,0 +1,2 @@
+.bimpk filter=lfs diff=lfs merge=lfs -text
+*.bimpk filter=lfs diff=lfs merge=lfs -text

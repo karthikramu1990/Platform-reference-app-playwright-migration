@@ -1,0 +1,26 @@
+{
+  "name": "platform-reference-app-automation",
+  "version": "1.0.0",
+  "description": "Playwright automation framework for Invicara Reference App",
+  "scripts": {
+    "test": "rmdir /s /q allure-results 2>nul & playwright test",
+    "test:headed": "rmdir /s /q allure-results 2>nul & playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "allure:generate": "node generate-allure-report.js",
+    "allure:open": "npx allure open ./reports",
+    "report": "npx playwright show-report playwright-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "allure-playwright": "^3.7.0",
+    "typescript": "^6.0.2"
+  },
+  "dependencies": {
+    "@nut-tree-fork/nut-js": "^4.2.6",
+    "@types/pixelmatch": "^5.2.6",
+    "@types/pngjs": "^6.0.5",
+    "pixelmatch": "^7.1.0",
+    "pngjs": "^7.0.0"
+  }
+}

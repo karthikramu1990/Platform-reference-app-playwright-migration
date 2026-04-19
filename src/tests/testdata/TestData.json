@@ -1,0 +1,52 @@
+{
+  "ModelElement": [
+    { "Category": "Ceiling", "Type": "Perforated Panel", "GroupBy": "Assembly Code", "Property": "Absorptance", "Function": "equals", "Value": "0.7", "ModelName": "1801KS-INV-01-ZZ-M3-Z-0001_Federated" },
+    { "Category": "Sensor", "Type": "Tank Probe Temperature", "GroupBy": "", "Property": "", "Function": "", "Value": "", "ModelName": "" },
+    { "Category": "Ceiling", "Type": "Perforated Panel", "GroupBy": "", "Property": "", "Function": "", "Value": "", "ModelName": "" },
+    { "Category": "Ceiling", "Type": "Perforated Panel", "GroupBy": "", "Property": "", "Function": "", "Value": "", "ModelName": "" }
+  ],
+  "FilesRename": [
+    { "FileName": "sample.pdf", "RenameFile": "Sampletest.pdf", "FolderName": "TestNewFolder1" },
+    { "FileName": "Ref_app_est.xlsx", "RenameFile": "", "FolderName": "" },
+    { "FileName": "H-M_Indoor.png", "RenameFile": "", "FolderName": "" }
+  ],
+  "WarrantyDetails": [
+    { "Description": "Drainage", "StartDate": "12-02-2023", "Duration": "1 year" },
+    { "Description": "DrainEditable", "StartDate": "15-02-2023", "Duration": "2 years" }
+  ],
+  "TelemetryChannelSupport": {
+    "DataType": "Humidity"
+  },
+  "ModelImage": {
+    "devConfig_DslModel": "Modelimage.png"
+  },
+  "ManageModel": {
+    "ViewApiConfig": "View API Config",
+    "MapboxUsername": "dc23",
+    "MapboxScopes": "[\"tokens:write\", \"styles:read\", \"datasets:read\", \"map:read\", \"fonts:read\"]",
+    "MapboxExpiry": "3600",
+    "MapboxSecretToken": "sk.eyJ1IjoiZGMyMyIsImEiOiJjbTlpdTZteXAwMzV5MmxzOTgwZG16Z3lsIn0.qJFEpElxYsZzFtMEeneYvg"
+  },
+  "GIS": {
+    "MapSettings": [
+      { "Zoom": 11, "Pitch": 20, "Bearing": 80, "Style": "Streets", "ElevationMode": "None", "HorizontalBearing": 60, "Longitude": 6, "Latitude": 53, "TerrainHeight": 300 },
+      { "Zoom": 14.01, "Pitch": 50, "Bearing": -60, "Style": "Satellite Streets", "ElevationMode": "Quick Flat Surface View" },
+      { "Zoom": 16, "Pitch": 80, "Bearing": null, "Style": "Light", "ElevationMode": "Quick Flat Subsurface View" }
+    ],
+    "Styles": ["Streets", "Satellite Streets", "Light", "Dark", "Outdoors"],
+    "ElevationModes": ["None", "Quick Flat Surface View", "Quick Flat Subsurface View", "Surface View", "Mixed View", "Subsurface View"]
+  },
+  "TwoDfloorDetails": [
+    { "FloorType": "FloorPlan-Ground FL- FFL" },
+    { "FloorType": "FloorPlan-First FL-FFL" }
+  ],
+  "GenericRestConnector": {
+    "ConnectorName": "Upload Scripts"
+  },
+  "Collection-User group": {
+    "Email": "automationtest@gmail.com"
+  },
+  "ProjectSelect": {
+    "UserType": "TestAI File Contributor"
+  }
+}

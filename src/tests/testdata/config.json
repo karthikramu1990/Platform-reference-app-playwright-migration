@@ -1,0 +1,19 @@
+{
+  "Env": "qa2",
+  "Browser": "chrome",
+  "Rfusername": "karthik.r@invicara.com",
+  "RfPassword": "Test@123",
+  "Headless": "no",
+  "Environments": {
+    "staging": {
+      "RfUrl": "https://staging.invicara.com/reference/#/",
+      "ProjectList": "TestAI",
+      "UserGroup": "TestAI Proj Admin"
+    },
+    "qa2": {
+      "RfUrl": "https://qa2-app.in.invicara.com/reference/#/",
+      "ProjectList": "AI project creation",
+      "UserGroup": "AI project creation Proj Admin"
+    }
+  }
+}
