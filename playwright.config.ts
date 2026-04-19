@@ -2,6 +2,7 @@ import { defineConfig } from '@playwright/test';
 import config from './src/tests/testdata/config.json';
 
 export default defineConfig({
+  globalTeardown: './global-teardown.ts',
   testDir: './src/tests/spec',
   snapshotDir: './imagevalidation',
   snapshotPathTemplate: '{snapshotDir}/{arg}{ext}',
@@ -14,7 +15,8 @@ export default defineConfig({
     ['allure-playwright', {
       detail: false,
       outputFolder: './allure-results',
-      suiteTitle: true
+      suiteTitle: true,
+      attachmentsBaseDirectory: './allure-results'
     }],
     ['html', { outputFolder: './playwright-report', open: 'never' }],
     ['list']
