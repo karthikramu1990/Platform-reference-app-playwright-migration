@@ -1,5 +1,6 @@
 import path from 'path';
 import { Page, Locator } from '@playwright/test';
+import { step } from 'allure-js-commons';
 import testData from '../testdata/TestData.json';
 
 export class ModelElementPage {
@@ -77,12 +78,17 @@ export class ModelElementPage {
     this.drawerToggle                = page.locator("//div[contains(@class,'drawer-toggle')]");
   }
 
+  private async logStep(message: string): Promise<void> {
+    await this.logStep(message);
+    await step(message, async () => {});
+  }
+
   async selectElementCategory(name: string): Promise<void> {
     try {
       await this.page.waitForTimeout(12000);
       await this.elementCategory.click();
       await this.page.locator(`//div[contains(text(),'${name}')]`).evaluate((el: HTMLElement) => el.click());
-      console.log('INFO: Element category selected');
+      await this.logStep('INFO: Element category selected');
     } catch (e) {
       console.error('ERROR: Unable to select Element category');
     }
@@ -95,7 +101,7 @@ export class ModelElementPage {
       await this.page.locator(`//div[contains(text(),'${name}')]`).click();
       await this.page.keyboard.press('Enter');
       await this.invicaraLogo.click();
-      console.log('INFO: Element type selected');
+      await this.logStep('INFO: Element type selected');
     } catch (e) {
       console.error('ERROR: Unable to select Element type');
     }
@@ -104,7 +110,7 @@ export class ModelElementPage {
   async clickFetchButton(): Promise<void> {
     try {
       await this.fetchButton.click();
-      console.log('INFO: Fetch button clicked');
+      await this.logStep('INFO: Fetch button clicked');
     } catch (e) {
       console.error('ERROR: Unable to click Fetch button');
     }
@@ -115,7 +121,7 @@ export class ModelElementPage {
       await this.page.waitForTimeout(2000);
       await this.showingModel.waitFor({ state: 'visible' });
       await this.showingModel.click();
-      console.log('INFO: Showing element selected');
+      await this.logStep('INFO: Showing element selected');
     } catch (e) {
       console.error('ERROR: Unable to select showing element');
     }
@@ -128,7 +134,7 @@ export class ModelElementPage {
       if (propSelected && filesSelected) {
         await this.files.click();
         await this.elementPropertiesTable.waitFor({ state: 'visible' });
-        console.log('INFO: Element properties Table validated');
+        await this.logStep('INFO: Element properties Table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate element properties Table');
@@ -142,7 +148,7 @@ export class ModelElementPage {
         await this.elementProperties.click();
         await this.files.click();
         await this.filesTable.waitFor({ state: 'visible' });
-        console.log('PASS: Files Table validated');
+        await this.logStep('PASS: Files Table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate Files Table');
@@ -157,7 +163,7 @@ export class ModelElementPage {
         await this.files.click();
         await this.warrantyData.click();
         await this.warrantyDataTable.waitFor({ state: 'visible' });
-        console.log('PASS: Warranty data table validated');
+        await this.logStep('PASS: Warranty data table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate Warranty data table');
@@ -171,7 +177,7 @@ export class ModelElementPage {
         await this.warrantyData.click();
         await this.telemetryRestAPI.click();
         await this.telemetryRestAPITable.waitFor({ state: 'visible' });
-        console.log('PASS: Telemetry collection table validated');
+        await this.logStep('PASS: Telemetry collection table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate telemetry collection table');
@@ -185,7 +191,7 @@ export class ModelElementPage {
         await this.warrantyData.click();
         await this.telemetryMQTT.click();
         await this.telemetryMQTTTable.waitFor({ state: 'visible' });
-        console.log('PASS: Telemetry channels table validated');
+        await this.logStep('PASS: Telemetry channels table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate telemetry channels table');
@@ -200,7 +206,7 @@ export class ModelElementPage {
       const fileChooser = await fileChooserPromise;
       await fileChooser.setFiles(path.join(process.cwd(), 'files', file));
       await this.page.waitForTimeout(5000);
-      console.log('PASS: File uploaded');
+      await this.logStep('PASS: File uploaded');
     } catch (e) {
       console.error('ERROR: Unable to upload file');
     }
@@ -212,7 +218,7 @@ export class ModelElementPage {
       await this.fileDeleteButton.evaluate((el: HTMLElement) => el.click());
       await this.dialogDelete.evaluate((el: HTMLElement) => el.click());
       await this.page.waitForTimeout(3000);
-      console.log('PASS: File deleted successfully');
+      await this.logStep('PASS: File deleted successfully');
     } catch (e) {
       console.error('ERROR: Unable to delete file');
     }
@@ -233,7 +239,7 @@ export class ModelElementPage {
       await this.warrantyStartDate.fill(testData.WarrantyDetails[0].StartDate);
       await this.warrantyDuration.fill(testData.WarrantyDetails[0].Duration);
       await this.warrantySave.click();
-      console.log('PASS: New Warranty Details added');
+      await this.logStep('PASS: New Warranty Details added');
     } catch (e) {
       console.error('ERROR: Unable to add new warranty details');
     }
@@ -247,7 +253,7 @@ export class ModelElementPage {
       await this.warrantyStartDate.fill(testData.WarrantyDetails[1].StartDate);
       await this.warrantyDuration.fill(testData.WarrantyDetails[1].Duration);
       await this.warrantySave.click();
-      console.log('PASS: Warranty Details Edited successfully');
+      await this.logStep('PASS: Warranty Details Edited successfully');
     } catch (e) {
       console.error('ERROR: Unable to Edit warranty details');
     }
@@ -259,7 +265,7 @@ export class ModelElementPage {
       await this.warrantyDelete.click();
       await this.warrantyDeleteDialog.click();
       await this.page.waitForTimeout(3000);
-      console.log('PASS: Warranty Details Deleted successfully');
+      await this.logStep('PASS: Warranty Details Deleted successfully');
     } catch (e) {
       console.error('ERROR: Unable to delete warranty details');
     }
@@ -276,7 +282,7 @@ export class ModelElementPage {
       await this.telemetryGenerateReadings.waitFor({ state: 'visible' });
       await this.telemetryGenerateReadings.click();
       await this.page.waitForTimeout(3000);
-      console.log('PASS: Telemetry collection Fetch reading');
+      await this.logStep('PASS: Telemetry collection Fetch reading');
     } catch (e) {
       console.error('FAIL: Failed to Fetch Reading');
     }
@@ -300,7 +306,7 @@ export class ModelElementPage {
       await this.telemetryPublishData.click();
       await this.page.waitForTimeout(10000);
       await this.selectTelemetryDataselection(testData.TelemetryChannelSupport.DataType);
-      console.log('PASS: Telemetry Channels readings captured');
+      await this.logStep('PASS: Telemetry Channels readings captured');
     } catch (e) {
       console.error('FAIL: Failed to Fetch Telemetry Channels readings');
     }
@@ -312,7 +318,7 @@ export class ModelElementPage {
       await this.page.waitForTimeout(5000);
       await this.selectTelemetryData.click();
       await this.page.locator(`//div[contains(text(),'${name}')]`).click();
-      console.log(`INFO: Telemetry data '${name}' selected`);
+      await this.logStep(`INFO: Telemetry data '${name}' selected`);
     } catch (e) {
       console.error('ERROR: Unable to select Telemetry data type');
     }

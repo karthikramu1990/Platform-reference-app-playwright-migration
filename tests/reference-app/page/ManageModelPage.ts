@@ -1,5 +1,6 @@
 import path from 'path';
 import { Page, Locator } from '@playwright/test';
+import { step } from 'allure-js-commons';
 
 export class ManageModelPage {
   private page: Page;
@@ -48,6 +49,11 @@ export class ManageModelPage {
     this.mapBoxSuccessMsg         = page.locator("//p[contains(text(),'Mapbox temp token config uploaded')]");
   }
 
+  private async logStep(message: string): Promise<void> {
+    await this.logStep(message);
+    await step(message, async () => {});
+  }
+
   async selectRelatedGraph(): Promise<void> {
     try {
       await this.relatedGraphDropdown.scrollIntoViewIfNeeded();
@@ -57,7 +63,7 @@ export class ManageModelPage {
       await this.page.keyboard.press('ArrowDown');
       await this.page.keyboard.press('Enter');
       await this.elementUsedForScroll.scrollIntoViewIfNeeded();
-      console.log('PASS: Related Graph selected successfully');
+      await this.logStep('PASS: Related Graph selected successfully');
     } catch (e) {
       console.error('FAIL: Failed to click Related Graph');
     }
@@ -67,7 +73,7 @@ export class ManageModelPage {
     try {
       await this.page.waitForTimeout(2000);
       await this.expandAllRelatedGraph.click();
-      console.log('PASS: Expand all clicked successfully');
+      await this.logStep('PASS: Expand all clicked successfully');
     } catch (e) {
       console.error('FAIL: Failed to click Expand all');
     }
@@ -79,7 +85,7 @@ export class ManageModelPage {
       await this.viewApiConfigDropdown.click();
       await this.page.keyboard.press('Enter');
       await this.elementUsedForScrollAPI.scrollIntoViewIfNeeded();
-      console.log('PASS: View Config API selected successfully');
+      await this.logStep('PASS: View Config API selected successfully');
     } catch (e) {
       console.error('FAIL: Failed to click View Config API');
     }
@@ -89,7 +95,7 @@ export class ManageModelPage {
     try {
       await this.page.waitForTimeout(2000);
       await this.expandAllViewAPI.click();
-      console.log('PASS: Expand all clicked successfully');
+      await this.logStep('PASS: Expand all clicked successfully');
     } catch (e) {
       console.error('FAIL: Failed to click Expand all');
     }
@@ -109,7 +115,7 @@ export class ManageModelPage {
       }
       await this.page.waitForTimeout(10000);
       await this.importBtn.waitFor({ state: 'visible', timeout: 3600000 });
-      console.log(`PASS: Uploaded ${filename} successfully`);
+      await this.logStep(`PASS: Uploaded ${filename} successfully`);
     } catch (e) {
       console.error('FAIL: Failed to Upload the model');
     }
@@ -121,7 +127,7 @@ export class ManageModelPage {
       await this.checkbox.waitFor({ state: 'visible' });
       await this.page.waitForTimeout(2000);
       await this.checkbox.click();
-      console.log('PASS: Checkbox clicked successfully');
+      await this.logStep('PASS: Checkbox clicked successfully');
     } catch (e) {
       console.error('FAIL: Failed to click Checkbox');
     }
@@ -136,7 +142,7 @@ export class ManageModelPage {
       await this.page.waitForTimeout(2000);
       const msgVisible = await this.importCompleteMsg.isVisible();
       if (!msgVisible) throw new Error('Import complete message not visible');
-      console.log('PASS: Model imported successfully');
+      await this.logStep('PASS: Model imported successfully');
     } catch (e) {
       console.error('FAIL: Failed to import model');
     }
@@ -150,7 +156,7 @@ export class ManageModelPage {
       const fileChooser = await fileChooserPromise;
       await fileChooser.setFiles(path.join(process.cwd(), 'files', typemap));
       await this.uploadTypeMap.waitFor({ state: 'visible', timeout: 3600000 });
-      console.log(`PASS: Uploaded ${typemap} successfully`);
+      await this.logStep(`PASS: Uploaded ${typemap} successfully`);
     } catch (e) {
       console.error('FAIL: Failed to upload typemap');
     }
@@ -161,7 +167,7 @@ export class ManageModelPage {
       await this.mapBoxUserName.waitFor({ state: 'visible' });
       await this.mapBoxUserName.click();
       await this.mapBoxUserName.fill(userName);
-      console.log('PASS: Mapbox username entered successfully');
+      await this.logStep('PASS: Mapbox username entered successfully');
     } catch (e) {
       console.error('FAIL: Failed to enter mapbox username');
     }
@@ -172,7 +178,7 @@ export class ManageModelPage {
       await this.mapBoxScopes.waitFor({ state: 'visible' });
       await this.mapBoxScopes.click();
       await this.mapBoxScopes.fill(scopes);
-      console.log('PASS: Mapbox scopes entered successfully');
+      await this.logStep('PASS: Mapbox scopes entered successfully');
     } catch (e) {
       console.error('FAIL: Failed to enter mapbox scopes');
     }
@@ -183,7 +189,7 @@ export class ManageModelPage {
       await this.mapBoxExpiry.waitFor({ state: 'visible' });
       await this.mapBoxExpiry.click();
       await this.mapBoxExpiry.fill(expiry);
-      console.log('PASS: Mapbox expiry entered successfully');
+      await this.logStep('PASS: Mapbox expiry entered successfully');
     } catch (e) {
       console.error('FAIL: Failed to enter mapbox expiry');
     }
@@ -194,7 +200,7 @@ export class ManageModelPage {
       await this.mapBoxSecretToken.waitFor({ state: 'visible' });
       await this.mapBoxSecretToken.click();
       await this.mapBoxSecretToken.fill(secretToken);
-      console.log('PASS: Mapbox secret token entered successfully');
+      await this.logStep('PASS: Mapbox secret token entered successfully');
     } catch (e) {
       console.error('FAIL: Failed to enter mapbox secret token');
     }
@@ -204,7 +210,7 @@ export class ManageModelPage {
     try {
       await this.page.waitForTimeout(2000);
       await this.mapBoxAddTempTokenConfig.click();
-      console.log('PASS: Add temp token config clicked successfully');
+      await this.logStep('PASS: Add temp token config clicked successfully');
     } catch (e) {
       console.error('FAIL: Failed to click Add temp token config');
     }
@@ -215,7 +221,7 @@ export class ManageModelPage {
     try {
       await this.mapBoxSuccessMsg.waitFor({ state: 'visible', timeout: 15000 });
       flag = true;
-      console.log('PASS: Mapbox temp token config uploaded message displayed');
+      await this.logStep('PASS: Mapbox temp token config uploaded message displayed');
     } catch (e: any) {
       console.error(`FAIL: Mapbox activation message not displayed: ${e.message}`);
     }

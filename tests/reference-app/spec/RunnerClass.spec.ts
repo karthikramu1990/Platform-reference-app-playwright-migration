@@ -21,18 +21,28 @@ test.describe('Reference App Suite', () => {
     sharedContext = await browser.newContext({
       viewport: null,
       ignoreHTTPSErrors: true,
+      recordVideo: { dir: 'C:/pw-test-results/' },
     });
     sharedPage = await sharedContext.newPage();
     await sharedPage.goto(config.Environments[config.Env].RfUrl, { waitUntil: 'networkidle', timeout: 60000 });
   });
 
-  test.afterAll(async () => {
+  test.afterAll(async ({}, testInfo) => {
+    const videoPath = await sharedPage.video()?.path();
+
     await sharedPage.route('**/*', route => route.abort()).catch(() => {});
     await sharedPage.goto('about:blank', { timeout: 5000 }).catch(() => {});
     await Promise.race([
       sharedContext.close(),
       new Promise(resolve => setTimeout(resolve, 8000))
     ]);
+
+    if (videoPath) {
+      await testInfo.attach('video', {
+        path: videoPath,
+        contentType: 'video/webm',
+      });
+    }
   });
 
   // ── Login ──────────────────────────────────────────────────────────────────

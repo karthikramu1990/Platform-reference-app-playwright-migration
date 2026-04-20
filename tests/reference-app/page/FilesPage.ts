@@ -1,5 +1,6 @@
 import path from 'path';
 import { Page, Locator } from '@playwright/test';
+import { step } from 'allure-js-commons';
 
 export class FilesPage {
   private page: Page;
@@ -38,6 +39,11 @@ export class FilesPage {
     this.removeSearch             = page.getByText('Remove Filter', { exact: true });
   }
 
+  private async logStep(message: string): Promise<void> {
+    await this.logStep(message);
+    await step(message, async () => {});
+  }
+
   async uploadFile(file: string): Promise<void> {
     try {
       await this.page.waitForTimeout(5000);
@@ -48,7 +54,7 @@ export class FilesPage {
       const fileChooser = await fileChooserPromise;
       await fileChooser.setFiles(path.join(process.cwd(), 'files', file));
       await this.page.waitForTimeout(10000);
-      console.log(`PASS: ${file} uploaded`);
+      await this.logStep(`PASS: ${file} uploaded`);
     } catch (e) {
       console.error(`ERROR: Unable to upload ${file}`);
     }
@@ -70,12 +76,12 @@ export class FilesPage {
       await this.page.waitForTimeout(10000);
       const fileLocator = this.page.locator(`//*[text()='${filename}']`);
       await fileLocator.waitFor({ state: 'hidden', timeout: 15000 });
-      console.log(`PASS: ${filename} Deleted`);
+      await this.logStep(`PASS: ${filename} Deleted`);
       const isVisible = await fileLocator.isVisible();
       if (isVisible) {
         console.error(`FAIL: ${filename} still visible after deletion`);
       } else {
-        console.log(`PASS: ${filename} verified as deleted`);
+        await this.logStep(`PASS: ${filename} verified as deleted`);
       }
     } catch (e) {
       console.error(`ERROR: Unable to delete ${filename}`);
@@ -96,7 +102,7 @@ export class FilesPage {
       await this.newFolderUserType.click();
       await this.newFolderUserType.fill(filename);
       await this.createFolderButton.click();
-      console.log(`PASS: ${filename} folder created`);
+      await this.logStep(`PASS: ${filename} folder created`);
     } catch (e) {
       console.error(`ERROR: Unable to create ${filename}`);
     }
@@ -108,7 +114,7 @@ export class FilesPage {
       await element.waitFor({ state: 'visible', timeout: 10000 });
       await element.click();
       await this.page.waitForLoadState('networkidle');
-      console.log(`PASS: ${name} folder clicked`);
+      await this.logStep(`PASS: ${name} folder clicked`);
     } catch (e) {
       console.error(`ERROR: Unable to click ${name}`);
     }
@@ -126,12 +132,12 @@ export class FilesPage {
       await this.deleteFolderButtonPopup.click();
       const folderLocator = this.page.locator(`//*[text()='${file}']`);
       await folderLocator.waitFor({ state: 'hidden', timeout: 15000 });
-      console.log(`PASS: ${file} folder Deleted`);
+      await this.logStep(`PASS: ${file} folder Deleted`);
       const isVisible = await folderLocator.isVisible();
       if (isVisible) {
         console.error(`FAIL: ${file} folder still visible after deletion`);
       } else {
-        console.log(`PASS: ${file} folder verified as deleted`);
+        await this.logStep(`PASS: ${file} folder verified as deleted`);
       }
     } catch (e) {
       console.error(`ERROR: Unable to delete ${file}`);
@@ -144,7 +150,7 @@ export class FilesPage {
       await this.searchButton.click();
       await this.searchBox.fill(file);
       await this.page.waitForTimeout(15000);
-      console.log(`PASS: ${file} searched successfully`);
+      await this.logStep(`PASS: ${file} searched successfully`);
     } catch (e) {
       console.error(`FAIL: ${file} failed to search`);
     }
@@ -154,7 +160,7 @@ export class FilesPage {
     try {
       await this.page.waitForTimeout(2000);
       await this.searchButton.click();
-      console.log('PASS: Search clicked successfully');
+      await this.logStep('PASS: Search clicked successfully');
     } catch (e) {
       console.error('ERROR: Failed to click search');
     }
@@ -165,7 +171,7 @@ export class FilesPage {
       await this.page.waitForTimeout(2000);
       await this.removeSearch.click();
       await this.page.waitForTimeout(2000);
-      console.log('PASS: Search removed successfully');
+      await this.logStep('PASS: Search removed successfully');
     } catch (e) {
       console.error('ERROR: Failed to remove search');
     }
