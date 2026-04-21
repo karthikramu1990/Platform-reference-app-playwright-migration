@@ -14,6 +14,16 @@
       "RfUrl": "https://qa2-app.in.invicara.com/reference/#/",
       "ProjectList": "AI project creation",
       "UserGroup": "AI project creation Proj Admin"
+    },
+    "staging3": {
+      "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",
+      "ProjectList": "",
+      "UserGroup": ""
+    },
+    "qa3": {
+      "RfUrl": "https://apps.qa3.oci.in.twinit.io/reference/#/",
+      "ProjectList": "",
+      "UserGroup": ""
     }
   }
 }
