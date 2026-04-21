@@ -50,7 +50,7 @@ export class ManageModelPage {
   }
 
   private async logStep(message: string): Promise<void> {
-    await this.logStep(message);
+    console.log(message);
     await step(message, async () => {});
   }
 
