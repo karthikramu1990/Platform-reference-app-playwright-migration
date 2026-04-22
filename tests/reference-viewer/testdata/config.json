@@ -1,0 +1,46 @@
+{
+  "gis": {
+    "interact": {
+      "zoom": "11",
+      "pitch": "20",
+      "bearing": "80"
+    },
+    "appearance": {
+      "styles": ["Streets", "Satellite Streets", "Light", "Dark", "Outdoors"],
+      "elevationModes": [
+        "None",
+        "Quick Flat Surface View",
+        "Quick Flat Subsurface View",
+        "Surface View",
+        "Mixed View",
+        "Subsurface View"
+      ]
+    },
+    "horizontalAlignment": {
+      "bearing": "60",
+      "longitude": "6",
+      "latitude": "53"
+    },
+    "terrainHeight": "300"
+  },
+  "floorPlans": [
+    "FloorPlan-01- FIRST F.F.L",
+    "FloorPlan-02- SECOND F.F.L",
+    "FloorPlan-03- THIRD F.F.L"
+  ],
+  "cuttingPlanes": [
+    "Top Plane",
+    "Bottom Plane",
+    "Front Plane",
+    "Back Plane",
+    "Left Plane",
+    "Right Plane"
+  ],
+  "modelComposer": {
+    "disciplines": ["Structural", "Mechanical", "Electrical", "Plumbing"]
+  },
+  "annotations": {
+    "exportFile": "annotations-export.json",
+    "importFile": "annotations-export.json"
+  }
+}
