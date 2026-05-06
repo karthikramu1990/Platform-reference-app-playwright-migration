@@ -1,0 +1,39 @@
+{
+  "class": "IafDatabaseManager",
+  "description": "Database operations manager with queuing and auto-persistence",
+  "constructor": {
+    "description": "Initialize database manager with auto-persistence interval",
+    "parameters": [
+      "autoPersistInterval - Auto-persistence interval in ms (default: 10000)"
+    ]
+  },
+  "methods": {
+    "enable": "Enable persistence operations",
+    "disable": "Disable persistence operations",
+    "onModelStructureReady": "Load initial data when model structure is ready",
+    "buildObject": "Build data object from type and properties",
+    "startAutoPersist": "Start automatic queue processing at intervals",
+    "stopAutoPersist": "Stop automatic queue processing",
+    "addTaskToQueue": "Add task to queue with promise callback",
+    "queueTask": "Queue task with processing function and logging",
+    "create": "Create database record immediately",
+    "queueCreate": "Queue create operation",
+    "readAll": "Read all records of a type",
+    "read": "Read single record by ID or type",
+    "queueRead": "Queue read operation",
+    "update": "Update database record immediately",
+    "queueUpdate": "Queue update operation with overlap handling",
+    "delete": "Delete database records immediately",
+    "queueDelete": "Queue delete operation",
+    "processTask": "Process single task with error handling",
+    "processQueueItems": "Process all items in a queue sequentially",
+    "processQueues": "Process all queues in order (create, read, update, delete)"
+  },
+  "apiClients": {
+    "IafApiClientMarkup": "API client for markup data operations",
+    "IafApiClientModelComposition": "API client for model composition data",
+    "IafApiClientGis": "API client for GIS data operations",
+    "IafApiClientOperationalCache": "API client for operational cache data",
+    "IafApiClientPermissions": "API client for permissions data"
+  }
+}

@@ -1,0 +1,951 @@
+{
+  "projectName": "Skinny_BIAL_5.1_1",
+  "modelName": "L&T_CUP_FED_ASBUILT CORE_2024",
+  "timestamp": "2026-02-17T16:01:41.593Z",
+  "layerStatsPerView": {
+    "L&T_CUP_FED_ASBUILT CORE_2024": {},
+    "BIAL CUP INT-BOH_FURNITURE_2024": {
+      "Architectural": {
+        "count": 501,
+        "localPercentage": 100,
+        "globalPercentage": 3.9974467406048033
+      }
+    },
+    "L&T ARCH CUP_MUL & LIN_2024": {
+      "Structural": {
+        "count": 501,
+        "localPercentage": 68.91,
+        "globalPercentage": 8.311214333112144
+      },
+      "Architectural": {
+        "count": 226,
+        "localPercentage": 31.09,
+        "globalPercentage": 1.8032394478576557
+      }
+    },
+    "L&T ARCH CUP_SIGNAGE CORE_2024": {
+      "Architectural": {
+        "count": 87,
+        "localPercentage": 100,
+        "globalPercentage": 0.6941673980690977
+      }
+    },
+    "L&T CUP ARCH INT_ASBUILT CORE_2024": {
+      "Structural": {
+        "count": 1,
+        "localPercentage": 0.02,
+        "globalPercentage": 0.0165892501658925
+      },
+      "Architectural": {
+        "count": 4637,
+        "localPercentage": 99.55,
+        "globalPercentage": 36.9983244235219
+      },
+      "Plumbing": {
+        "count": 20,
+        "localPercentage": 0.43,
+        "globalPercentage": 0.07221780891167762
+      }
+    },
+    "L&T CUP ELEC_ASBUILT CORE_2024": {
+      "Structural": {
+        "count": 27,
+        "localPercentage": 0.15,
+        "globalPercentage": 0.4479097544790976
+      },
+      "Architectural": {
+        "count": 3912,
+        "localPercentage": 21.28,
+        "globalPercentage": 31.21359610627942
+      },
+      "Mechanical": {
+        "count": 6370,
+        "localPercentage": 34.65,
+        "globalPercentage": 41.46325587450368
+      },
+      "Electrical": {
+        "count": 7699,
+        "localPercentage": 41.88,
+        "globalPercentage": 42.84124422680986
+      },
+      "Plumbing": {
+        "count": 374,
+        "localPercentage": 2.03,
+        "globalPercentage": 1.3504730266483715
+      }
+    },
+    "L&T CUP FAS_ASBUILT CORE_2024": {
+      "Architectural": {
+        "count": 1,
+        "localPercentage": 0.04,
+        "globalPercentage": 0.007978935609989628
+      },
+      "Mechanical": {
+        "count": 476,
+        "localPercentage": 18.76,
+        "globalPercentage": 3.0983531862266487
+      },
+      "Electrical": {
+        "count": 1477,
+        "localPercentage": 58.22,
+        "globalPercentage": 8.218796950642702
+      },
+      "Plumbing": {
+        "count": 583,
+        "localPercentage": 22.98,
+        "globalPercentage": 2.1051491297754024
+      }
+    },
+    "L&T CUP FPS_ASBUILT CORE_2024": {
+      "Structural": {
+        "count": 7,
+        "localPercentage": 0.08,
+        "globalPercentage": 0.1161247511612475
+      },
+      "Architectural": {
+        "count": 77,
+        "localPercentage": 0.86,
+        "globalPercentage": 0.6143780419692013
+      },
+      "Mechanical": {
+        "count": 246,
+        "localPercentage": 2.75,
+        "globalPercentage": 1.6012497559070495
+      },
+      "Electrical": {
+        "count": 294,
+        "localPercentage": 3.28,
+        "globalPercentage": 1.635969061265372
+      },
+      "Plumbing": {
+        "count": 8337,
+        "localPercentage": 93.04,
+        "globalPercentage": 30.103993644832816
+      }
+    },
+    "L&T CUP HVAC_ASBUILT CORE_2024": {
+      "Structural": {
+        "count": 745,
+        "localPercentage": 3.78,
+        "globalPercentage": 12.358991373589914
+      },
+      "Architectural": {
+        "count": 372,
+        "localPercentage": 1.89,
+        "globalPercentage": 2.9681640469161414
+      },
+      "Mechanical": {
+        "count": 6298,
+        "localPercentage": 31.92,
+        "globalPercentage": 40.99459740936015
+      },
+      "Electrical": {
+        "count": 715,
+        "localPercentage": 3.62,
+        "globalPercentage": 3.978632240832453
+      },
+      "Plumbing": {
+        "count": 11598,
+        "localPercentage": 58.79,
+        "globalPercentage": 41.87910738788185
+      }
+    },
+    "L&T CUP ICT_ASBUILT CORE_2024": {
+      "Structural": {
+        "count": 1,
+        "localPercentage": 0.01,
+        "globalPercentage": 0.0165892501658925
+      },
+      "Architectural": {
+        "count": 127,
+        "localPercentage": 1.17,
+        "globalPercentage": 1.0133248224686828
+      },
+      "Mechanical": {
+        "count": 1525,
+        "localPercentage": 14.05,
+        "globalPercentage": 9.926446657553862
+      },
+      "Electrical": {
+        "count": 7488,
+        "localPercentage": 68.98,
+        "globalPercentage": 41.66713037671805
+      },
+      "Plumbing": {
+        "count": 1714,
+        "localPercentage": 15.79,
+        "globalPercentage": 6.189066223730772
+      }
+    },
+    "L&T CUP PHE ST_AB CORE_2024": {
+      "Architectural": {
+        "count": 4,
+        "localPercentage": 0.79,
+        "globalPercentage": 0.03191574243995851
+      },
+      "Mechanical": {
+        "count": 96,
+        "localPercentage": 19.05,
+        "globalPercentage": 0.6248779535247022
+      },
+      "Electrical": {
+        "count": 5,
+        "localPercentage": 0.99,
+        "globalPercentage": 0.027822603082744424
+      },
+      "Plumbing": {
+        "count": 399,
+        "localPercentage": 79.17,
+        "globalPercentage": 1.4407452877879685
+      }
+    },
+    "L&T CUP PHE SW_AB CORE_2024": {
+      "Architectural": {
+        "count": 49,
+        "localPercentage": 4.79,
+        "globalPercentage": 0.39096784488949177
+      },
+      "Mechanical": {
+        "count": 99,
+        "localPercentage": 9.68,
+        "globalPercentage": 0.6444053895723492
+      },
+      "Plumbing": {
+        "count": 875,
+        "localPercentage": 85.53,
+        "globalPercentage": 3.159529139885896
+      }
+    },
+    "L&T CUP PHE WS_AB CORE_2024": {
+      "Structural": {
+        "count": 498,
+        "localPercentage": 9.15,
+        "globalPercentage": 8.261446582614466
+      },
+      "Architectural": {
+        "count": 839,
+        "localPercentage": 15.41,
+        "globalPercentage": 6.694326976781298
+      },
+      "Mechanical": {
+        "count": 253,
+        "localPercentage": 4.65,
+        "globalPercentage": 1.6468137733515589
+      },
+      "Electrical": {
+        "count": 293,
+        "localPercentage": 5.38,
+        "globalPercentage": 1.6304045406488232
+      },
+      "Plumbing": {
+        "count": 3562,
+        "localPercentage": 65.42,
+        "globalPercentage": 12.861991767169783
+      }
+    },
+    "L&T_CUP_ARCH_ASBUILT CORE_2024": {
+      "Structural": {
+        "count": 23,
+        "localPercentage": 2.58,
+        "globalPercentage": 0.38155275381552756
+      },
+      "Architectural": {
+        "count": 820,
+        "localPercentage": 92.13,
+        "globalPercentage": 6.542727200191495
+      },
+      "Plumbing": {
+        "count": 47,
+        "localPercentage": 5.28,
+        "globalPercentage": 0.16971185094244243
+      }
+    },
+    "L&T-S_ASBUILT CUP_2024": {
+      "Structural": {
+        "count": 4225,
+        "localPercentage": 79.85,
+        "globalPercentage": 70.08958195089582
+      },
+      "Architectural": {
+        "count": 881,
+        "localPercentage": 16.65,
+        "globalPercentage": 7.029442272400861
+      },
+      "Plumbing": {
+        "count": 185,
+        "localPercentage": 3.5,
+        "globalPercentage": 0.668014732433018
+      }
+    }
+  },
+  "comparisonResults": {
+    "Structural": {
+      "details": {
+        "L&T CUP HVAC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 12.358991373589914,
+            "inactivePercent": 89.8205010849906,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 12.358991373589914,
+            "inactivePercent": 89.8205010849906,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 3.7763584752635846,
+            "inactivePercent": 96.22364152473642,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE WS_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 8.261446582614466,
+            "inactivePercent": 22.833537057951464,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 8.261446582614466,
+            "inactivePercent": 22.833537057951464,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 9.146005509641872,
+            "inactivePercent": 90.85399449035815,
+            "eligible": true
+          }
+        },
+        "L&T_CUP_ARCH_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 7.093991804949464,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 7.093991804949464,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.584269662921348,
+            "inactivePercent": 97.41573033707866,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Architectural": {
+      "details": {
+        "L&T ARCH CUP_MUL & LIN_2024": {
+          "lowResult": {
+            "activePercent": 1.8032394478576557,
+            "inactivePercent": 8.311214333112144,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.8032394478576557,
+            "inactivePercent": 8.311214333112144,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 31.08665749656121,
+            "inactivePercent": 68.91334250343878,
+            "eligible": true
+          }
+        },
+        "L&T CUP ELEC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 31.21359610627942,
+            "inactivePercent": 86.10288288244101,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 31.21359610627942,
+            "inactivePercent": 86.10288288244101,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 21.28168860842128,
+            "inactivePercent": 78.71831139157871,
+            "eligible": true
+          }
+        },
+        "L&T CUP FPS_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 0.6143780419692013,
+            "inactivePercent": 33.45733721316648,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.6143780419692013,
+            "inactivePercent": 33.45733721316648,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.8592790983149202,
+            "inactivePercent": 99.14072090168509,
+            "eligible": true
+          }
+        },
+        "L&T CUP HVAC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 2.9681640469161414,
+            "inactivePercent": 99.21132841166438,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 2.9681640469161414,
+            "inactivePercent": 99.21132841166438,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.8856447688564477,
+            "inactivePercent": 98.11435523114356,
+            "eligible": true
+          }
+        },
+        "L&T CUP ICT_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.0133248224686828,
+            "inactivePercent": 57.79923250816857,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.0133248224686828,
+            "inactivePercent": 57.79923250816857,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.1699677567941043,
+            "inactivePercent": 98.83003224320589,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE ST_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 2.125361586835374,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 2.125361586835374,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.7936507936507936,
+            "inactivePercent": 99.2063492063492,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE SW_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 0.39096784488949177,
+            "inactivePercent": 3.803934529458245,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.39096784488949177,
+            "inactivePercent": 3.803934529458245,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 4.789833822091887,
+            "inactivePercent": 95.2101661779081,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE WS_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 6.694326976781298,
+            "inactivePercent": 24.400656663784634,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 6.694326976781298,
+            "inactivePercent": 24.400656663784634,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 15.408631772268135,
+            "inactivePercent": 84.59136822773188,
+            "eligible": true
+          }
+        },
+        "L&T-S_ASBUILT CUP_2024": {
+          "lowResult": {
+            "activePercent": 7.029442272400861,
+            "inactivePercent": 70.75759668332884,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 7.029442272400861,
+            "inactivePercent": 70.75759668332884,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 16.65091665091665,
+            "inactivePercent": 83.34908334908334,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Mechanical": {
+      "details": {
+        "L&T CUP ELEC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 41.46325587450368,
+            "inactivePercent": 75.85322311421675,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 41.46325587450368,
+            "inactivePercent": 75.85322311421675,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 34.65346534653465,
+            "inactivePercent": 65.34653465346534,
+            "eligible": true
+          }
+        },
+        "L&T CUP FAS_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 3.0983531862266487,
+            "inactivePercent": 10.331925016028094,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.0983531862266487,
+            "inactivePercent": 10.331925016028094,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 18.762317698068586,
+            "inactivePercent": 81.23768230193141,
+            "eligible": true
+          }
+        },
+        "L&T CUP FPS_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.6012497559070495,
+            "inactivePercent": 32.47046549922864,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.6012497559070495,
+            "inactivePercent": 32.47046549922864,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.7452293270840307,
+            "inactivePercent": 97.25477067291597,
+            "eligible": true
+          }
+        },
+        "L&T CUP HVAC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 40.99459740936015,
+            "inactivePercent": 61.184895049220366,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 40.99459740936015,
+            "inactivePercent": 61.184895049220366,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 31.92416869424169,
+            "inactivePercent": 68.07583130575831,
+            "eligible": true
+          }
+        },
+        "L&T CUP ICT_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 9.926446657553862,
+            "inactivePercent": 48.886110673083394,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 9.926446657553862,
+            "inactivePercent": 48.886110673083394,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 14.048825426070936,
+            "inactivePercent": 85.95117457392907,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE ST_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 2.125361586835374,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 2.125361586835374,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 19.047619047619047,
+            "inactivePercent": 80.95238095238095,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE SW_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 4.194902374347737,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 4.194902374347737,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 9.67741935483871,
+            "inactivePercent": 90.3225806451613,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE WS_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.6468137733515589,
+            "inactivePercent": 29.44816986721437,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.6468137733515589,
+            "inactivePercent": 29.44816986721437,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 4.646464646464646,
+            "inactivePercent": 95.35353535353536,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Electrical": {
+      "details": {
+        "L&T CUP ELEC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 42.84124422680986,
+            "inactivePercent": 74.47523476191057,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 42.84124422680986,
+            "inactivePercent": 74.47523476191057,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 41.88336416059188,
+            "inactivePercent": 58.11663583940812,
+            "eligible": true
+          }
+        },
+        "L&T CUP FPS_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.635969061265372,
+            "inactivePercent": 32.435746193870315,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.635969061265372,
+            "inactivePercent": 32.435746193870315,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 3.2808838299296954,
+            "inactivePercent": 96.71911617007031,
+            "eligible": true
+          }
+        },
+        "L&T CUP HVAC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 3.978632240832453,
+            "inactivePercent": 98.20086021774807,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.978632240832453,
+            "inactivePercent": 98.20086021774807,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 3.6242903487429032,
+            "inactivePercent": 96.3757096512571,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE WS_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.6304045406488232,
+            "inactivePercent": 29.46457909991711,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.6304045406488232,
+            "inactivePercent": 29.46457909991711,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 5.381083562901745,
+            "inactivePercent": 94.61891643709826,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Plumbing": {
+      "details": {
+        "L&T CUP ELEC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.3504730266483715,
+            "inactivePercent": 115.96600596207206,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.3504730266483715,
+            "inactivePercent": 115.96600596207206,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.034599064302035,
+            "inactivePercent": 97.96540093569796,
+            "eligible": true
+          }
+        },
+        "L&T CUP FAS_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 2.1051491297754024,
+            "inactivePercent": 11.32512907247934,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 2.1051491297754024,
+            "inactivePercent": 11.32512907247934,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 22.979897516752068,
+            "inactivePercent": 77.02010248324794,
+            "eligible": true
+          }
+        },
+        "L&T CUP HVAC_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 41.87910738788185,
+            "inactivePercent": 60.30038507069867,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 58.78953771289538,
+            "inactivePercent": 41.210462287104626,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 58.78953771289538,
+            "inactivePercent": 41.210462287104626,
+            "eligible": true
+          }
+        },
+        "L&T CUP ICT_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 6.189066223730772,
+            "inactivePercent": 52.623491106906485,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 6.189066223730772,
+            "inactivePercent": 52.623491106906485,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 15.789958544449561,
+            "inactivePercent": 84.21004145555044,
+            "eligible": true
+          }
+        },
+        "L&T CUP PHE WS_AB CORE_2024": {
+          "lowResult": {
+            "activePercent": 12.861991767169783,
+            "inactivePercent": 18.232991873396145,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 65.41781450872361,
+            "inactivePercent": 34.5821854912764,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 65.41781450872361,
+            "inactivePercent": 34.5821854912764,
+            "eligible": true
+          }
+        },
+        "L&T_CUP_ARCH_ASBUILT CORE_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 7.093991804949464,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 7.093991804949464,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 5.280898876404494,
+            "inactivePercent": 94.71910112359551,
+            "eligible": true
+          }
+        },
+        "L&T-S_ASBUILT CUP_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 77.7870389557297,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 77.7870389557297,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 3.4965034965034967,
+            "inactivePercent": 96.5034965034965,
+            "eligible": true
+          }
+        }
+      }
+    }
+  },
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ],
+      "medium": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ],
+      "high": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    "Architectural": {
+      "low": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_SIGNAGE CORE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024"
+      ],
+      "medium": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_SIGNAGE CORE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024"
+      ],
+      "high": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T ARCH CUP_SIGNAGE CORE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    "Mechanical": {
+      "low": [],
+      "medium": [],
+      "high": [
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024"
+      ]
+    },
+    "Electrical": {
+      "low": [
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024"
+      ],
+      "medium": [
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024"
+      ],
+      "high": [
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024"
+      ]
+    },
+    "Plumbing": {
+      "low": [
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024"
+      ],
+      "medium": [
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024"
+      ],
+      "high": [
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [],
+      "medium": [],
+      "high": []
+    }
+  }
+}

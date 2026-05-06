@@ -1,0 +1,594 @@
+{
+  "project": "Skinny_BIAL_5.1_1",
+  "model": "L&T_CUP_FED_ASBUILT CORE_2024",
+  "results": [
+    {
+      "name": "single_enable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 1292,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "single_enable_Architectural",
+      "totalEnabled": 1107,
+      "totalDisabled": 67,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "single_enable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 24241,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "single_enable_Electrical",
+      "totalEnabled": 8707,
+      "totalDisabled": 2297,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "single_enable_Plumbing",
+      "totalEnabled": 18083,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "single_disable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 7320,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024"
+      ]
+    },
+    {
+      "name": "single_disable_Architectural",
+      "totalEnabled": 0,
+      "totalDisabled": 11430,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024"
+      ]
+    },
+    {
+      "name": "single_disable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 45997,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024"
+      ]
+    },
+    {
+      "name": "single_disable_Electrical",
+      "totalEnabled": 0,
+      "totalDisabled": 13691,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024"
+      ]
+    },
+    {
+      "name": "single_disable_Plumbing",
+      "totalEnabled": 0,
+      "totalDisabled": 10488,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all",
+      "totalEnabled": 84228,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 80804,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "alternating_pattern",
+      "totalEnabled": 42650,
+      "totalDisabled": 3755,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "quality_low",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "quality_medium",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "quality_high",
+      "totalEnabled": 11140,
+      "totalDisabled": 21524,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "high_then_disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 79869,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "disable_all_then_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all_then_low",
+      "totalEnabled": 85494,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "low_then_enable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "Combination-1",
+      "totalEnabled": 18450,
+      "totalDisabled": 13110,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T ARCH CUP_SIGNAGE CORE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "Combination-2",
+      "totalEnabled": 70078,
+      "totalDisabled": 23410,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T ARCH CUP_SIGNAGE CORE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    },
+    {
+      "name": "stress_full_cycle",
+      "totalEnabled": 70165,
+      "totalDisabled": 9424,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL CUP INT-BOH_FURNITURE_2024",
+        "L&T ARCH CUP_MUL & LIN_2024",
+        "L&T ARCH CUP_SIGNAGE CORE_2024",
+        "L&T CUP ARCH INT_ASBUILT CORE_2024",
+        "L&T CUP ELEC_ASBUILT CORE_2024",
+        "L&T CUP FAS_ASBUILT CORE_2024",
+        "L&T CUP FPS_ASBUILT CORE_2024",
+        "L&T CUP HVAC_ASBUILT CORE_2024",
+        "L&T CUP ICT_ASBUILT CORE_2024",
+        "L&T CUP PHE ST_AB CORE_2024",
+        "L&T CUP PHE SW_AB CORE_2024",
+        "L&T CUP PHE WS_AB CORE_2024",
+        "L&T_CUP_ARCH_ASBUILT CORE_2024",
+        "L&T-S_ASBUILT CUP_2024"
+      ]
+    }
+  ]
+}

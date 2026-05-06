@@ -1,0 +1,36 @@
+
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 17-04-23    HSK        PLAT-2727   Cutomizable tooltip component
+// 09-06-23    HSK                    Used --icon-color variable o make styling dynamic
+// -------------------------------------------------------------------------------------
+
+.toolbar-icon {
+    width: 24px;
+    height: 24px;
+    min-width: 24px;
+    min-height: 24px;
+    position: relative;
+}
+.grouped-icon {
+    //
+}
+
+.icon-color-filter {
+    filter: var(--navbar-icon-filter);
+}
+
+.icon-selection-color {
+    filter:var(--navbar-icon-filter);
+}
+
+
+.list-item-close {
+    width: 24px;
+    height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    cursor: pointer;
+    color: #ffffff;
+  }

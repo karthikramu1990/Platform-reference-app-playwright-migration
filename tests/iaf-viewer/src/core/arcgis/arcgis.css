@@ -1,0 +1,12 @@
+/* @import url("https://js.arcgis.com/4.31/@arcgis/core/assets/esri/themes/dark/main.css"); */
+
+.mmv, .arcgis-viewer {
+    height: 100%;
+}
+
+.graphic-html {
+    position: absolute;
+    z-index: 2;
+    text-wrap: nowrap;
+}
+

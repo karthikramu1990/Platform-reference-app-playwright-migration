@@ -1,0 +1,432 @@
+{
+  "projectName": "Skinny_BIAL_5.1_1",
+  "modelName": "T2-FAS-Federated",
+  "timestamp": "2026-02-17T16:00:58.159Z",
+  "layerStatsPerView": {
+    "T2-FAS-Federated": {},
+    "BIAL T2 ARCH CORE_2024 Skinny": {
+      "Structural": {
+        "count": 440,
+        "localPercentage": 1.44,
+        "globalPercentage": 1.5156734412676542
+      },
+      "Architectural": {
+        "count": 24176,
+        "localPercentage": 79.17,
+        "globalPercentage": 40.38419777833459
+      },
+      "Mechanical": {
+        "count": 161,
+        "localPercentage": 0.53,
+        "globalPercentage": 2.1946564885496183
+      },
+      "Electrical": {
+        "count": 633,
+        "localPercentage": 2.07,
+        "globalPercentage": 2.1413348668854235
+      },
+      "Plumbing": {
+        "count": 5127,
+        "localPercentage": 16.79,
+        "globalPercentage": 61.445349952061356
+      }
+    },
+    "ARCH_AR-T2-ASM-ENCL_2024 Skinny": {
+      "Structural": {
+        "count": 98,
+        "localPercentage": 0.66,
+        "globalPercentage": 0.3375818119187048
+      },
+      "Architectural": {
+        "count": 14574,
+        "localPercentage": 97.59,
+        "globalPercentage": 24.34477574542721
+      },
+      "Plumbing": {
+        "count": 262,
+        "localPercentage": 1.75,
+        "globalPercentage": 3.1399808245445833
+      }
+    },
+    "INT_PARTITION_GFC CORE_R1_2024 Skinny": {
+      "Structural": {
+        "count": 7033,
+        "localPercentage": 36.28,
+        "globalPercentage": 24.226662073716845
+      },
+      "Architectural": {
+        "count": 12352,
+        "localPercentage": 63.72,
+        "globalPercentage": 20.63309112169047
+      },
+      "Plumbing": {
+        "count": 1,
+        "localPercentage": 0.01,
+        "globalPercentage": 0.011984659635666346
+      }
+    },
+    "TMN2_BIAL-S_Central_2024 V2": {
+      "Structural": {
+        "count": 21459,
+        "localPercentage": 68.65,
+        "globalPercentage": 73.9200826730968
+      },
+      "Architectural": {
+        "count": 8455,
+        "localPercentage": 27.05,
+        "globalPercentage": 14.123444416604025
+      },
+      "Plumbing": {
+        "count": 1345,
+        "localPercentage": 4.3,
+        "globalPercentage": 16.119367209971237
+      }
+    },
+    "L&T T2 FAS_AB CORE_2024 Skinny": {
+      "Architectural": {
+        "count": 308,
+        "localPercentage": 0.86,
+        "globalPercentage": 0.5144909379437066
+      },
+      "Mechanical": {
+        "count": 5718,
+        "localPercentage": 16.04,
+        "globalPercentage": 77.94438386041439
+      },
+      "Electrical": {
+        "count": 28019,
+        "localPercentage": 78.59,
+        "globalPercentage": 94.7836676702412
+      },
+      "Plumbing": {
+        "count": 1609,
+        "localPercentage": 4.51,
+        "globalPercentage": 19.28331735378715
+      }
+    },
+    "L&T T2 FAS_AB FLB CORE_2024 Skinny": {
+      "Mechanical": {
+        "count": 1457,
+        "localPercentage": 61.58,
+        "globalPercentage": 19.860959651035987
+      },
+      "Electrical": {
+        "count": 909,
+        "localPercentage": 38.42,
+        "globalPercentage": 3.0749974628733803
+      }
+    }
+  },
+  "comparisonResults": {
+    "Structural": {
+      "details": {
+        "BIAL T2 ARCH CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 1.5156734412676542,
+            "inactivePercent": 106.16553908583099,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.5156734412676542,
+            "inactivePercent": 106.16553908583099,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.4408750040933949,
+            "inactivePercent": 98.55912499590661,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Architectural": {
+      "details": {
+        "BIAL T2 ARCH CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 40.38419777833459,
+            "inactivePercent": 67.29701474876406,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 79.16953204309526,
+            "inactivePercent": 20.830467956904737,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 79.16953204309526,
+            "inactivePercent": 20.830467956904737,
+            "eligible": true
+          }
+        },
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 20.63309112169047,
+            "inactivePercent": 24.23864673335251,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 63.716083771794075,
+            "inactivePercent": 36.283916228205925,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 63.716083771794075,
+            "inactivePercent": 36.283916228205925,
+            "eligible": true
+          }
+        },
+        "TMN2_BIAL-S_Central_2024 V2": {
+          "lowResult": {
+            "activePercent": 14.123444416604025,
+            "inactivePercent": 90.03944988306804,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 14.123444416604025,
+            "inactivePercent": 90.03944988306804,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 27.048210115486736,
+            "inactivePercent": 72.95178988451326,
+            "eligible": true
+          }
+        },
+        "L&T T2 FAS_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 0.5144909379437066,
+            "inactivePercent": 192.01136888444273,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.5144909379437066,
+            "inactivePercent": 192.01136888444273,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.8638581926291581,
+            "inactivePercent": 99.13614180737085,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Mechanical": {
+      "details": {
+        "L&T T2 FAS_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 77.94438386041439,
+            "inactivePercent": 114.58147596197206,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 77.94438386041439,
+            "inactivePercent": 114.58147596197206,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 16.037471251472486,
+            "inactivePercent": 83.96252874852752,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Electrical": {
+      "details": {
+        "BIAL T2 ARCH CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 2.1413348668854235,
+            "inactivePercent": 105.53987766021321,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 2.1413348668854235,
+            "inactivePercent": 105.53987766021321,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.072895176343452,
+            "inactivePercent": 97.92710482365656,
+            "eligible": true
+          }
+        },
+        "L&T T2 FAS_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 94.7836676702412,
+            "inactivePercent": 97.74219215214525,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 78.58585291972851,
+            "inactivePercent": 21.414147080271498,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 78.58585291972851,
+            "inactivePercent": 21.414147080271498,
+            "eligible": true
+          }
+        },
+        "L&T T2 FAS_AB FLB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 3.0749974628733803,
+            "inactivePercent": 19.860959651035987,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.0749974628733803,
+            "inactivePercent": 19.860959651035987,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 38.41927303465765,
+            "inactivePercent": 61.58072696534235,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Plumbing": {
+      "details": {
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 3.1399808245445833,
+            "inactivePercent": 24.682357557345913,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.1399808245445833,
+            "inactivePercent": 24.682357557345913,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.7543859649122806,
+            "inactivePercent": 98.24561403508773,
+            "eligible": true
+          }
+        },
+        "TMN2_BIAL-S_Central_2024 V2": {
+          "lowResult": {
+            "activePercent": 16.119367209971237,
+            "inactivePercent": 88.04352708970083,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 16.119367209971237,
+            "inactivePercent": 88.04352708970083,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 4.302760804888192,
+            "inactivePercent": 95.6972391951118,
+            "eligible": true
+          }
+        },
+        "L&T T2 FAS_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 19.28331735378715,
+            "inactivePercent": 173.2425424685993,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 19.28331735378715,
+            "inactivePercent": 173.2425424685993,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 4.512817636169855,
+            "inactivePercent": 95.48718236383016,
+            "eligible": true
+          }
+        }
+      }
+    }
+  },
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ],
+      "medium": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ],
+      "high": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    "Architectural": {
+      "low": [
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny"
+      ],
+      "medium": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny"
+      ],
+      "high": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 FAS_AB CORE_2024 Skinny"
+      ]
+    },
+    "Mechanical": {
+      "low": [
+        "L&T T2 FAS_AB FLB CORE_2024 Skinny"
+      ],
+      "medium": [
+        "L&T T2 FAS_AB FLB CORE_2024 Skinny"
+      ],
+      "high": [
+        "L&T T2 FAS_AB CORE_2024 Skinny",
+        "L&T T2 FAS_AB FLB CORE_2024 Skinny"
+      ]
+    },
+    "Electrical": {
+      "low": [],
+      "medium": [
+        "L&T T2 FAS_AB CORE_2024 Skinny"
+      ],
+      "high": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "L&T T2 FAS_AB CORE_2024 Skinny",
+        "L&T T2 FAS_AB FLB CORE_2024 Skinny"
+      ]
+    },
+    "Plumbing": {
+      "low": [
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ],
+      "medium": [
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ],
+      "high": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 FAS_AB CORE_2024 Skinny"
+      ]
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [],
+      "medium": [],
+      "high": []
+    }
+  }
+}

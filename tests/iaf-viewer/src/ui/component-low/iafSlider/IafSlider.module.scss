@@ -1,0 +1,143 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2813   Revamed IafViewer Components                                     
+// 24-05-23    HSK        PLAT-2730   Revamed IafViewer Panels - Cutting Planes
+// 28-06-23    HSK        PLAT-2728   Coloring Mechanism - Derive from var(--app-accent-color)
+// 21-03-24    HSK        PLAT-4420   Iaf-viewer styles taking precedence over application's MUI components
+// -------------------------------------------------------------------------------------
+*/
+
+.slider-disabled {
+    opacity: 0.6;
+    /* cursor: not-allowed; */
+}
+
+.slider-component {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 5px;
+    width: 207px;
+    height: 36px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .slider-component-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 2px;
+    width: 207px;
+    height: 36px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .slider-title-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-bottom: 10px;
+    gap: 75px;
+    width: 207px;
+    height: 18px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .slider-title {
+    width: 150px;
+    height: 18px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    color: #dcdcdc;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .range-value-box {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    margin-top: 2px;
+    margin-left: -200px;
+    width: 200px;
+    height: 16px;
+    cursor: pointer; 
+  }
+  
+  .range-value {
+    height: 18px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 18px;
+    text-align: right;
+    color: #dcdcdc;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .slider-bar-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 207px;
+    height: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .slider-bar-box :global(span.MuiSlider-root) {
+    display: flex;
+  }
+  
+  .slider-bar-box :global(span.MuiSlider-root .MuiSlider-rail) {
+    background: #3e3e3e;
+    flex: none;
+    order: 2;
+    flex-grow: 0;
+  }
+  
+  .slider-bar-box :global(span.MuiSlider-root .MuiSlider-thumb) {
+    background: var(--app-accent-color);
+    width: 10px;
+    height: 10px;
+  }
+  
+  .slider-bar-box :global(span.MuiSlider-root .MuiSlider-thumb::after) {
+    width: 16px;
+    content: "";
+    position: absolute;
+    height: 16px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .slider-bar-box :global(span.MuiSlider-root .MuiSlider-track) {
+    background-color: var(--app-accent-color);
+  }
+  
+  .disabled-component{
+    /* Make the div appear disabled */
+    opacity: 0.6; /* Reduce opacity to make it appear faded */
+    pointer-events: none; /* Disable mouse interactions */
+    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  }

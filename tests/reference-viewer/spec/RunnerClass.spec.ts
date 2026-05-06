@@ -39,82 +39,63 @@ test.describe('Reference Viewer Suite', () => {
     }
   });
 
-  // ── Login ────────────────────────────────────────────────────────────────────
   test('01 - Login and Project Setup', async () => {
     const loginTest = new LoginintoTheApplicationTest(sharedPage);
     await loginTest.loginTheApplication();
   });
 
-  // ── 2D Viewer ────────────────────────────────────────────────────────────────
-  test.describe('2D Viewer', () => {
-    test('02 - Navigate to Viewer', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.navigateToViewer();
-    });
-
-    test('03 - Verify 2D Floor Plan Viewer', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verify2DViewer();
-    });
+  test('02 - Navigate to Viewer', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.navigateToViewer();
   });
 
-  // ── 3D Viewer Controls ───────────────────────────────────────────────────────
-  test.describe('3D Viewer Controls', () => {
-    test('04 - Verify Reset View and Projection', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyResetAndProjection();
-    });
-
-    test('05 - Verify View Options', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyViewOptions();
-    });
-
-    test('06 - Verify Shading Options', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyShadingOptions();
-    });
-
-    test('07 - Verify Utilities', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyUtilities();
-    });
-
-    test('08 - Verify Focus Mode', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyFocusMode();
-    });
+  test('03 - Verify 2D Floor Plan Viewer', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verify2DViewer();
   });
 
-  // ── Cutting Planes ───────────────────────────────────────────────────────────
-  test.describe('Cutting Planes', () => {
-    test('09 - Verify Cutting Planes', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyCuttingPlanes();
-    });
+  test('04 - Verify Reset View and Projection', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyResetAndProjection();
   });
 
-  // ── Model Composer ───────────────────────────────────────────────────────────
-  test.describe('Model Composer', () => {
-    test('10 - Verify Model Composer Disciplines', async () => {
-      const vt = new ViewerTest(sharedPage);
-      await vt.verifyModelComposer();
-    });
+  test('05 - Verify View Options', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyViewOptions();
   });
 
-  // ── Annotations ──────────────────────────────────────────────────────────────
-  test.describe('Annotations', () => {
-    test('11 - Verify All Annotation Types', async () => {
-      const at = new AnnotationsTest(sharedPage);
-      await at.verifyAnnotations();
-    });
+  test('06 - Verify Shading Options', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyShadingOptions();
   });
 
-  // ── GIS Viewer ───────────────────────────────────────────────────────────────
-  test.describe('GIS Viewer', () => {
-    test('12 - Verify GIS Viewer', async () => {
-      const gt = new GISViewerTest(sharedPage);
-      await gt.verifyGISViewer();
-    });
+  test('07 - Verify Utilities', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyUtilities();
+  });
+
+  test('08 - Verify Focus Mode', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyFocusMode();
+  });
+
+  test('09 - Verify Cutting Planes', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyCuttingPlanes();
+  });
+
+  test('10 - Verify Model Composer Disciplines', async () => {
+    const vt = new ViewerTest(sharedPage);
+    await vt.verifyModelComposer();
+  });
+
+  test('11 - Verify All Annotation Types', async () => {
+    const at = new AnnotationsTest(sharedPage);
+    await at.verifyAnnotations();
+  });
+
+  test('12 - Verify GIS Viewer', async () => {
+    const gt = new GISViewerTest(sharedPage);
+    await gt.verifyGISViewer();
   });
 });

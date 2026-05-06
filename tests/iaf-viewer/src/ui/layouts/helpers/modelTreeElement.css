@@ -1,0 +1,88 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 22-Oct-23   ATK        PLAT-2414   Performance - CSDL - On Demand
+// -------------------------------------------------------------------------------------
+*/
+
+#model-tree-main {
+  position: absolute;
+  width: 512px;
+  height: 283px;
+  top: 24px;
+  left: 824px;
+  border-radius: 10px;
+  z-index: 11;  
+}
+#model-tree-main-2d {
+  position: absolute;
+  width: 512px;
+  height: 283px;
+  top: 24px;
+  left: 1224px;
+  border-radius: 10px;
+  z-index: 11;
+}
+#model-tree-main-dis {
+  position: absolute;
+  width: 512px;
+  height: 283px;
+  top: 524px;
+  left: 824px;
+  border-radius: 10px;
+  z-index: 11;
+}
+#model-tree-main .viewer2D-Controls {
+  position: absolute;
+  background: white;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  width: 512px;
+  height: 44px;
+  z-index: 6;
+  border: 1px solid rgba(46, 45, 45, 0.0509803922);
+}
+#model-tree-main .DropDownList {
+  margin-left: 4px;
+  margin-top: 8px;
+  margin-right: 2px;
+  text-align: center;
+  font-size: 12.8px;
+  height: 24px;
+  float: left;
+  width: 100px;
+  border-color: white;
+  color: #C71784;
+  font-weight: bold;
+}
+#model-tree-main button:hover {
+  background-color: #ddd;
+  color: black;
+}
+#model-tree-main .previous {
+  background-color: #f1f1f1;
+  color: black;
+}
+#model-tree-main .next {
+  background-color: #f1f1f1;
+  color: black;
+}
+#model-tree-main .round {
+  border-radius: 50%;
+}
+#model-tree-main .Viewer_button {
+  float: left;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  align-items: center;
+  z-index: 10;
+  background: white;
+  margin-top: 0;
+}
+#model-tree-main .Viewer_button .Viewer2d-toolbar-icon {
+  width: 20px;
+  height: 18px;
+  margin: 11px 10px 11px 10px;
+  position: absolute;
+}

@@ -1,0 +1,636 @@
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 17-04-23    HSK        PLAT-2727   New IafViewer Toolbar Styling begins
+// 26-04-23    HSK        PLAT-2727   Added large, medium and small toolbar size css
+// 04-05-23    HSK        PLAT-2800   Introduced subemun css
+// 16-05-23    ATK        PLAT-2813   Restructuring
+// 26-05-23    HSK        PLAT-2891   Revamped IafViewer Icons - Toolbar, Submenu
+// 09-06-23    HSK        PLAT-2728   Added --toolbar-color, --filter-value variable for dynamic styling
+// 20-06-23    HSK                    Changed css of toolbar button text
+// 22-06-23    ATK                    To Do: Inveestigate the impact of text-transform: uppercase on the toolbar text
+// 28-06-23    HSK        PLAT-2728   Coloring Mechanism - Derive from var(--app-accent-color)
+// 30-06-23    ATK                    toolbar-txt font-size increased to 11px from 10px
+// 25-10-23    HSK                    hidden button of customise viewer btn
+// 09-10-23    HSK        PA-293      Reference app : unable to view text for show all icon in navigator screen
+//                                    Added bottom padding to newToolbar
+// 18-03-24    HSK        UI-126      At the top of the toolbar, there is an arrow that appears only when modal windows (settings) are open. In other cases, the arrow is hidden.
+// 19-03-24    HSK        UI-123      Group instruments have a "group indicator" on the icon, and upon clicking, they should display a dropdown with other instruments that belong to the same group.
+// -------------------------------------------------------------------------------------  
+
+// width of each toolbar btn
+$btn-width: 90px;
+@import "../../styles/variables";
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;900&family=Raleway:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+.none {
+  position: relative;
+  height: 100%;
+  right: 1px;
+  width: 0px;
+  background-color: var(--toolbar-color) !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+  padding-bottom: 35px;
+  overflow-x: hidden !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 4;
+  top: 0px;
+  padding-bottom: 35px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.small {
+  position: relative;
+  height: 100%;
+  right: 1px;
+  width: 48px;
+  background-color: var(--toolbar-color) !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+  padding-bottom: 35px;
+  overflow-x: hidden !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 4;
+  top: 0px;
+  padding-bottom: 35px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.medium {
+  position: relative;
+  height: 100%;
+  right: 1px;
+  width: 64px;
+  background-color: var(--toolbar-color) !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+  overflow-x: hidden !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 4;
+  top: 0px;
+  padding-bottom: 35px;
+
+  .viewer-toolbar-btn {
+    width: 64px;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.large {
+  position: relative;
+  height: 100%;
+  right: 1px;
+  width: 94px;
+  background-color: var(--toolbar-color) !important;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.15);
+  overflow-x: hidden !important;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  z-index: 4;
+  top: 0px;
+  padding-bottom: 35px;
+
+  .viewer-toolbar-btn {
+    width: 94px;
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.arrow-btn-hidden {
+  height: 56px;
+}
+.viewer-toolbar-btn {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  width: 48px;
+  height: 56px;
+  min-width: 48px;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.08)) drop-shadow(0px 0px 1px rgba(0, 0, 0, 0.16));
+  flex: none;
+  order: 8;
+  flex-grow: 0;
+  cursor: pointer;
+
+  .toolbar-icon {
+    width: 24px;
+    height: 28px;
+    min-width: 24px;
+    min-height: 24px;
+    position: relative;
+
+    &.grouped-icon {
+      background-image: linear-gradient(315deg, transparent 4px, transparent 0), linear-gradient(315deg, #fff 4px, transparent 0); // champer on grouped icon
+    }
+  }
+}
+.viewer-toolbar-btn:hover:before {
+  content: "";
+  position: absolute;
+  width: 80%; /* Adjust width as needed */
+  height: 90%; /* Adjust height as needed */
+  background-color: #3E3E3E !important; /* Background color on hover */
+  z-index: -1;
+  transition: inherit;
+}
+.toolbar-txt {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 19px;
+  color: #DCDCDC;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+ .apply-box-shadow::before{
+  content: "";
+  position: absolute;
+  width: 80%; /* Adjust width as needed */
+  height: 90%;/* Adjust height as needed */
+  background-color: var(--app-accent-color) !important; /* Background color on hover */
+  z-index: -1;
+  border-radius: 3px;
+ }
+
+
+// ATK TO DO: Inveestigate the impact of text-transform: uppercase on the toolbar text
+// .navigator-viewer,
+// .systems-viewer {
+//   .viewer-toolbar-btn .toolbar-txt {
+//     // font-size: 0.9em;
+//     line-height: 1em;
+//     // text-transform: uppercase;
+//   }
+// }
+
+.filter-gray {
+  filter: invert(34%) sepia(0%) saturate(43%) hue-rotate(134deg) brightness(109%) contrast(78%); /* #666666 */
+}
+
+.image-pink{
+  filter:invert(40%) sepia(86%) saturate(6224%) hue-rotate(311deg) brightness(83%) contrast(101%)
+}
+
+.filter-pink {
+  filter: invert(20%) sepia(95%) saturate(2664%) hue-rotate(306deg) brightness(82%) contrast(101%); /* var(--app-accent-color) */
+}
+.filter-grey-forDisableIcon{
+  filter: invert(100%) sepia(0%) saturate(588%) hue-rotate(187deg) brightness(113%) contrast(87%);
+}
+.filter-grey-forDisableIcon{
+cursor: default;
+filter: invert(100%) sepia(0%) saturate(3893%) hue-rotate(117deg) brightness(134%) contrast(73%);
+}
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: var(--app-accent-color) !important;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+.slidecontainer {
+  margin-top: 10px;
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider2 {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider2:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider2::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider2::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  input[type='range'] {
+    overflow: hidden;
+    width: 80%;
+    -webkit-appearance: none;
+    background-color: #ece7e9;
+  }
+  
+  input[type='range']::-webkit-slider-runnable-track {
+    height: 10px;
+    -webkit-appearance: none;
+    color: var(--app-accent-color);
+    margin-top: -1px;
+  }
+  
+  input[type='range']::-webkit-slider-thumb {
+    width: 10px;
+    -webkit-appearance: none;
+    height: 10px;
+    cursor: pointer;//ew-resize;
+    background: var(--app-accent-color);
+    box-shadow: -80px 0 0 80px var(--app-accent-color);
+  }
+
+}
+.cutting-plane-div {
+  position: absolute;
+  border-radius: 10px;
+  z-index: 9;
+  min-width: 250px;
+  min-height: 100px;
+  padding: 0% 0% 1% 0%;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+ .cutting-plane-div-body{
+   position: relative;
+   width: 200px !important;
+   margin: auto;
+   td {
+    padding: 5px;
+}
+ }
+.cutting-plane-div-header {
+  position: relative;
+  padding: 10px;
+  width: 200px !important;
+  border-radius: 10px;
+  min-height: 30px;
+  margin:0 auto;
+  cursor: move;
+  z-index: 10;
+  background-color: var(--app-accent-color);
+  color: #fff;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 35px;
+  height: 15px;
+  vertical-align: middle;
+  margin-top: 5px;
+}
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  // top: 0;
+  // left: 0;
+  // right: 0;
+  // bottom: 0;
+  background-color: #ccc;
+  
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: -5px;
+  bottom: -2.5px;
+  background-color: var(--app-accent-color) !important;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--app-accent-color) !important;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--app-accent-color);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 15px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+
+.cuttingPlane-header{
+  color: white;
+  width: auto;
+  text-align: left !important;
+  display: flex;
+  /* background-color: white !important; */
+  background-color: var(--app-accent-color) !important;
+  overflow: hidden !important;
+  border-radius: 10px 10px 0px 0px!important;
+  cursor: pointer;
+  /* margin: 10px !important; */
+  border: solid #6d6e70 1px !important;
+}
+
+.cutting-plane-select-btn {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  align-items: center;
+  z-index: 10;
+  // margin-left: 70px;
+  // background:var(--app-accent-color);
+  border-radius: 0.262em;
+  .cuttingPlane-icon{
+    width: 25px;
+    height: 25px;
+    // margin: 11px 10px 11px 10px;
+   //z-index: 100;
+    position: absolute;
+  }
+}
+
+.cutting-plane-select-btn .tooltip-txt {
+  visibility: hidden;
+  width: $btn-width;
+  background-color: var(--app-accent-color);
+  color: #fff;
+  text-align: center;
+  font-size: 0.832em;
+  padding: 0.262em;
+  border-radius: 0.262em;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 150%;
+  left: -40px !important;
+  z-index: 7;
+}
+
+
+.cuttingPlane_button {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  align-items: center;
+  z-index: 10;
+  margin-left: 70px;
+  background:var(--app-accent-color) !important;
+  .cuttingPlane-icon{
+    width: 20px;
+    height: 18px;
+    margin: 11px 10px 11px 10px;
+   //z-index: 100;
+    position: absolute;
+  }
+  
+}
+.cuttingPlane_button .tooltip-txt {
+  visibility: hidden;
+  width: $btn-width;
+  background-color: var(--app-accent-color);
+  color: #fff;
+  text-align: center;
+  font-size: 0.832em;
+  padding: 0.262em;
+  border-radius: 0.262em;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 150%;
+  left: -40px !important;
+  z-index: 7;
+}
+
+.cuttingPlane-header-text{
+  //margin: auto;
+  margin: 10px;
+  text-align: left;
+  color: white;
+}
+.filter-white {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(1%) saturate(1962%) hue-rotate(173deg) brightness(120%) contrast(100%); 
+}
+
+.cuttingPlane-icon:hover .tooltip-txt {
+  visibility: visible;
+}
+
+.walk1{
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 71px 309px;
+  width:700px;
+  font-family: 'Inter';
+}
+.commandDropDown{
+  margin-left: 8px;
+ margin-top: 19px;
+ margin-bottom: 8px;
+ margin-right: 8px;
+  text-align: center;
+  font-size: 12.8px;
+  height:24px;
+  float : left;
+  width: 150px; 
+  border-color:white;
+  color: var(--app-accent-color) !important;
+  font-weight: bold;
+}
+
+// .switch{
+//   overflow: hidden !important;
+//   width: 20px !important;
+//   -webkit-appearance: none;
+//     border-radius: 10px !important;
+//   background-color: #808080
+// }
+
+// .switch::-webkit-slider-runnable-track {
+// -webkit-appearance: none !important ;
+// height: 10px !important;
+// background: #ccc;
+// border: none;
+// border-radius: 10px;
+// }
+
+// .switch::-webkit-slider-thumb {
+// -webkit-appearance: none !important;
+// border: none;
+// height: 10px !important;
+// width: 10px !important;
+// border-radius: 10px !important;
+// background: white;
+// margin-top: -0px;
+// box-shadow: -80px 0 0 70px #C71585;
+// }
+
+// .switch:focus {
+// outline: none;
+// }
+
+// .switch:focus::-webkit-slider-runnable-track {
+// background: #ccc;
+// }
+// .switch:focus::-webkit-fill-lower {
+// background: #C71585;
+// }
+// .switch:focus::-webkit-fill-upper {
+// background: #ccc;
+// }
+
+.disabled {
+  opacity: 0.2; /* Adjust the opacity value as desired */
+  cursor: not-allowed;
+}
+
+@media (max-width: 1023px) {
+  .customiseViewerBtn {
+    display: none;
+  }
+}
+@media (max-height: 719px) {
+  .customiseViewerBtn {
+    display: none;
+  }
+}
+
+// Markup items.
+.markup-container {
+  display: flex;
+  background: #454545;
+  flex-direction: column
+}
+
+.markup-custom-item  {
+  display: flex;
+  align-items: center;
+  padding: 12px 24px;
+}
+
+.markup-custom-item:hover {
+  background-color: #3E3E3E;
+}
+
+.markup-menu-item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.markup_icon_img {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.markup_icon_wrapper {
+  width: 20% !important;
+}
+
+.markup_text {
+  // width: 134px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 18px;
+  padding-left: 10px;
+  color: #FFFFFF;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+
+.disabled-component{
+  /* Make the div appear disabled */
+  opacity: 0.6; /* Reduce opacity to make it appear faded */
+  pointer-events: none; /* Disable mouse interactions */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+}

@@ -1,0 +1,70 @@
+{
+  "title": "IAF Viewer API Documentation Index",
+  "description": "Index of all available API documentation files",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-19",
+  "documentation": [
+    {
+      "name": "IafUtils",
+      "file": "IafUtils.api.json",
+      "description": "Core utility functions and helper classes for IAF viewer",
+      "classes": [
+        "IafUtils",
+        "IafObjectUtils", 
+        "IafArrayUtils",
+        "IafMapUtils",
+        "IafStringUtils",
+        "IafStorageUtils",
+        "IafPerfLogger",
+        "IafTimerUtils",
+        "IafProjectUtils"
+      ],
+      "sourceFile": "../core/IafUtils.js",
+      "category": "utilities"
+    },
+    {
+      "name": "IafDatabaseManager",
+      "file": "IafDatabaseManager.api.json",
+      "description": "Database operations manager with queuing and auto-persistence",
+      "classes": [
+        "IafDatabaseManager",
+        "IafApiClientMarkup",
+        "IafApiClientModelComposition",
+        "IafApiClientGis",
+        "IafApiClientOperationalCache",
+        "IafApiClientPermissions"
+      ],
+      "sourceFile": "../core/database/IafDatabaseManager.js",
+      "category": "database"
+    },
+    {
+      "name": "IafFileManager",
+      "file": "IafFileManager.api.json",
+      "description": "File management utility for handling file operations and blob storage",
+      "classes": [
+        "IafFileManager"
+      ],
+      "sourceFile": "../core/database/IafFileManager.js",
+      "category": "database"
+    },
+    {
+      "name": "IafPermissionManager",
+      "file": "iafPermissionManager.api.json",
+      "description": "Permission management for graphics data resources",
+      "classes": [
+        "IafPermissionManager"
+      ],
+      "sourceFile": "../core/database/permission/iafPermissionManager.js",
+      "category": "database"
+    }
+  ],
+  "categories": {
+    "utilities": "Core utility functions and helper classes",
+    "database": "Database operations, file management, and permissions"
+  },
+  "conventions": {
+    "fileNaming": "PascalCase for class names, camelCase for files",
+    "format": "JSON with consistent structure across all files",
+    "descriptions": "Concise one-line descriptions for methods and properties"
+  }
+}

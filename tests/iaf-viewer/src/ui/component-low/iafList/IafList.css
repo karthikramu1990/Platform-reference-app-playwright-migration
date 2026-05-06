@@ -1,0 +1,11 @@
+.MuiTypography-body1:hover{
+    color: var(--app-accent-color);
+}
+
+.iafTitle .MuiInputBase-root {
+    background-color: #00000000 !important;
+}
+
+/* .MuiTypography-body1:hover{
+    color: var(--app-accent-color);
+} */

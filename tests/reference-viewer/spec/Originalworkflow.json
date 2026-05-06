@@ -1,0 +1,476 @@
+{
+  "onConfigLoad": {
+    "load": [
+      "iaf_dt_proj_colls",
+      "iaf_dt_types"
+    ],
+    "exec": [
+      "loadProjectAndCollections"
+    ]
+  },
+  "entityDataConfig": {
+    "Model Element": {
+      "Element Properties": {
+        "selected": true,
+        "isProperties": true,
+        "component": {
+          "name": "SimpleTableGroup",
+          "className": "simple-property-grid",
+          "groupClassName": "simple-table-group-name",
+          "groups": {
+            "Base Properties": [
+              "ElementCategory",
+              "ElementType"
+            ]
+          }
+        }
+      },
+      "Files": {
+        "script": "getRelatedFileItemsForModelElements",
+        "scriptExpiration": 0,
+        "showCount": true,
+        "selected": true,
+        "component": {
+          "name": "RelatedFiles",
+          "className": "fixed-header simple-property-grid",
+          "columns": [
+            {
+              "name": "Name",
+              "accessor": "name"
+            },
+            {
+              "name": "Updated By",
+              "accessor": "updatedBy"
+            },
+            {
+              "name": "Updated At",
+              "accessor": "updatedAt"
+            },
+            {
+              "name": "Size",
+              "accessor": "size"
+            }
+          ]
+        }
+      },
+      "Warranty Data": {
+        "script": "getElementsWarrantyData",
+        "scriptExpiration": 0,
+        "showCount": true,
+        "component": {
+          "name": "EntityModalEdit",
+          "className": "simple-property-grid"
+        }
+      },
+      "Telemetry via REST API": {
+        "script": "getTelemetryCollection",
+        "scriptExpiration": 0,
+        "showCount": true,
+        "component": {
+          "name": "Telemetry",
+          "className": "fixed-header simple-property-grid"
+        }
+      },
+      "Telemetry via MQTT": {
+        "script": "getIotCollection",
+        "scriptExpiration": 0,
+        "showCount": true,
+        "component": {
+          "name": "TelemetryChannel",
+          "className": "fixed-header simple-property-grid"
+        }
+      }
+    }
+  },
+  "entitySelectConfig": {
+    "Model Element": [
+      {
+        "id": "revfam",
+        "query": "<<SCRIPTED_LINKED_SELECTS>>",
+        "display": "ElementCategory",
+        "altScript": "getModelElementsByTypeProps",
+        "selects": [
+          {
+            "display": "ElementCategory",
+            "script": "getModelElementCategory",
+            "propName": "ElementCategory"
+          },
+          {
+            "display": "ElementType",
+            "script": "getModelElementType",
+            "multi": true,
+            "propName": "ElementType"
+          }
+        ]
+      }
+    ],
+    "File": [
+      {
+        "id": "filesearch",
+        "query": "<<TEXT_SEARCH>>",
+        "display": "Quick Search"
+      },
+      {
+        "id": "filecat",
+        "query": "<<SCRIPTED_LINKED_SELECTS>>",
+        "display": "Category",
+        "selects": [
+          {
+            "display": "ElementCategory",
+            "script": "getCategoryOfFiles",
+            "propName": "fileAttributes.ElementCategory"
+          },
+          {
+            "display": "ElementType",
+            "script": "getTypesOfFilesForCategory",
+            "multi": true,
+            "propName": "fileAttributes.ElementType"
+          }
+        ]
+      },
+      {
+        "id": "fileatts",
+        "query": "<<SCRIPTED_SELECTS>>",
+        "display": "File Attributes",
+        "script": "getFileAttributeSelects",
+        "multi": true,
+        "op": "$and",
+        "selects": [
+          {
+            "display": "Originator",
+            "propName": "fileAttributes.originator"
+          },
+          {
+            "display": "Document Type",
+            "propName": "fileAttributes.documentType"
+          },
+          {
+            "display": "File Discipline",
+            "propName": "fileAttributes.fileDiscipline"
+          }
+        ]
+      },
+      {
+        "id": "documentColl",
+        "query": "<<SCRIPTED_LINKED_SELECTS>>",
+        "display": "Collections",
+        "altScript": "getDocumentsForCollections",
+        "selects": [
+          {
+            "display": "Collection Type",
+            "script": "getCollectionTypesFlatDocument"
+          },
+          {
+            "display": "Collection Name",
+            "script": "getCollectionNames",
+            "multi": true
+          }
+        ]
+      }
+    ]
+  },
+  "handlers": {
+    "modelelems": {
+      "title": "Model Elements",
+      "icon": "fas fa-building fa-2x",
+      "shortName": "model",
+      "description": "Model Element View",
+      "pageComponent": "entities/EntityView",
+      "path": "/modelelems",
+      "scriptTypes": [
+        "iaf_dt_model_elems",
+        "iaf_obj_model_api"
+      ],
+      "config": {
+        "type": {
+          "singular": "Model Element",
+          "plural": "Model Elements"
+        },
+        "entityData": {
+          "Model Element": {
+            "script": "getModelElements"
+          }
+        },
+        "tableView": {
+          "component": {
+            "name": "EntityListView",
+            "className": "entity-list-view-default",
+            "multiselect": true,
+            "columns": [
+              {
+                "name": "Entity Name",
+                "accessor": "Entity Name"
+              },
+              {
+                "name": "ElementCategory",
+                "accessor": "ElementCategory"
+              }
+            ]
+          }
+        },
+        "actions": {
+          "Navigator": {
+            "allow": true,
+            "icon": "fas fa-compass fa-2x",
+            "type": "navigate",
+            "showOnTable": true,
+            "navigateTo": "navigator"
+          },
+          "Upload": {
+            "allow": true,
+            "icon": "icofont-upload-alt",
+            "script": "uploadRelatedFileItem",
+            "showOnTable": true
+          }
+        }
+      }
+    },
+    "navigator": {
+      "title": "Navigator",
+      "icon": "inv-icon-svg inv-icon-nav",
+      "shortName": "navi",
+      "description": "Model Navigator",
+      "pageComponent": "newNavigator/NavigatorView",
+      "path": "/navigator",
+      "scriptTypes": [
+        "iaf_dt_model_elems",
+        "iaf_obj_model_api"
+      ],
+      "config": {
+        "type": [
+          {
+            "singular": "Model Element",
+            "plural": "Model Elements"
+          }
+        ],
+        "entityData": {
+          "Model Element": {
+            "script": "getModelElements",
+            "getEntityFromModel": "getElementFromModel"
+          }
+        },
+        "actions": {
+          "Model Element": {
+            "Upload": {
+              "allow": true,
+              "icon": "icofont-upload-alt",
+              "script": "uploadRelatedFileItem",
+              "showOnTable": true
+            }
+          }
+        },
+        "tableView": {
+          "Model Element": {
+            "component": {
+              "name": "EntityListView",
+              "className": "entity-list-view-default",
+              "multiselect": true,
+              "columns": [
+                {
+                  "name": "Entity Name",
+                  "accessor": "Entity Name"
+                },
+                {
+                  "name": "ElementCategory",
+                  "accessor": "ElementCategory"
+                }
+              ]
+            }
+          }
+        }
+      }
+    },
+    "homepage": {
+      "title": "Homepage",
+      "icon": "icofont-home",
+      "shortName": "homepage",
+      "description": "Home",
+      "pageComponent": "dashboards/DashboardView",
+      "path": "/homepage",
+      "config": {
+        "layout": "grid",
+        "className": "homepage",
+        "rows": 3,
+        "columns": 3,
+        "panels": {
+          "buttons": {
+            "position": {
+              "top": 2,
+              "left": 1,
+              "bottom": 4,
+              "right": 4
+            },
+            "component": "CompactButtonBar",
+            "actions": {
+              "Navigator": {
+                "allow": true,
+                "icon": "simple_navigator.svg",
+                "type": "navigate",
+                "navigateTo": "navigator",
+                "title": "Navigator",
+                "text": "Explore the building model and related data"
+              },
+              "Model Elements": {
+                "allow": true,
+                "icon": "simple_assets.svg",
+                "type": "navigate",
+                "navigateTo": "modelelems",
+                "title": "Model Elements",
+                "text": "Model Elements and Model Elements Properties"
+              },
+              "Files": {
+                "allow": true,
+                "icon": "simple_files.svg",
+                "type": "navigate",
+                "navigateTo": "uploadFile",
+                "title": "Files",
+                "text": "All property files for operations, property management, etc."
+              }
+            }
+          }
+        }
+      },
+      "scriptTypes": [
+        "iaf_dashboard"
+      ]
+    },
+    "modelVer": {
+      "title": "Manage Model",
+      "actionTitle": "Manage Model",
+      "shortName": "manmod",
+      "description": "Manage Imported Model Versions",
+      "icon": "ion-gear-a icofont-2x",
+      "pageComponent": "models/ModelImportView",
+      "path": "/manageModel",
+      "config": {
+        "scripts": {
+          "findMissingItems": "findMissingItems",
+          "download": "downloadMissingElements"
+        }
+      }
+    },
+    "uploadFile": {
+      "title": "Files",
+      "actionTitle": "UploadFile",
+      "icon": "ion-ios-paper-outline icofont-2x",
+      "shortName": "upload",
+      "description": "Files",
+      "pageComponent": "uploadFile/UploadFile",
+      "path": "/uploadFile"
+    },
+    "restConnectors": {
+      "title": "Rest Connectors",
+      "actionTitle": "RestConnectors",
+      "icon": "ion-gear-a icofont-2x",
+      "shortName": "connectors",
+      "description": "restConnectors",
+      "pageComponent": "restConnectors/RestConnectors",
+      "path": "/restConnectors"
+    },
+    "downloads": {
+      "title": "Downloads",
+      "icon": "inv-icon-svg inv-icon-download",
+      "shortName": "down",
+      "description": "Downloads",
+      "pageComponent": "DownloadsView",
+      "systems": [
+        "Autodesk Revit",
+        "Autodesk Navisworks",
+        "Autodesk Civil 3D"
+      ],
+      "path": "/downloads"
+    },
+    "scriptRunner": {
+      "title": "Script Development",
+      "actionTitle": "Validate Model",
+      "icon": "icofont-code-alt",
+      "pageComponent": "solutionMgmt/ScriptRunnerView",
+      "path": "/validate",
+      "config": {
+        "allowScriptInput": true
+      },
+      "scriptTypes": [
+        "iaf_validation"
+      ]
+    },
+    "userGroup": {
+      "title": "User Group",
+      "actionTitle": "User Group Actions",
+      "icon": "ion-gear-a icofont-2x",
+      "pageComponent": "user/UserGroupView",
+      "path": "/UserGroupView",
+      "config": {
+        "appUrl": "/reference",
+        "allowUserGroupEdit": true,
+        "allowUserGroupInvite": true,
+        "allowManageInvites": true,
+        "allowManageUsers": true
+      },
+      "script": {
+        "itemFetchScript": "fetchNonSystemCollections"
+      }
+    },
+    "datasources": {
+      "title": "Datasources",
+      "actionTitle": "Datasources",
+      "icon": "ion-gear-a icofont-2x",
+      "pageComponent": "datasources/DatasourcesView",
+      "path": "/Datasources",
+      "config": {
+        "allowManageDatasources": true,
+        "allowViewPermissions": true,
+        "allowDeleteDatasources": true
+      }
+    }
+  },
+  "homepage": {
+    "handler": "homepage"
+  },
+  "groupedPages": {
+    "2D/3D": {
+      "icon": "inv-icon-svg inv-icon-assets",
+      "position": 1,
+      "pages": [
+        {
+          "page": "Navigator",
+          "handler": "navigator"
+        },
+        {
+          "page": "Model Elements",
+          "handler": "modelelems"
+        }
+      ]
+    },
+    "Files": {
+      "icon": "inv-icon-svg inv-icon-download",
+      "position": 2,
+      "pages": [
+        {
+          "page": "uploadFile",
+          "handler": "uploadFile"
+        }
+      ]
+    },
+    "Admin": {
+      "icon": "fas fa-user-shield fa-2x",
+      "position": 3,
+      "pages": [
+        {
+          "page": "userGroup",
+          "handler": "userGroup"
+        },
+        {
+          "page": "modelVer",
+          "handler": "modelVer"
+        },
+        {
+          "page": "restConnectors",
+          "handler": "restConnectors"
+        }
+      ]
+    }
+  },
+  "settings": {
+    "show3dModel": false
+  }
+}

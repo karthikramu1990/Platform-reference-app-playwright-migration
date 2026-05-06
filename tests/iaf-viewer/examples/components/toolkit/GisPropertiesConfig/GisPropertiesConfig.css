@@ -1,0 +1,146 @@
+.gis-properties-config {
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.gis-properties-config-section {
+  margin-bottom: 24px;
+}
+
+.gis-properties-config-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--examples-text-primary, #333);
+  border-bottom: 1px solid var(--examples-border-color, #e0e0e0);
+  padding-bottom: 8px;
+}
+
+.gis-properties-config-field {
+  margin-bottom: 16px;
+}
+
+.gis-properties-config-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--examples-text-primary, #333);
+  margin-bottom: 6px;
+}
+
+.gis-properties-config-field input[type="checkbox"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.gis-properties-config-field input[type="number"] {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--examples-border-color, #e0e0e0);
+  border-radius: 4px;
+  font-size: 13px;
+  box-sizing: border-box;
+}
+
+.gis-properties-config-textarea {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--examples-border-color, #e0e0e0);
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: monospace;
+  resize: vertical;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.gis-properties-config-textarea:focus-within {
+  overflow: auto;
+}
+
+.gis-properties-config-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gis-properties-config-group label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--examples-text-primary, #333);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gis-properties-config-info {
+  font-size: 13px;
+  color: var(--examples-text-secondary, #6d6e70);
+  font-style: italic;
+  font-weight: 400;
+}
+
+.gis-properties-config-demo-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--examples-border-color, #e0e0e0);
+  border-radius: 4px;
+  background: var(--examples-background-secondary, #f8f8f8);
+  margin-top: 8px;
+}
+
+.gis-properties-config-demo-description {
+  margin: 0;
+  font-size: 12px;
+  color: var(--examples-text-secondary, #6d6e70);
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.gis-properties-config-demo-log {
+  width: 100%;
+  max-width: 100%;
+  margin-top: 8px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.gis-properties-config-demo-log-title {
+  margin: 0 0 8px 0;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--examples-text-primary, #333);
+}
+
+.gis-properties-config-demo-log-textarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 150px;
+  max-height: 300px;
+  resize: vertical;
+  background: var(--examples-background-tertiary, #fafafa);
+  border: 1px solid var(--examples-border-color, #d0d0d0);
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  box-sizing: border-box;
+  overflow-x: auto;
+}
+
+.gis-properties-config-demo-log-textarea:focus {
+  background: var(--examples-background-primary, #ffffff);
+  border-color: var(--examples-border-color-focus, #026bfd);
+}

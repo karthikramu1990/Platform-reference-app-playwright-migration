@@ -1,0 +1,40 @@
+{
+  "class": "IafPermissionManager",
+  "description": "Permission management for graphics data resources",
+  "constants": {
+    "PERMISSION_ACTIONS": {
+      "GET": "Read permission",
+      "PUT": "Write permission", 
+      "DELETE": "Delete permission",
+      "ALL": "All permissions"
+    },
+    "RESOURCE_TYPES": {
+      "GIS": "GIS resource type",
+      "MARKUP": "Markup resource type",
+      "MODEL_COMPOSER": "Model composer resource type"
+    }
+  },
+  "constructor": {
+    "description": "Initialize permission manager with default permissions"
+  },
+  "staticMethods": {
+    "parseRawPermissionsToResourceMap": "Parse DB permissions into resource-action map",
+    "mapDbActionToPermissionAction": "Map DB action to internal permission action"
+  },
+  "methods": {
+    "initialize": "Initialize with user and project, load permissions from DB",
+    "getCurrentUser": "Get current user ID",
+    "getCurrentProject": "Get current project name",
+    "updateUserPermissions": "Update user permissions for project and resource type",
+    "getPermissionsByResourceType": "Get permissions for specific resource type",
+    "canAccess": "Check if permissions include specific operation",
+    "hasReadAccess": "Check if user has read access to resource type",
+    "hasWriteAccess": "Check if user has write access to resource type",
+    "hasDeleteAccess": "Check if user has delete access to resource type",
+    "hasFullAccess": "Check if user has all permissions for resource type",
+    "getResourcePermissions": "Get comprehensive access permissions for all resource types"
+  },
+  "exports": {
+    "permissionManager": "Singleton instance of IafPermissionManager"
+  }
+}

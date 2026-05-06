@@ -1,0 +1,206 @@
+.ue-properties-config {
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+.ue-properties-config-title {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.ue-properties-config-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.ue-properties-config-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ue-properties-config-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.ue-properties-config-label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+}
+
+.ue-properties-config-label > span {
+  font-weight: 400;
+}
+
+.ue-properties-config-checkbox {
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.ue-properties-config-label:has(.ue-properties-config-checkbox) {
+  flex-direction: row;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ue-properties-config-select,
+.ue-properties-config-input {
+  padding: 6px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 14px;
+  font-family: inherit;
+  color: #333;
+}
+
+.ue-properties-config-select:focus,
+.ue-properties-config-input:focus {
+  outline: none;
+  border-color: #026bfd;
+}
+
+.ue-properties-config-select {
+  cursor: pointer;
+}
+
+.ue-properties-config-textarea {
+  padding: 6px 10px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+  background: #f8f8f8;
+  color: #333;
+  resize: vertical;
+  overflow: hidden; /* prevent auto scroll until focus */
+}
+
+.ue-properties-config-textarea:focus {
+  outline: none;
+  border-color: #026bfd;
+  background: #ffffff;
+  overflow: auto; /* allow scroll on focus */
+}
+
+.ue-properties-config-demo-box {
+  padding: 12px;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ue-properties-config-demo-description {
+  margin: 0;
+  font-size: 12px;
+  color: #6d6e70;
+  font-style: italic;
+}
+
+.ue-properties-config-demo-button {
+  padding: 8px 16px;
+  border: 1px solid #026bfd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-family: inherit;
+  background: #026bfd;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ue-properties-config-demo-button:hover:not(:disabled) {
+  background: #0259d4;
+  border-color: #0259d4;
+}
+
+.ue-properties-config-demo-button:active:not(:disabled) {
+  background: #0248b0;
+}
+
+.ue-properties-config-demo-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  background: #d0d0d0;
+  border-color: #d0d0d0;
+}
+
+.ue-properties-config-demo-hint {
+  font-size: 11px;
+  color: #6d6e70;
+  font-style: italic;
+}
+
+.ue-properties-config-info {
+  font-size: 13px;
+  color: #6d6e70;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.ue-properties-config-event-log {
+  margin-top: 8px;
+  border-top: 1px solid #e0e0e0;
+  padding-top: 16px;
+}
+
+.ue-properties-config-event-log-textarea {
+  min-height: 200px;
+  max-height: 400px;
+  resize: vertical;
+  background: #fafafa;
+  border: 1px solid #d0d0d0;
+  font-size: 11px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.ue-properties-config-event-log-textarea:focus {
+  background: #ffffff;
+  border-color: #026bfd;
+}
+
+.ue-properties-config-title-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  user-select: none;
+  margin-bottom: 6px;
+}
+
+.ue-properties-config-title-checkbox input[type="checkbox"] {
+  cursor: pointer;
+  margin: 0;
+  width: 18px;
+  height: 18px;
+}
+
+.ue-properties-config-title-checkbox span {
+  cursor: pointer;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ue-properties-config-row {
+    grid-template-columns: 1fr;
+  }
+}
+

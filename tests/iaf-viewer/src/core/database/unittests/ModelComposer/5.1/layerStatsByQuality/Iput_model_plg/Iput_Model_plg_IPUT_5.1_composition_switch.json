@@ -1,0 +1,242 @@
+{
+  "projectName": "Iput_Model_plg",
+  "modelName": "IPUT_5.1",
+  "timestamp": "2026-02-17T20:16:45.353Z",
+  "layerStatsPerView": {
+    "EX11034-INV-Federated": {},
+    "EX11034-INV-S-ZZ-M3-S": {
+      "Structural": {
+        "count": 974,
+        "localPercentage": 64.42,
+        "globalPercentage": 100
+      },
+      "Architectural": {
+        "count": 538,
+        "localPercentage": 35.58,
+        "globalPercentage": 6.028011204481793
+      }
+    },
+    "EX11034-INV-A-ZZ-M3-A": {
+      "Architectural": {
+        "count": 8373,
+        "localPercentage": 100,
+        "globalPercentage": 93.81512605042018
+      }
+    },
+    "EX11034-INV-M-ZZ-M3-H": {
+      "Mechanical": {
+        "count": 6620,
+        "localPercentage": 20.44,
+        "globalPercentage": 97.88555374833653
+      },
+      "Electrical": {
+        "count": 1,
+        "localPercentage": 0,
+        "globalPercentage": 0.0065235827516472045
+      },
+      "Plumbing": {
+        "count": 25773,
+        "localPercentage": 79.56,
+        "globalPercentage": 60.47302846148431
+      }
+    },
+    "EX11034-INV-E-ZZ-M3-E": {
+      "Electrical": {
+        "count": 15328,
+        "localPercentage": 100,
+        "globalPercentage": 99.99347641724835
+      }
+    },
+    "EX11034-INV-M-ZZ-M3-P": {
+      "Architectural": {
+        "count": 14,
+        "localPercentage": 0.19,
+        "globalPercentage": 0.1568627450980392
+      },
+      "Mechanical": {
+        "count": 12,
+        "localPercentage": 0.16,
+        "globalPercentage": 0.17743604909064026
+      },
+      "Plumbing": {
+        "count": 7529,
+        "localPercentage": 99.66,
+        "globalPercentage": 17.665829794223235
+      }
+    },
+    "EX11034-INV-M-ZZ-M3-F": {
+      "Mechanical": {
+        "count": 131,
+        "localPercentage": 1.39,
+        "globalPercentage": 1.9370102025728229
+      },
+      "Plumbing": {
+        "count": 9317,
+        "localPercentage": 98.61,
+        "globalPercentage": 21.86114174429245
+      }
+    }
+  },
+  "comparisonResults": {
+    "Architectural": {
+      "details": {
+        "EX11034-INV-S-ZZ-M3-S": {
+          "lowResult": {
+            "activePercent": 6.028011204481793,
+            "inactivePercent": 100,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 6.028011204481793,
+            "inactivePercent": 100,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 35.58201058201058,
+            "inactivePercent": 64.41798941798942,
+            "eligible": true
+          }
+        },
+        "EX11034-INV-M-ZZ-M3-P": {
+          "lowResult": {
+            "activePercent": 0.1568627450980392,
+            "inactivePercent": 17.843265843313876,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.1568627450980392,
+            "inactivePercent": 17.843265843313876,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.18530774321641297,
+            "inactivePercent": 99.8146922567836,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Mechanical": {
+      "details": {
+        "EX11034-INV-M-ZZ-M3-F": {
+          "lowResult": {
+            "activePercent": 1.9370102025728229,
+            "inactivePercent": 21.86114174429245,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.9370102025728229,
+            "inactivePercent": 21.86114174429245,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.38653683319221,
+            "inactivePercent": 98.61346316680779,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Plumbing": {
+      "details": {
+        "EX11034-INV-M-ZZ-M3-H": {
+          "lowResult": {
+            "activePercent": 60.47302846148431,
+            "inactivePercent": 97.89207733108817,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 79.5610298203371,
+            "inactivePercent": 20.4389701796629,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 79.5610298203371,
+            "inactivePercent": 20.4389701796629,
+            "eligible": true
+          }
+        }
+      }
+    }
+  },
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [
+        "EX11034-INV-S-ZZ-M3-S"
+      ],
+      "medium": [
+        "EX11034-INV-S-ZZ-M3-S"
+      ],
+      "high": [
+        "EX11034-INV-S-ZZ-M3-S"
+      ]
+    },
+    "Architectural": {
+      "low": [
+        "EX11034-INV-A-ZZ-M3-A"
+      ],
+      "medium": [
+        "EX11034-INV-A-ZZ-M3-A"
+      ],
+      "high": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-P"
+      ]
+    },
+    "Mechanical": {
+      "low": [
+        "EX11034-INV-M-ZZ-M3-H"
+      ],
+      "medium": [
+        "EX11034-INV-M-ZZ-M3-H"
+      ],
+      "high": [
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    "Electrical": {
+      "low": [
+        "EX11034-INV-E-ZZ-M3-E"
+      ],
+      "medium": [
+        "EX11034-INV-E-ZZ-M3-E"
+      ],
+      "high": [
+        "EX11034-INV-E-ZZ-M3-E"
+      ]
+    },
+    "Plumbing": {
+      "low": [
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ],
+      "medium": [
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ],
+      "high": [
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [],
+      "medium": [],
+      "high": []
+    }
+  }
+}

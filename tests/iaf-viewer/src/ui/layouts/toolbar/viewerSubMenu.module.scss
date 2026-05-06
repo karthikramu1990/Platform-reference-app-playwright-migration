@@ -1,0 +1,66 @@
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 06-05-23    ATK        PLAT-2709   New UX UI Foundation Project
+//                                    Code Restructuring.
+// 26-07-24    HSK        PLAT-5022   The Annotation UI becomes unusable on scroll
+// 01-08-24    ATK        PLAT-5022   The Annotation UI becomes unusable on scroll
+// -------------------------------------------------------------------------------------
+
+.viewer-toolbar-submenu {
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  z-index: 5;
+  position: absolute;
+  max-height: fit-content;
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+
+  .viewer-submenu-icon {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 8px 8px;
+    background: #454545;
+    ;
+    // height: 40px;
+    /* Shadow 1 */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.16), 0px 0px 1px rgba(0, 0, 0, 0.32);
+
+
+    .submenu-img {
+      width: 24px;
+      height: 24px;
+      flex: none;
+      order: 0;
+      flex-grow: 0;
+    }
+
+    .check-icon {
+      margin: 3px !important;
+      padding: 1px !important;
+    }
+
+    .check-icon-wrapper {
+      width: 20% !important;
+    }
+
+    .tooltip-txt {
+      width: 134px;
+      font-family: "Inter";
+      font-style: normal;
+      font-weight: 400;
+      font-size: 13px;
+      line-height: 18px;
+      padding-left: 10px;
+      color: #FFFFFF;
+      flex: none;
+      order: 1;
+      flex-grow: 0;
+    }
+    &:hover {
+      background: #3E3E3E;
+    }
+  }
+}

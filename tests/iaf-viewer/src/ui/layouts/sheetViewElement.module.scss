@@ -1,0 +1,129 @@
+/* -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 06-01-23    ATK        PLAT-2709   New UX UI Foundation Project
+//                                    Code Restructuring.
+// 16-05-23    HSK        PLAT-2730   Revamped IafViewer Panels                                   
+// 28-06-23    HSK        PLAT-2728   Coloring Mechanism - Derive from var(--app-accent-color)
+// -------------------------------------------------------------------------------------
+*/
+
+.viewer-2d-main {
+    position: absolute;
+    width: 312px;
+    height: 283px;
+    top: 24px;
+    left: 24px;
+    border-radius: 10px;
+    .viewer2D-Controls {
+      position: absolute;
+      /* background: white; */
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      width: 312px;
+      height: 44px;
+      z-index: 6;
+      border: 1px solid rgba(46, 45, 45, 0.0509803922);
+      background-color: #333333;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+    }
+    .DropDownList {
+      margin-left: 4px;
+      margin-top: 8px;
+      margin-right: 2px;
+      text-align: center;
+      font-size: 12.8px;
+      height: 24px;
+      float: left;
+      width: 100px;
+      border-color: white;
+      background-color: white !important;
+      padding: none !important;
+      color: var(--app-accent-color);
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #ddd;
+      color: black;
+    }
+    .previous {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    .next {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    .round {
+      border-radius: 50%;
+    }
+    .Viewer_button {
+      float: left;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      align-items: center;
+      z-index: 10;
+      /* background: white; */
+      background-color: #333333;
+      margin-top: 0;
+      border-radius: 10px;
+      & .Viewer2d-toolbar-icon {
+        width: 20px;
+        height: 18px;
+        margin: 11px 10px 11px 10px;
+        position: absolute;
+      }
+    }
+    .tooltip-txt {
+      visibility: hidden;
+      width: 80px;
+      background-color: var(--app-accent-color);
+      color: #fff;
+      text-align: center;
+      font-size: 0.822em;
+      /* Position the tooltip text - see examples below! */
+      position: absolute;
+      top: 150%;
+      left: 50%;
+      margin-left: -45px;
+      z-index: 7;
+    }
+    &:hover{
+      .tooltip-txt {
+        visibility: visible;
+      }
+    }
+  }
+  .viewer2D {
+    position: absolute;
+    border-color: rgba(61, 60, 60, 0.0509803922);
+    width: 312px;
+    height: 243px;
+    z-index: 5;
+    margin-top: 44px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+  }
+
+  .custom-select{
+    margin-left: 4px;
+    margin-top: 12px;
+    margin-right: 2px;
+    text-align: center;
+    font-size: 12.8px;
+    height: 20px !important;
+    float: left;
+    width: 100px;
+    border: 1px solid #3e3e3e;
+    border-radius: 4px;
+    line-height: 18px;
+    font-weight: 500;
+    appearance: auto !important;
+      &:focus {
+        border-color: #3e3e3e;
+        outline: 0;
+        box-shadow: none;
+    }
+  }

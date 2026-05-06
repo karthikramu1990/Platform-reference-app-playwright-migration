@@ -1,0 +1,89 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2813   Revamed IafViewer Components                                     
+// -------------------------------------------------------------------------------------
+*/
+
+.button-component {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 20px;
+    gap: 10px;
+    width: 100px;
+    height: 27px;
+    background: #3e3e3e;
+    border: 1px solid #5d5d5d;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .button-text {
+    height: 19px;
+    margin: auto;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Primary variant */
+  .button-component.primary {
+    padding: 8px 20px;
+    height: 40px;
+    background: var(--app-accent-color);
+    border-color: var(--app-accent-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--fancytree-one-color);
+      border-color: var(--fancytree-one-color);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    .button-text {
+      font-size: 14px;
+      color: #ffffff;
+    }
+  }
+
+  /* Secondary variant */
+  .button-component.secondary {
+    padding: 8px 20px;
+    height: 40px;
+    background: #ffffff;
+    border: 1px solid #b8b8b8;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: var(--nav-hover-color);
+      border-color: var(--head-menu-hover-color);
+    }
+
+    &:active {
+      transform: translateY(1px);
+    }
+
+    .button-text {
+      font-size: 14px;
+      color: var(--head-bkg-color);
+    }
+  }

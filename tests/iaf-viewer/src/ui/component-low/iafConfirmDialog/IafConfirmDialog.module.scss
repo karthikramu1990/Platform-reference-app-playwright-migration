@@ -1,0 +1,57 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Reference    Comments
+// 01-01-25    ATK                    Created styles for confirmation dialog component
+// -------------------------------------------------------------------------------------
+*/
+
+.confirm-dialog {
+  .confirm-dialog-paper {
+    min-width: 400px;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .confirm-dialog-title {
+    padding: 20px 24px 16px 24px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    color: var(--head-bkg-color, #1d1d1d);
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  .confirm-dialog-content {
+    padding: 20px 24px;
+  }
+
+  .confirm-dialog-message {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: var(--head-bkg-color, #1d1d1d);
+    white-space: pre-line;
+    margin: 0;
+  }
+
+  .confirm-dialog-select {
+    margin-top: 16px;
+  }
+
+  .confirm-dialog-select-menu {
+    max-height: 320px;
+  }
+
+  .confirm-dialog-actions {
+    padding: 16px 24px 20px 24px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    border-top: 1px solid #e0e0e0;
+  }
+}

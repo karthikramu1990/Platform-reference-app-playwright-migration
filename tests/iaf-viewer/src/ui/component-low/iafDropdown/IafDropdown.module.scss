@@ -1,0 +1,111 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2813   Revamed IafViewer Components                                     
+// -------------------------------------------------------------------------------------
+*/
+
+.select {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  width: 207px;
+  height: 29px;
+
+  /* neutral/800 */
+
+  border: 1px solid #3e3e3e;
+  border-radius: 4px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  
+
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 18px;
+  color: white;
+}
+
+.select-component {
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 0px;
+  /* //color: white; */
+  color: #dcdcdc;
+  /* width: 24px; */
+  height: 18px;
+  background: #3e3e3e;
+  /* Inside auto layout */
+  margin-top: -3px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}
+.select-title {
+  width: 150px;
+  height: 18px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 18px;
+  color: #dcdcdc;
+  margin-bottom: 10px;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.disabled-component{
+  /* Make the div appear disabled */
+  opacity: 0.6; /* Reduce opacity to make it appear faded */
+  pointer-events: none; /* Disable mouse interactions */
+  cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+}
+
+.custom-select {
+  margin-left: 4px;
+  text-align: center;
+  font-size: 12.8px;
+  height: 20px !important;
+  width: 100px;
+  border: 1px solid #3e3e3e;
+  border-radius: 4px;
+  line-height: 18px;
+  font-weight: 500;
+  appearance: auto !important;
+  &:focus {
+    border-color: #3e3e3e;
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.dropdown-component {
+  display: block !important;
+  height: 25px !important;
+  width: 150px;
+  padding: 0px;
+  color: #dcdcdc;
+  background: #3e3e3e;
+  /* Inside auto layout */
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+}

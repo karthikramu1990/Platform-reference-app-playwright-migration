@@ -1,0 +1,17 @@
+.mapbox-distance-container {
+    position: absolute;
+    bottom: 35px;
+    left: 110px;
+    z-index: 1;
+  
+    > * {
+      background-color: rgba(0, 0, 0, 0.5);
+      color: #fff;
+      font-size: 11px;
+      line-height: 18px;
+      display: block;
+      margin: 0;
+      padding: 5px 10px;
+      border-radius: 3px;
+    }
+  }

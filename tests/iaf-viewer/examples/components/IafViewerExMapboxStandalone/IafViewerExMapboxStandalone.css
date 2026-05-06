@@ -1,0 +1,109 @@
+.example-mapbox-viewer-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+.example-mapbox-viewer-header {
+  padding: 12px 24px;
+  border-bottom: 2px solid var(--examples-border-color, #e0e0e0);
+  flex-shrink: 0;
+  position: relative;
+}
+
+.example-mapbox-viewer-header-content {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.example-mapbox-viewer-toggle {
+  display: flex;
+  gap: 8px;
+  margin-left: auto;
+  align-items: center;
+}
+
+.example-mapbox-viewer-toggle-button {
+  background-color: transparent;
+  color: var(--examples-text-secondary, #6d6e70);
+  border: 1px solid var(--examples-border-color, #e0e0e0);
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.example-mapbox-viewer-toggle-button:hover {
+  background-color: var(--examples-bg-color, #f5f5f5);
+  border-color: var(--app-accent-color, #026bfd);
+}
+
+.example-mapbox-viewer-toggle-button.active {
+  background-color: var(--app-accent-color, #026bfd);
+  color: white;
+  border-color: var(--app-accent-color, #026bfd);
+}
+
+.example-mapbox-viewer-back-button {
+  background-color: var(--app-accent-color, #026bfd);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.example-mapbox-viewer-back-button:hover {
+  background-color: var(--app-accent-color, #026bfd);
+  opacity: 0.9;
+}
+
+.example-mapbox-viewer-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.example-mapbox-viewer-header h1 {
+  margin: 0 0 4px 0;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--examples-text-primary, #333);
+}
+
+.example-mapbox-viewer-subtitle {
+  margin: 0;
+  font-size: 13px;
+  color: var(--examples-text-secondary, #6d6e70);
+}
+
+.example-mapbox-viewer-content {
+  flex: 1;
+  overflow: hidden;
+  max-height: calc(100% - var(--header-height, 80px));
+  position: relative;
+}
+
+.example-mapbox-viewer-config-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 400px;
+  max-width: 90vw;
+  z-index: 1000;
+  background: white;
+  box-shadow: -2px 0 8px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+

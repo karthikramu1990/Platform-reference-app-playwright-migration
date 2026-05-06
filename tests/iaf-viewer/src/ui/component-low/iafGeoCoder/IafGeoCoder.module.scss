@@ -1,0 +1,25 @@
+.geocoder-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  // width: 90%;
+  height: 40px; /* Adjust based on UI requirements */
+  // border: 1px solid #3e3e3e;
+  border-radius: 4px;
+  // background: #3e3e3e;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+  // color: white;
+  // overflow: hidden; /* Ensures geocoder content fits neatly */
+
+  /* Ensure proper layout behavior */
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.disabled {
+  opacity: 0.6; /* Make the geocoder look disabled */
+  pointer-events: none; /* Disable all interactions */
+  cursor: not-allowed;
+}

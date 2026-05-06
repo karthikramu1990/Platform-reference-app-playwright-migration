@@ -1,0 +1,466 @@
+{
+  "projectName": "Skinny_BIAL_5.1_1",
+  "modelName": "T2-HVAC-Federated",
+  "timestamp": "2026-02-17T13:01:26.881Z",
+  "layerStatsPerView": {
+    "T2-HVAC-Federated": {},
+    "L&T T2 HVAC_AB CORE_2024 Skinny": {
+      "Architectural": {
+        "count": 2633,
+        "localPercentage": 1.74,
+        "globalPercentage": 4.2337996462453775
+      },
+      "Mechanical": {
+        "count": 148324,
+        "localPercentage": 98.04,
+        "globalPercentage": 94.88303064808122
+      },
+      "Plumbing": {
+        "count": 337,
+        "localPercentage": 0.22,
+        "globalPercentage": 0.3694770310272997
+      }
+    },
+    "L&T T2 HVAC_AB FLB_2024 Skinny": {
+      "Mechanical": {
+        "count": 4306,
+        "localPercentage": 23.44,
+        "globalPercentage": 2.7545530728043857
+      },
+      "Plumbing": {
+        "count": 14063,
+        "localPercentage": 76.56,
+        "globalPercentage": 15.418265541059096
+      }
+    },
+    "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny": {
+      "Mechanical": {
+        "count": 2016,
+        "localPercentage": 99.95,
+        "globalPercentage": 1.2896374813687046
+      },
+      "Plumbing": {
+        "count": 1,
+        "localPercentage": 0.05,
+        "globalPercentage": 0.001096371011950444
+      }
+    },
+    "L&T T2 HVAC CORE_AB PIPING_2024 skinny": {
+      "Mechanical": {
+        "count": 1516,
+        "localPercentage": 2.12,
+        "globalPercentage": 0.9697869155530536
+      },
+      "Plumbing": {
+        "count": 70074,
+        "localPercentage": 97.88,
+        "globalPercentage": 76.82710229141541
+      },
+      "NoLayer": {
+        "count": 1,
+        "localPercentage": 0,
+        "globalPercentage": 100
+      }
+    },
+    "BIAL T2 ARCH CORE_2024 Skinny": {
+      "Structural": {
+        "count": 440,
+        "localPercentage": 1.44,
+        "globalPercentage": 1.5156734412676542
+      },
+      "Architectural": {
+        "count": 24176,
+        "localPercentage": 79.17,
+        "globalPercentage": 38.874417108859944
+      },
+      "Mechanical": {
+        "count": 161,
+        "localPercentage": 0.53,
+        "globalPercentage": 0.10299188219263959
+      },
+      "Electrical": {
+        "count": 633,
+        "localPercentage": 2.07,
+        "globalPercentage": 100
+      },
+      "Plumbing": {
+        "count": 5127,
+        "localPercentage": 16.79,
+        "globalPercentage": 5.621094178269927
+      }
+    },
+    "ARCH_AR-T2-ASM-ENCL_2024 Skinny": {
+      "Structural": {
+        "count": 98,
+        "localPercentage": 0.66,
+        "globalPercentage": 0.3375818119187048
+      },
+      "Architectural": {
+        "count": 14574,
+        "localPercentage": 97.59,
+        "globalPercentage": 23.43463579353594
+      },
+      "Plumbing": {
+        "count": 262,
+        "localPercentage": 1.75,
+        "globalPercentage": 0.28724920513101637
+      }
+    },
+    "INT_PARTITION_GFC CORE_R1_2024 Skinny": {
+      "Structural": {
+        "count": 7033,
+        "localPercentage": 36.28,
+        "globalPercentage": 24.226662073716845
+      },
+      "Architectural": {
+        "count": 12352,
+        "localPercentage": 63.72,
+        "globalPercentage": 19.86171410194565
+      },
+      "Plumbing": {
+        "count": 1,
+        "localPercentage": 0.01,
+        "globalPercentage": 0.001096371011950444
+      }
+    },
+    "TMN2_BIAL-S_Central_2024 V2": {
+      "Structural": {
+        "count": 21459,
+        "localPercentage": 68.65,
+        "globalPercentage": 73.9200826730968
+      },
+      "Architectural": {
+        "count": 8455,
+        "localPercentage": 27.05,
+        "globalPercentage": 13.595433349413089
+      },
+      "Plumbing": {
+        "count": 1345,
+        "localPercentage": 4.3,
+        "globalPercentage": 1.4746190110733473
+      }
+    }
+  },
+  "comparisonResults": {
+    "Structural": {
+      "details": {
+        "BIAL T2 ARCH CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 1.5156734412676542,
+            "inactivePercent": 144.5985031693225,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.5156734412676542,
+            "inactivePercent": 144.5985031693225,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.4408750040933949,
+            "inactivePercent": 98.55912499590661,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Architectural": {
+      "details": {
+        "L&T T2 HVAC_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 4.2337996462453775,
+            "inactivePercent": 95.25250767910852,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 4.2337996462453775,
+            "inactivePercent": 95.25250767910852,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.7403201713220617,
+            "inactivePercent": 98.25967982867795,
+            "eligible": true
+          }
+        },
+        "BIAL T2 ARCH CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 38.874417108859944,
+            "inactivePercent": 107.23975950173022,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 79.16953204309526,
+            "inactivePercent": 20.830467956904737,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 79.16953204309526,
+            "inactivePercent": 20.830467956904737,
+            "eligible": true
+          }
+        },
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 19.86171410194565,
+            "inactivePercent": 24.227758444728796,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 63.716083771794075,
+            "inactivePercent": 36.283916228205925,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 63.716083771794075,
+            "inactivePercent": 36.283916228205925,
+            "eligible": true
+          }
+        },
+        "TMN2_BIAL-S_Central_2024 V2": {
+          "lowResult": {
+            "activePercent": 13.595433349413089,
+            "inactivePercent": 75.39470168417014,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 13.595433349413089,
+            "inactivePercent": 75.39470168417014,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 27.048210115486736,
+            "inactivePercent": 72.95178988451326,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Mechanical": {
+      "details": {
+        "L&T T2 HVAC_AB FLB_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 2.7545530728043857,
+            "inactivePercent": 15.418265541059096,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 2.7545530728043857,
+            "inactivePercent": 15.418265541059096,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 23.44166802765529,
+            "inactivePercent": 76.5583319723447,
+            "eligible": true
+          }
+        },
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 177.79688920696847,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 177.79688920696847,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.117584612590968,
+            "inactivePercent": 97.88241538740903,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Plumbing": {
+      "details": {
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny": {
+          "lowResult": {
+            "activePercent": 76.82710229141541,
+            "inactivePercent": 100.96978691555306,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 97.88101856378594,
+            "inactivePercent": 2.118981436214049,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 97.88101856378594,
+            "inactivePercent": 2.118981436214049,
+            "eligible": true
+          }
+        },
+        "BIAL T2 ARCH CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 5.621094178269927,
+            "inactivePercent": 140.49308243232025,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 5.621094178269927,
+            "inactivePercent": 140.49308243232025,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 16.789468513606444,
+            "inactivePercent": 83.21053148639356,
+            "eligible": true
+          }
+        },
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 24.059466810585658,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 24.059466810585658,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.7543859649122806,
+            "inactivePercent": 98.24561403508773,
+            "eligible": true
+          }
+        },
+        "TMN2_BIAL-S_Central_2024 V2": {
+          "lowResult": {
+            "activePercent": 1.4746190110733473,
+            "inactivePercent": 87.51551602250989,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.4746190110733473,
+            "inactivePercent": 87.51551602250989,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 4.302760804888192,
+            "inactivePercent": 95.6972391951118,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "NoLayer": {
+      "details": {
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny": {
+          "lowResult": {
+            "activePercent": 100,
+            "inactivePercent": 77.79688920696847,
+            "eligible": true
+          },
+          "mediumResult": {
+            "activePercent": 100,
+            "inactivePercent": 77.79688920696847,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 0,
+            "inactivePercent": 100,
+            "eligible": false
+          }
+        }
+      }
+    }
+  },
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ],
+      "medium": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ],
+      "high": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    "Architectural": {
+      "low": [
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny"
+      ],
+      "medium": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny"
+      ],
+      "high": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    "Mechanical": {
+      "low": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny"
+      ],
+      "medium": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny"
+      ],
+      "high": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny"
+      ]
+    },
+    "Electrical": {
+      "low": [
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ],
+      "medium": [
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ],
+      "high": [
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ]
+    },
+    "Plumbing": {
+      "low": [
+        "L&T T2 HVAC_AB FLB_2024 Skinny"
+      ],
+      "medium": [
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny"
+      ],
+      "high": [
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny"
+      ],
+      "medium": [
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny"
+      ],
+      "high": []
+    }
+  }
+}

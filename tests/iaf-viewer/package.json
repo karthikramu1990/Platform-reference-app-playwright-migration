@@ -1,0 +1,97 @@
+{
+  "name": "@dtplatform/iaf-viewer",
+  "description": "IAF 2D/3D Viewer",
+  "version": "5.1.4",
+  "main": "dist/components.js",
+  "type": "module",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "overrides": {
+    "ansi-regex": "5.0.1",
+    "strip-ansi": "6.0.1",
+    "wrap-ansi": "8.1.0",
+    "debug": "4.3.6"
+  },
+  "dependencies": {
+    "@dtplatform/platform-api": "5.1.7",
+    "@dtplatform/react-ifef": "5.1.4",
+    "bootstrap": "5.3.3",
+    "fflate": "^0.8.2",
+    "html2canvas": "1.4.1",
+    "jquery": "3.7.1",
+    "lodash.isequal": "4.5.0",
+    "mitt": "^3.0.1",
+    "picomatch": "^4.0.2",
+    "prop-types": "15.8.1",
+    "react-beautiful-dnd": "13.1.1",
+    "react-checkbox-tree": "1.8.0",
+    "react-color": "2.19.3",
+    "react-draggable": "4.4.6",
+    "react-pannellum": "0.2.16",
+    "styled-components": "6.1.13"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": ">= 5.15.15 < 5.18.2",
+    "@mui/material": ">= 5.15.15 < 5.18.2",
+    "lodash-es": "4.17.21",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-router-dom": "5.3.4"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.25.7",
+    "@babel/core": "7.25.8",
+    "@babel/plugin-proposal-class-properties": "7.18.6",
+    "@babel/preset-env": "7.25.8",
+    "@babel/preset-react": "7.25.7",
+    "@playwright/test": "^1.58.2",
+    "@rollup/plugin-babel": "6.0.4",
+    "@rollup/plugin-commonjs": "26.0.3",
+    "@rollup/plugin-image": "3.0.3",
+    "@rollup/plugin-json": "6.1.0",
+    "@rollup/plugin-node-resolve": "15.3.0",
+    "@storybook/addon-actions": "7.6.20",
+    "@storybook/addon-links": "7.6.20",
+    "@storybook/addons": "7.6.17",
+    "@storybook/react": "7.6.20",
+    "@types/node": "^25.2.2",
+    "babel-loader": "9.2.1",
+    "file-loader": "6.2.0",
+    "javascript-obfuscator": "~4.1.1",
+    "less": "4.2.0",
+    "less-loader": "11.1.4",
+    "rollup": "3.29.5",
+    "rollup-plugin-copy": "3.5.0",
+    "rollup-plugin-postcss": "4.0.2",
+    "sass": "1.77.6",
+    "sass-loader": "13.3.3"
+  },
+  "scripts": {
+    "build": "npm run rollup",
+    "build-dev": "./dev-build/obfuscator/scripts/fetch.sh && npm run generate-code-content && npm run build-examples && rollup -c rollup.config.dev.js && ./dev-build/obfuscator/scripts/build.sh",
+    "build-examples": "babel examples --out-dir dist/examples --presets=@babel/preset-react --plugins=@babel/plugin-proposal-class-properties --copy-files --keep-file-extension",
+    "generate-code-content": "node examples/scripts/generateCodeContent.js",
+    "rollup": "rollup -c rollup.config.js",
+    "uglify": "uglifyjs dist/src/components.js -c -m -o dist/components.js --source-map filename=dist/components.js.map --in-source-map dist/src/components.js.map --source-map-url components.js.map --comments",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "endtoend": "playwright test --project=chromium --reporter=html --workers=3",
+    "endtoend:report": "playwright show-report",
+    "endtoend:update": "playwright test --project=chromium --update-snapshots --workers=3",
+    "codegen": "playwright codegen http://localhost:8086/referenceapp/#/"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-react"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Invicara/InvicaraAppFramework.git"
+  },
+  "author": "Invicara",
+  "license": "UNLICENSED"
+}

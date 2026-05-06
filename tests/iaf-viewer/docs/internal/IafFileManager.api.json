@@ -1,0 +1,30 @@
+{
+  "class": "IafFileManager",
+  "description": "File management utility for IAF platform",
+  "methods": {
+    "getRootContainer": "Get project root container",
+    "createFolder": "Create folder structure",
+    "findFolder": "Find existing folder",
+    "getFolderTree": "Get hierarchical folder structure",
+    "clearFolderTree": "Delete folder and contents",
+    "logFiles": "List files in folder",
+    "logFilesAndFolders": "List files and folders with recursion",
+    "uploadFile": "Upload file from URL",
+    "uploadBlob": "Upload blob with compression",
+    "uploadBlobSync": "Upload blob with queue processing",
+    "readBlob": "Read blob with decompression",
+    "readBlobSync": "Read blob with queue processing",
+    "findBlob": "Find blob metadata",
+    "deleteBlob": "Delete blob by path",
+    "writeJson": "Write JSON with compression",
+    "readJson": "Read and parse JSON",
+    "findJson": "Find JSON file metadata",
+    "deleteJson": "Delete JSON file",
+    "saveGraphicsCache": "Save graphics cache for model",
+    "loadGraphicsCache": "Load graphics cache for model",
+    "writeUndergroundNodeIdsByViewId": "Save underground nodes for view",
+    "readUndergroundNodeIdsByViewId": "Read underground nodes for view",
+    "clearUndergroundNodeIdsByViewId": "Delete underground nodes for view",
+    "displayBlob": "Debug blob information"
+  }
+}

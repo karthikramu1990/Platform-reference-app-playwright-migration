@@ -1,0 +1,172 @@
+{
+  "module": "IafUtils",
+  "description": "Core utility functions for IAF viewer",
+  "classes": {
+    "IafUtils": {
+      "description": "Main utility class with core functionality",
+      "methods": {
+        "getUrlSearchParams": "Get URL search parameters from hash",
+        "getModelCompositionKey": "Get model composition key",
+        "getIafEnabled": "Check if IAF feature is enabled via URL params",
+        "debugIafEnabled": "Check if debug mode is enabled",
+        "localGraphicsSvcEnabled": "Check if local graphics service is enabled",
+        "devToolsIafEnabled": "Check if dev tools are enabled",
+        "perfStatIafEnabled": "Check if performance stats are enabled",
+        "researchIafEnabled": "Check if research mode is enabled",
+        "sleep": "Async sleep function with logging",
+        "buildFileName": "Build filename from model and file set",
+        "removeFileExtension": "Remove file extension from filename",
+        "logVersion": "Log IAF viewer version",
+        "logProject": "Log current project info",
+        "getProjectId": "Get current project ID",
+        "getProjectInfo": "Get project info with context",
+        "generateUUID": "Generate UUID string",
+        "generateShortId": "Generate short ID string",
+        "extractElementIdsFixed": "Extract element IDs for AutoCAD Leader class",
+        "extractElementIdsByPath": "Extract element IDs by property path",
+        "waitForElement": "Wait for DOM element to exist",
+        "ifImageExists": "Check if image URL exists",
+        "exportJSON": "Export JSON data as downloadable file",
+        "exportArray": "Export array data as downloadable file",
+        "importJSON": "Import JSON from file",
+        "importJsonDynamic": "Dynamic JSON import with file picker",
+        "getTimeStamp": "Get formatted timestamp"
+      }
+    },
+    "IafObjectUtils": {
+      "description": "Object manipulation utilities",
+      "methods": {
+        "hasProperty": "Check if object has property",
+        "deepCopy": "Deep copy object using JSON",
+        "dropdownData": "Convert object to dropdown data format",
+        "isPlainObject": "Check if value is plain object",
+        "isNotEmpty": "Check if object is not empty",
+        "isFunction": "Check if value is function",
+        "deepEqual": "Deep equality check with function skip option",
+        "logChangedProperties": "Log object property changes",
+        "collectChangedPaths": "Collect changed property paths",
+        "isObject": "Check if value is object"
+      }
+    },
+    "IafArrayUtils": {
+      "description": "Array manipulation utilities",
+      "methods": {
+        "exists": "Check if item exists in array by ID",
+        "finditem": "Find item in array by ID",
+        "findItemByProperty": "Find item by property value",
+        "addItem": "Add item to array if not exists",
+        "removeItem": "Remove item from array by ID",
+        "updateItemProperty": "Update item property by ID",
+        "updateItem": "Update entire item by ID",
+        "moveItem": "Move item between arrays",
+        "findObject": "Find object by property value",
+        "removeObject": "Remove object by property value",
+        "sortByNumberProperty": "Sort objects by number property",
+        "sortByStringProperty": "Sort objects by string property",
+        "isEqual": "Check if arrays are equal"
+      }
+    },
+    "IafMapUtils": {
+      "description": "Map and coordinate utilities",
+      "methods": {
+        "findItemByProperty": "Find item in map by property value",
+        "dmsToDecimal": "Convert DMS coordinates to decimal",
+        "decimalToDMS": "Convert decimal coordinates to DMS"
+      }
+    },
+    "IafStringUtils": {
+      "description": "String manipulation utilities",
+      "methods": {
+        "equal": "Compare strings for equality"
+      }
+    },
+    "IafStorageUtils": {
+      "description": "Local storage and data persistence utilities",
+      "methods": {
+        "saveToLocalStorage": "Save data to localStorage with project context",
+        "setMapboxKey": "Set Mapbox API key",
+        "getMapboxKey": "Get Mapbox API key",
+        "removeMapboxKey": "Remove Mapbox API key",
+        "getDataFromLocalStorage": "Get data from localStorage by project",
+        "clearLocalStorage": "Clear localStorage for manager",
+        "buildDataFromJson": "Build data from JSON object",
+        "loadDataFromJson": "Load data from JSON to manager",
+        "buildDataFromLocalStorage": "Build data from localStorage",
+        "loadDataFromLocalStorage": "Load data from localStorage to manager",
+        "buildForCache": "Build cache data structure",
+        "saveToCache": "Save manager data to cache",
+        "buildForDownload": "Build download data structure",
+        "saveMarkups": "Save markup data",
+        "loadMarkups": "Load markup data",
+        "exportMarkups": "Export markup data",
+        "importMarkups": "Import markup data",
+        "clearMarkups": "Clear markup data",
+        "clearMarkupsLocalStorage": "Clear markup localStorage",
+        "saveMeasurements": "Save measurement data",
+        "loadMeasurements": "Load measurement data",
+        "exportMeasurements": "Export measurement data",
+        "importMeasurements": "Import measurement data",
+        "clearMeasurements": "Clear measurement data",
+        "clearMeasurementsLocalStorage": "Clear measurement localStorage",
+        "saveAnnotations": "Save annotations (markups + measurements)",
+        "loadAnnotations": "Load annotations",
+        "exportAnnotations": "Export annotations",
+        "importAnnotations": "Import annotations",
+        "importAnnotationsDynamic": "Dynamic annotation import",
+        "clearAnnotations": "Clear annotations",
+        "clearAnnotationsLocalStorage": "Clear annotation localStorage",
+        "saveGisData": "Save GIS data",
+        "loadGisData": "Load GIS data",
+        "exportGisData": "Export GIS data",
+        "importGisData": "Import GIS data",
+        "clearGisData": "Clear GIS data",
+        "clearGisDataLocalStorage": "Clear GIS localStorage",
+        "saveGraphicsCache": "Save graphics cache data",
+        "loadGraphicsCache": "Load graphics cache data",
+        "exportGraphicsCache": "Export graphics cache data",
+        "importGraphicsCache": "Import graphics cache data",
+        "clearGraphicsCache": "Clear graphics cache data",
+        "clearGraphicsCacheLocalStorage": "Clear graphics cache localStorage",
+        "saveGisLayerData": "Save GIS layer data",
+        "loadGisLayerData": "Load GIS layer data",
+        "exportGisLayerData": "Export GIS layer data",
+        "importGisLayerData": "Import GIS layer data",
+        "clearGisLayerData": "Clear GIS layer data",
+        "clearGisLayerDataLocalStorage": "Clear GIS layer localStorage",
+        "setSceneGraph": "Set scene graph enabled flag",
+        "getSceneGraph": "Get scene graph enabled flag",
+        "compressJsonData": "Compress JSON data using gzip",
+        "decompressJsonData": "Decompress JSON data from gzip"
+      }
+    },
+    "IafPerfLogger": {
+      "description": "Performance logging utilities",
+      "methods": {
+        "getCurrentTimestamp": "Get formatted timestamp for logging",
+        "getCurrentFileName": "Get current log filename",
+        "init": "Initialize performance logger",
+        "log": "Log current performance status",
+        "update": "Update logger status",
+        "isRunning": "Check if logger is running",
+        "end": "End performance logging"
+      }
+    },
+    "IafTimerUtils": {
+      "description": "Timer and debouncing utilities",
+      "methods": {
+        "setDebouncedTimer": "Set debounced timer with cleanup",
+        "clearTimer": "Clear timer by key"
+      }
+    },
+    "IafProjectUtils": {
+      "description": "Project and model utilities",
+      "methods": {
+        "getModelVersion": "Get model version from props",
+        "getPrimaryModel": "Get primary model from selection",
+        "getModel": "Get selected or current model from model list",
+        "getModels": "Get models array",
+        "logMultiModels": "Log multi-model information"
+      }
+    }
+  }
+}

@@ -1,0 +1,71 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2730   Revamped IafViewer Panels                                   
+// -------------------------------------------------------------------------------------
+*/
+
+.list-item-details {
+  display: none;
+}
+
+.list-item-details-show {
+  display: block;
+}
+
+.text {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 18px;
+  /* identical to box height, or 175% */
+
+  /* neutral/ 300 */
+
+  color: #dcdcdc;
+}
+
+
+
+.wrapper {
+  /* display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 120px;
+  width: 516px; */
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+
+  width: 207px;
+  // height: 54px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.block {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 0px;
+  gap: 10px;
+
+  width: 270px; 
+  height: 18px;
+
+  /* Inside auto layout */
+
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+
+

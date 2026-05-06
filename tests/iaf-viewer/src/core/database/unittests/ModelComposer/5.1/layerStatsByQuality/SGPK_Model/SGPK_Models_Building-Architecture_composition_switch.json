@@ -1,0 +1,51 @@
+{
+  "projectName": "SGPK_Models",
+  "modelName": "Building-Architecture",
+  "timestamp": "2026-02-17T20:23:12.552Z",
+  "layerStatsPerView": {
+    "Building-Architecture": {}
+  },
+  "comparisonResults": {},
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Architectural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Mechanical": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Electrical": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Plumbing": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [],
+      "medium": [],
+      "high": []
+    }
+  }
+}

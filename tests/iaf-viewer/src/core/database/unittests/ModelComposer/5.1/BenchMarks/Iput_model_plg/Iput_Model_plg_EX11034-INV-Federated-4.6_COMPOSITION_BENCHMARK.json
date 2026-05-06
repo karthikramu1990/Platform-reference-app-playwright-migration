@@ -1,0 +1,498 @@
+{
+  "project": "Iput_Model_plg",
+  "model": "EX11034-INV-Federated-4.6",
+  "results": [
+    {
+      "name": "single_enable_Structural",
+      "totalEnabled": 2012,
+      "totalDisabled": 538,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S"
+      ]
+    },
+    {
+      "name": "single_enable_Architectural",
+      "totalEnabled": 17284,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A"
+      ]
+    },
+    {
+      "name": "single_enable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 46659,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H"
+      ]
+    },
+    {
+      "name": "single_enable_Electrical",
+      "totalEnabled": 1,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E"
+      ]
+    },
+    {
+      "name": "single_enable_Plumbing",
+      "totalEnabled": 46658,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "single_disable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 1544,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "single_disable_Architectural",
+      "totalEnabled": 0,
+      "totalDisabled": 8387,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "single_disable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 53422,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "single_disable_Electrical",
+      "totalEnabled": 0,
+      "totalDisabled": 15328,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "single_disable_Plumbing",
+      "totalEnabled": 0,
+      "totalDisabled": 31086,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all",
+      "totalEnabled": 110616,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 109610,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "alternating_pattern",
+      "totalEnabled": 86362,
+      "totalDisabled": 553,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "quality_low",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "quality_medium",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "quality_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "high_then_disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 85909,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "disable_all_then_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all_then_low",
+      "totalEnabled": 110616,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "low_then_enable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "Combination-1",
+      "totalEnabled": 9931,
+      "totalDisabled": 1020,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "Combination-2",
+      "totalEnabled": 109453,
+      "totalDisabled": 7784,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    },
+    {
+      "name": "stress_full_cycle",
+      "totalEnabled": 109453,
+      "totalDisabled": 157,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "EX11034-INV-S-ZZ-M3-S",
+        "EX11034-INV-A-ZZ-M3-A",
+        "EX11034-INV-M-ZZ-M3-H",
+        "EX11034-INV-E-ZZ-M3-E",
+        "EX11034-INV-M-ZZ-M3-P",
+        "EX11034-INV-M-ZZ-M3-F"
+      ]
+    }
+  ]
+}

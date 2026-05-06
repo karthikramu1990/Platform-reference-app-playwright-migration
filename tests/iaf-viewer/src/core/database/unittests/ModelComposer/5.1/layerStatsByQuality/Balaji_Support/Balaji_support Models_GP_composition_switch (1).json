@@ -1,0 +1,414 @@
+{
+  "projectName": "Balaji_support Models",
+  "modelName": "GP",
+  "timestamp": "2026-02-17T20:27:31.869Z",
+  "layerStatsPerView": {
+    "T2 - GP Federated": {},
+    "L&T T2 GP ARCH CORE_2024": {
+      "Architectural": {
+        "count": 1984,
+        "localPercentage": 96.73,
+        "globalPercentage": 96.78048780487805
+      },
+      "Mechanical": {
+        "count": 23,
+        "localPercentage": 1.12,
+        "globalPercentage": 1.5091863517060367
+      },
+      "Electrical": {
+        "count": 1,
+        "localPercentage": 0.05,
+        "globalPercentage": 0.07782101167315175
+      },
+      "Plumbing": {
+        "count": 43,
+        "localPercentage": 2.1,
+        "globalPercentage": 0.5497315264638201
+      }
+    },
+    "TMN2_BIAL-S_GP CORE_2024 Skinny": {
+      "Structural": {
+        "count": 465,
+        "localPercentage": 90.29,
+        "globalPercentage": 98.72611464968153
+      },
+      "Architectural": {
+        "count": 50,
+        "localPercentage": 9.71,
+        "globalPercentage": 2.4390243902439024
+      }
+    },
+    "L&T T2 GP_FAS_AB CORE_2024 Skinny": {
+      "Electrical": {
+        "count": 416,
+        "localPercentage": 100,
+        "globalPercentage": 32.37354085603113
+      }
+    },
+    "L&T T2 GP_FPS_AB CORE_2024 Skinny": {
+      "Architectural": {
+        "count": 1,
+        "localPercentage": 0.03,
+        "globalPercentage": 0.04878048780487805
+      },
+      "Mechanical": {
+        "count": 79,
+        "localPercentage": 2.17,
+        "globalPercentage": 5.183727034120735
+      },
+      "Electrical": {
+        "count": 101,
+        "localPercentage": 2.77,
+        "globalPercentage": 7.8599221789883265
+      },
+      "Plumbing": {
+        "count": 3461,
+        "localPercentage": 95.03,
+        "globalPercentage": 44.2469956532856
+      }
+    },
+    "L&T T2 GP_HVAC_AB CORE_2024 Skinny": {
+      "Architectural": {
+        "count": 8,
+        "localPercentage": 0.32,
+        "globalPercentage": 0.3902439024390244
+      },
+      "Mechanical": {
+        "count": 1273,
+        "localPercentage": 50.76,
+        "globalPercentage": 83.53018372703413
+      },
+      "Plumbing": {
+        "count": 1227,
+        "localPercentage": 48.92,
+        "globalPercentage": 15.686525185374583
+      }
+    },
+    "L&T T2 GP_ICT_AB CORE_2024 Skinny": {
+      "Electrical": {
+        "count": 389,
+        "localPercentage": 100,
+        "globalPercentage": 30.27237354085603
+      }
+    },
+    "L&T T2 GP_PHE_AB CORE_2024 Skinny": {
+      "Structural": {
+        "count": 6,
+        "localPercentage": 0.17,
+        "globalPercentage": 1.2738853503184715
+      },
+      "Architectural": {
+        "count": 7,
+        "localPercentage": 0.19,
+        "globalPercentage": 0.34146341463414637
+      },
+      "Mechanical": {
+        "count": 149,
+        "localPercentage": 4.1,
+        "globalPercentage": 9.776902887139109
+      },
+      "Electrical": {
+        "count": 378,
+        "localPercentage": 10.41,
+        "globalPercentage": 29.416342412451364
+      },
+      "Plumbing": {
+        "count": 3091,
+        "localPercentage": 85.13,
+        "globalPercentage": 39.51674763487599
+      }
+    }
+  },
+  "comparisonResults": {
+    "Architectural": {
+      "details": {
+        "TMN2_BIAL-S_GP CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 2.4390243902439024,
+            "inactivePercent": 98.72611464968153,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 2.4390243902439024,
+            "inactivePercent": 98.72611464968153,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 9.70873786407767,
+            "inactivePercent": 90.29126213592234,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 0.3902439024390244,
+            "inactivePercent": 99.2167089124087,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.3902439024390244,
+            "inactivePercent": 99.2167089124087,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.3189792663476874,
+            "inactivePercent": 99.68102073365232,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 0.34146341463414637,
+            "inactivePercent": 79.98387828478494,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.34146341463414637,
+            "inactivePercent": 79.98387828478494,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.19278435692646653,
+            "inactivePercent": 99.80721564307353,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Mechanical": {
+      "details": {
+        "L&T T2 GP ARCH CORE_2024": {
+          "lowResult": {
+            "activePercent": 1.5091863517060367,
+            "inactivePercent": 97.40804034301502,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.5091863517060367,
+            "inactivePercent": 97.40804034301502,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.121404193076548,
+            "inactivePercent": 98.87859580692344,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 5.183727034120735,
+            "inactivePercent": 52.155698320078805,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 5.183727034120735,
+            "inactivePercent": 52.155698320078805,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.1691378363536518,
+            "inactivePercent": 97.83086216364636,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 9.776902887139109,
+            "inactivePercent": 70.54843881227998,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 9.776902887139109,
+            "inactivePercent": 70.54843881227998,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 4.1035527402919305,
+            "inactivePercent": 95.89644725970805,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Electrical": {
+      "details": {
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 7.8599221789883265,
+            "inactivePercent": 49.479503175211214,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 7.8599221789883265,
+            "inactivePercent": 49.479503175211214,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.773201537616694,
+            "inactivePercent": 97.22679846238331,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 29.416342412451364,
+            "inactivePercent": 50.90899928696772,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 29.416342412451364,
+            "inactivePercent": 50.90899928696772,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 10.410355274029193,
+            "inactivePercent": 89.5896447259708,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Plumbing": {
+      "details": {
+        "L&T T2 GP ARCH CORE_2024": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 98.91722669472105,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 98.91722669472105,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.096538274012677,
+            "inactivePercent": 97.90346172598731,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 15.686525185374583,
+            "inactivePercent": 83.92042762947315,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 15.686525185374583,
+            "inactivePercent": 83.92042762947315,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 48.92344497607656,
+            "inactivePercent": 51.07655502392345,
+            "eligible": true
+          }
+        },
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny": {
+          "lowResult": {
+            "activePercent": 39.51674763487599,
+            "inactivePercent": 40.80859406454309,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 85.12806389424401,
+            "inactivePercent": 14.87193610575599,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 85.12806389424401,
+            "inactivePercent": 14.87193610575599,
+            "eligible": true
+          }
+        }
+      }
+    }
+  },
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [
+        "TMN2_BIAL-S_GP CORE_2024 Skinny"
+      ],
+      "medium": [
+        "TMN2_BIAL-S_GP CORE_2024 Skinny"
+      ],
+      "high": [
+        "TMN2_BIAL-S_GP CORE_2024 Skinny"
+      ]
+    },
+    "Architectural": {
+      "low": [
+        "L&T T2 GP ARCH CORE_2024"
+      ],
+      "medium": [
+        "L&T T2 GP ARCH CORE_2024"
+      ],
+      "high": [
+        "L&T T2 GP ARCH CORE_2024",
+        "TMN2_BIAL-S_GP CORE_2024 Skinny",
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny",
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny"
+      ]
+    },
+    "Mechanical": {
+      "low": [
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny"
+      ],
+      "medium": [
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny"
+      ],
+      "high": [
+        "L&T T2 GP ARCH CORE_2024",
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny",
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny",
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny"
+      ]
+    },
+    "Electrical": {
+      "low": [
+        "L&T T2 GP_FAS_AB CORE_2024 Skinny",
+        "L&T T2 GP_ICT_AB CORE_2024 Skinny"
+      ],
+      "medium": [
+        "L&T T2 GP_FAS_AB CORE_2024 Skinny",
+        "L&T T2 GP_ICT_AB CORE_2024 Skinny"
+      ],
+      "high": [
+        "L&T T2 GP_FAS_AB CORE_2024 Skinny",
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny",
+        "L&T T2 GP_ICT_AB CORE_2024 Skinny",
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny"
+      ]
+    },
+    "Plumbing": {
+      "low": [
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny"
+      ],
+      "medium": [
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny",
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny"
+      ],
+      "high": [
+        "L&T T2 GP ARCH CORE_2024",
+        "L&T T2 GP_FPS_AB CORE_2024 Skinny",
+        "L&T T2 GP_HVAC_AB CORE_2024 Skinny",
+        "L&T T2 GP_PHE_AB CORE_2024 Skinny"
+      ]
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [],
+      "medium": [],
+      "high": []
+    }
+  }
+}

@@ -1,0 +1,35 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 10-07-23    ATK        PLAT-3427   Created
+// -------------------------------------------------------------------------------------
+*/
+
+/* Define a keyframe animation called 'blink' */
+@keyframes blink {
+    0% { opacity: 1; } /* Start with full opacity */
+    50% { opacity: 0.75; } /* Fade to invisible */
+    100% { opacity: 1; } /* Back to full opacity */
+  }
+
+.long-title {
+    font-size: x-small;
+    width: 200px; /* Adjust width as needed */
+    color:white;
+    word-wrap: break-word;
+}
+
+.long-title-blink {
+    font-size: x-small;
+    width: 200px; /* Adjust width as needed */
+    color:white;
+    word-wrap: break-word;
+    animation: blink 1s infinite; /* Apply the blink animation infinitely */
+}
+
+.long-title-li{
+    font-size: x-small;
+    width: 200px; /* Adjust width as needed */
+    color: var(--app-accent-color);
+    word-wrap: break-word;
+}

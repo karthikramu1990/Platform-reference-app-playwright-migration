@@ -1,0 +1,61 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2813   Revamed IafViewer Components                                     
+// 13-06-23    HSK        PLAT-2728   Revamped IafViewer Coloring Mechanism
+// -------------------------------------------------------------------------------------
+*/
+
+.list-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    width: 255px;
+    background-color: var(--bg-color);
+    border-radius: 4px;
+  }
+  
+  .list-item-header-box {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 24px;
+    gap: 53px;
+    width: 255px;
+    height: 55px;
+    border-bottom: 1px solid #3e3e3e;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .list-item-title {
+    width: 137px;
+    height: 18px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 11px;
+    line-height: 18px;
+    color: #ffffff; 
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    // max-width: 15ch;
+    text-transform: capitalize; /* Helps balance case difference */    
+  }
+  
+  .list-item-close {
+    width: 24px;
+    height: 24px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    cursor: pointer;
+    color: #ffffff;
+  }

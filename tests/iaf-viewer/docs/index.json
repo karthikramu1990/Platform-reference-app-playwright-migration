@@ -1,0 +1,101 @@
+{
+  "title": "IAF Viewer API Documentation Index",
+  "description": "Index of all available API documentation files",
+  "version": "1.0.0",
+  "lastUpdated": "2024-12-19",
+  "documentation": [
+    {
+      "name": "IafUtils",
+      "file": "internal/IafUtils.api.json",
+      "description": "Core utility functions and helper classes for IAF viewer",
+      "classes": [
+        "IafUtils",
+        "IafObjectUtils", 
+        "IafArrayUtils",
+        "IafMapUtils",
+        "IafStringUtils",
+        "IafStorageUtils",
+        "IafPerfLogger",
+        "IafTimerUtils",
+        "IafProjectUtils"
+      ],
+      "sourceFile": "../src/core/IafUtils.js",
+      "category": "utilities"
+    },
+    {
+      "name": "IafDatabaseManager",
+      "file": "internal/IafDatabaseManager.api.json",
+      "description": "Database operations manager with queuing and auto-persistence",
+      "classes": [
+        "IafDatabaseManager",
+        "IafApiClientMarkup",
+        "IafApiClientModelComposition",
+        "IafApiClientGis",
+        "IafApiClientOperationalCache",
+        "IafApiClientPermissions"
+      ],
+      "sourceFile": "../src/core/database/IafDatabaseManager.js",
+      "category": "database"
+    },
+    {
+      "name": "IafFileManager",
+      "file": "internal/IafFileManager.api.json",
+      "description": "File management utility for handling file operations and blob storage",
+      "classes": [
+        "IafFileManager"
+      ],
+      "sourceFile": "../src/core/database/IafFileManager.js",
+      "category": "database"
+    },
+    {
+      "name": "IafPermissionManager",
+      "file": "internal/iafPermissionManager.api.json",
+      "description": "Permission management for graphics data resources",
+      "classes": [
+        "IafPermissionManager"
+      ],
+      "sourceFile": "../src/core/database/permission/iafPermissionManager.js",
+      "category": "database"
+    }
+  ],
+  "externalDocumentation": [
+    {
+      "name": "IafViewerDBM",
+      "file": "external/IafViewerDBM.api.json",
+      "description": "Main entry point React component for IAF 2D/3D Viewer with database management",
+      "classes": [
+        "IafViewerDBM"
+      ],
+      "sourceFile": "../src/IafViewerDBM.jsx",
+      "category": "external",
+      "audience": "external-consumers",
+      "priority": "high"
+    },
+    {
+      "name": "EvmUtils",
+      "file": "external/EvmUtils.api.json",
+      "description": "External viewer management utilities for IAF viewer consumers",
+      "classes": [
+        "EvmUtils",
+        "EvmElementIdManager"
+      ],
+      "sourceFile": "../src/common/evmUtils.js",
+      "category": "external",
+      "audience": "external-consumers"
+    }
+  ],
+  "categories": {
+    "utilities": "Core utility functions and helper classes",
+    "database": "Database operations, file management, and permissions",
+    "external": "External APIs for consumer integration"
+  },
+  "conventions": {
+    "fileNaming": "PascalCase for class names, camelCase for files",
+    "format": "JSON with consistent structure across all files",
+    "descriptions": "Concise one-line descriptions for methods and properties"
+  },
+  "directories": {
+    "internal": "Internal API documentation for framework developers",
+    "external": "External API documentation for framework consumers"
+  }
+}

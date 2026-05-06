@@ -1,0 +1,526 @@
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 25-10-23    HSK                    CSS changes to make customise viewer responsive
+// 14-03-24    HSK        PLAT-4390   CSS changes to make to sync font style of Customize viewer to toolbar
+// -------------------------------------------------------------------------------------
+
+
+.container {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    align-items: center;
+    padding: 0px;
+    gap: 0px;
+    position: absolute;
+    width: 548px;
+    // height: 770px;
+    background: #ffffff;
+    border: 1px solid #ebebeb;
+    border-radius: 8px;
+    left: calc(50% - 300px); // 50% of screen - center pixel of width is 600/2 = 300.
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .headerBox {
+    box-sizing: border-box;
+    display: flex;
+    // position: absolute;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    width: 548px;
+    height: 56px;
+    background: #f9f9f9;
+    border-bottom: 1px solid #ebebeb;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}  
+
+  .header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 32px;
+    width: 100%;
+    height: 48px;
+    border-radius: 8px 0px 0px 0px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .headerText {
+    height: 24px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 24px;
+    color: #1d1d1d;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    margin-right: auto;
+  }
+
+  .headerCloseButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    margin-left: auto;
+    transition: opacity 0.2s;
+    
+    &:hover {
+      opacity: 0.7;
+      background-color: var(--nav-hover-color);
+      border-radius: 4px;
+    }
+  }
+
+  .closeButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+    margin-left: auto;
+    
+    &:hover {
+      background-color: #e0e0e0;
+    }
+  }
+
+  .closeIcon {
+      font-size: 18px;
+      font-weight: normal;
+      line-height: 1;
+  }
+
+  .descriptionBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    width: 484px;
+    height: 38px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .descriptionBoxText {
+    width: 484px;
+    height: 38px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 19px;
+    color: #5d5d5d;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .contentBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0px 32px;
+    gap: 16px;
+    width: 100%;
+    // height: 508px;
+    flex: none;
+    order: 3;
+    flex-grow: 0;
+  }
+  
+  .footerBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 32px;
+    gap: 16px;
+    width: 100%;
+    height: 72px;
+    flex: none;
+    order: 4;
+    align-self: stretch;
+    flex-grow: 0;
+  }
+  
+  .toolListBox {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0px;
+    gap: 8px;
+    width: 48%;
+    // height: 450px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .currentToolbarBox {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 0px;
+    gap: 8px;
+    width: 48%;
+    // height: 450px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .contentColumnHeader {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px;
+    gap: 8px;
+    height: 20px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    width: 100%;
+  }
+  
+  .contentColumnHeaderText {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    letter-spacing: 0.04em;
+    color: var(--head-bkg-color);
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .listBox {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 8px;
+    gap: 4px;
+    width: 218px;
+    background: #f3f3f3;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .tableFrame {
+    box-sizing: border-box;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    gap: 8px;
+    width: 100%;
+    height: 460px;
+    border: 1px solid #dcdcdc;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .tableFrame::-webkit-scrollbar {
+    display: none;
+  }
+  
+  .colContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 8px;
+    gap: 4px;
+    width: 100%;
+    background: #f3f3f3;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .defaultLabelContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px 0px 4px;
+    width: 100%;
+    height: 23px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .defaultLabel {
+    height: 18px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+    color: #5d5d5d;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+  
+  .toolFrame {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 4px 8px;
+    gap: 8px;
+    width: 100%;
+    height: 26px;
+    background: #dcdcdc;
+    border-radius: 4px;
+    flex: none;
+    order: 1;
+    align-self: stretch;
+    flex-grow: 0;
+    transition: background-color 0.2s;
+    box-sizing: border-box;
+    
+    &:hover {
+      background: #e8e8e8;
+    }
+  }
+  
+  .toolLabel {
+    height: 18px;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: left;
+    color: #3e3e3e;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .buttonBox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0px;
+    gap: 16px;
+    width: auto;
+    height: 40px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+  }
+
+  .resetSettings {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    color: var(--app-accent-color);
+    cursor: pointer;
+    // text-decoration: underline;
+    margin-left: 0;
+    
+    &:hover {
+      color: var(--fancytree-one-color);
+    }
+  }
+
+  .closeButton {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    gap: 10px;
+    width: 128px;
+    height: 40px;
+    border: 1px solid #b8b8b8;
+    border-radius: 4px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #c71784;
+    background-color: #ffffff;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+  
+  .saveButton {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 20px;
+    gap: 10px;
+    width: 128px;
+    height: 40px;
+    background: #c71784;
+    border-radius: 4px;
+    border: 1px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #ffffff;
+  }
+  
+  .icon {
+  
+    width: 16px;
+  
+    height: 16px;
+    object-fit: contain;
+  }
+  
+  .selectionBox {
+    display: flex;
+    // margin-top: 80px;
+    /* position: absolute; */
+    // margin-left: 50px;
+    flex-direction: row;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: flex-start;
+    order: 1;
+    padding: 20px 32px;
+    width: 100%;
+    // background: #f5f5f5;
+    // border-bottom: 1px solid #e0e0e0;
+  }
+
+  .selectionColumn {
+    display: flex;
+    flex-direction: column;
+    width: 48%;
+    gap: 8px;
+  }
+
+  .resetButtonContainer {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 8px;
+  }
+  
+  .dropdownComponent {
+    display: block !important;
+    height: 32px !important;
+    width: 150px;
+    padding: 0px;
+    color: #dcdcdc;
+    background: #3e3e3e;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    /* Inside auto layout */
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+  }
+  
+  .saveCloseBtn {
+    width: auto !important;
+  }
+  
+  // @media (min-width: 992px) { 
+  //   .container {
+  //     max-width: 960px;
+  //     max-height: 730px;
+  //   }
+  // }
+  @media (max-width: 1023px) {
+    .container {
+      display: none;
+    }
+  }
+  @media (max-height: 719px) {
+    .container {
+      display: none;
+    }
+  }
+  @media (min-width: 1024px) { 
+    .container {
+      padding: 0px !important;
+      width: 548px;
+      gap: 12px;
+      // height: 100%;
+    }
+
+    .headerBox {
+      // width: 490px;
+    }
+
+    .contentBox {
+      gap: 3px;
+      // width: 400px;
+    }
+
+    .tableFrame {
+      // width: 220px;  
+      height: 240px;
+      // overflow-x: hidden;
+    }
+
+  }
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1200px) {
+    .tableFrame {
+      height: 350px;
+    }
+  }
+  // Extra large devices (large desktops, 1200px and up)
+  @media (min-width: 1920px) {
+    .tableFrame {
+      height: 548px;
+    } 
+  }

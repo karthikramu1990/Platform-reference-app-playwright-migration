@@ -1,0 +1,32 @@
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-top: 1px solid #333;
+    background-color: #181818;
+}
+
+.paginationInfo {
+    color: #999;
+    font-size: 12px;
+}
+
+.paginationControls {
+    display: flex;
+    gap: 4px;
+}
+
+.paginationButton {
+    color: #999 !important;
+    padding: 4px !important;
+    
+    &:hover:not(:disabled) {
+        background-color: rgba(255, 255, 255, 0.08) !important;
+        color: #e0e0e0 !important;
+    }
+    
+    &:disabled {
+        opacity: 0.5;
+    }
+} 

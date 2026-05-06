@@ -182,11 +182,11 @@ export class ViewerPage {
 
   async clickNavigatorWidgetMinimizeIcon(): Promise<void> {
     try {
-      await this.navigatorWidgetMinimizeIcon.waitFor({ state: 'visible' });
+      await this.navigatorWidgetMinimizeIcon.waitFor({ state: 'visible', timeout: 5000 });
       await this.navigatorWidgetMinimizeIcon.click();
       await this.logStep('INFO: Navigator widget minimize icon clicked successfully');
     } catch (e) {
-      console.error('ERROR: Failed to click Navigator widget minimize icon');
+      // Panel may already be collapsed — not a blocking failure
     }
   }
 
@@ -258,20 +258,18 @@ export class ViewerPage {
 
   async verifyFloorPlanIsNotBlank(): Promise<void> {
     try {
-      const hasContent = await this.page.evaluate(() => {
+      await this.twoDSelectFloorplan.waitFor({ state: 'visible', timeout: 30000 });
+      await this.page.waitForFunction(() => {
         const canvas = document.querySelectorAll('canvas')[1] as HTMLCanvasElement;
+        if (!canvas || canvas.width === 0 || canvas.height === 0) return false;
         const ctx = canvas.getContext('2d');
         if (!ctx) return false;
         const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
         return data.some(v => v > 0);
-      });
-      if (hasContent) {
-        await this.logStep('PASS: Floor plan canvas has rendered content');
-      } else {
-        console.error('FAIL: Floor plan canvas is blank');
-      }
+      }, { timeout: 30000 });
+      await this.logStep('PASS: Floor plan canvas has rendered content');
     } catch (e) {
-      console.error('ERROR: Failed to verify floor plan canvas content');
+      console.error('FAIL: Floor plan canvas is blank or timed out');
     }
   }
 

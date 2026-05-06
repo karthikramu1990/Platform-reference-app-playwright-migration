@@ -1,0 +1,43 @@
+/**
+ * GIS Project View — layout comes from IafViewerExMapboxStandalone.css (imported in JSX).
+ * Add project-specific overrides here if needed.
+ */
+.example-gis-project-view-root {
+  /* hook for future styling */
+}
+
+.example-gis-project-view-content {
+  position: relative;
+}
+
+/* Floating Home — calls IafMapBoxGLProxy.resetAll (GIS session reset) */
+.example-gis-project-home-reset {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--examples-border-color, #e0e0e0);
+  border-radius: 8px;
+  background: var(--examples-bg-panel, #fff);
+  color: var(--examples-text-primary, #333);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.example-gis-project-home-reset:hover:not(:disabled) {
+  background: var(--examples-bg-color, #f5f5f5);
+  border-color: var(--app-accent-color, #026bfd);
+  color: var(--app-accent-color, #026bfd);
+}
+
+.example-gis-project-home-reset:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

@@ -1,0 +1,33 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 31-05-23    HSK        PLAT-2890   Revamped UX/UI Learning Centre
+// -------------------------------------------------------------------------------------
+*/
+
+.learning-center-title {
+  width: 150px;
+  height: 18px;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 18px;
+  color: #dcdcdc;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+}
+
+.arrow-right {
+  width: 24px;
+  height: 24px;
+  flex: none;
+  order: 1;
+  flex-grow: 0;
+  cursor: pointer;
+  color: #ffffff;
+  position: relative;
+  bottom: 18px;
+  left: 180px;
+}

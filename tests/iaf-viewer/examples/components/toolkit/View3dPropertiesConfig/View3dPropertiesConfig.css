@@ -1,0 +1,44 @@
+.view3d-properties-config {
+  padding: 16px;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.view3d-properties-config-section {
+  margin-bottom: 24px;
+}
+
+.view3d-properties-config-section h3 {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--examples-text-primary, #333);
+  border-bottom: 1px solid var(--examples-border-color, #e0e0e0);
+  padding-bottom: 8px;
+}
+
+.view3d-properties-config-field {
+  margin-bottom: 16px;
+}
+
+.view3d-properties-config-field label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--examples-text-primary, #333);
+  margin-bottom: 6px;
+}
+
+.view3d-properties-config-field input[type="checkbox"] {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.view3d-properties-config-field input[type="number"] {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--examples-border-color, #e0e0e0);
+  border-radius: 4px;
+  font-size: 13px;
+}
+

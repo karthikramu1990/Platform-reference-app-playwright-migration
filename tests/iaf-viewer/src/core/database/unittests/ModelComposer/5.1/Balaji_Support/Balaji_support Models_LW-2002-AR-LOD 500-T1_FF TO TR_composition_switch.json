@@ -1,0 +1,1271 @@
+{
+  "projectName": "Balaji_support Models",
+  "modelName": "LW-2002-AR-LOD 500-T1_FF TO TR",
+  "timestamp": "2026-02-17T20:30:30.477Z",
+  "layerStatsPerView": {
+    "LW-2002-AR-LOD 500-T1_FF TO TR": {
+      "Architectural": {
+        "count": 25828,
+        "localPercentage": 92.19,
+        "globalPercentage": 16.635107109273356
+      },
+      "Mechanical": {
+        "count": 2179,
+        "localPercentage": 7.78,
+        "globalPercentage": 3.684477510990869
+      },
+      "Plumbing": {
+        "count": 9,
+        "localPercentage": 0.03,
+        "globalPercentage": 0.0034696521095484824
+      }
+    },
+    "LW-2002-ST-LOD 500-T1_B3 TO GF": {
+      "Structural": {
+        "count": 4102,
+        "localPercentage": 62.34,
+        "globalPercentage": 24.601175482787575
+      },
+      "Architectural": {
+        "count": 2478,
+        "localPercentage": 37.66,
+        "globalPercentage": 1.5960119024616457
+      }
+    },
+    "LW-2002-ST-LOD 500-T1_FF TO TR": {
+      "Structural": {
+        "count": 3803,
+        "localPercentage": 56.02,
+        "globalPercentage": 22.807964495621928
+      },
+      "Architectural": {
+        "count": 2985,
+        "localPercentage": 43.97,
+        "globalPercentage": 1.9225567105924177
+      },
+      "Electrical": {
+        "count": 1,
+        "localPercentage": 0.01,
+        "globalPercentage": 0.00351160585735857
+      }
+    },
+    "LW-2002-PHE-LOD 500-T1_FF TO TR": {
+      "Mechanical": {
+        "count": 30,
+        "localPercentage": 0.06,
+        "globalPercentage": 0.05072708826513358
+      },
+      "Plumbing": {
+        "count": 52610,
+        "localPercentage": 99.94,
+        "globalPercentage": 20.282044164816185
+      }
+    },
+    "LW-2002-AR-LOD 500-T1_B3 TO GF": {
+      "Structural": {
+        "count": 151,
+        "localPercentage": 0.75,
+        "globalPercentage": 0.9056015353244573
+      },
+      "Architectural": {
+        "count": 17895,
+        "localPercentage": 88.5,
+        "globalPercentage": 11.525679174556556
+      },
+      "Mechanical": {
+        "count": 2174,
+        "localPercentage": 10.75,
+        "globalPercentage": 3.6760229962800137
+      }
+    },
+    "LW-2002-FACADE-LOD 500-T1_FF TO TR": {
+      "Architectural": {
+        "count": 38984,
+        "localPercentage": 90.76,
+        "globalPercentage": 25.108526233076994
+      },
+      "Mechanical": {
+        "count": 3967,
+        "localPercentage": 9.24,
+        "globalPercentage": 6.707811971592831
+      }
+    },
+    "LW-2002-AR-LOD 500-T2_B3 TO GF": {
+      "Structural": {
+        "count": 151,
+        "localPercentage": 0.6,
+        "globalPercentage": 0.9056015353244573
+      },
+      "Architectural": {
+        "count": 22717,
+        "localPercentage": 90.28,
+        "globalPercentage": 14.631397251098143
+      },
+      "Mechanical": {
+        "count": 2172,
+        "localPercentage": 8.63,
+        "globalPercentage": 3.6726411903956717
+      },
+      "Plumbing": {
+        "count": 124,
+        "localPercentage": 0.49,
+        "globalPercentage": 0.047804095731556875
+      }
+    },
+    "LW-2002-AR-LOD 500-T2_FF TO TR": {
+      "Architectural": {
+        "count": 24347,
+        "localPercentage": 91.79,
+        "globalPercentage": 15.681235588875579
+      },
+      "Mechanical": {
+        "count": 2179,
+        "localPercentage": 8.21,
+        "globalPercentage": 3.684477510990869
+      }
+    },
+    "LW-2002-ST-LOD 500-T2_B3 TO GF": {
+      "Structural": {
+        "count": 4214,
+        "localPercentage": 60.01,
+        "globalPercentage": 25.272879932829557
+      },
+      "Architectural": {
+        "count": 2808,
+        "localPercentage": 39.99,
+        "globalPercentage": 1.8085558604165861
+      }
+    },
+    "LW-2002-FACADE-LOD 500-T2_FF TO TR": {
+      "Architectural": {
+        "count": 38984,
+        "localPercentage": 90.76,
+        "globalPercentage": 25.108526233076994
+      },
+      "Mechanical": {
+        "count": 3967,
+        "localPercentage": 9.24,
+        "globalPercentage": 6.707811971592831
+      }
+    },
+    "LW-2002-ST-LOD 500-T2_FF TO TR": {
+      "Structural": {
+        "count": 3935,
+        "localPercentage": 58.01,
+        "globalPercentage": 23.59961616888569
+      },
+      "Architectural": {
+        "count": 2847,
+        "localPercentage": 41.97,
+        "globalPercentage": 1.8336746918112612
+      },
+      "Electrical": {
+        "count": 1,
+        "localPercentage": 0.01,
+        "globalPercentage": 0.00351160585735857
+      }
+    },
+    "LW-2002-ELE-LOD 500-T1_FF TO TR": {
+      "Architectural": {
+        "count": 96,
+        "localPercentage": 2.35,
+        "globalPercentage": 0.06183096958689183
+      },
+      "Mechanical": {
+        "count": 1,
+        "localPercentage": 0.02,
+        "globalPercentage": 0.0016909029421711195
+      },
+      "Electrical": {
+        "count": 3854,
+        "localPercentage": 94.41,
+        "globalPercentage": 13.53372897425993
+      },
+      "Plumbing": {
+        "count": 131,
+        "localPercentage": 3.21,
+        "globalPercentage": 0.050502714038983466
+      }
+    },
+    "LW-2002-FPS-LOD 500-T1_FF TO TR": {
+      "Structural": {
+        "count": 129,
+        "localPercentage": 0.57,
+        "globalPercentage": 0.7736595897804965
+      },
+      "Architectural": {
+        "count": 1,
+        "localPercentage": 0,
+        "globalPercentage": 0.0006440725998634566
+      },
+      "Mechanical": {
+        "count": 5153,
+        "localPercentage": 22.9,
+        "globalPercentage": 8.713222861007779
+      },
+      "Plumbing": {
+        "count": 17218,
+        "localPercentage": 76.52,
+        "globalPercentage": 6.637830002467308
+      }
+    },
+    "LW-2002-HVAC-LOD 500-T1_FF TO TR": {
+      "Mechanical": {
+        "count": 4456,
+        "localPercentage": 21.19,
+        "globalPercentage": 7.534663510314508
+      },
+      "Electrical": {
+        "count": 37,
+        "localPercentage": 0.18,
+        "globalPercentage": 0.1299294167222671
+      },
+      "Plumbing": {
+        "count": 16538,
+        "localPercentage": 78.64,
+        "globalPercentage": 6.3756785097458675
+      }
+    },
+    "LW-2002-ELE-LOD 500-T1_B3 TO GF": {
+      "Mechanical": {
+        "count": 4100,
+        "localPercentage": 39.45,
+        "globalPercentage": 6.93270206290159
+      },
+      "Electrical": {
+        "count": 6293,
+        "localPercentage": 60.55,
+        "globalPercentage": 22.09853566035748
+      }
+    },
+    "LW-2002-FPS-LOD 500-T1_B3 TO GF": {
+      "Structural": {
+        "count": 18,
+        "localPercentage": 0.04,
+        "globalPercentage": 0.10795250089960418
+      },
+      "Architectural": {
+        "count": 47,
+        "localPercentage": 0.09,
+        "globalPercentage": 0.03027141219358246
+      },
+      "Mechanical": {
+        "count": 10824,
+        "localPercentage": 21.14,
+        "globalPercentage": 18.302333446060196
+      },
+      "Electrical": {
+        "count": 1360,
+        "localPercentage": 2.66,
+        "globalPercentage": 4.775783966007655
+      },
+      "Plumbing": {
+        "count": 38955,
+        "localPercentage": 76.08,
+        "globalPercentage": 15.017810880829016
+      }
+    },
+    "LW-2002-HVAC-LOD 500-T1_B3 TO GF": {
+      "Structural": {
+        "count": 37,
+        "localPercentage": 0.42,
+        "globalPercentage": 0.2219023629602975
+      },
+      "Architectural": {
+        "count": 14,
+        "localPercentage": 0.16,
+        "globalPercentage": 0.009017016398088393
+      },
+      "Mechanical": {
+        "count": 3759,
+        "localPercentage": 43.11,
+        "globalPercentage": 6.356104159621238
+      },
+      "Electrical": {
+        "count": 102,
+        "localPercentage": 1.17,
+        "globalPercentage": 0.35818379745057416
+      },
+      "Plumbing": {
+        "count": 4807,
+        "localPercentage": 55.13,
+        "globalPercentage": 1.8531797433999506
+      }
+    },
+    "LW-2002-PHE-LOD 500-T1_B3 TO GF": {
+      "Architectural": {
+        "count": 116,
+        "localPercentage": 0.57,
+        "globalPercentage": 0.07471242158416097
+      },
+      "Mechanical": {
+        "count": 338,
+        "localPercentage": 1.66,
+        "globalPercentage": 0.5715251944538383
+      },
+      "Electrical": {
+        "count": 11,
+        "localPercentage": 0.05,
+        "globalPercentage": 0.03862766443094427
+      },
+      "Plumbing": {
+        "count": 19925,
+        "localPercentage": 97.71,
+        "globalPercentage": 7.68142425363928
+      },
+      "NoLayer": {
+        "count": 1,
+        "localPercentage": 0,
+        "globalPercentage": 100
+      }
+    },
+    "LW-2002-ELE-LOD 350-T2_FF TO TR": {
+      "Architectural": {
+        "count": 2,
+        "localPercentage": 0.02,
+        "globalPercentage": 0.0012881451997269133
+      },
+      "Mechanical": {
+        "count": 2,
+        "localPercentage": 0.02,
+        "globalPercentage": 0.003381805884342239
+      },
+      "Electrical": {
+        "count": 9153,
+        "localPercentage": 99.96,
+        "globalPercentage": 32.14172841240299
+      }
+    },
+    "LW-2002-FAS-LOD 350-T2_FF TO TR": {
+      "Architectural": {
+        "count": 285,
+        "localPercentage": 13.9,
+        "globalPercentage": 0.18356069096108513
+      },
+      "Electrical": {
+        "count": 1766,
+        "localPercentage": 86.1,
+        "globalPercentage": 6.201495944095234
+      }
+    },
+    "LW-2002-FPS-LOD 350-T2_FF TO TR": {
+      "Structural": {
+        "count": 134,
+        "localPercentage": 0.94,
+        "globalPercentage": 0.8036463955859422
+      },
+      "Mechanical": {
+        "count": 4071,
+        "localPercentage": 28.45,
+        "globalPercentage": 6.883665877578626
+      },
+      "Plumbing": {
+        "count": 10103,
+        "localPercentage": 70.61,
+        "globalPercentage": 3.894877251418702
+      }
+    },
+    "LW-2002-HVAC-LOD 350-T2_FF TO TR": {
+      "Mechanical": {
+        "count": 6187,
+        "localPercentage": 26.77,
+        "globalPercentage": 10.461616503212715
+      },
+      "Electrical": {
+        "count": 84,
+        "localPercentage": 0.36,
+        "globalPercentage": 0.2949748920181199
+      },
+      "Plumbing": {
+        "count": 16840,
+        "localPercentage": 72.87,
+        "globalPercentage": 6.492104613866272
+      }
+    },
+    "LW-2002-PHE-LOD 350-T2_FF TO TR": {
+      "Plumbing": {
+        "count": 28650,
+        "localPercentage": 100,
+        "globalPercentage": 11.045059215396002
+      }
+    },
+    "LW-2002- ELE- LOD 500- T2_B3 TO GF aswin": {
+      "Architectural": {
+        "count": 2,
+        "localPercentage": 0.04,
+        "globalPercentage": 0.0012881451997269133
+      },
+      "Mechanical": {
+        "count": 1263,
+        "localPercentage": 22.39,
+        "globalPercentage": 2.1356104159621236
+      },
+      "Electrical": {
+        "count": 4375,
+        "localPercentage": 77.57,
+        "globalPercentage": 15.363275625943745
+      }
+    },
+    "LW-2002- FPS- LOD 500- T2_B3 TO GF": {
+      "Architectural": {
+        "count": 43,
+        "localPercentage": 0.1,
+        "globalPercentage": 0.027695121794128634
+      },
+      "Mechanical": {
+        "count": 420,
+        "localPercentage": 1,
+        "globalPercentage": 0.7101792357118701
+      },
+      "Plumbing": {
+        "count": 41565,
+        "localPercentage": 98.9,
+        "globalPercentage": 16.024009992598074
+      }
+    },
+    "LW-2002- HVAC- LOD 500-T2_B3 TO GF": {
+      "Architectural": {
+        "count": 15,
+        "localPercentage": 0.18,
+        "globalPercentage": 0.00966108899795185
+      },
+      "Mechanical": {
+        "count": 4077,
+        "localPercentage": 48.17,
+        "globalPercentage": 6.893811295231654
+      },
+      "Electrical": {
+        "count": 129,
+        "localPercentage": 1.52,
+        "globalPercentage": 0.4529971555992556
+      },
+      "Plumbing": {
+        "count": 4243,
+        "localPercentage": 50.13,
+        "globalPercentage": 1.6357482112015793
+      }
+    },
+    "LW-2002-FAS-LOD 500-T2_B3 TO GF": {
+      "Architectural": {
+        "count": 595,
+        "localPercentage": 31.22,
+        "globalPercentage": 0.38322319691875667
+      },
+      "Electrical": {
+        "count": 1311,
+        "localPercentage": 68.78,
+        "globalPercentage": 4.603715278997085
+      }
+    },
+    "LW-2002-PHE-LOD 500-T2_B3 TO GF": {
+      "Architectural": {
+        "count": 1,
+        "localPercentage": 0.01,
+        "globalPercentage": 0.0006440725998634566
+      },
+      "Plumbing": {
+        "count": 7683,
+        "localPercentage": 99.99,
+        "globalPercentage": 2.9619263508512215
+      }
+    }
+  },
+  "comparisonResults": {
+    "Architectural": {
+      "details": {
+        "LW-2002-ST-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 1.5960119024616457,
+            "inactivePercent": 24.601175482787575,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.5960119024616457,
+            "inactivePercent": 24.601175482787575,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 37.659574468085104,
+            "inactivePercent": 62.34042553191489,
+            "eligible": true
+          }
+        },
+        "LW-2002-ST-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 1.9225567105924177,
+            "inactivePercent": 22.811476101479286,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.9225567105924177,
+            "inactivePercent": 22.811476101479286,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 43.96818382677861,
+            "inactivePercent": 56.03181617322139,
+            "eligible": true
+          }
+        },
+        "LW-2002-ST-LOD 500-T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 1.8085558604165861,
+            "inactivePercent": 25.272879932829557,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.8085558604165861,
+            "inactivePercent": 25.272879932829557,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 39.98860723440615,
+            "inactivePercent": 60.011392765593854,
+            "eligible": true
+          }
+        },
+        "LW-2002-ST-LOD 500-T2_FF TO TR": {
+          "lowResult": {
+            "activePercent": 1.8336746918112612,
+            "inactivePercent": 23.603127774743047,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 1.8336746918112612,
+            "inactivePercent": 23.603127774743047,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 41.97257850508625,
+            "inactivePercent": 58.02742149491375,
+            "eligible": true
+          }
+        },
+        "LW-2002-ELE-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 0.06183096958689183,
+            "inactivePercent": 13.585922591241085,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.06183096958689183,
+            "inactivePercent": 13.585922591241085,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.3517883390494854,
+            "inactivePercent": 97.64821166095052,
+            "eligible": true
+          }
+        },
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 38.23415220599006,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 38.23415220599006,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.09178970392938052,
+            "inactivePercent": 99.90821029607062,
+            "eligible": true
+          }
+        },
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.798387079830148,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.798387079830148,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.1605688725771304,
+            "inactivePercent": 99.83943112742287,
+            "eligible": true
+          }
+        },
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0.07471242158416097,
+            "inactivePercent": 108.29157711252407,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.07471242158416097,
+            "inactivePercent": 108.29157711252407,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.5688784267569026,
+            "inactivePercent": 99.43112157324309,
+            "eligible": true
+          }
+        },
+        "LW-2002-FAS-LOD 350-T2_FF TO TR": {
+          "lowResult": {
+            "activePercent": 0.18356069096108513,
+            "inactivePercent": 6.201495944095234,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.18356069096108513,
+            "inactivePercent": 6.201495944095234,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 13.895660653339833,
+            "inactivePercent": 86.10433934666017,
+            "eligible": true
+          }
+        },
+        "LW-2002- FPS- LOD 500- T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 16.761884350104072,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 16.761884350104072,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.10231274388502903,
+            "inactivePercent": 99.89768725611498,
+            "eligible": true
+          }
+        },
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.992217751030442,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.992217751030442,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 0.1772211720226843,
+            "inactivePercent": 99.82277882797732,
+            "eligible": true
+          }
+        },
+        "LW-2002-FAS-LOD 500-T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0.38322319691875667,
+            "inactivePercent": 4.603715278997085,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0.38322319691875667,
+            "inactivePercent": 4.603715278997085,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 31.217208814270727,
+            "inactivePercent": 68.78279118572928,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Mechanical": {
+      "details": {
+        "LW-2002-AR-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 3.684477510990869,
+            "inactivePercent": 16.638576761382904,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.684477510990869,
+            "inactivePercent": 16.638576761382904,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 7.777698458023987,
+            "inactivePercent": 92.22230154197601,
+            "eligible": true
+          }
+        },
+        "LW-2002-AR-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 3.6760229962800137,
+            "inactivePercent": 12.431280709881014,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.6760229962800137,
+            "inactivePercent": 12.431280709881014,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 10.751730959446093,
+            "inactivePercent": 89.24826904055391,
+            "eligible": true
+          }
+        },
+        "LW-2002-FACADE-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 6.707811971592831,
+            "inactivePercent": 25.108526233076994,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 6.707811971592831,
+            "inactivePercent": 25.108526233076994,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 9.23610626062257,
+            "inactivePercent": 90.76389373937744,
+            "eligible": true
+          }
+        },
+        "LW-2002-AR-LOD 500-T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 3.6726411903956717,
+            "inactivePercent": 15.584802882154158,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.6726411903956717,
+            "inactivePercent": 15.584802882154158,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 8.631378159275155,
+            "inactivePercent": 91.36862184072484,
+            "eligible": true
+          }
+        },
+        "LW-2002-AR-LOD 500-T2_FF TO TR": {
+          "lowResult": {
+            "activePercent": 3.684477510990869,
+            "inactivePercent": 15.681235588875579,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 3.684477510990869,
+            "inactivePercent": 15.681235588875579,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 8.214581919626026,
+            "inactivePercent": 91.78541808037397,
+            "eligible": true
+          }
+        },
+        "LW-2002-FACADE-LOD 500-T2_FF TO TR": {
+          "lowResult": {
+            "activePercent": 6.707811971592831,
+            "inactivePercent": 25.108526233076994,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 6.707811971592831,
+            "inactivePercent": 25.108526233076994,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 9.23610626062257,
+            "inactivePercent": 90.76389373937744,
+            "eligible": true
+          }
+        },
+        "LW-2002-ELE-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 6.93270206290159,
+            "inactivePercent": 22.09853566035748,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 6.93270206290159,
+            "inactivePercent": 22.09853566035748,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 39.449629558356584,
+            "inactivePercent": 60.55037044164341,
+            "eligible": true
+          }
+        },
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 18.302333446060196,
+            "inactivePercent": 19.931818759929858,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 18.302333446060196,
+            "inactivePercent": 19.931818759929858,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 21.13897351769393,
+            "inactivePercent": 78.86102648230607,
+            "eligible": true
+          }
+        },
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 108.36628953410822,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 108.36628953410822,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.657594036584768,
+            "inactivePercent": 98.34240596341522,
+            "eligible": true
+          }
+        },
+        "LW-2002- ELE- LOD 500- T2_B3 TO GF aswin": {
+          "lowResult": {
+            "activePercent": 2.1356104159621236,
+            "inactivePercent": 15.364563771143471,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 2.1356104159621236,
+            "inactivePercent": 15.364563771143471,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 22.393617021276597,
+            "inactivePercent": 77.6063829787234,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Electrical": {
+      "details": {
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 4.775783966007655,
+            "inactivePercent": 33.4583682399824,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 4.775783966007655,
+            "inactivePercent": 33.4583682399824,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 2.6560424966799467,
+            "inactivePercent": 97.34395750332006,
+            "eligible": true
+          }
+        },
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.798387079830148,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.798387079830148,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.1698589287762358,
+            "inactivePercent": 98.83014107122376,
+            "eligible": true
+          }
+        },
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.992217751030442,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 8.992217751030442,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 1.524102079395085,
+            "inactivePercent": 98.47589792060492,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "Plumbing": {
+      "details": {
+        "LW-2002-ELE-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 0,
+            "inactivePercent": 13.647753560827976,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 0,
+            "inactivePercent": 13.647753560827976,
+            "eligible": false
+          },
+          "highResult": {
+            "activePercent": 3.2092111709946103,
+            "inactivePercent": 96.7907888290054,
+            "eligible": true
+          }
+        },
+        "LW-2002-FPS-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 6.637830002467308,
+            "inactivePercent": 9.487526523388139,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 76.52104350917736,
+            "inactivePercent": 23.47895649082263,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 76.52104350917736,
+            "inactivePercent": 23.47895649082263,
+            "eligible": true
+          }
+        },
+        "LW-2002-HVAC-LOD 500-T1_FF TO TR": {
+          "lowResult": {
+            "activePercent": 6.3756785097458675,
+            "inactivePercent": 7.664592927036775,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 78.63629879701394,
+            "inactivePercent": 21.363701202986068,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 78.63629879701394,
+            "inactivePercent": 21.363701202986068,
+            "eligible": true
+          }
+        },
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 15.017810880829016,
+            "inactivePercent": 23.216341325161036,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 76.07804077806422,
+            "inactivePercent": 23.921959221935786,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 76.07804077806422,
+            "inactivePercent": 23.921959221935786,
+            "eligible": true
+          }
+        },
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 1.8531797433999506,
+            "inactivePercent": 6.945207336430198,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 55.13246931987613,
+            "inactivePercent": 44.86753068012387,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 55.13246931987613,
+            "inactivePercent": 44.86753068012387,
+            "eligible": true
+          }
+        },
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 7.68142425363928,
+            "inactivePercent": 100.68486528046894,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 97.7146780442352,
+            "inactivePercent": 2.285321955764798,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 97.7146780442352,
+            "inactivePercent": 2.285321955764798,
+            "eligible": true
+          }
+        },
+        "LW-2002-FPS-LOD 350-T2_FF TO TR": {
+          "lowResult": {
+            "activePercent": 3.894877251418702,
+            "inactivePercent": 7.687312273164569,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 70.61084707855744,
+            "inactivePercent": 29.389152921442545,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 70.61084707855744,
+            "inactivePercent": 29.389152921442545,
+            "eligible": true
+          }
+        },
+        "LW-2002-HVAC-LOD 350-T2_FF TO TR": {
+          "lowResult": {
+            "activePercent": 6.492104613866272,
+            "inactivePercent": 10.756591395230835,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 72.86573493141793,
+            "inactivePercent": 27.134265068582057,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 72.86573493141793,
+            "inactivePercent": 27.134265068582057,
+            "eligible": true
+          }
+        },
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 1.6357482112015793,
+            "inactivePercent": 7.356469539828861,
+            "eligible": false
+          },
+          "mediumResult": {
+            "activePercent": 50.129962192816635,
+            "inactivePercent": 49.870037807183365,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 50.129962192816635,
+            "inactivePercent": 49.870037807183365,
+            "eligible": true
+          }
+        }
+      }
+    },
+    "NoLayer": {
+      "details": {
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF": {
+          "lowResult": {
+            "activePercent": 100,
+            "inactivePercent": 8.366289534108224,
+            "eligible": true
+          },
+          "mediumResult": {
+            "activePercent": 100,
+            "inactivePercent": 8.366289534108224,
+            "eligible": true
+          },
+          "highResult": {
+            "activePercent": 0,
+            "inactivePercent": 99.99999999999999,
+            "eligible": false
+          }
+        }
+      }
+    }
+  },
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [
+        "LW-2002-ST-LOD 500-T1_B3 TO GF",
+        "LW-2002-ST-LOD 500-T1_FF TO TR",
+        "LW-2002-ST-LOD 500-T2_B3 TO GF",
+        "LW-2002-ST-LOD 500-T2_FF TO TR"
+      ],
+      "medium": [
+        "LW-2002-ST-LOD 500-T1_B3 TO GF",
+        "LW-2002-ST-LOD 500-T1_FF TO TR",
+        "LW-2002-ST-LOD 500-T2_B3 TO GF",
+        "LW-2002-ST-LOD 500-T2_FF TO TR"
+      ],
+      "high": [
+        "LW-2002-ST-LOD 500-T1_B3 TO GF",
+        "LW-2002-ST-LOD 500-T1_FF TO TR",
+        "LW-2002-ST-LOD 500-T2_B3 TO GF",
+        "LW-2002-ST-LOD 500-T2_FF TO TR"
+      ]
+    },
+    "Architectural": {
+      "low": [
+        "LW-2002-AR-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T1_B3 TO GF",
+        "LW-2002-FACADE-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T2_B3 TO GF",
+        "LW-2002-AR-LOD 500-T2_FF TO TR",
+        "LW-2002-FACADE-LOD 500-T2_FF TO TR"
+      ],
+      "medium": [
+        "LW-2002-AR-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T1_B3 TO GF",
+        "LW-2002-FACADE-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T2_B3 TO GF",
+        "LW-2002-AR-LOD 500-T2_FF TO TR",
+        "LW-2002-FACADE-LOD 500-T2_FF TO TR"
+      ],
+      "high": [
+        "LW-2002-AR-LOD 500-T1_FF TO TR",
+        "LW-2002-ST-LOD 500-T1_B3 TO GF",
+        "LW-2002-ST-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T1_B3 TO GF",
+        "LW-2002-FACADE-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T2_B3 TO GF",
+        "LW-2002-AR-LOD 500-T2_FF TO TR",
+        "LW-2002-ST-LOD 500-T2_B3 TO GF",
+        "LW-2002-FACADE-LOD 500-T2_FF TO TR",
+        "LW-2002-ST-LOD 500-T2_FF TO TR",
+        "LW-2002-ELE-LOD 500-T1_FF TO TR",
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF",
+        "LW-2002-FAS-LOD 350-T2_FF TO TR",
+        "LW-2002- FPS- LOD 500- T2_B3 TO GF",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF",
+        "LW-2002-FAS-LOD 500-T2_B3 TO GF"
+      ]
+    },
+    "Mechanical": {
+      "low": [
+        "LW-2002-FPS-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 350-T2_FF TO TR",
+        "LW-2002-HVAC-LOD 350-T2_FF TO TR",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF"
+      ],
+      "medium": [
+        "LW-2002-FPS-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 350-T2_FF TO TR",
+        "LW-2002-HVAC-LOD 350-T2_FF TO TR",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF"
+      ],
+      "high": [
+        "LW-2002-AR-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T1_B3 TO GF",
+        "LW-2002-FACADE-LOD 500-T1_FF TO TR",
+        "LW-2002-AR-LOD 500-T2_B3 TO GF",
+        "LW-2002-AR-LOD 500-T2_FF TO TR",
+        "LW-2002-FACADE-LOD 500-T2_FF TO TR",
+        "LW-2002-FPS-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_FF TO TR",
+        "LW-2002-ELE-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 350-T2_FF TO TR",
+        "LW-2002-HVAC-LOD 350-T2_FF TO TR",
+        "LW-2002- ELE- LOD 500- T2_B3 TO GF aswin",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF"
+      ]
+    },
+    "Electrical": {
+      "low": [
+        "LW-2002-ELE-LOD 500-T1_FF TO TR",
+        "LW-2002-ELE-LOD 500-T1_B3 TO GF",
+        "LW-2002-ELE-LOD 350-T2_FF TO TR",
+        "LW-2002-FAS-LOD 350-T2_FF TO TR",
+        "LW-2002- ELE- LOD 500- T2_B3 TO GF aswin",
+        "LW-2002-FAS-LOD 500-T2_B3 TO GF"
+      ],
+      "medium": [
+        "LW-2002-ELE-LOD 500-T1_FF TO TR",
+        "LW-2002-ELE-LOD 500-T1_B3 TO GF",
+        "LW-2002-ELE-LOD 350-T2_FF TO TR",
+        "LW-2002-FAS-LOD 350-T2_FF TO TR",
+        "LW-2002- ELE- LOD 500- T2_B3 TO GF aswin",
+        "LW-2002-FAS-LOD 500-T2_B3 TO GF"
+      ],
+      "high": [
+        "LW-2002-ELE-LOD 500-T1_FF TO TR",
+        "LW-2002-ELE-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-ELE-LOD 350-T2_FF TO TR",
+        "LW-2002-FAS-LOD 350-T2_FF TO TR",
+        "LW-2002- ELE- LOD 500- T2_B3 TO GF aswin",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF",
+        "LW-2002-FAS-LOD 500-T2_B3 TO GF"
+      ]
+    },
+    "Plumbing": {
+      "low": [
+        "LW-2002-PHE-LOD 500-T1_FF TO TR",
+        "LW-2002-PHE-LOD 350-T2_FF TO TR",
+        "LW-2002- FPS- LOD 500- T2_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T2_B3 TO GF"
+      ],
+      "medium": [
+        "LW-2002-PHE-LOD 500-T1_FF TO TR",
+        "LW-2002-FPS-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_FF TO TR",
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 350-T2_FF TO TR",
+        "LW-2002-HVAC-LOD 350-T2_FF TO TR",
+        "LW-2002-PHE-LOD 350-T2_FF TO TR",
+        "LW-2002- FPS- LOD 500- T2_B3 TO GF",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T2_B3 TO GF"
+      ],
+      "high": [
+        "LW-2002-PHE-LOD 500-T1_FF TO TR",
+        "LW-2002-ELE-LOD 500-T1_FF TO TR",
+        "LW-2002-FPS-LOD 500-T1_FF TO TR",
+        "LW-2002-HVAC-LOD 500-T1_FF TO TR",
+        "LW-2002-FPS-LOD 500-T1_B3 TO GF",
+        "LW-2002-HVAC-LOD 500-T1_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF",
+        "LW-2002-FPS-LOD 350-T2_FF TO TR",
+        "LW-2002-HVAC-LOD 350-T2_FF TO TR",
+        "LW-2002-PHE-LOD 350-T2_FF TO TR",
+        "LW-2002- FPS- LOD 500- T2_B3 TO GF",
+        "LW-2002- HVAC- LOD 500-T2_B3 TO GF",
+        "LW-2002-PHE-LOD 500-T2_B3 TO GF"
+      ]
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF"
+      ],
+      "medium": [
+        "LW-2002-PHE-LOD 500-T1_B3 TO GF"
+      ],
+      "high": []
+    }
+  }
+}

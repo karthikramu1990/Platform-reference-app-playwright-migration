@@ -1,0 +1,50 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 24-05-23    HSK        PLAT-2730   Revamed IafViewer Panels - Cutting Planes
+// 28-06-23    HSK        PLAT-2728   Coloring Mechanism - Derive from var(--app-accent-color)
+// -------------------------------------------------------------------------------------
+*/
+
+$btnWidth: 90px;
+.pickFromPointButton {
+    width: 10px !important;
+    position: absolute;
+    height: 15px !important;
+    cursor: pointer;
+    align-items: center;
+    left: 130px;
+    border-radius: 0.262em;
+    .pickFromPointIcon {
+      width: 20px;
+      height: 20px;
+      position: absolute;
+    }
+}
+
+
+  .tooltipTxt {
+    visibility: hidden;
+    width: $btnWidth;
+    background-color: var(--app-accent-color);
+    color: #fff;
+    text-align: center;
+    font-size: 0.832em;
+    padding: 0.262em;
+    border-radius: 0.262em;
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    top: 150%;
+    left: -40px !important;
+    z-index: 7;
+  }
+
+  .pickFromPointIcon:hover .tooltipTxt {
+    visibility: visible;
+  }
+  
+  .filterPickFromPointIcon {
+    width: 17px;
+    height: 17px;
+    filter: brightness(0) invert(1)
+  }

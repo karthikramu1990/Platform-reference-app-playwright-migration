@@ -1,0 +1,72 @@
+{
+  "class": "EvmUtils",
+  "description": "External viewer management utilities for IAF viewer consumers",
+  "constants": {
+    "ARCGIS_PARENT_PATH": "ArcGIS JavaScript API CDN path",
+    "ARCGIS_DEFAULT_MODULES_TO_LOAD": "Default ArcGIS modules configuration",
+    "ARCGIS_SIMPLE_LAYER_TYPES": "Supported ArcGIS layer types",
+    "MMV_COMMANDS": "Deprecated command constants (to be rebranded)",
+    "MMV_EVENTS": "Deprecated event constants (to be rebranded)",
+    "MMV_ERRORS": "Deprecated error constants (to be rebranded)",
+    "EVM_EVENTS": "EVM event constants",
+    "EVM_ERRORS": "EVM error constants",
+    "EVMDisplayMode": "Widget display mode constants",
+    "EVMMode": "Widget mode constants",
+    "EVMWidgetAlignment": "Widget alignment options"
+  },
+  "staticMethods": {
+    "generateUUID": "Generate UUID string",
+    "apiGetActiveEvmCount": "Get count of active EVM viewers",
+    "apiAddUuidToObjectArray": "Add UUID to array of objects",
+    "apiAddUuidToObject": "Add UUID to single object",
+    "apiUnwrapMmvCommadToEvmProperty": "Unwrap MMV command to EVM property",
+    "apiCompareEvmProps": "Compare EVM properties and detect changes"
+  },
+  "commandBuilder": {
+    "EvmCommandBuilder": {
+      "add_graphics": "Build add graphics command",
+      "remove_graphics": "Build remove graphics command",
+      "add_layers": "Build add layers command",
+      "remove_layers": "Build remove layers command",
+      "add_zoomElements": "Build zoom to elements command",
+      "add_camera": "Build set camera command",
+      "add_slicedElements": "Build slice elements command",
+      "add_themeElements": "Build theme elements command"
+    },
+    "EvmBuilderMap": "Command builder mapping for add/remove operations"
+  },
+  "hooks": {
+    "useEvmArcgisPropsAndEvents": "React hook for ArcGIS props and events management"
+  },
+  "classes": {
+    "EvmElementIdManager": {
+      "description": "DOM element ID management for EVM components",
+      "methods": {
+        "getUuid": "Get base UUID",
+        "getEvmUuid": "Get EVM-specific UUID",
+        "getEvmElementById": "Get DOM element by EVM mode",
+        "getEvmElementUuidMeasureCanvas": "Get measure canvas element UUID",
+        "getEvmElementUuidIafContainer": "Get IAF container element UUID",
+        "getEvmElementUuidWebviewerContainer": "Get webviewer container element UUID",
+        "getEvmElementUuidWidgetContainer": "Get widget container element UUID",
+        "getEvmElementUuidGeoCoder": "Get geocoder element UUID",
+        "getEvmElementUuidViewer2DIcon": "Get 2D viewer icon element UUID",
+        "getEvmElementUuidViewer3DIcon": "Get 3D viewer icon element UUID",
+        "getEvmElementUuidArcgisIcon": "Get ArcGIS icon element UUID",
+        "getEvmElementUuidArcgisOverviewIcon": "Get ArcGIS overview icon element UUID",
+        "getEvmElementUuidUnrealEngineIcon": "Get Unreal Engine icon element UUID",
+        "getEvmElementUuidPhotosphereIcon": "Get photosphere icon element UUID",
+        "getEvmElementUuidViewer2DDragArea": "Get 2D viewer drag area element UUID",
+        "getEvmElementUuidViewer2DFullScreenButton": "Get 2D viewer full screen button UUID",
+        "getEvmElementUuidViewer2DHalfScreenButton": "Get 2D viewer half screen button UUID",
+        "getEvmElementUuidDistance": "Get distance container element UUID",
+        "getEvmElementUuidToolbarSize": "Get toolbar size element UUID",
+        "getEvmElementUuidShadingSubmenu": "Get shading submenu element UUID",
+        "getEvmElementUuidViewSubmenu": "Get view submenu element UUID",
+        "getEvmElementUuidNavigationSubmenu": "Get navigation submenu element UUID",
+        "getEvmElementUuidAnnotationsSubmenu": "Get annotations submenu element UUID",
+        "getEvmElementGlobalIdArcgisBaseGallery": "Get ArcGIS base gallery element by global ID"
+      }
+    }
+  }
+}

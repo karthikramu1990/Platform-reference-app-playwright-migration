@@ -1,0 +1,397 @@
+{
+  "project": "Balaji_support Models",
+  "model": "T2-HVAC-Federated With 2D Unoptimised",
+  "results": [
+    {
+      "name": "single_enable_Structural",
+      "totalEnabled": 805,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_enable_Architectural",
+      "totalEnabled": 76863,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_enable_Mechanical",
+      "totalEnabled": 156520,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_enable_Electrical",
+      "totalEnabled": 634,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_enable_Plumbing",
+      "totalEnabled": 133167,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_disable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 805,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_disable_Architectural",
+      "totalEnabled": 0,
+      "totalDisabled": 76863,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_disable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 156520,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_disable_Electrical",
+      "totalEnabled": 0,
+      "totalDisabled": 634,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "single_disable_Plumbing",
+      "totalEnabled": 0,
+      "totalDisabled": 133167,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all",
+      "totalEnabled": 367989,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 367989,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "alternating_pattern",
+      "totalEnabled": 290492,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "quality_low",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "quality_medium",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "quality_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "high_then_disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 290492,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "disable_all_then_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all_then_low",
+      "totalEnabled": 367989,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "low_then_enable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "Combination-1",
+      "totalEnabled": 77668,
+      "totalDisabled": 77668,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "Combination-2",
+      "totalEnabled": 367989,
+      "totalDisabled": 367989,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "stress_full_cycle",
+      "totalEnabled": 367989,
+      "totalDisabled": 367989,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": true,
+        "Infrastructural": true,
+        "NoLayer": true
+      },
+      "eligibleLinkedModels": []
+    }
+  ]
+}

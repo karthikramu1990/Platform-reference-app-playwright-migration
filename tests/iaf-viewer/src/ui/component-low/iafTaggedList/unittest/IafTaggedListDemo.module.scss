@@ -1,0 +1,14 @@
+$text-color-primary: white;
+$text-color-secondary: #ccc;
+$text-color-tertiary: #2c2626;
+
+.fileGroupPrimaryText {
+    color: $text-color-primary;
+    font-weight: 500;
+    font-size: 12px;
+}
+
+.fileGroupSecondaryText {
+    color: $text-color-tertiary;
+    font-size: 10px;
+}

@@ -1,0 +1,108 @@
+
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2813   Revamed IafViewer Components                                     
+// 28-06-23    HSK        PLAT-2728   Coloring Mechanism - Derive from var(--app-accent-color)
+// 21-03-24    HSK        PLAT-4420   Iaf-viewer styles taking precedence over application's MUI components
+// -------------------------------------------------------------------------------------
+*/
+
+.switch-disabled {
+    opacity: 0.6;
+    /* cursor: not-allowed; */
+}
+
+.switch-component {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 0px;
+    gap: 10px;
+    width: 207px;
+    height: 18px;
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+}
+  
+.switch-title {
+width: 170px;
+height: 18px;
+font-family: "Inter";
+font-style: normal;
+font-weight: 500;
+font-size: 10px;
+line-height: 18px;
+color: #dcdcdc;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.switch-component :global(span.MuiSwitch-thumb) {
+margin-left: -14.5px;
+width: 12px;
+height: 12px;
+background: #dcdcdc;
+flex: none;
+order: 0;
+flex-grow: 0;
+}
+
+.switch-component :global(span.MuiSwitch-track) {
+display: flex;
+flex-direction: row;
+align-items: center;
+padding: 2px;
+gap: 10px;
+width: 27px;
+height: 16px;
+background: #3e3e3e;
+border-radius: 18px;
+flex: none;
+order: 1;
+flex-grow: 0;
+opacity: 1;
+}
+
+.switch-component :global(span.MuiSwitch-colorSecondary.Mui-checked + .MuiSwitch-track) {
+background-color: var(--app-accent-color) !important;
+opacity: 1;
+}
+
+.switch-component :global(input.PrivateSwitchBase-input-11.MuiSwitch-input) {
+left: -100%;
+width: 300%;
+}
+
+.switch-component :global(span.MuiSwitch-root) {
+display: flex;
+flex-direction: row;
+justify-content: flex-end;
+align-items: center;
+padding: 2px;
+gap: 10px;
+width: 27px;
+height: 16px;
+border-radius: 18px;
+flex: none;
+order: 1;
+flex-grow: 0;
+}
+  
+.switch-component :global(span.MuiSwitch-root > :first-child) {
+top: auto !important;
+left: auto !important;
+}
+    
+  
+.switch-component :global(span.MuiSwitch-root > .Mui-checked:first-child) {
+    transform: translateX(8px) !important; 
+}
+.disabled-component{
+    /* Make the div appear disabled */
+    opacity: 0.6; /* Reduce opacity to make it appear faded */
+    pointer-events: none; /* Disable mouse interactions */
+    cursor: not-allowed; /* Change cursor to indicate it's not clickable */
+  }

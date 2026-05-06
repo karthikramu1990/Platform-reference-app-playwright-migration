@@ -1,0 +1,56 @@
+{
+  "projectName": "SGPK_Models",
+  "modelName": "EX11034-INV-Federated",
+  "timestamp": "2026-02-17T20:23:58.005Z",
+  "layerStatsPerView": {
+    "EX11034-INV-A-ZZ-M3-A": {},
+    "EX11034-INV-S-ZZ-M3-S": {},
+    "EX11034-INV-M-ZZ-M3-H": {},
+    "EX11034-INV-M-ZZ-M3-P": {},
+    "EX11034-INV-M-ZZ-M3-F": {},
+    "EX11034-INV-E-ZZ-M3-E": {}
+  },
+  "comparisonResults": {},
+  "linkedFilesLayerWise": {
+    "Structural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Architectural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Mechanical": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Electrical": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Plumbing": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "FireProtection": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "Infrastructural": {
+      "low": [],
+      "medium": [],
+      "high": []
+    },
+    "NoLayer": {
+      "low": [],
+      "medium": [],
+      "high": []
+    }
+  }
+}

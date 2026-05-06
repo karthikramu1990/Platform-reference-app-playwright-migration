@@ -1,0 +1,520 @@
+{
+  "project": "Skinny_BIAL_5.1_1",
+  "model": "T2-HVAC-Federated",
+  "results": [
+    {
+      "name": "single_enable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 22153,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_enable_Architectural",
+      "totalEnabled": 20807,
+      "totalDisabled": 262,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_enable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 338,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_enable_Electrical",
+      "totalEnabled": 0,
+      "totalDisabled": 5127,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_enable_Plumbing",
+      "totalEnabled": 7073,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_disable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 51183,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Architectural",
+      "totalEnabled": 0,
+      "totalDisabled": 41743,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 157778,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Electrical",
+      "totalEnabled": 0,
+      "totalDisabled": 30537,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Plumbing",
+      "totalEnabled": 0,
+      "totalDisabled": 18369,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all",
+      "totalEnabled": 296288,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 268334,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "alternating_pattern",
+      "totalEnabled": 227377,
+      "totalDisabled": 23440,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "quality_low",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "quality_medium",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "quality_high",
+      "totalEnabled": 6088,
+      "totalDisabled": 39383,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "high_then_disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 361383,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "disable_all_then_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all_then_low",
+      "totalEnabled": 368318,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "low_then_enable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "Combination-1",
+      "totalEnabled": 162712,
+      "totalDisabled": 78868,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "Combination-2",
+      "totalEnabled": 235982,
+      "totalDisabled": 84851,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "stress_full_cycle",
+      "totalEnabled": 330393,
+      "totalDisabled": 31814,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 HVAC_AB CORE_2024 Skinny",
+        "L&T T2 HVAC_AB FLB_2024 Skinny",
+        "L&T T2 HVAC_AB EQUIPMENTS_2024 Skinny",
+        "L&T T2 HVAC CORE_AB PIPING_2024 skinny",
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    }
+  ]
+}

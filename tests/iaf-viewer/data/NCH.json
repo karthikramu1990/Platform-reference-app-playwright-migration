@@ -1,0 +1,623 @@
+[
+  {
+    "_name": "NCH-A-BDP-M3-04-00-Internal Layout.rvt(290218).scs",
+    "_tipId": "394532d1-f99b-4088-935a-0cb1a168b309",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:2d061cdf-354c-46bd-86f9-c17be25483b8",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "2d061cdf-354c-46bd-86f9-c17be25483b8",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586934918509,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586934957383
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/2d061cdf-354c-46bd-86f9-c17be25483b8/1/NCH-A-BDP-M3-04-00-Internal%20Layout.rvt(290218).scs?Expires=1587107758&Signature=pfw5M0mnrgO5YVUk7GqVvA0W4q5PfOH15KQ2xUi37aFfwgepA1~DDnyjMa7JxmcPpVJFFjurPA3uDclk9~3sHml95uGM6gFhDX2R5rNntpydXq9HH2FLNTUbZSfcdxsIAqQpU5MRXZtqhw48GfAFjRkIaYzszjDpUZVg13MTrO1WfvGw8QT7lHbsMN1ksmuFqvsIxk4ZznCZiKdfbxm-edRRXOQbEqDcwrKlQtQYUwX14-Vqa3T6933Dq~d0lzc4n7i7-r7vQ4zuwSXyZ3Eo6eEnbGN1TOaJZfbD80xTn9JnidqBqssTBBxO0gSh~5gd5DTJnXZ~H~i9tqNyvs-2zg__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-ZZ-00-Concourse Ceiling.rvt(290251).scs",
+    "_tipId": "aba728a4-638f-4f5f-ae24-745c061bc9e1",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:1a38e70e-27fb-45e9-93e4-9cd778afb3f1",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "1a38e70e-27fb-45e9-93e4-9cd778afb3f1",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586934959845,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586934961615
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/1a38e70e-27fb-45e9-93e4-9cd778afb3f1/1/NCH-A-BDP-M3-ZZ-00-Concourse%20Ceiling.rvt(290251).scs?Expires=1587107762&Signature=qBj45agqhUAJOMoOnhxf9hri6FJiBXQxUianQ9UlSFHbcwCMkYKtTIOCEZ2MKDkVkRhZ4BLW1GgNYvN-UeHO9rDjoxd0rRKLBO1t-ac4W-wj~aVn9JoVUWvrodwuUmLw0CBCgFa3DDl-5LtVhHPQWNf3-U2oR6S-OoRPsPSANUZR8jHjvz7Hqu9dx0S5A3PYSoLimXAFMlIHq7XPMl6dM9ByNStXKDCiw~KrZvYz3Ml85d1Sy2GOpAfvPc2BYLQOsgLTeqMa~FZH0JWxilUr3wUUtADbwWe4XF1Dy6cjNK5O0iH0LkhrLbMOvqZDTT40rSf2791ww3O-7umDEYV3Bw__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-05-00-Internal Layout.rvt(290224).scs",
+    "_tipId": "9ebfb705-e43e-47f2-8da3-4ecf04c12c7f",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:bdd5323c-df8b-4fec-9a95-92dc5cb31dfe",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "bdd5323c-df8b-4fec-9a95-92dc5cb31dfe",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586934964335,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586934999967
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/bdd5323c-df8b-4fec-9a95-92dc5cb31dfe/1/NCH-A-BDP-M3-05-00-Internal%20Layout.rvt(290224).scs?Expires=1587107801&Signature=WGirKSFM6h4nU546A5~wH7VDADmKN907rApKdaI6~J8J1wBMmfL~2SBbeRyNW-KFncY8XPte~hEsYXOhSl~T0y-EQhV6kn33vIFYwAi0P0py9GB4G0ADSrTgfppX9-tLS16NP0aLDPviMP58C1zuBpDYohvIr0z5ATq4c7WcocZ22d-mZzVqACrm7zpSPHgsxEakTfdRn9~gVAKGizh6AeoeDMfNqkju7Xyo7myhRWZUZiZY7do9O3b~Wus9Lc6-fxw0hfzsXsSl0DJQYei1b4uam7DgOpnlq4JIS5XfNYvgrAbaubp2Vx1p4ACp4mCN5J8vCr7LHf4AgUQ7mZGEVA__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-ZZ-00-Stairs.rvt(290257).scs",
+    "_tipId": "092f9402-5d45-4f1b-90e0-a512f046f6a6",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:1cbca64a-d685-4ca4-8882-eefb1f5deb8b",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "1cbca64a-d685-4ca4-8882-eefb1f5deb8b",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935002957,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935027658
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/1cbca64a-d685-4ca4-8882-eefb1f5deb8b/1/NCH-A-BDP-M3-ZZ-00-Stairs.rvt(290257).scs?Expires=1587107828&Signature=gdUsIv4BOjYqs01hdUVV-UT7~i~wNu6VFGV8OaQJ3GpFCB6lYhaM9dW04WlnFEMCt-lKtkbVijcVZlwGoHCNsn2jrjoCtxv9EF8XB88p-ytNDG8c3GTLoDvDlATw2~v0Al~fsXhviFaoB6mJB87j5BksAAiTK5MoZXFYNrfqkOBb7lLHQ18D5dWXnTL27EQy58YYJzJ0Fz~4ceJN32ibEgbSmGWJQlftpqG34~8ukxRmNocsMJ~IKe913NHJoHp1E9OIefz56Tw-vnETxVR0tbX30oVwgQzEQAN8MA5CQPWE7qRE0Jv7hbDtbTe27sk5cKVhw3Yhk91ulrtG9i0d7A__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-02-00-Equipment.rvt(290203).scs",
+    "_tipId": "02773ccd-ea64-485a-8390-221679f78953",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:9f45f8ef-d1c0-4aab-af32-0cc35ee2cb97",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "9f45f8ef-d1c0-4aab-af32-0cc35ee2cb97",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935030264,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935070250
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/9f45f8ef-d1c0-4aab-af32-0cc35ee2cb97/1/NCH-A-BDP-M3-02-00-Equipment.rvt(290203).scs?Expires=1587107871&Signature=otWIKxq~5D2VkbY-f0Y1EBiPXZNcPtFsuO5Nt2jUHl6aKyI~EIK4UT0bUo~9sqLxN22x88~xJUZLD5rdg8d~dZn05sPsegBnl6TkGlIdymKezzWeId2UBTcpG8MUYNJwOjVx~guSqk1XCbpXTLCEVfLtRRqRSS5UGqRqERG1NJERUphgpj1xKQW25~zt2mDnYdcDCKFPK~Bq9vsXxjpxea9jey8owpDvpE7SPAl0Plu0P8dsL28EEKxxYx5pLD9V1OIGLxwKL7o1UZ742VJn5shRaBU7FsmY7H6ZUk1RhKd97mVRGGS7cL2wsX5YqnbdqyvW6r2tEnwidPJTrjFZRA__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-06-00-Internal Layout.rvt(290230).scs",
+    "_tipId": "eb8cd471-c033-439f-ab64-c4e5626c7fb5",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:963423b6-0992-4c57-8cac-ad6225e9aa19",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "963423b6-0992-4c57-8cac-ad6225e9aa19",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935072955,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935105988
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/963423b6-0992-4c57-8cac-ad6225e9aa19/1/NCH-A-BDP-M3-06-00-Internal%20Layout.rvt(290230).scs?Expires=1587107907&Signature=Ounlhr7OEjbQ0fVF7bIyWd~Zdz2oI9MoMHU50mqQ9WqZ02UEzATdtvhvGUu4NGXVBiY5blckv~K3D8xJyZkSeXqzoEI0wNjyCPKlPkux8vbrZgtSk5capI1w2YzOLIfmxF6o6WHafh9wckiFyJ2P-r44t0gzR~32IQBM2bkRgF1szR5h4pERRhn1Dwutp23-bW6512R9duYpA-dqu0xOLVk2aMYSAxJQb4m37RyLmrMPKNlgrV58zZS7jNkXZepVo0y3EWHV2XW4JNYMsu7iVdMtRBK~b6RP7Qysl2nktcv-UHpbpNQjKe7DyyiKy5nzvPjq~oWZrWYKdPiImVfT3A__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-06-00-Equipment.rvt(290227).scs",
+    "_tipId": "7442e4e1-a2cb-4519-b140-2c619b0ccaff",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:2b0a4a65-094f-458c-aa59-54b11921ce19",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "2b0a4a65-094f-458c-aa59-54b11921ce19",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935108661,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935153632
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/2b0a4a65-094f-458c-aa59-54b11921ce19/1/NCH-A-BDP-M3-06-00-Equipment.rvt(290227).scs?Expires=1587107954&Signature=FfnJxSc4FtfHhsGO-eDfffwL2RKdXSMkL73CgGdDVkidxubBi3C1rObNiN9O4PUD~ZXXBjbIkuD0BYXMRTIEUPp6wYfmz~BmjZG5qB6qvTSw4x8rApNxg4pbn-jYKoMDsoZ0jQ~WpfF-9E7V3AneFoQmDb7MMFZ1pCFSG3wTk3xJbunbrUKqbeMdYz-~FMrGntuAyCwRFwbZ81k0pkuNyihmJmoE8SYpe~o9~q2wYo4xP73H6PDB2b6jWk8hnpUW7EYUjYukld7l6LtRQLaqtfJhGV4~~INrsah7nmaYxYYq~dMbS1p3IxSkRWHFYH9wm2EPE0u0uUYo2F1hdzWUsw__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-03-00-Internal Layout.rvt(290212).scs",
+    "_tipId": "ab5bd4ab-1ef8-4a1b-be9a-33c2da6ec7db",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:c964ece9-b248-4bf1-9119-ad3836d1d9b3",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "c964ece9-b248-4bf1-9119-ad3836d1d9b3",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935156199,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935186112
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/c964ece9-b248-4bf1-9119-ad3836d1d9b3/1/NCH-A-BDP-M3-03-00-Internal%20Layout.rvt(290212).scs?Expires=1587107987&Signature=AOvzEwwv9dR0QrD4u7CS8gIrFQigzmU4tYgJsvnKEr~Ale-sxC37v72rGokPR0uyA2EoKcmiynE1s2gz6bwSm-9u1fpYQ-RDgEem0yIO-huXqa6t872sOMT2YEIDHovOz2U11DgqfM5lcRzhxIEro1MQmvY~H4aZt8D-f5MS0a90A~gTTGyQhTtmRKfPcer6Bg~yrRVcbzQQLIL-EgIlqW9kx8ROZRSyDlWh0EF9uP3OsFWvLe8Vu7iKKt0ywHOLNxVGHZqb528oXMpW1rnIsZh-DpW4rvCjZZlqmfASd9KS92Bc0uV3yhxr71m5ha5QJFMeZAdgYVOR-MFraCN5gg__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-00-00-Equipment.rvt(290187).scs",
+    "_tipId": "180969b1-58d5-4b4c-8d2a-6737b3d82b98",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:6f0be8d9-46aa-46f4-95bb-880cdc51b33e",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "6f0be8d9-46aa-46f4-95bb-880cdc51b33e",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935188863,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935229044
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/6f0be8d9-46aa-46f4-95bb-880cdc51b33e/1/NCH-A-BDP-M3-00-00-Equipment.rvt(290187).scs?Expires=1587108030&Signature=MShuGPjBfIkacYRBta4woCHSx8Tm01TLe7bZd0Qjw6VArsM6D~e5V-jrkoeerqw7H4GM~GFR0tye7150v7qtIBebydvbT1I2hoCzkl~7EiO~gfr47L8LL1R2XQKIaPOzmIdYZBYf~Nsof4f1pwUsZNjavcwQGttBjoUTOzN8k1IaH56DPHEJaS-SkZegwrBc3QWCYhtwFRC~lnUSu9LxmntgcOil9uaz9JOGuLx59NHYZDBr8tJT55iyQENjkpWF0cVm-mKxQr5rADb1XJYkb46DJX9icxaH9qKlX~QNeO6reMcSvy1gaJ05PD4EyHAG-jNLrofajUkUjt~XVyzcFg__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-05-00-Equipment.rvt(290221).scs",
+    "_tipId": "c80c11d4-f1b0-445d-af46-c8271b034edd",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:84401ae0-cf3e-4356-90df-91789b3d2ff2",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "84401ae0-cf3e-4356-90df-91789b3d2ff2",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935231618,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935273834
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/84401ae0-cf3e-4356-90df-91789b3d2ff2/1/NCH-A-BDP-M3-05-00-Equipment.rvt(290221).scs?Expires=1587108075&Signature=Uy83u4q~Z3J4AvriM2rk-G16a9ObccdaCtkfbi9cpnI90RNJI0DPvmUepT4TQGH8Lo4anp3ZZaYGQ90-ZQbFLYclT2aX1p2tURf-~okezpp91fMLG8MNF6wzNNcpHQ8V2J4zf5X1ap7hmDaWQYT-uH-223lilf595u1D1XZmt22~kmjng4-77VqpHTudGxlU7q4LE5YB-CC8iiod20O~xLLplk-luy-f0LLUTYd7xynkENnJojKPyMMqUwprXAV0KC4MQkGfMWQaPwZ7hKZJQBnW9TinUkX5yrNsVLuLZqmTJZIwDZP5fxzt3fQb2GFeYU4fBT~iQ5fBKpukYmTGog__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-A-Federated.rvt.scs",
+    "_tipId": "590f563d-7513-4062-b51f-341d35f62c5e",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:20e69253-9594-4c48-8e2a-90a8a2c1ace0",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "20e69253-9594-4c48-8e2a-90a8a2c1ace0",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935276042,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935276168
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/20e69253-9594-4c48-8e2a-90a8a2c1ace0/1/NCH-A-BDP-A-Federated.rvt.scs?Expires=1587108077&Signature=XcPL~O8ZpZIJslCeBvMujsofdCjVLeL0qrCwCOkYXHJeUMZY0rMZygRqOrWWaBSZ~t8t-s0Mk~t~TK6lCbbITg2Okrb2tkebr4zbI31aLnXNZ3nMEr5DopxzD6M7uctnwuZ54mnJC~T3ncYBj00xwZmatUY0ax4LXK2cln6ol39ViKW~ut1W9~-bTzCEy7TXxWMhbs0fxt61lzhvCaVdDUvahWWc5fAQsKnPGyzKoAKBLzBc3L1rJHBdEa-waKDl7e~CiAAjL-Kz~RyooahoOiqpuxyW4ESAw50k~j1jbK39NZZ8OAScMWTQP~fW37frpqm1uOD7kZRBN8mszffaVA__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-B2-00-Internal Layout.rvt(290242).scs",
+    "_tipId": "6408c2a8-0dc5-4262-8a83-456e043293e4",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:45340ed2-0965-4a6d-8a5b-900c4b9640b2",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "45340ed2-0965-4a6d-8a5b-900c4b9640b2",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935278763,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935299759
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/45340ed2-0965-4a6d-8a5b-900c4b9640b2/1/NCH-A-BDP-M3-B2-00-Internal%20Layout.rvt(290242).scs?Expires=1587108101&Signature=DhpYruZQeXrWPApQYzeBo7RVvbEfxWgcR7Mc8cznSPyBNp2E9uXZdbtEDva2spUdX3uRhhp8k1k0wvTKKxvyNPmGklf0AvURLxvlOjw443oTcY30n0AtPACA~kfrL21XGxt7A11WJ96p0IrLzGkf~bTy~K8n4JN33A95nxn0gPwfbhEjytdZKlu2AFoY5zaZMQKJYf-dsSdJs20Uuc~fOyET8mUaN6Nz2DBYksekV2FJ8V6NXwDv-AVb6U-R7K6djs3auN~3t6Jr0oI8tpahN--nr6Teg-k5SHt7QdL~4myNO7t7~B5buBEg48t2f-esTgbdvlobl4Lf5UZvWxa64Q__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-00-00-Internal Layout.rvt(290190).scs",
+    "_tipId": "bd8cffa5-b1cc-409c-bdb9-722d3317d297",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:63007349-620b-40d3-b11b-e49a17623ae2",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "63007349-620b-40d3-b11b-e49a17623ae2",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935302716,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935333474
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/63007349-620b-40d3-b11b-e49a17623ae2/1/NCH-A-BDP-M3-00-00-Internal%20Layout.rvt(290190).scs?Expires=1587108134&Signature=z~dHAnhdVmr6SCbLYvcuHCZ64GgcWIgjyWwRwwu1EheNKcd5LgLaKd5bfJkzSkYcRF4PItVS90RYYfqOxs3Vg-i3kGF1anQeareBDVADlyQnt8HtGrJ8GuM0rj-D~yiFZg3Sn13rOGQtupLd2F9YO-k9wJ7W5tuuchRbcgwPMlTU8~FHNzVFLNFYKXIQD5qnwPiIkyqgtsPL3QXGQrjwtlL0e10MSez5u4-ckkYdwoWn8B-4GmvAykHNbr7gcUd6vjvYcRmAKDBiOd9191~Mv7OGiEi~hqlV7R1Ev7D09V4inDzsZ9P2PBDSF~rTxK3kyZ8uhX1IBeZzRwGb8keTrQ__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-LG-00-Internal Layout.rvt(290248).scs",
+    "_tipId": "23211d86-b7c7-4c94-9faa-230ef16ad2ef",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:ecc2e3fc-556f-46c4-ad3c-ba4afb96dbb2",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "ecc2e3fc-556f-46c4-ad3c-ba4afb96dbb2",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935336025,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935359494
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/ecc2e3fc-556f-46c4-ad3c-ba4afb96dbb2/1/NCH-A-BDP-M3-LG-00-Internal%20Layout.rvt(290248).scs?Expires=1587108160&Signature=YasbOu05vY2r9tyTsXrVihiqjMPFfWQVAHwbOnUt7ZVLUlHa2s~qGgrN3vS9umxfWz3kZTHHvdXGez9vxPMG8cL-VLY4HJwmZfRhaULJIjIG~tA3K5ZorpcBN0anqc8M-ST9RtDk6eYyTkHBYg92BfwcV4BWi93qzvG0Tsirf0VvSslyVQ1n3t4GxSMkrx6BdlIjyBODw12AMMY63vba3GTA1NDGyWchFDnbZZAPcSQTOmZ3J9Xjjw7navaDvhpMKWG0K~Ez9ndeyRdVnVyrvPUiliF-7T822uD-Ul0VHp4jXNEzc5epoLEXnXSy7Cvjd5kMrkVTznev4rhEdOEm~w__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-B1-00-Internal Layout.rvt(290236).scs",
+    "_tipId": "ad34d11c-f52b-4ea0-8cee-be9703199e9d",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:1c6d7757-56bd-4596-ae90-2ed9474cb20f",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "1c6d7757-56bd-4596-ae90-2ed9474cb20f",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935362416,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935364650
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/1c6d7757-56bd-4596-ae90-2ed9474cb20f/1/NCH-A-BDP-M3-B1-00-Internal%20Layout.rvt(290236).scs?Expires=1587108165&Signature=qCVsug3QFaVFzS52OriIrJr~0jXSRF9IfcOhDhqnIrRZG9SIjjQM86lOWznD4ZVZDNUxB-HMOcPmPNwCz2D0zu~m4pJQweASC9Y60B22o2eCrdesWKrlCmPH89PySdMjgzcZrPc77p13evOiB0TLdaQA0VwCuqw6ikua7qmHWvnzM-Dc~SoZBfGh-q0l4AD1cXJptj-fbUhP4ORO87k7GoZ4i-H7uIwHDyvIXMYN0nk6e6Tvm4azaHGsRWmMuL4us7QqzwonVcoOskKFdEbHLi9z8shnD6Pw0PYzRDALG~-V69EkfLnUY1gc2tXWfkslaR7rszsMdiljLmmnccOOpQ__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-04-00-Equipment.rvt(290215).scs",
+    "_tipId": "54e8255a-e55b-4a8b-80e8-ecad670ce038",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:ed44c99a-7937-4cf7-90a9-fe952529a5a6",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "ed44c99a-7937-4cf7-90a9-fe952529a5a6",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935367467,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935414551
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/ed44c99a-7937-4cf7-90a9-fe952529a5a6/1/NCH-A-BDP-M3-04-00-Equipment.rvt(290215).scs?Expires=1587108215&Signature=ZH-aCvL1Vb5YzYjoTwMEbdgdO-jqsRYp--7tALNvE7uMFWh-lpAS8-I05RbPkTexO8USAQxft6nDcjb~D8wJTk3iimmNHd9oKPL4C1zHqOHOG7vJcRhcDm83ppLaOnwuOrgsgNdkGWrZZnwkbkAIT-h~Ep22K1OdgkK3BlAb2R7~qoZclquVjJu-yFHOVpt77kwt8lOpFGvhcP01-l7xoVWJxDe0TNO1YdeWRI3nA2-LdIqhxNjslndUCr0yVQKqt~Lcj~3CIuozWjWQWsj0w5TiAdCZIvl7iy5xD~jSE1u7kryYryZxxPRMOCmBC546mcSbFZaRTcz6AVSBYJLNPg__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-B2-00-Equipment.rvt(290239).scs",
+    "_tipId": "64907a3a-1532-4c5a-92ac-5933bb23d3ed",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:0833ece8-64a3-427c-892a-73a8e584a014",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "0833ece8-64a3-427c-892a-73a8e584a014",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935417606,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935436658
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/0833ece8-64a3-427c-892a-73a8e584a014/1/NCH-A-BDP-M3-B2-00-Equipment.rvt(290239).scs?Expires=1587108237&Signature=nyJ-NHE2jGetAWwJiTawKacwQSwD1ZeQFdTE62J6lpC3KVbIgRlpMA8ZNVlsZJhCCmaba6j0-m3t04BcknYcfA9Ficuy2krGwWTUaKIlX-Cvg0yt68rdVE2yMvpXjz~mcdLAQFqR9S8SW7lVwZQ7k4-q6--xArVy9KnoKWrKV9S36KRWiyuz6o9rJaDL2HjVKKgN82KnzNs64rmblkIfIPtO23-9-tHVCcE~3Ya2jOl23emwshm8yIzQF6ZkemeTWyyD6iEVQlP3eT4dK-tMUk8Pn4t9ah3N2bxZqk2j~KmQ5rxXM9HNVJ6qjLz7joEV0HSnMGapMahayCkqoJqJ4g__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-01-00-Internal Layout.rvt(290182).scs",
+    "_tipId": "9c09e754-0ce3-455e-aab5-b67de260cb0e",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:010b6c04-7f28-4358-9ae0-31dd50fe25ab",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "010b6c04-7f28-4358-9ae0-31dd50fe25ab",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935439470,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935486491
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/010b6c04-7f28-4358-9ae0-31dd50fe25ab/1/NCH-A-BDP-M3-01-00-Internal%20Layout.rvt(290182).scs?Expires=1587108287&Signature=n2YlLRuLaao6GaJ~xfP6A~MqWbLPZpioI6uGNHwDhE5jRcnRqpxQRurxNZWGaEg4wxAhfAp10m4bFu0guC7qz2nG2lwFBeSVFmpR31YbcOwpaCPTAuGY9vaMLUPJS7N7KgD8nZyW96Q8shMgpvb2RFVOzioLzhQG315RmX-yv4d3dFidtMyd0tNCymj0ToJlN0gLr7pQt2SAzIQNRSfRDVePvf5hQF5X2FaNVbRzU6xPqNZ3OKVeWxZCBLlrwerbbbHprv7LZ0VjxyfcVycD91gz0-~ekbOOYzdV3qp3C8IPOXeYEJikNqCru5-B0JG0HQyDf9kHwNLX6Al7gFTqhg__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-LG-00-Equipment.rvt(290245).scs",
+    "_tipId": "d9d842d6-4a98-4e4d-b0b3-37536409ba73",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:3b2af2b7-dd15-47ae-b389-fe999874ce89",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "3b2af2b7-dd15-47ae-b389-fe999874ce89",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935489308,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935570723
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/3b2af2b7-dd15-47ae-b389-fe999874ce89/1/NCH-A-BDP-M3-LG-00-Equipment.rvt(290245).scs?Expires=1587108371&Signature=xiCzKl0YmHXCgXcqpMlFDvDKMjWB8taAsPPJVms2YuXU~39IjOZ1NDLYzFQrCEilTkEegG9EW6xH7bAjhSamFD-xswvrO8164-SKonbnpnhu8ShZyiP1CPSf20oXvRP9G3Tu~~G33pCU~k7eWitpFYMCdzTux0HqeoCP2WCx3lypCbZ6DY2maX-utsioENLvUi02rIhianx5lRSeQY9jgYtLbZ0b99rD2HE6C~kjWxB-aPEzL0Z6jB90XpUZUDodrHOTecOYFOyoC1YPg9G8jD-qP9Uc4LH4loDFN7jak6HjIkA1MzIO0aLoSAsoGnRImmA~KuzbOe9fqrn8LzY02Q__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-ZZ-00-Concourse.rvt(290254).scs",
+    "_tipId": "a93a0c0c-54ec-409a-89b3-4eebafc571a6",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:abfb4f11-622f-4095-baa7-04511c8e3714",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "abfb4f11-622f-4095-baa7-04511c8e3714",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935573173,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935620070
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/abfb4f11-622f-4095-baa7-04511c8e3714/1/NCH-A-BDP-M3-ZZ-00-Concourse.rvt(290254).scs?Expires=1587108421&Signature=qn9-qJcXLapCfNobtK0rR5eRIgpL0JgsoeJ3hm6967QB5fP~Zb8KRP9zBEgakx9I8erwREpDmnc1zUXlbbgws6xBEZJTEptuEpff9DmdSuOHnaOp-yWkLGoFojy2~VdpYV3y8cq6tVKjoRcIap5ZGPLv3LIvv4~9WUaKlRrQb9HKNp3Kz69RGR7Mlu588wRReW~uMuQbU~T1mNeuOl77HrOnYWKWkSK2gLO8QoTY-e9PgwUm4sLUyXhWOqeewMExg1MwbzoNaUVWVWQhIDDs9u4U0-b0SLi~XW7XQanbPlBTwbDzJQykMi0jaMuUddtVZfFQXljesqFiWLh4vrz0ew__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-03-00-Equipment.rvt(290209).scs",
+    "_tipId": "ad51f75d-5365-4aed-b6a7-92138067fe69",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:ae095c47-a7be-4218-aed9-dd2b5bd3ad9c",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "ae095c47-a7be-4218-aed9-dd2b5bd3ad9c",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935622839,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935678686
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/ae095c47-a7be-4218-aed9-dd2b5bd3ad9c/1/NCH-A-BDP-M3-03-00-Equipment.rvt(290209).scs?Expires=1587108479&Signature=lVEwu~ECWGm2puUiKcXyO2TNCyx7EhzC9ou1bQ~gSYOvTZsaBDfJ5T03c-vfCeoIDLaE8L-bZusbs05sQs7t6nmjFk-oMAhBKfo~YPl4YzNis33Jp0dXiIeOwx1awyl4XaStSqsXqjhVbR4EPznGLBjOlTtS4Lk9LN0AqR~GCMNRYwZLVHzYM8iTGysY7QT9tAVgo-9F5Dvs~OAfT3w5ooYMXfDoCp1yFOvpd3pM0ns4d5pOgMqoRhphIhx922JkcEX1dCG45~dOYYU5KfKPW1ThHw9IVkNScijX3jlg8QaX680II8MoTr91TRs2pdS3EUDWgI70T0eJVu2nf-eKfw__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-02-00-Internal Layout.rvt(290206).scs",
+    "_tipId": "d57a1d4e-107e-4568-9658-297fbec7d9f6",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:692900f9-d09a-4932-a4dd-404422884441",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "692900f9-d09a-4932-a4dd-404422884441",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935681604,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935691163
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/692900f9-d09a-4932-a4dd-404422884441/1/NCH-A-BDP-M3-02-00-Internal%20Layout.rvt(290206).scs?Expires=1587108492&Signature=N3LDG2buJ79YyFH818~5KkEkfAlUY-o8NcW14noIYdjVGp8Fu4rxZWXEjBgjHQvdxBVpJoIL28XECVzKcAsUQvjPnnme0gk3mWTv0X6QSbe4uufSv0Ij6neod5qWJnTkSQEual0jPoRXrTPn8NgfYMkmXARS2DyuaZHlnpX8QJLITb4jK8LWMGMG1KiIz2Xfjk~JrcqcLlR0mr-D~rkZcn8jKf9H-JrYJSlN5NsVzHo1DYfEND2DHPD-iI9uVdBgwMU9v8plSfqMvm0n84l0QsQpN1brw-kTVux5i4B5ueGqf1uPFvmPjOBezIwYCVLqxTp-JjnZIVZwTdSJH7ET3Q__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-01-00-Equipment.rvt(290200).scs",
+    "_tipId": "a40a82f6-58c9-4c45-9f52-ff35461364a6",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:da5a33e8-13a9-4037-b82a-426e823ed336",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "da5a33e8-13a9-4037-b82a-426e823ed336",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935693635,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935739179
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/da5a33e8-13a9-4037-b82a-426e823ed336/1/NCH-A-BDP-M3-01-00-Equipment.rvt(290200).scs?Expires=1587108540&Signature=jJcj82Ewi8X4EEX3Z33Y6QJsjimchtRW3tDKhkst8LiFr6xJOiB-nsWpg3vzeDTAXw31262Ke-rCiM9G8s2d9JmSiLIhqh46AZuZqyC~LX835Os8MP~5fsM23ZN-jX-0TAk4-fv0pjLXa-U9r-jtAitOAxjHb8N3b9aXIdovtoRRjvpGMl1yTPh7m5D0D54DE0WimolsVOFGOnxnsUu8hfKyvzWZrOjgWvhRwjkUvd~HbQcEEDZjJ2ufPM6tVFUIYhIUt52JBesRy2UPj9oHSUje5cI7UoHnKyD640U3oG51sp1syLeb8lOzutx3Qi06lXZYQsFkEo6udKUgqlHesQ__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-07-00-Internal Layout.rvt(290193).scs",
+    "_tipId": "7ffeb071-dc2c-4ecd-ac53-a376b956c499",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:45f7a7e8-afa7-4e6e-a288-d0cdcff58254",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "45f7a7e8-afa7-4e6e-a288-d0cdcff58254",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935742130,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935743086
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/45f7a7e8-afa7-4e6e-a288-d0cdcff58254/1/NCH-A-BDP-M3-07-00-Internal%20Layout.rvt(290193).scs?Expires=1587108544&Signature=XJ-JmrszkxEdPRvq5ZGZCgXkexk8nuGx~Q3VZ9y4Colr0sm-XIXXQmwPUp0zTq-e2r-13-x2TeU97KQBFwVBNIypgwruDTY3xEnBxAlYl7QfUlNRFV2YLsmMlaGsgfJbuwXH4IPpxW5cL~UNbiFiZVOcK53uAL8wPIXBv5~O~1lqYdAhOgfnhFqOKyCUhY1rMy~NrnvTmCTHDcp-uDIZrkbm9LmX3pm~6GVwWafHQR7EU5nFi3PFn5AzsUeNBFL27Revaoc4Zmmpv~TIq3WNqUxf41K4Rt5VO-wVMMEUbTwrKaGPlBR0zP41504zDmQJKoBuOYCnXcJ57pqdpHXGnw__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-ZZ-00-Envelope.rvt(290260).scs",
+    "_tipId": "e5d46934-ab41-44fd-bf92-1920e87cec3e",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:9a40eed0-223a-4b3e-9526-7313fa407d65",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "9a40eed0-223a-4b3e-9526-7313fa407d65",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935745954,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935831047
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/9a40eed0-223a-4b3e-9526-7313fa407d65/1/NCH-A-BDP-M3-ZZ-00-Envelope.rvt(290260).scs?Expires=1587108632&Signature=fPkbSmWxgbMfOtDr6D35PS7eu0XDFh558Aofz0frnpm9s0kEmdY~fCI4rNO4nzAU8Py22YQYaaj5Y3uAqdNoWrlwVh~7Uvfah-8YVSLhOg7KCPskXQZjd4FxtRrXYhYxyLC8azSfHNyVQpEPJJT8cAEKgQLKR6waPHxbTXlJ3BAPMzeJ3vTY-n3BctJU8wJtgvAh3d7i5AhKID~U-YfQANkp5hzW~9mqNiYYPVCwjeqciv6lx3IdT8wW84uyLsyBJ4z3ktLH4bawxRptXh18moW7PF2qf801JvAxX9O73qyOsJHRttawGxrxh9RWAajCGVB633Bhx1ukOmNq3Nci3w__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-ZZ-00-Biome.rvt(290263).scs",
+    "_tipId": "a45bd7cd-2ef9-466d-82cb-9153246dec31",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:13982db4-e055-4c54-bf71-ae732d04fca5",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "13982db4-e055-4c54-bf71-ae732d04fca5",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935833909,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935856391
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/13982db4-e055-4c54-bf71-ae732d04fca5/1/NCH-A-BDP-M3-ZZ-00-Biome.rvt(290263).scs?Expires=1587108657&Signature=oY8KSLDWkayJUAK3Ic4OEAOfwoEoZYDXw0l5InL~azoksmXacUZ9yIr1FiCAYr4UPoLt5WdT6yikJB3ez4t3GuAuZsp-X-jF45jFO2OvmCAvY~eZtL32HkOXu85uwPzhl8Fnh7TwdDQGXRU3WwmGM8mrdJD8Yr9bPzjrmR103Dz7jH2LwZISDbDuDZrB8TOWdOH6tKv6LJHabkPnktxWuXWahdV-AC6uWBtO-CckGruu4TTu0hSjYeCXthI3PxR6zv2ogR23YXF8aqAppMDPsRX0Bt7peM3xEyoIosqxbz9E5HdkAmwtKCg3adn2yTuYnYqUtGqANBt2Ms-Cfysnew__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  },
+  {
+    "_name": "NCH-A-BDP-M3-B1-00-Equipment.rvt(290233).scs",
+    "_tipId": "ef8cf75b-294a-4095-bd5b-393bf077461e",
+    "_type": "file",
+    "_tags": [
+      "nch",
+      "hoops_test"
+    ],
+    "_irn": "filesvc:file:a8621d7d-60be-40c9-9781-bfaa230c17f9",
+    "_status": "UPLOAD_COMPLETED",
+    "_parents": ["a8a86b37-205c-4897-9eec-b08db4e8aeb6"],
+    "_nextVersion": 2,
+    "_namespaces": ["wsIDemo_8PuvJv6W"],
+    "_tipVersion": 1,
+    "_id": "a8621d7d-60be-40c9-9781-bfaa230c17f9",
+    "_metadata": {
+      "_updatedById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_createdAt": 1586935859261,
+      "_createdById": "90116d53-988e-4c72-8394-16c500a48907",
+      "_updatedAt": 1586935861218
+    },
+    "_url": "https://d3qeyh8iqh751h.cloudfront.net/general-dev/a8621d7d-60be-40c9-9781-bfaa230c17f9/1/NCH-A-BDP-M3-B1-00-Equipment.rvt(290233).scs?Expires=1587108662&Signature=olr7G1ZNXWuUMqjgZJ6CIGzVE~N~-VeaeCX~vsi5Ea22KgvALIWOGbuAWqo1GKefAqB-RmNOptSgIefWkZ3wFS4BmHgvmSZ4yzAJ10eB868Af-i8BofiHMWeKY1TtTIEm8nyxsD-R42tfK2yOco9~Zpxz4-np28VtMuJkVCl05e7xKmO6l5oUmlN9gOcPHvD9xah4V1jeFF55rQsR3PyIdR5-MET9glUpsiaW6NnxFc~FlAtWO1AKEQCXdbXVw~-AO9RoPwqsSbj9H1ckblRw2v-1M7NvJOT8qPR~JKTZYYJKVy9QISUnTOVTm8D8tqfnVmuelFPnKUku6ijlngyew__&Key-Pair-Id=APKAJRJM563T5LTFCHKQ"
+  }
+]

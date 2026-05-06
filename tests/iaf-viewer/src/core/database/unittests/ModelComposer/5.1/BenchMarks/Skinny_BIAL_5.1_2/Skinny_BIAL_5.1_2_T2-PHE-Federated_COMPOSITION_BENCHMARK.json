@@ -1,0 +1,543 @@
+{
+  "project": "Skinny_BIAL_5.1_2",
+  "model": "T2-PHE-Federated",
+  "results": [
+    {
+      "name": "single_enable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 22153,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_enable_Architectural",
+      "totalEnabled": 20807,
+      "totalDisabled": 6183,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2"
+      ]
+    },
+    {
+      "name": "single_enable_Mechanical",
+      "totalEnabled": 161,
+      "totalDisabled": 5200,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_enable_Electrical",
+      "totalEnabled": 633,
+      "totalDisabled": 17158,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_enable_Plumbing",
+      "totalEnabled": 29093,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Structural",
+      "totalEnabled": 0,
+      "totalDisabled": 51186,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Architectural",
+      "totalEnabled": 0,
+      "totalDisabled": 70041,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Mechanical",
+      "totalEnabled": 0,
+      "totalDisabled": 18382,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Electrical",
+      "totalEnabled": 0,
+      "totalDisabled": 27689,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny"
+      ]
+    },
+    {
+      "name": "single_disable_Plumbing",
+      "totalEnabled": 0,
+      "totalDisabled": 108034,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all",
+      "totalEnabled": 268564,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 240613,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "alternating_pattern",
+      "totalEnabled": 150208,
+      "totalDisabled": 45232,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "quality_low",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "quality_medium",
+      "totalEnabled": 23599,
+      "totalDisabled": 4054,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "quality_high",
+      "totalEnabled": 6088,
+      "totalDisabled": 39383,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": false,
+        "Mechanical": true,
+        "Electrical": false,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "high_then_disable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 262072,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "disable_all_then_high",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": false,
+        "Architectural": false,
+        "Mechanical": false,
+        "Electrical": false,
+        "Plumbing": false,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": []
+    },
+    {
+      "name": "enable_all_then_low",
+      "totalEnabled": 269004,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "low_then_enable_all",
+      "totalEnabled": 0,
+      "totalDisabled": 0,
+      "quality": "low",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "Combination-1",
+      "totalEnabled": 112622,
+      "totalDisabled": 100808,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "Combination-2",
+      "totalEnabled": 204812,
+      "totalDisabled": 116109,
+      "quality": "high",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    },
+    {
+      "name": "stress_full_cycle",
+      "totalEnabled": 204812,
+      "totalDisabled": 35260,
+      "quality": "medium",
+      "finalLayers": {
+        "Structural": true,
+        "Architectural": true,
+        "Mechanical": true,
+        "Electrical": true,
+        "Plumbing": true,
+        "FireProtection": false,
+        "Infrastructural": false,
+        "NoLayer": false
+      },
+      "eligibleLinkedModels": [
+        "BIAL T2 ARCH CORE_2024 Skinny",
+        "ARCH_AR-T2-ASM-ENCL_2024 Skinny",
+        "INT_PARTITION_GFC CORE_R1_2024 Skinny",
+        "TMN2_BIAL-S_Central_2024 V2",
+        "L&T T2 PHE IR_AB CORE_2024 Skinny",
+        "L&T T2 PHE ST_AB CORE_2024 Skinny",
+        "L&T T2 PHE SW_AB CORE_2024 Skinny",
+        "L&T T2 PHE WS_AB CORE_2024 Skinny",
+        "L&T T2 PHE_AB FLB_2024 Skinny"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 31-05-23    HSK        PLAT-2890   Created
+//
+// -------------------------------------------------------------------------------------
+*/
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px;
+  position: absolute;
+  width: 552px;
+  left: 350px;
+}
+
+.control-panel-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 5px;
+  position: absolute;
+}

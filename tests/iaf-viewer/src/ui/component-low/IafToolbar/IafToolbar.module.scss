@@ -1,0 +1,51 @@
+.toolbar {
+  background-color: #333;
+  color: white;
+  padding: 10px;
+  border-radius: 10px 10px 0px 0px;
+  cursor: move;
+  position: absolute;
+  z-index: 300;
+}
+.toolbar-controls {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 312px;
+}
+
+.toolbar-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.toolbar-button .tooltip-txt {
+  visibility: hidden;
+  width: 80px;
+  background-color: orange;
+  color: #fff;
+  text-align: center;
+  font-size: 0.822em;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  top: 150%;
+  left: 50%;
+  margin-left: -45px;
+  z-index: 7;
+}
+
+.toolbar-icon img {
+  pointer-events: none;
+}
+
+.filter-pink {
+  filter: invert(47%) sepia(41%) saturate(1900%) hue-rotate(357deg) brightness(89%) contrast(100%) !important;
+}

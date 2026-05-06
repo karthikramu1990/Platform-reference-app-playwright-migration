@@ -1,0 +1,35 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 08-12-23    HSK        PLAT-3793   IafViewer DevTools - Camera Callback Panel under IafUtils.debugIaf
+// -------------------------------------------------------------------------------------
+*/
+
+.devtoolsStats {
+    color:white;
+    order:0;
+}
+
+.mainUl {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+  
+.sectionLi {
+    margin-bottom: 7px;
+}
+
+.statsUl {
+    margin-left: 5px;
+    font-size: 0.7em;
+}
+  
+.devtoolsStats li strong {
+    color: #61dafb;
+    margin-right: 5px;
+    font-size: 0.7em;
+}
+.devtoolsStats li span {
+    font-size: 0.7em;
+}

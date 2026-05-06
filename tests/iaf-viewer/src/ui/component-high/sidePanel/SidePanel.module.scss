@@ -1,0 +1,63 @@
+/*
+// -------------------------------------------------------------------------------------
+// Date        Author     Referene    Comments
+// 16-05-23    HSK        PLAT-2730   Revamped IafViewer Panels                 
+// 24-05-23    HSK        PLAT-2730   Revamed IafViewer Panels - Cutting Planes
+// 24-05-23    ATK        PLAT-2730   Change panel opacity to 0.8 in order to see navcube                  
+// 10-05-23    ATK        PLAT-2510   GIS Research. z-index
+// 04-Nov-23   ATK        PLAT-3583   Model Composition 3D - Linked Files, Layers
+//                                    z-index - debugIaf modeltree should not overlap Side panels
+// -------------------------------------------------------------------------------------
+*/
+
+.sidePanel {
+    position: absolute;
+    bottom: 0;
+    width: 265px;
+    background-color: #000000;
+    transition: right 0.5s ease-out;
+    // overflow-y: auto;
+    height: 100%;
+    overflow: auto;
+    // opacity: 0.6;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    z-index: 2;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  &.large {
+    right: 94px;
+  }
+  &.medium {
+    right: 64px;
+  }
+  &.small {
+    right: 48px;
+  }
+  &.none {
+    right: 0px;
+  }
+  &.closed {
+    right: -300px; // Off-screen position
+  }
+}
+  
+  .sidePanelContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    gap: 4px;
+    position: absolute;
+    padding-bottom: 25px;
+  }
+
+  ul.nested {
+    display: none;
+  }
+
+  ul.nested.active {
+    display: block;
+  }
