@@ -1,11 +1,11 @@
 export const CONFIG = {
-  url: 'https://qa2-app.in.invicara.com/reference/#/navigator',
+  url: 'https://qa1-app.in.invicara.com/reference/#/navigator',
   // url: 'http://localhost:8086/referenceapp/#/navigator',
   credentials: {
     email: 'iputmodelsegmented@yopmail.com',
     password: 'Test@123'
   },
-  project: 'Iput_Model_plg',
+  project: 'iputmodelsegmented',
   switchModel: "EX11034-INV-Federated-4.6",
   timeout: {
     short: 15000,

@@ -21,7 +21,7 @@ export async function login(page, credentials, timeout) {
 export async function selectProject(page, projectName, path, timeout) {
   await expect(page.getByText('Project Selection')).toBeVisible({ timeout });
 
-  const projectDropdown = page.locator('.select__control');
+  const projectDropdown = page.locator('.select__control').first();
   await projectDropdown.click();
 
   const projectOption = page.getByRole('option', { name: projectName });
@@ -42,6 +42,26 @@ export async function waitForApplicationLoad(page, timeout) {
     state: 'hidden',
     timeout
   });
+}
+
+export async function setupAndClickModel(page) {
+  await page.goto(CONFIG.url);
+  await login(page, CONFIG.credentials, CONFIG.timeout.medium);
+  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await page.waitForTimeout(20000);
+
+  const canvas = page.locator(Locator.viewer3D);
+  await expect(canvas).toBeVisible({ timeout: 60000 });
+  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
+
+  const box = await canvas.boundingBox();
+  expect(box).not.toBeNull();
+
+  const cx = box.x + box.width;
+  const cy = box.y + box.height;
+
+  await page.mouse.click(cx * 0.45, cy * 0.4);
 }
 
 export async function openPanel(page, timeout, panel = "model", ) {
@@ -297,6 +317,22 @@ export async function verifyViewerScreenshot(page, name) {
   });
 }
 
+export async function clickViewOption(page, locatorKey) {
+  const viewToolbar = page.locator(Locator.viewToolbar);
+  await expect(viewToolbar).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await viewToolbar.click();
+
+  const viewOption = page.locator(`xpath=${Locator[locatorKey]}`);
+  await expect(viewOption).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await viewOption.click();
+}
+
+export async function clickHelpers(page) {
+  const helpers = page.locator(`xpath=${Locator.helpers}`);
+  await expect(helpers).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await helpers.click();
+}
+
 export async function toggleLayers(page, keys, enable = true) {
   for (const key of keys) {
     const checkbox = page.locator(`input[type="checkbox"][name="${key}"]`);
@@ -310,4 +346,78 @@ export async function toggleLayers(page, keys, enable = true) {
       await expect(checkbox).toBeChecked({ checked: enable });
     }
   }
+}
+
+async function clickFederatedMenuItem(page, menuLocatorKey) {
+  const panelTitle = page.locator(`xpath=${Locator.federatedPanelTitle}`);
+  await expect(panelTitle).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await panelTitle.scrollIntoViewIfNeeded();
+  await panelTitle.click();
+
+  await page.keyboard.press('End');
+
+  const threeDots = page.locator(Locator.federatedThreeDots);
+  await expect(threeDots).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await threeDots.click();
+
+  const menuItem = page.locator(`xpath=${Locator[menuLocatorKey]}`);
+  await expect(menuItem).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await menuItem.click();
+}
+
+async function clickSubItemIfEnabled(page, threeDotsLocator, menuLocatorKey, screenshotName) {
+  const threeDots = page.locator(threeDotsLocator);
+  await expect(threeDots).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await threeDots.click();
+
+  const menuItem = page.locator(`xpath=${Locator[menuLocatorKey]}`);
+  await expect(menuItem).toBeVisible({ timeout: CONFIG.timeout.medium });
+
+  const isEnabled = await menuItem.isEnabled();
+  if (isEnabled) {
+    await menuItem.click();
+  } else {
+    await page.keyboard.press('Escape');
+  }
+  await verifyViewerScreenshot(page, screenshotName);
+}
+
+async function runSubItemActions(page, threeDotsLocatorKey, disciplineName) {
+  const panelTitle = page.locator(`xpath=${Locator.federatedPanelTitle}`);
+  await expect(panelTitle).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await panelTitle.scrollIntoViewIfNeeded();
+  await panelTitle.click();
+
+  await clickSubItemIfEnabled(page, Locator[threeDotsLocatorKey], 'menuLoad', `${disciplineName}-Load`);
+  await clickSubItemIfEnabled(page, Locator[threeDotsLocatorKey], 'menuHide', `${disciplineName}-Hide`);
+  await clickSubItemIfEnabled(page, Locator[threeDotsLocatorKey], 'menuShow', `${disciplineName}-Show`);
+}
+
+export async function structuralSubItemActions(page)     { await runSubItemActions(page, 'federatedSThreeDots', 'Structural'); }
+export async function architecturalSubItemActions(page)  { await runSubItemActions(page, 'federatedAThreeDots', 'Architectural'); }
+export async function mechanicalSubItemActions(page)     { await runSubItemActions(page, 'federatedHThreeDots', 'Mechanical'); }
+export async function electricalSubItemActions(page)     { await runSubItemActions(page, 'federatedEThreeDots', 'Electrical'); }
+export async function plumbingSubItemActions(page)       { await runSubItemActions(page, 'federatedPThreeDots', 'Plumbing'); }
+export async function fireProtectionSubItemActions(page) { await runSubItemActions(page, 'federatedFThreeDots', 'FireProtection'); }
+
+export async function federatedShowAll(page) {
+  await clickFederatedMenuItem(page, 'menuShowAll');
+}
+
+export async function federatedHideAll(page) {
+  await clickFederatedMenuItem(page, 'menuHideAll');
+}
+
+export async function federatedSwitchToLoadEverything(page) {
+  await clickFederatedMenuItem(page, 'menuSwitchToLoadEverything');
+}
+
+export async function clickShadingOption(page, locatorKey) {
+  const shadingToolbar = page.locator(Locator.shadingToolbar);
+  await expect(shadingToolbar).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await shadingToolbar.click();
+
+  const shadingOption = page.locator(`xpath=${Locator[locatorKey]}`);
+  await expect(shadingOption).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await shadingOption.click();
 }

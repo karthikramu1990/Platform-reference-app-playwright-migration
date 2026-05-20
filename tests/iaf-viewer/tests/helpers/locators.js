@@ -1,5 +1,4 @@
 export const Locator = {
-  // Existing
   modelcomposerBtn: '[aria-label="Model Composer"]',
   annotationsBtn: '[id*="annotations-submenu"]',
   displayAccuracyBtn: 'xpath=//div[text()="Display Accuracy"]/ancestor::div[2]//input',
@@ -10,84 +9,52 @@ export const Locator = {
   designerView: 'div[class^="SidePanel-module_sidePanelContent"] > div:nth-child(2)',
   designerMenu: 'button:has([data-testid="MoreVertIcon"])',
   autoCompose: 'input[name="enableAutoComposeTitle"]',
+  helpers: '//div[text()="Helpers"]',
 
-  // Toolbar
-  resetViewToolbarIcon:        "//div[@aria-label='Reset View']",
-  projectionToolbarIcon:       "//div[@aria-label='Projection']",
-  navigationToolbarIcon:       "//div[@aria-label='Navigation']",
-  measurementToolbarIcon:      "//div[@aria-label='Measurement']",
-  cuttingPlaneToolbarIcon:     "//div[@aria-label='Cutting Plane']",
-  twoDViewerToolbar:           "//div[@aria-label='2D Viewer']",
-  focusModeToolbar:            "//div[@aria-label='Focus Mode']",
-  settingsToolbarIcon:         "//div[@aria-label='Settings']",
-  viewToolBarIcon:             "//div[@aria-label='View']",
-  topViewIcon:                 "//span[text()='Top View']",
-  bottomViewIcon:              "//span[text()='Bottom View']",
-  leftViewIcon:                "//span[text()='Left View']",
-  rightViewIcon:               "//span[text()='Right View']",
-  frontViewIcon:               "//span[text()='Front View']",
-  backViewIcon:                "//span[text()='Back View']",
-  shadingToolbarIcon:          "//div[@aria-label='Shading']",
-  fullShadingWithLineIcon:     "//span[text()='Full Shading, with Lines']",
-  fullShadingNoLinesIcon:      "//span[text()='Full Shading, no Lines']",
-  edges_LinesIcon:             "//span[text()='Edges & Lines']",
-  glassViewIcon:               "//span[text()='Glass View']",
-  utilitiesIcon:               "//div[@aria-label='Utilities']",
-  isolateSelection:            "//span[text()='Isolate Selection']",
-  hideSelection:               "//span[text()='Hide Selection']",
-  showAll:                     "//span[text()='Show All']",
+  // ── Panel Title ───────────────────────────────────────────────────────
+  federatedPanelTitle: '(//div[contains(@class,"IafHeading-module_list-item-title")])[2]',
 
-  // 2D Viewer
-  twoDFullScreenIcon:          "//div[@aria-label='Full Screen']",
-  twoDSelectFloorplan:         "//select[@name='Sheet Names']",
-  twoDZoomIn:                  "//div[@aria-label='Zoom In']",
-  twoDZoomOut:                 "//div[@aria-label='Zoom Out']",
-  navigatorWidgetMinimizeIcon: "//i[normalize-space(@title)='Collapse panel']",
+  // ── Search ────────────────────────────────────────────────────────────
+  searchPhysicalModels: '.MuiInputBase-input.MuiInput-input',
 
-  // Cutting Plane
-  standardPlanes:              "(//div[text()='Standard Planes'])[1]",
-  standardPlanesToggleOn:      "(//div[text()='Standard Planes']//following::input[contains(@class,'PrivateSwitchBase-input')])[1]",
+  // ── 3-dot (MoreVert) buttons ──────────────────────────────────────────
+  federatedThreeDots: 'li:has(p[withsubtext="Federated"]) button',
+  federatedSThreeDots: 'li:has(p[withsubtext*="-S-"]) button',
+  federatedAThreeDots: 'li:has(p[withsubtext*="-A-"]) button',
+  federatedHThreeDots: 'xpath=//p[contains(@withsubtext,"-H")]/ancestor::li//button',
+  federatedEThreeDots: 'xpath=//p[contains(@withsubtext,"-E")]/ancestor::li//button',
+  federatedPThreeDots: 'li:has(p[withsubtext*="-P"]) button',
+  federatedFThreeDots: 'xpath=//p[contains(@withsubtext,"-F")]/ancestor::li//button',
 
-  // Model Composer
-  modelComposer:               "//div[@aria-label='Model Composer']",
-  modelComposer_Structural:    "//input[@name='Structural']/..//span[@class='MuiSwitch-thumb css-19gndve']",
-  modelComposer_Mechanical:    "//input[@name='Mechanical']/..//span[@class='MuiSwitch-thumb css-19gndve']",
-  modelComposer_Electrical:    "//input[@name='Electrical']/..//span[@class='MuiSwitch-thumb css-19gndve']",
-  modelComposer_Plumbing:      "//input[@name='Plumbing']/..//span[@class='MuiSwitch-thumb css-19gndve']",
+  // ── Federated parent dropdown menu items ─────────────────────────────
+  menuRename: '//li[@role="menuitem" and contains(.,"Rename")]',
+  menuSwitchToLoadEverything: '//li[@role="menuitem" and contains(.,"Switch to Load Everything")]',
+  menuShowAll: '//li[@role="menuitem" and contains(.,"Show All")]',
+  menuHideAll: '//li[@role="menuitem" and contains(.,"Hide All")]',
 
-  // Annotations
-  annotations:                 "//div[@aria-label='Annotations']",
-  annotationsLine:             "//span[text()='Line']",
-  annotationsCircle:           "//span[text()='Circle']",
-  annotationsRectangle:        "//span[text()='Rectangle']",
-  annotationsPolyline:         "//span[text()='Polyline']",
-  annotationsPolygon:          "//span[text()='Polygon']",
-  annotationsLeaderNote:       "//span[text()='Leader Note']",
-  annotationsText:             "//span[text()='Text']",
-  annotationsFreehand:         "//span[text()='Freehand']",
-  annotationsExport:           "//span[text()='Export']",
-  annotationsImport:           "//span[text()='Import']",
-  annotationsDeleteAllMarkup:  "//div[text()='Delete All']/following::input[@type='checkbox'][1]",
+  // ── Sub-item dropdown menu items ──────────────────────────────────────
+  menuLoad: '//li[@role="menuitem" and contains(.,"Load")]',
+  menuShow: '//li[@role="menuitem" and contains(.,"Show")]',
+  menuHide: '//li[@role="menuitem" and contains(.,"Hide")]',
+  menuRenameSubItem: '//li[@role="menuitem" and contains(.,"Rename")]',
 
-  // GIS Viewer
-  gisMenu:                       "//div[@aria-label='GIS Viewer']",
-  enableGISToggle:               "//div[contains(text(),'Enable GIS')]/..//input[@type='checkbox']",
-  gisInteractSectionHeader:      "//div[text()='Interact']",
-  gisInteractZoomSliderValue:    "//div[text()='Zoom']/..//div[@class='IafSlider-module_range-value-box__60Ke8']",
-  gisInteractPitchSliderValue:   "//div[text()='Pitch']/..//div[@class='IafSlider-module_range-value-box__60Ke8']",
-  gisInteractBearingSliderValue: "//div[text()='Bearing']/..//div[@class='IafSlider-module_range-value-box__60Ke8']",
-  gisAppearanceSectionHeader:    "//div[text()='Appearance']",
-  gisStyleDropdown:              "//select[contains(@class,'IafDropdown-module_select-component') and @name='Style']",
-  gisElevationModeDropdown:      "//select[@name='Elevation Mode']",
-  gisGlobeViewToggle:            "//div[text()='Globe View']/..//input[@type='checkbox']",
-  gisShowMarkersToggle:          "//div[text()='Show Markers']/..//input[@type='checkbox']",
-  gisFederatedModelSection:      "//div[contains(@class,'IafSubHeader-module_list-item')]/..//div[contains(text(),'Federated')]",
-  gisHorizontalAlignmentToggle:  "//div[contains(text(),'Horizontal Alignment')]/..//input[@type='checkbox']",
-  gisBearingSliderValue:         "//div[text()='Bearing']/..//div[@class='IafSlider-module_range-value__tY7ul']",
-  gisLongitudeSliderValue:       "//div[text()='Longitude']/..//div[@class='IafSlider-module_range-value__tY7ul']",
-  gisLatitudeSliderValue:        "//div[text()='Latitude']/..//div[@class='IafSlider-module_range-value__tY7ul']",
-  gisSearchTextBox:              "//input[@type='text' and @placeholder='Search']",
-  gisVerticalAlignmentToggle:    "//div[contains(text(),'Vertical Alignment')]/..//input[@type='checkbox']",
-  gisTerrainHeightSliderValue:   "//div[contains(text(),'Terrain Height')]/..//div[@class='IafSlider-module_range-value__tY7ul']",
-  gisResetButton:                "//p[text()='Reset']",
+  // ── Viewer Toolbar ────────────────────────────────────────────────────
+  resetView: '[aria-label="Reset View"]',
+  projection: '[aria-label="Projection"]',
+  viewToolbar: '[aria-label="View"]',
+
+  // ── View Options ──────────────────────────────────────────────────────
+  topView: '//span[text()="Top View"]',
+  bottomView: '//span[text()="Bottom View"]',
+  leftView: '//span[text()="Left View"]',
+  rightView: '//span[text()="Right View"]',
+  frontView: '//span[text()="Front View"]',
+  backView: '//span[text()="Back View"]',
+
+  // ── Shading Options ───────────────────────────────────────────────────
+  shadingToolbar: '[aria-label="Shading"]',
+  fullShadingWithLines: '//span[text()="Full Shading, with Lines"]',
+  fullShadingNoLines: '//span[text()="Full Shading, no Lines"]',
+  edgesAndLines: '//span[text()="Edges & Lines"]',
+  glassView: '//span[text()="Glass View"]'
 }

@@ -18,7 +18,8 @@ export default defineConfig({
       suiteTitle: true,
       attachmentsBaseDirectory: './allure-results'
     }],
-['list']
+    ['list'],
+    ['junit', { outputFile: 'test-results/results.xml' }],
   ],
   use: {
     baseURL: config.Environments[config.Env].RfUrl,

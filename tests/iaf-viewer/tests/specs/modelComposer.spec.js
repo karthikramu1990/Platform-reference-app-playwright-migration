@@ -1,6 +1,6 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
-import { login, selectProject, setAccuracy, setup, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, verifyViewerScreenshot, waitForApplicationLoad, waitForModelcomposerEnabled } from '../helpers/appHelpers.js';
+import { login, selectProject, setAccuracy, setup, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, verifyViewerScreenshot, waitForApplicationLoad, waitForModelcomposerEnabled, clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoadEverything, structuralSubItemActions, architecturalSubItemActions, mechanicalSubItemActions, electricalSubItemActions, plumbingSubItemActions, fireProtectionSubItemActions } from '../helpers/appHelpers.js';
 import { Locator } from '../helpers/locators.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
@@ -78,10 +78,10 @@ test('Model Composer - All disciplines - Low vs High', async ({ page }) => {
   await toggleAllLayers(page, true);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "case1-all-low");
+  await verifyViewerScreenshot(page, "All disipline-Toggled-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "case1-all-high");
+  await verifyViewerScreenshot(page, "All disipline-Toggled-high");
 });
 
 test('Model Composer - No disciplines - Low vs High', async ({ page }) => {
@@ -92,10 +92,10 @@ test('Model Composer - No disciplines - Low vs High', async ({ page }) => {
   await toggleAllLayers(page, false);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "case2-none-low");
+  await verifyViewerScreenshot(page, "No disciplines-Toggled-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "case2-none-high");
+  await verifyViewerScreenshot(page, "No disciplines-Toggled-high");
 });
 
 test('Model Composer - Architectural only Low & High', async ({ page }) => {
@@ -110,10 +110,10 @@ test('Model Composer - Architectural only Low & High', async ({ page }) => {
   ], true);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "case3-arch-low");
+  await verifyViewerScreenshot(page, "architectural-Toggled-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "case3-arch-high");
+  await verifyViewerScreenshot(page, "architectural-Toggled-high");
 });
 
 test('Model Composer - Plumbing only Low & High', async ({ page }) => {
@@ -128,8 +128,129 @@ test('Model Composer - Plumbing only Low & High', async ({ page }) => {
   ], true);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "case4-mixed-low");
+  await verifyViewerScreenshot(page, "plumbling-Toggled-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "case4-mixed-high");
+  await verifyViewerScreenshot(page, "Plumbing-Toggled-high");
 });
+
+test('Model Composer - Electrical only Low & High', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+
+  await toggleAllLayers(page, false);
+
+  await toggleLayers(page, [
+    LayerType.Electrical
+  ], true);
+
+  await setAccuracy(page, EModelComposerQuality.Low);
+  await verifyViewerScreenshot(page, "Electrical-Toggled-low");
+
+  await setAccuracy(page, EModelComposerQuality.High);
+  await verifyViewerScreenshot(page, "Electrical-Toggled-high");
+});
+
+test('Model Composer - GUI Helper only Low & High', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+
+  await toggleAllLayers(page, false);
+  await clickHelpers(page);
+  await toggleLayers(page, [
+    LayerType.GUIHelper
+  ], true);
+
+  await setAccuracy(page, EModelComposerQuality.Low);
+  await verifyViewerScreenshot(page, "GUI Helper-Toggled-low");
+
+  await setAccuracy(page, EModelComposerQuality.High);
+  await verifyViewerScreenshot(page, "GUI Helper-Toggled-high");
+});
+
+test('Model Composer - Federated - Switch to Load Everything', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await federatedSwitchToLoadEverything(page);
+  await verifyViewerScreenshot(page, "Federated-SwitchToLoadEverything");
+});
+
+test('Model Composer - Federated - Show All', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await federatedShowAll(page);
+  await verifyViewerScreenshot(page, "Federated-ShowAll");
+});
+
+test('Model Composer - Federated - Hide All', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await federatedHideAll(page);
+  await verifyViewerScreenshot(page, "Federated-HideAll");
+});
+
+test('Model Composer - Structural Sub-Item Actions', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await structuralSubItemActions(page);
+});
+
+test('Model Composer - Architectural Sub-Item Actions', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await architecturalSubItemActions(page);
+});
+
+test('Model Composer - Mechanical Sub-Item Actions', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await mechanicalSubItemActions(page);
+});
+
+test('Model Composer - Electrical Sub-Item Actions', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await electricalSubItemActions(page);
+});
+
+test('Model Composer - Plumbing Sub-Item Actions', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await plumbingSubItemActions(page);
+});
+
+test('Model Composer - FireProtection Sub-Item Actions', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setup(page, "model");
+  const autoComposer = page.locator(Locator.autoCompose);
+  await autoComposer.uncheck();
+  await fireProtectionSubItemActions(page);
+});
+

@@ -7,3 +7,4 @@ playwright-report/
 test-results/
 C:/pw-test-results/
 *.log
+.env

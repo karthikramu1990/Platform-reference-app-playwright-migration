@@ -6,6 +6,7 @@ export const LayerType = {
   , Mechanical: "Mechanical"
   , Electrical: "Electrical"
   , Plumbing: "Plumbing"
+  , GUIHelper: "isEnableComposerHelper"
 //   , FireProtection: "Fire Protection"
 //   , Infrastructural: "Infrastructural"
 //   , NoLayer: "No layer"
