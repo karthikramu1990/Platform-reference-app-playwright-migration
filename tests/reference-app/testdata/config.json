@@ -7,13 +7,18 @@
   "Environments": {
     "staging": {
       "RfUrl": "https://staging.invicara.com/reference/#/",
-      "ProjectList": "TestAI",
-      "UserGroup": "TestAI Proj Admin"
+      "ProjectList": "TestAI"
+
     },
     "qa1": {
       "RfUrl": "https://qa1-app.in.invicara.com/reference/#/",
       "ProjectList": "Automation",
       "UserGroup": "Automation Proj Admin"
+    },
+    "qa2": {
+      "RfUrl": "https://qa2-app.in.invicara.com/reference/#/",
+      "ProjectList": "",
+      "UserGroup": ""
     },
     "staging3": {
       "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",
