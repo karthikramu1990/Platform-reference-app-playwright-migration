@@ -38,10 +38,19 @@ export const Locator = {
   menuHide: '//li[@role="menuitem" and contains(.,"Hide")]',
   menuRenameSubItem: '//li[@role="menuitem" and contains(.,"Rename")]',
 
+  // ── 2D Viewer Controls ────────────────────────────────────────────────
+  twoDDragArea: '(//div[@aria-label="Drag Area"])[1]',
+  twoDFullScreen: '(//div[@aria-label="Full Screen"])[1]',
+  twoDHalfScreen: '(//div[@aria-label="Half Screen"])[1]',
+  twoDZoomIn: '(//div[@aria-label="Zoom In"])[1]',
+  twoDZoomOut: '(//div[@aria-label="Zoom Out"])[1]',
+
   // ── Viewer Toolbar ────────────────────────────────────────────────────
   resetView: '[aria-label="Reset View"]',
   projection: '[aria-label="Projection"]',
   viewToolbar: '[aria-label="View"]',
+  viewer2DToolbar: '[aria-label="2D Viewer"]',
+  viewer3DToolbar: '[aria-label="3D Viewer"]',
 
   // ── View Options ──────────────────────────────────────────────────────
   topView: '//span[text()="Top View"]',
@@ -56,5 +65,25 @@ export const Locator = {
   fullShadingWithLines: '//span[text()="Full Shading, with Lines"]',
   fullShadingNoLines: '//span[text()="Full Shading, no Lines"]',
   edgesAndLines: '//span[text()="Edges & Lines"]',
-  glassView: '//span[text()="Glass View"]'
+  glassView: '//span[text()="Glass View"]',
+
+  // ── Cutting Plane ─────────────────────────────────────────────────────
+  cuttingPlaneToolbar: '[aria-label="Cutting Plane"]',
+
+  // Standard Planes
+  standardPlanes: '(//div[text()="Standard Planes"])[1]',
+  standardPlanesToggle: '(//div[text()="Standard Planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
+  topPlaneSlider: '(//div[text()="Top plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  bottomPlaneSlider: '(//div[text()="Bottom plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  frontPlaneSlider: '(//div[text()="Front plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  backPlaneSlider: '(//div[text()="Back plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  leftPlaneSlider: '(//div[text()="Left plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  rightPlaneSlider: '(//div[text()="Right plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  showPlanesToggle: '(//div[text()="Show planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
+
+  // Focused Planes
+  focusedPlanes: '(//div[text()="Focused Planes"])[1]',
+  focusedPlanesToggle: '(//div[text()="Focused Planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
+  focusedPlanesSizeSlider: '(//div[text()="Focused Planes"]/following::div[text()="Size"]/following::span[contains(@class,"MuiSlider-root")])[1]',
+  changeFocusBtn: '//p[text()="Change Focus"]'
 }
