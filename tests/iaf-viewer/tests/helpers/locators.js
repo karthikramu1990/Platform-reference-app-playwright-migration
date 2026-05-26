@@ -51,6 +51,7 @@ export const Locator = {
   viewToolbar: '[aria-label="View"]',
   viewer2DToolbar: '[aria-label="2D Viewer"]',
   viewer3DToolbar: '[aria-label="3D Viewer"]',
+  focusMode: '//div[@aria-label="Focus Mode"]',
 
   // ── View Options ──────────────────────────────────────────────────────
   topView: '//span[text()="Top View"]',

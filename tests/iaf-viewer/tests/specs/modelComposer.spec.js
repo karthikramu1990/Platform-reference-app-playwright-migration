@@ -1,6 +1,7 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
-import { login, selectProject, setAccuracy, setup, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, verifyViewerScreenshot, waitForApplicationLoad, waitForModelcomposerEnabled, clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoadEverything, structuralSubItemActions, architecturalSubItemActions, mechanicalSubItemActions, electricalSubItemActions, plumbingSubItemActions, fireProtectionSubItemActions } from '../helpers/appHelpers.js';
+import { login, selectProject, setup, verifyViewerScreenshot, waitForApplicationLoad } from '../helpers/appHelpers.js';
+import { setAccuracy, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, waitForModelcomposerEnabled, clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoadEverything, structuralSubItemActions, architecturalSubItemActions, mechanicalSubItemActions, electricalSubItemActions, plumbingSubItemActions, fireProtectionSubItemActions } from '../helpers/modelComposerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
@@ -140,6 +141,7 @@ test('Model Composer - Electrical only Low & High', async ({ page }) => {
   await setup(page, "model");
 
   await toggleAllLayers(page, false);
+  await page.mouse.move(0, 0);
 
   await toggleLayers(page, [
     LayerType.Electrical
