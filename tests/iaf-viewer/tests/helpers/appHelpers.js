@@ -190,5 +190,23 @@ export async function verifyViewerScreenshot(page, name) {
   });
 }
 
+export async function verifyAnnotationScreenshot(page, name) {
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+
+  await expect(page).toHaveScreenshot(`${name}.png`, {
+    maxDiffPixelRatio: 0.03,
+    timeout: 30000
+  });
+}
+
+export async function captureAnnotationScreenshot(page, name) {
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(3000);
+
+  const snapshotPath = `tests/snapshots/annotations.spec.js/${name}-chromium.png`;
+  await page.screenshot({ path: snapshotPath });
+}
+
 
 

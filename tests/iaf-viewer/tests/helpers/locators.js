@@ -86,5 +86,21 @@ export const Locator = {
   focusedPlanes: '(//div[text()="Focused Planes"])[1]',
   focusedPlanesToggle: '(//div[text()="Focused Planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
   focusedPlanesSizeSlider: '(//div[text()="Focused Planes"]/following::div[text()="Size"]/following::span[contains(@class,"MuiSlider-root")])[1]',
-  changeFocusBtn: '//p[text()="Change Focus"]'
+  changeFocusBtn: '//p[text()="Change Focus"]',
+
+  // ── Annotations ───────────────────────────────────────────────────────────
+  
+  annotationsToolbar: '//div[@aria-label="Annotations"]',
+  annotationsCheckDistance:'//span[text()="Check Distance"]',  
+  annotationsLine: '//span[text()="Line"]',
+  annotationsCircle: '//span[text()="Circle"]',
+  annotationsRectangle: '//span[text()="Rectangle"]',
+  annotationsPolyline: '//span[text()="Polyline"]',
+  annotationsPolygon: '//span[text()="Polygon"]',
+  annotationsLeaderNote: '//span[text()="Leader Note"]',
+  annotationsText: '//span[text()="Text"]',
+  annotationsFreehand: '//span[text()="Freehand"]',
+  annotationsExport: '//span[text()="Export"]',
+  annotationsImport: '//span[text()="Import"]',
+  annotationsDeleteAllMarkup: '//input[@name="deleteAllMarkup"]',
 }
