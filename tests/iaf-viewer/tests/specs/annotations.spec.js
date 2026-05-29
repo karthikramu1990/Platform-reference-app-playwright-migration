@@ -204,7 +204,7 @@ test('Annotations - Freehand', async ({ page }) => {
 });
 
 test('Annotations - Export', async ({ page }, testInfo) => {
-  test.skip(testInfo.config.updateSnapshots === 'none', 'Only runs with --update-snapshots');
+  test.skip(testInfo.config.updateSnapshots !== 'all', 'Only runs with --update-snapshots');
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -220,7 +220,7 @@ test('Annotations - Export', async ({ page }, testInfo) => {
 });
 
 test('Annotations - Import', async ({ page }, testInfo) => {
-  test.skip(testInfo.config.updateSnapshots !== 'none', 'Skipped during --update-snapshots');
+  test.skip(testInfo.config.updateSnapshots === 'all', 'Skipped during --update-snapshots');
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);

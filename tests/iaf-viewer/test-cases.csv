@@ -1,0 +1,53 @@
+#,Module,Test Case Name,What it Validates,Test Type,Status
+1,Annotations,Annotations - Check Distance,Draws two check distance measurements (X and Y direction) on the 3D canvas,Functional + Visual,Active
+2,Annotations,Annotations - Line,Draws a line annotation on the 3D canvas,Functional + Visual,Active
+3,Annotations,Annotations - Circle,Draws a circle annotation by drag on the 3D canvas,Functional + Visual,Active
+4,Annotations,Annotations - Rectangle,Draws a rectangle annotation by drag on the 3D canvas,Functional + Visual,Active
+5,Annotations,Annotations - Polyline,Draws a multi-point polyline and completes with Enter key,Functional + Visual,Active
+6,Annotations,Annotations - Polygon,Draws a closed polygon and completes with Enter key,Functional + Visual,Active
+7,Annotations,Annotations - Leader Note,Places a leader note and enters text via input box,Functional + Visual,Active
+8,Annotations,Annotations - Text,Places a text annotation and types via keyboard,Functional + Visual,Active
+9,Annotations,Annotations - Freehand,Draws a freehand circle shape by mouse drag,Functional + Visual,Active
+10,Annotations,Annotations - Export,Draws annotations then exports to JSON file (runs only with --update-snapshots),Functional,Conditional
+11,Annotations,Annotations - Import,Imports previously exported JSON and verifies screenshot matches baseline,Functional + Visual,Conditional
+12,Model Selection,Model Selection - Direct Viewer Click,Clicks a model element directly in the 3D viewer and verifies selection,Functional + Visual,Active
+13,Model Selection,Model Isolation - Search and select model elements (Glass mode),Searches for elements and isolates them in glass view mode,Functional + Visual,Active
+14,Model Selection,Model Isolation - BookMark,Bookmarks an isolated selection and verifies it is saved,Functional,Active
+15,Viewer Toolbar,Viewer Toolbar - Reset View,Resets the 3D camera to default position and verifies screenshot,Visual,Active
+16,Viewer Toolbar,Viewer Toolbar - Projection,Toggles between perspective and orthographic projection,Visual,Active
+17,Viewer Toolbar,Viewer Toolbar - Top View,Sets camera to top view and verifies screenshot,Visual,Active
+18,Viewer Toolbar,Viewer Toolbar - Bottom View,Sets camera to bottom view and verifies screenshot,Visual,Active
+19,Viewer Toolbar,Viewer Toolbar - Left View,Sets camera to left view and verifies screenshot,Visual,Active
+20,Viewer Toolbar,Viewer Toolbar - Right View,Sets camera to right view and verifies screenshot,Visual,Active
+21,Viewer Toolbar,Viewer Toolbar - Front View,Sets camera to front view and verifies screenshot,Visual,Active
+22,Viewer Toolbar,Viewer Toolbar - Back View,Sets camera to back view and verifies screenshot,Visual,Active
+23,Viewer Toolbar,Viewer Toolbar - Shading Options,Cycles through all shading modes (Full Shading with Lines / No Lines / Edges & Lines / Glass View),Visual,Active
+24,Viewer Toolbar,Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes ON,Enables standard cutting planes with show planes toggled ON and verifies,Visual,Active
+25,Viewer Toolbar,Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes OFF,Enables standard cutting planes with show planes toggled OFF and verifies,Visual,Active
+26,Viewer Toolbar,Viewer Toolbar - Cutting Plane - Focused Planes,Enables focused cutting planes and verifies screenshot,Visual,Active
+27,Viewer Toolbar,Viewer Toolbar - 3D Viewer,Verifies 3D viewer controls and screenshot,Visual,Active
+28,Viewer Toolbar,Viewer Toolbar - 2D Viewer - Full Screen,Expands 2D viewer to full screen and verifies,Functional + Visual,Active
+29,Viewer Toolbar,Viewer Toolbar - 2D Viewer - Half Screen,Shrinks 2D viewer to half screen and verifies,Functional + Visual,Active
+30,Viewer Toolbar,Viewer Toolbar - 2D Viewer - Zoom In,Zooms in the 2D viewer and verifies,Functional + Visual,Active
+31,Viewer Toolbar,Viewer Toolbar - 2D Viewer - Zoom Out,Zooms out the 2D viewer and verifies,Functional + Visual,Active
+32,Viewer Toolbar,Viewer Toolbar - 2D Viewer - Drag Area,Pans the 2D viewer using drag area and verifies,Functional + Visual,Active
+33,Viewer Toolbar,Viewer Toolbar - 2D Viewer - Disable and Enable,Disables and re-enables the 2D viewer and verifies state,Functional,Active
+34,Viewer Toolbar,Viewer Toolbar - Focus Mode Enable,Enables focus mode and verifies the viewer state,Functional + Visual,Active
+35,Viewer Toolbar,Viewer Toolbar - Focus Mode Disable,Disables focus mode and verifies the viewer returns to normal,Functional + Visual,Active
+36,Model Composer,Model Composer - Node Counts,Runs benchmark and verifies node count results match snapshot,Performance,Active
+37,Model Composer,Model Composer - Auto Compose Visibility,Verifies menu item states (enabled/disabled) when auto compose is toggled ON and OFF,Functional,Active
+38,Model Composer,Model Composer - All disciplines - Low vs High,Toggles all disciplines ON and compares Low vs High accuracy screenshots,Visual,Active
+39,Model Composer,Model Composer - No disciplines - Low vs High,Toggles all disciplines OFF and compares Low vs High accuracy screenshots,Visual,Active
+40,Model Composer,Model Composer - Architectural only Low & High,Shows only architectural layer at Low and High accuracy,Visual,Active
+41,Model Composer,Model Composer - Plumbing only Low & High,Shows only plumbing layer at Low and High accuracy,Visual,Active
+42,Model Composer,Model Composer - Electrical only Low & High,Shows only electrical layer at Low and High accuracy,Visual,Active
+43,Model Composer,Model Composer - GUI Helper only Low & High,Shows only GUI helper layer at Low and High accuracy,Visual,Active
+44,Model Composer,Model Composer - Federated - Switch to Load Everything,Switches federated model to Load Everything mode and verifies,Functional + Visual,Active
+45,Model Composer,Model Composer - Federated - Show All,Shows all items in the federated model and verifies,Functional + Visual,Active
+46,Model Composer,Model Composer - Federated - Hide All,Hides all items in the federated model and verifies,Functional + Visual,Active
+47,Model Composer,Model Composer - Structural Sub-Item Actions,Tests Load / Show / Hide / Rename on structural sub-items,Functional,Active
+48,Model Composer,Model Composer - Architectural Sub-Item Actions,Tests Load / Show / Hide / Rename on architectural sub-items,Functional,Active
+49,Model Composer,Model Composer - Mechanical Sub-Item Actions,Tests Load / Show / Hide / Rename on mechanical sub-items,Functional,Active
+50,Model Composer,Model Composer - Electrical Sub-Item Actions,Tests Load / Show / Hide / Rename on electrical sub-items,Functional,Active
+51,Model Composer,Model Composer - Plumbing Sub-Item Actions,Tests Load / Show / Hide / Rename on plumbing sub-items,Functional,Active
+52,Model Composer,Model Composer - FireProtection Sub-Item Actions,Tests Load / Show / Hide / Rename on fire protection sub-items,Functional,Active
