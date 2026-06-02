@@ -200,6 +200,20 @@ export async function verifyAnnotationScreenshot(page, name) {
   });
 }
 
+export async function verifyGISScreenshot(page, name) {
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(5000);
+
+  // Wait until GIS panel content is visible
+  const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
+  await expect(interactHeader).toBeVisible({ timeout: 60000 });
+
+  await expect(page).toHaveScreenshot(`${name}.png`, {
+    maxDiffPixelRatio: 0.03,
+    timeout: 30000
+  });
+}
+
 export async function captureAnnotationScreenshot(page, name) {
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(3000);
@@ -208,5 +222,22 @@ export async function captureAnnotationScreenshot(page, name) {
   await page.screenshot({ path: snapshotPath });
 }
 
+export async function setSliderValue(page, label, value) {
+  const sliderInput = page.locator(`xpath=//div[text()="${label}"]/following::input[@type="range"][1]`).first();
+  await expect(sliderInput).toBeAttached({ timeout: CONFIG.timeout.medium });
 
+  const min = parseFloat(await sliderInput.getAttribute('min') ?? '0');
+  const max = parseFloat(await sliderInput.getAttribute('max') ?? '100');
+  const clamped = Math.max(min, Math.min(max, value));
 
+  const rail = page.locator(`xpath=//div[text()="${label}"]/following::span[contains(@class,"MuiSlider-rail")][1]`);
+  await expect(rail).toBeVisible({ timeout: CONFIG.timeout.medium });
+
+  const box = await rail.boundingBox();
+  const margin = 5;
+  const targetX = box.x + margin + ((box.width - 2 * margin) * (clamped - min) / (max - min));
+  const targetY = box.y + box.height / 2;
+
+  await page.mouse.click(targetX, targetY);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+}
