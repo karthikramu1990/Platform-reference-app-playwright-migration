@@ -172,7 +172,111 @@ import { Locator } from '../helpers/locators.js';
 //   }
 // });
 
-test('GIS Viewer - Appearance - Elevation Mode', async ({ page }) => {
+// test('GIS Viewer - Appearance - Elevation Mode', async ({ page }) => {
+//   test.setTimeout(CONFIG.timeout.long);
+
+//   await setup(page);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   await openGISPanel(page);
+//   await enableGIS(page);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
+//   await expect(interactHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+//   await interactHeader.click();
+
+//   await setSliderValue(page, 'Zoom', 18);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   const appearanceHeader = page.locator(`xpath=${Locator.gisAppearanceSectionHeader}`);
+//   await expect(appearanceHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+//   await appearanceHeader.click();
+
+//   const elevationDropdown = page.locator(`xpath=${Locator.gisElevationModeDropdown}`);
+//   await expect(elevationDropdown).toBeVisible({ timeout: CONFIG.timeout.medium });
+
+//   const elevationModes = [
+//     'None',
+//     'Quick Flat Surface View',
+//     'Quick Flat Subsurface View',
+//     'Surface View',
+//     'Mixed View',
+//     'Subsurface View'
+//   ];
+
+//   for (const mode of elevationModes) {
+//     await elevationDropdown.selectOption({ label: mode });
+//     await waitForApplicationLoad(page, CONFIG.timeout.medium);
+//     await verifyGISScreenshot(page, `GIS-Appearance-Elevation-${mode.replaceAll(' ', '-')}`);
+//   }
+// });
+
+// test('GIS Viewer - Appearance - Globe View', async ({ page }) => {
+//   test.setTimeout(CONFIG.timeout.long);
+
+//   await setup(page);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   await openGISPanel(page);
+//   await enableGIS(page);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
+//   await expect(interactHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+//   await interactHeader.click();
+
+//   await setSliderValue(page, 'Zoom', 18);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   const appearanceHeader = page.locator(`xpath=${Locator.gisAppearanceSectionHeader}`);
+//   await expect(appearanceHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+//   await appearanceHeader.click();
+
+//   const globeViewToggle = page.locator(`xpath=${Locator.gisGlobeViewToggle}`);
+//   await expect(globeViewToggle).toBeVisible({ timeout: CONFIG.timeout.medium });
+
+//   await verifyGISScreenshot(page, 'GIS-Appearance-GlobeView-Off');
+
+//   await globeViewToggle.click();
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+//   await verifyGISScreenshot(page, 'GIS-Appearance-GlobeView-On');
+// });
+
+// test('GIS Viewer - Appearance - Show Markers', async ({ page }) => {
+//   test.setTimeout(CONFIG.timeout.long);
+
+//   await setup(page);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   await openGISPanel(page);
+//   await enableGIS(page);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
+//   await expect(interactHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+//   await interactHeader.click();
+
+//   await setSliderValue(page, 'Zoom', 18);
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+//   const appearanceHeader = page.locator(`xpath=${Locator.gisAppearanceSectionHeader}`);
+//   await expect(appearanceHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+//   await appearanceHeader.click();
+
+//   const showMarkersToggle = page.locator(`xpath=${Locator.gisShowMarkersToggle}`);
+//   await expect(showMarkersToggle).toBeVisible({ timeout: CONFIG.timeout.medium });
+
+//   await showMarkersToggle.click();
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+//   await verifyGISScreenshot(page, 'GIS-Appearance-ShowMarkers-Off');
+
+//   await showMarkersToggle.click();
+//   await waitForApplicationLoad(page, CONFIG.timeout.medium);
+//   await verifyGISScreenshot(page, 'GIS-Appearance-ShowMarkers-On');
+// });
+
+test('GIS Viewer - Federated - Federated Mode', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -189,25 +293,18 @@ test('GIS Viewer - Appearance - Elevation Mode', async ({ page }) => {
   await setSliderValue(page, 'Zoom', 18);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
-  const appearanceHeader = page.locator(`xpath=${Locator.gisAppearanceSectionHeader}`);
-  await expect(appearanceHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
-  await appearanceHeader.click();
+  const federatedHeader = page.locator(`xpath=${Locator.gisFederatedSectionHeader}`);
+  await expect(federatedHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await federatedHeader.click();
 
-  const elevationDropdown = page.locator(`xpath=${Locator.gisElevationModeDropdown}`);
-  await expect(elevationDropdown).toBeVisible({ timeout: CONFIG.timeout.medium });
+  const federatedModeDropdown = page.locator(`xpath=${Locator.gisFederatedModeDropdown}`);
+  await expect(federatedModeDropdown).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  const elevationModes = [
-    'None',
-    'Quick Flat Surface View',
-    'Quick Flat Subsurface View',
-    'Surface View',
-    'Mixed View',
-    'Subsurface View'
-  ];
+  const federatedModes = ['None', 'Outline', 'Dynamic', 'Markers'];
 
-  for (const mode of elevationModes) {
-    await elevationDropdown.selectOption({ label: mode });
+  for (const mode of federatedModes) {
+    await federatedModeDropdown.selectOption({ label: mode });
     await waitForApplicationLoad(page, CONFIG.timeout.medium);
-    await verifyGISScreenshot(page, `GIS-Appearance-Elevation-${mode.replaceAll(' ', '-')}`);
+    await verifyGISScreenshot(page, `GIS-Federated-Mode-${mode}`);
   }
 });

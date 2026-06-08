@@ -117,6 +117,8 @@ export const Locator = {
   gisElevationModeDropdown: '//select[@name="Elevation Mode"]',
   gisGlobeViewToggle: '//div[text()="Globe View"]/..//input[@type="checkbox"]',
   gisShowMarkersToggle: '//div[text()="Show Markers"]/..//input[@type="checkbox"]',
+  gisFederatedSectionHeader: '//div[text()="Federated"]',
+  gisFederatedModeDropdown: '//select[contains(@class,"IafDropdown-module_select-component") and @name="Federated Mode"]',
   gisFederatedModelSection: '//div[contains(@class,"IafSubHeader-module_list-item")]/..//div[contains(text(),"Federated")]',
   gisHorizontalAlignmentTogglebutton: '//div[contains(text(),"Horizontal Alignment")]/..//input[@type="checkbox"]',
   gisBearingSliderValue: '//div[text()="Bearing"]/..//div[@class="IafSlider-module_range-value__tY7ul"]',

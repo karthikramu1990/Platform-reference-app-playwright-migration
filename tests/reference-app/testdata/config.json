@@ -1,13 +1,14 @@
 {
-  "Env": "qa1",
+  "Env": "staging",
   "Browser": "chrome",
-  "Rfusername": "automationref@yopmail.com",
+  "Rfusername": "karthik.r@invicara.com",
   "RfPassword": "Test@123",
   "Headless": "no",
   "Environments": {
     "staging": {
       "RfUrl": "https://staging.invicara.com/reference/#/",
-      "ProjectList": "TestAI"
+      "ProjectList": "PLG-1602",
+      "UserGroup": "PLG-1602 Proj Admin"
 
     },
     "qa1": {
@@ -27,8 +28,8 @@
     },
     "qa3": {
       "RfUrl": "https://apps.qa3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "",
-      "UserGroup": ""
+      "ProjectList": "Automation",
+      "UserGroup": "Automation Proj Admin"
     }
   }
 }
