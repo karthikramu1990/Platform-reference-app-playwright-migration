@@ -1,7 +1,7 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
 import { login, selectProject, setup, waitForApplicationLoad, waitForAnnotationsEnabled, verifyAnnotationScreenshot, captureAnnotationScreenshot } from '../helpers/appHelpers.js';
-import { runAnnotations, selectAnnotationTool, drawCheckDistance, drawLine, drawCircle, drawRectangle, drawPolyline, drawPolygon, drawLeaderNote, drawText, drawFreehand, drawExportAnnotations, exportAnnotations, importAnnotations, clearAnnotations } from '../helpers/annotationHelpers.js';
+import { runAnnotations, drawCheckDistance, drawLine, drawCircle, drawRectangle, drawPolyline, drawPolygon, drawLeaderNote, drawText, drawFreehand, drawExportAnnotations, exportAnnotations, importAnnotations, clearAnnotations } from '../helpers/annotationHelpers.js';
 import { Locator } from '../helpers/locators.js';
 
 test('Annotations test', async ({ page }) => {
@@ -15,7 +15,7 @@ test('Annotations test', async ({ page }) => {
 
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
-  await waitForAnnotationsEnabled(page, CONFIG.timeout.long);
+  await waitForAnnotationsEnabled(page, CONFIG.timeout.medium);
 
   await runAnnotations(page);
 });
@@ -89,6 +89,7 @@ test('Annotations - Check Distance', async ({ page }) => {
 
   await drawCheckDistance(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-CheckDistance');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Line', async ({ page }) => {
@@ -103,6 +104,7 @@ test('Annotations - Line', async ({ page }) => {
 
   await drawLine(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Line');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Circle', async ({ page }) => {
@@ -117,6 +119,7 @@ test('Annotations - Circle', async ({ page }) => {
 
   await drawCircle(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Circle');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Rectangle', async ({ page }) => {
@@ -131,6 +134,7 @@ test('Annotations - Rectangle', async ({ page }) => {
 
   await drawRectangle(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Rectangle');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Polyline', async ({ page }) => {
@@ -145,6 +149,7 @@ test('Annotations - Polyline', async ({ page }) => {
 
   await drawPolyline(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Polyline');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Polygon', async ({ page }) => {
@@ -159,6 +164,7 @@ test('Annotations - Polygon', async ({ page }) => {
 
   await drawPolygon(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Polygon');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Leader Note', async ({ page }) => {
@@ -173,6 +179,7 @@ test('Annotations - Leader Note', async ({ page }) => {
 
   await drawLeaderNote(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-LeaderNote');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Text', async ({ page }) => {
@@ -187,6 +194,7 @@ test('Annotations - Text', async ({ page }) => {
 
   await drawText(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Text');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Freehand', async ({ page }) => {
@@ -201,6 +209,7 @@ test('Annotations - Freehand', async ({ page }) => {
 
   await drawFreehand(page, annotationsBtn, canvas);
   await verifyAnnotationScreenshot(page, 'Annotations-Freehand');
+  await clearAnnotations(page, annotationsBtn);
 });
 
 test('Annotations - Export', async ({ page }, testInfo) => {

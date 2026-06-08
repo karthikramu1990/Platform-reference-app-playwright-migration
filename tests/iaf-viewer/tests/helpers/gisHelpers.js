@@ -20,7 +20,6 @@ export async function enableGIS(page) {
   }
   await expect(toggle).toBeChecked({ timeout: CONFIG.timeout.medium });
 
-  // Wait until GIS panel content is fully loaded
   const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
   await expect(interactHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
 }

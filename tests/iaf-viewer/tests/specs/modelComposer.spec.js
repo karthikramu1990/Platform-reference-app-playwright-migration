@@ -1,7 +1,7 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
-import { login, selectProject, setup, verifyViewerScreenshot, waitForApplicationLoad } from '../helpers/appHelpers.js';
-import { setAccuracy, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, waitForModelcomposerEnabled, clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoadEverything, structuralSubItemActions, architecturalSubItemActions, mechanicalSubItemActions, electricalSubItemActions, plumbingSubItemActions, fireProtectionSubItemActions } from '../helpers/modelComposerHelpers.js';
+import { login, selectProject, setAccuracy, setup, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, verifyViewerScreenshot, waitForApplicationLoad, waitForModelcomposerEnabled } from '../helpers/appHelpers.js';
+import { clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoadEverything, structuralSubItemActions, architecturalSubItemActions, mechanicalSubItemActions, electricalSubItemActions, plumbingSubItemActions, fireProtectionSubItemActions } from '../helpers/modelComposerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
@@ -79,10 +79,10 @@ test('Model Composer - All disciplines - Low vs High', async ({ page }) => {
   await toggleAllLayers(page, true);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "All disipline-Toggled-low");
+  await verifyViewerScreenshot(page, "case1-all-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "All disipline-Toggled-high");
+  await verifyViewerScreenshot(page, "case1-all-high");
 });
 
 test('Model Composer - No disciplines - Low vs High', async ({ page }) => {
@@ -93,10 +93,10 @@ test('Model Composer - No disciplines - Low vs High', async ({ page }) => {
   await toggleAllLayers(page, false);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "No disciplines-Toggled-low");
+  await verifyViewerScreenshot(page, "case2-none-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "No disciplines-Toggled-high");
+  await verifyViewerScreenshot(page, "case2-none-high");
 });
 
 test('Model Composer - Architectural only Low & High', async ({ page }) => {
@@ -111,10 +111,10 @@ test('Model Composer - Architectural only Low & High', async ({ page }) => {
   ], true);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "architectural-Toggled-low");
+  await verifyViewerScreenshot(page, "case3-arch-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "architectural-Toggled-high");
+  await verifyViewerScreenshot(page, "case3-arch-high");
 });
 
 test('Model Composer - Plumbing only Low & High', async ({ page }) => {
@@ -129,10 +129,10 @@ test('Model Composer - Plumbing only Low & High', async ({ page }) => {
   ], true);
 
   await setAccuracy(page, EModelComposerQuality.Low);
-  await verifyViewerScreenshot(page, "plumbling-Toggled-low");
+  await verifyViewerScreenshot(page, "case4-mixed-low");
 
   await setAccuracy(page, EModelComposerQuality.High);
-  await verifyViewerScreenshot(page, "Plumbing-Toggled-high");
+  await verifyViewerScreenshot(page, "case4-mixed-high");
 });
 
 test('Model Composer - Electrical only Low & High', async ({ page }) => {
@@ -255,4 +255,3 @@ test('Model Composer - FireProtection Sub-Item Actions', async ({ page }) => {
   await autoComposer.uncheck();
   await fireProtectionSubItemActions(page);
 });
-

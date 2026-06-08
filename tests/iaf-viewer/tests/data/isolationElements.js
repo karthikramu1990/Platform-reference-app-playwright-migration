@@ -1,4 +1,4 @@
-export const isolatedElements =  [
+export const isolatedCeillingElements =  [
   9192, 9193, 9194, 9195, 9197, 9198, 9388, 9390, 9392, 9393,
   9408, 9410, 9412, 9413, 9428, 9430, 9432, 9433, 9448, 9450,
   9452, 9453, 9468, 9470, 9472, 9473, 9510, 9191, 7534, 7537,
@@ -12,5 +12,6 @@ export const isolatedElements =  [
   9436, 9456, 9476, 1718, 4702, 4703, 9199, 9200, 9201, 9524,
   9525, 1976, 1977, 1978, 1979, 1980, 1981
 ];
+export const isolatedElectricalElements = [24254]
 
 export const singleSelection = ["1984"]

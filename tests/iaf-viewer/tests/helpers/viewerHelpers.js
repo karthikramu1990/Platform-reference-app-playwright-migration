@@ -1,7 +1,11 @@
 import { expect } from '@playwright/test';
 import { CONFIG } from '../config';
 import { Locator } from './locators';
-import { waitForApplicationLoad } from './appHelpers';
+import { waitForApplicationLoad, verifyViewerScreenshot } from './appHelpers';
+
+export async function verifyCuttingPlaneScreenshot(page, name) {
+  await verifyViewerScreenshot(page, name, Locator.viewer3D, 2000);
+}
 
 export async function clickViewOption(page, locatorKey) {
   const viewToolbar = page.locator(Locator.viewToolbar);
@@ -30,7 +34,7 @@ export async function openCuttingPlane(page) {
   await expect(cuttingPlane).toBeVisible({ timeout: CONFIG.timeout.medium });
   await cuttingPlane.click();
 
-  const standardPlanes = page.locator(`xpath=${Locator.standardPlanes}`);
+  const standardPlanes = page.locator('xpath=(//div[text()="Standard Planes"])[1]');
   await expect(standardPlanes).toBeVisible({ timeout: CONFIG.timeout.medium });
 }
 

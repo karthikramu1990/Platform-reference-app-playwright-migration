@@ -1,5 +1,6 @@
 import { expect } from '@playwright/test';
 import { Locator } from "./locators"
+import { CONFIG } from '../config';
 import fs from 'fs';
 import path from 'path';
 
@@ -11,9 +12,8 @@ export async function selectAnnotationTool(page, annotationsBtn, label, timeout)
   await annotationsBtn.click();
 
   const tool = toolRow(page, label);
+  await expect(tool).toBeVisible({ timeout });  // wait for panel to open first
   await tool.scrollIntoViewIfNeeded();
-  await expect(tool).toBeVisible({ timeout });
-
   await tool.click();
 }
 
@@ -96,7 +96,8 @@ export async function runAnnotations(page) {
   // });
 
   await expect(canvas).toHaveScreenshot('annotations.png', {
-    maxDiffPixelRatio: 0.02
+    maxDiffPixelRatio: 0.02,
+    timeout: CONFIG.timeout.medium             // VERY IMPORTANT
   });
 }
 
@@ -199,12 +200,10 @@ export async function drawCheckDistance(page, annotationsBtn, canvas) {
   await clearAnnotations(page, annotationsBtn);
   const { left, top, cx, cy, right, bottom } = await getCanvasPositions(canvas);
 
-  // X direction
   await selectAnnotationTool(page, annotationsBtn, 'Check Distance', 60000);
   await page.mouse.click(left, cy);
   await page.mouse.click(right, cy);
 
-  // Y direction
   await selectAnnotationTool(page, annotationsBtn, 'Check Distance', 60000);
   await page.mouse.click(cx, top);
   await page.mouse.click(cx, bottom);
@@ -221,7 +220,6 @@ export async function drawLeaderNote(page, annotationsBtn, canvas) {
 
   const noteInput = page.getByRole('textbox').last();
   await expect(noteInput).toBeVisible({ timeout: 10000 });
-  await noteInput.click();
   await noteInput.fill('Test');
   await page.keyboard.press('Enter');
 }
@@ -301,5 +299,3 @@ export async function importAnnotations(page, annotationsBtn, filePath) {
   const fileChooser = await fileChooserPromise;
   await fileChooser.setFiles(filePath);
 }
-
-

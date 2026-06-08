@@ -1,5 +1,7 @@
 export const Locator = {
   modelcomposerBtn: '[aria-label="Model Composer"]',
+  gisViewerBtn: '[aria-label="GIS Viewer"]',
+  gisViewer: 'div[id^="gis"] canvas',
   annotationsBtn: '[id*="annotations-submenu"]',
   displayAccuracyBtn: 'xpath=//div[text()="Display Accuracy"]/ancestor::div[2]//input',
   annotationPanel: "annotations-panel",
@@ -88,10 +90,9 @@ export const Locator = {
   focusedPlanesSizeSlider: '(//div[text()="Focused Planes"]/following::div[text()="Size"]/following::span[contains(@class,"MuiSlider-root")])[1]',
   changeFocusBtn: '//p[text()="Change Focus"]',
 
-  // ── Annotations ───────────────────────────────────────────────────────────
-  
+  // ── Annotations ───────────────────────────────────────────────────────
   annotationsToolbar: '//div[@aria-label="Annotations"]',
-  annotationsCheckDistance:'//span[text()="Check Distance"]',  
+  annotationsCheckDistance: '//span[text()="Check Distance"]',
   annotationsLine: '//span[text()="Line"]',
   annotationsCircle: '//span[text()="Circle"]',
   annotationsRectangle: '//span[text()="Rectangle"]',
@@ -104,7 +105,7 @@ export const Locator = {
   annotationsImport: '//span[text()="Import"]',
   annotationsDeleteAllMarkup: '//input[@name="deleteAllMarkup"]',
 
-  // ── GIS Viewer ────────────────────────────────────────────────────────────
+  // ── GIS Viewer ────────────────────────────────────────────────────────
   gisMenu: '//div[@aria-label="GIS Viewer"]',
   enableGISToggle: '//div[contains(text(),"Enable GIS")]/..//input[@type="checkbox"]',
   gisInteractSectionHeader: '//div[text()="Interact"]',
@@ -117,8 +118,6 @@ export const Locator = {
   gisElevationModeDropdown: '//select[@name="Elevation Mode"]',
   gisGlobeViewToggle: '//div[text()="Globe View"]/..//input[@type="checkbox"]',
   gisShowMarkersToggle: '//div[text()="Show Markers"]/..//input[@type="checkbox"]',
-  gisFederatedSectionHeader: '//div[text()="Federated"]',
-  gisFederatedModeDropdown: '//select[contains(@class,"IafDropdown-module_select-component") and @name="Federated Mode"]',
   gisFederatedModelSection: '//div[contains(@class,"IafSubHeader-module_list-item")]/..//div[contains(text(),"Federated")]',
   gisHorizontalAlignmentTogglebutton: '//div[contains(text(),"Horizontal Alignment")]/..//input[@type="checkbox"]',
   gisBearingSliderValue: '//div[text()="Bearing"]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
@@ -128,4 +127,8 @@ export const Locator = {
   gisVerticalAlignmentTogglebutton: '//div[contains(text(),"Vertical Alignment")]/..//input[@type="checkbox"]',
   gisTerrainHeightSliderValue: '//div[contains(text(),"Terrain Height")]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
   gisResetButton: '//p[text()="Reset"]',
+}
+
+export const Notifications = {
+    focusPlane : "You may want to select an element to enable focused planes"
 }

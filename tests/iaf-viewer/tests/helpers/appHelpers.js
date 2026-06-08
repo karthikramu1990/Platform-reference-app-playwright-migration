@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { CONFIG } from '../config';
 import { Locator } from "./locators"
+import { LayerType } from './modelHelpers';
 
 export async function login(page, credentials, timeout) {
   const emailInput = page.getByRole('textbox', { name: 'Enter your email address' });
@@ -20,7 +21,8 @@ export async function login(page, credentials, timeout) {
 export async function selectProject(page, projectName, path, timeout) {
   await expect(page.getByText('Project Selection')).toBeVisible({ timeout });
 
-  const projectDropdown = page.locator('.select__control').first();
+  // const projectDropdown = page.locator('.select__control');
+  const projectDropdown = page.locator('input[name="projectSelect"]').locator('..').locator('.select__control');
   await projectDropdown.click();
 
   const projectOption = page.getByRole('option', { name: projectName });
@@ -36,7 +38,7 @@ export async function selectProject(page, projectName, path, timeout) {
   await navigatorHeading.click();
 }
 
-export async function waitForApplicationLoad(page, timeout) {
+export async function waitForApplicationLoad(page, timeout = CONFIG.timeout.medium) {
   await page.locator('#modelSpinner').waitFor({
     state: 'visible',
     timeout: CONFIG.timeout.short
@@ -46,26 +48,6 @@ export async function waitForApplicationLoad(page, timeout) {
     state: 'hidden',
     timeout
   });
-}
-
-export async function setupAndClickModel(page) {
-  await page.goto(CONFIG.url);
-  await login(page, CONFIG.credentials, CONFIG.timeout.medium);
-  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
-  await waitForApplicationLoad(page, CONFIG.timeout.medium);
-  await page.waitForTimeout(20000);
-
-  const canvas = page.locator(Locator.viewer3D);
-  await expect(canvas).toBeVisible({ timeout: 60000 });
-  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
-
-  const box = await canvas.boundingBox();
-  expect(box).not.toBeNull();
-
-  const cx = box.x + box.width;
-  const cy = box.y + box.height;
-
-  await page.mouse.click(cx * 0.45, cy * 0.4);
 }
 
 export async function openPanel(page, timeout, panel = "model", ) {
@@ -113,7 +95,7 @@ export async function setup(page, panel = null) {
   await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
   if(panel){
-    await openPanel(page, CONFIG.timeout.long, panel);
+    await openPanel(page, CONFIG.timeout.medium, panel);
   }
 }
 
@@ -159,15 +141,175 @@ export async function waitForAnnotationsEnabled(page, timeout) {
   return annotationsBtn;
 }
 
-export async function verifyViewerScreenshot(page, name) {
+export async function waitForModelcomposerEnabled(page, timeout) {
+  // const modelcomposerBtn = page.getByTestId('modelcomposer-submenu');
+  const modelcomposerBtn = await page.locator(Locator.modelcomposerBtn).first()
+
+  await expect(modelcomposerBtn).toBeVisible({ timeout });
+  await expect(modelcomposerBtn).not.toHaveClass(/disabled/, { timeout });
+
+  await modelcomposerBtn.click();
+
+  return modelcomposerBtn;
+}
+
+export async function waitForCuttingPlaneEnabled(page, timeout) {
+  const cuttingPlaneButton = page.getByLabel(Locator.cuttingPlane);
+
+  await expect(cuttingPlaneButton).toBeVisible({ timeout });
+  await expect(cuttingPlaneButton).not.toHaveClass(/disabled/, { timeout });
+
+  await cuttingPlaneButton.click();
+
+  return cuttingPlaneButton;
+}
+
+export async function waitForGISEnabled(page, timeout) {
+  const gisBtn = await page.locator(Locator.gisViewerBtn).first()
+
+  await expect(gisBtn).toBeVisible({ timeout });
+  await expect(gisBtn).not.toHaveClass(/disabled/, { timeout });
+
+  await gisBtn.click();
+
+  return gisBtn;
+}
+
+export async function displayAccuracyRange(page) {
+  const wrapper = page.getByTestId("display-accuracy-slider");
+  await expect(wrapper).toBeVisible();
+  return wrapper.locator('input[type="range"]').first();
+}
+
+export async function setRangeValue(locator, value) {
+  await expect(locator).toBeVisible();
+  await locator.evaluate((el, val) => {
+    const setter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype,
+      'value'
+    )?.set;
+
+    setter?.call(el, val);
+
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  }, value);
+  await expect(locator).toHaveValue(String(value));
+}
+
+export async function verifyDisciplineStatus(page, layer, isEnabled) {
+  const container = page.locator(
+    'xpath=//div[normalize-space()="Disciplines"]/following-sibling::div[1]'
+  );
+
+  const checkboxes = container.locator(`input[type="checkbox"][name="${layer}"]`);
+  const count = await checkboxes.count();
+
+  for (let i = 0; i < count; i++) {
+    const checkbox = checkboxes.nth(i);
+    if (isEnabled) {
+      await expect(checkbox).toBeEnabled({ timeout: 60000 });
+    } else {
+      await expect(checkbox).toBeDisabled({ timeout: 60000 });
+    }
+  }
+}
+
+export async function verifyAllDisciplineStatus(page, isEnabled) {
+  for (const layer of Object.values(LayerType)) {
+    await verifyDisciplineStatus(page, layer, isEnabled);
+  }
+}
+
+export async function verifyMenuItems(page) {
+  const menu = page.getByRole('menu');
+
+  // Rename should be enabled
+  const rename = menu.getByRole('menuitem', { name: 'Rename' });
+  await expect(rename).toBeEnabled();
+
+  // All other menu items should be disabled
+  const items = menu.getByRole('menuitem');
+  const count = await items.count();
+
+  for (let i = 0; i < count; i++) {
+    const item = items.nth(i);
+    const text = await item.textContent();
+
+    if (text?.trim() !== 'Rename') {
+      await expect(item).toBeDisabled();
+    }
+  }
+}
+
+export async function getAllLayerKeys(page) {
+  //  get the container right after "Disciplines"
+  const container = page.locator(
+    'xpath=//div[normalize-space()="Disciplines"]/following-sibling::div[1]'
+  );
+
+  const checkboxes = container.locator('input[type="checkbox"][name]');
+  const count = await checkboxes.count();
+
+  const keys = [];
+
+  for (let i = 0; i < count; i++) {
+    const checkbox = checkboxes.nth(i);
+
+    await checkbox.waitFor({ state: 'attached' });
+
+    if (await checkbox.isDisabled()) continue;
+
+    const name = await checkbox.getAttribute('name');
+    if (name) keys.push(name);
+  }
+
+  return keys;
+}
+
+export async function toggleAllLayers(page, enable = true) {
+  const keys = await getAllLayerKeys(page);
+  await toggleLayers(page, keys, enable);
+}
+
+export async function setAccuracy(page, quality) {
+  const map = { low: 0, medium: 1, high: 2 };
+  const value = map[quality];
+
+  // const wrapper = page.getByTestId("display-accuracy-slider");
+  const slider = page.locator(Locator.displayAccuracyBtn).first();
+  await slider.waitFor({
+    state: "visible",
+    timeout: CONFIG.timeout.medium
+  });
+
+  // focus slider
+  await slider.focus();
+
+  // reset to min
+  await slider.press('Home');
+
+  // move to target
+  for (let i = 0; i < value; i++) {
+    await slider.press('ArrowRight');
+  }
+
+  // ✅ verify UI (IMPORTANT)
+  // const label = wrapper.locator('[class*="range-value"]');
+  // await expect(label).toHaveText(
+  //   quality.charAt(0).toUpperCase() + quality.slice(1)
+  // );
+}
+
+export async function verifyViewerScreenshot(page, name, canvasContainer = Locator.viewer3D, settleMs = 10000) {
   await waitForApplicationLoad(page, 120000);
 
-  await page.waitForTimeout(10000);
+  await page.waitForTimeout(settleMs);
 
   // Wait for network + rendering readiness
   await page.waitForLoadState('networkidle');
 
-  const canvas = page.locator(Locator.viewer3D);
+  const canvas = page.locator(canvasContainer);
   await expect(canvas).toBeVisible({ timeout: 120000 });
 
   // Wait until canvas has valid size
@@ -176,7 +318,7 @@ export async function verifyViewerScreenshot(page, name) {
     return c && c.width > 0 && c.height > 0;
   });
 
-  // OPTIONAL (BEST): freeze rendering if possible
+  // freeze rendering if possible
   await page.evaluate(() => {
     if (window.viewer?.pause) {
       window.viewer.pause();
@@ -185,14 +327,146 @@ export async function verifyViewerScreenshot(page, name) {
 
   // Screenshot with proper timeout
   await expect(canvas).toHaveScreenshot(`${name}.png`, {
-    maxDiffPixelRatio: 0.03,   // relaxed for CI
-    timeout: 30000             // VERY IMPORTANT
+    maxDiffPixelRatio: 0.03,
+    timeout: 30000
   });
 }
 
-export async function verifyAnnotationScreenshot(page, name) {
+export async function toggleLayers(page, keys, enable = true) {
+  for (const key of keys) {
+    const checkbox = page.locator(`input[type="checkbox"][name="${key}"]`);
+
+    await expect(checkbox).toBeVisible();
+
+    const checked = await checkbox.isChecked();
+
+    if (checked !== enable) {
+      await checkbox.click();
+      await expect(checkbox).toBeChecked({ checked: enable });
+    }
+  }
+}
+
+export async function setSliderByAria(slider, ratio = 0.5) {
+  await expect(slider).toBeVisible();
+
+  const min = parseFloat(await slider.getAttribute('min'));
+  const max = parseFloat(await slider.getAttribute('max'));
+
+  const value = min + (max - min) * ratio;
+
+  // console.log("actual", min, max, value);
+
+
+  // More reliable than fill for MUI sliders
+  await slider.evaluate((el, val) => {
+    const setter = Object.getOwnPropertyDescriptor(
+      HTMLInputElement.prototype,
+      'value'
+    )?.set;
+
+    setter?.call(el, val);
+
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+    el.dispatchEvent(new Event('change', { bubbles: true }));
+  }, value);
+
+  // const actual = parseFloat(await slider.inputValue());
+  // console.log("actual", value, actual);
+  // const tolerance = 0.05;
+  // console.log("s", actual , value)
+  // // expect(Math.abs(actual - value)).toBeLessThanOrEqual(tolerance);
+}
+
+export const getToggle = (container, label) =>
+  container
+    .locator('div[class*="IafSwitch-module_switch-title"]', { hasText: label })
+    .locator('xpath=ancestor::div[.//input[@type="checkbox"]][1]')
+    .locator('span.MuiSwitch-switchBase input');
+
+export const getSlider = (container, label) =>
+  container
+    .locator(`text=${label}`)
+    .locator('xpath=ancestor::div[.//input[@type="range"]][1]')
+    .locator('input[type="range"]');
+
+export const ensureToggle = async (toggle, state) => {
+  if ((await toggle.isChecked()) !== state) {
+    await toggle.click({ force: true });
+  }
+  state ? await expect(toggle).toBeChecked() : await expect(toggle).not.toBeChecked();
+};
+
+export const expectSliders = async (container, planes, enabled) => {
+  for (const plane of planes) {
+    const slider = getSlider(container, plane);
+    await expect(slider).toBeVisible();
+
+    if (enabled) {
+      await expect(slider).toBeEnabled();
+    } else {
+      const disabled =
+        (await slider.isDisabled()) ||
+        (await slider.getAttribute('aria-disabled')) === 'true';
+      expect(disabled).toBeTruthy();
+    }
+  }
+};
+
+export async function waitForGraphicsSettle(page) {
   await page.waitForLoadState('networkidle');
-  await page.waitForTimeout(3000);
+  await page.waitForTimeout(1000);
+  await page.evaluate(async () => {
+    await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+  });
+}
+
+export async function selectElementOnCanvas(page, canvas,options = {}) {
+  const { timeout = 5000, xRatio = 0.45, yRatio = 0.4 } = options;
+
+  // wait for canvas
+  await expect(canvas).toBeVisible({ timeout });
+
+  // get bounds
+  const box = await canvas.boundingBox();
+  if (!box) {
+    throw new Error('Canvas bounding box is null');
+  }
+
+  // calculate click position
+  const cx = box.x + box.width * xRatio;
+  const cy = box.y + box.height * yRatio;
+
+  // click
+  await page.mouse.click(cx, cy);
+}
+
+export async function setupAndClickModel(page) {
+  await page.goto(CONFIG.url);
+  await login(page, CONFIG.credentials, CONFIG.timeout.medium);
+  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await page.waitForTimeout(20000);
+
+  const canvas = page.locator(Locator.viewer3D);
+  await expect(canvas).toBeVisible({ timeout: 60000 });
+  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
+
+  const box = await canvas.boundingBox();
+  expect(box).not.toBeNull();
+
+  const cx = box.x + box.width;
+  const cy = box.y + box.height;
+
+  await page.mouse.click(cx * 0.45, cy * 0.4);
+}
+
+export async function verifyGISScreenshot(page, name) {
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(5000);
+
+  const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
+  await expect(interactHeader).toBeVisible({ timeout: 60000 });
 
   await expect(page).toHaveScreenshot(`${name}.png`, {
     maxDiffPixelRatio: 0.03,
@@ -200,13 +474,9 @@ export async function verifyAnnotationScreenshot(page, name) {
   });
 }
 
-export async function verifyGISScreenshot(page, name) {
+export async function verifyAnnotationScreenshot(page, name) {
   await page.waitForLoadState('networkidle');
-  await page.waitForTimeout(5000);
-
-  // Wait until GIS panel content is visible
-  const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
-  await expect(interactHeader).toBeVisible({ timeout: 60000 });
+  await page.waitForTimeout(3000);
 
   await expect(page).toHaveScreenshot(`${name}.png`, {
     maxDiffPixelRatio: 0.03,

@@ -1,7 +1,7 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
 import { setup, setupAndClickModel, verifyViewerScreenshot, waitForApplicationLoad } from '../helpers/appHelpers.js';
-import { clickViewOption, clickShadingOption, openCuttingPlane, dragPlaneSlider, selectElement, dragLocator } from '../helpers/viewerHelpers.js';
+import { clickViewOption, clickShadingOption, openCuttingPlane, dragPlaneSlider, selectElement, dragLocator, verifyCuttingPlaneScreenshot } from '../helpers/viewerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 
 test('Viewer Toolbar - Reset View', async ({ page }) => {
@@ -30,7 +30,7 @@ test('Viewer Toolbar - Projection', async ({ page }) => {
 test('Viewer Toolbar - Top View', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
-  await waitForApplicationLoad(page, CONFIG.timeout.medium);  
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
   await clickViewOption(page, 'topView');
   await verifyViewerScreenshot(page, 'Top-View');
 });
@@ -80,7 +80,6 @@ test('Viewer Toolbar - Shading Options', async ({ page }) => {
 
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
-  //await page.waitForTimeout(13000);
   await clickShadingOption(page, 'fullShadingWithLines');
   await verifyViewerScreenshot(page, 'Shading-Full-With-Lines');
 
@@ -101,52 +100,52 @@ test('Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes ON', asy
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
   await openCuttingPlane(page);
 
-  await page.locator(`xpath=${Locator.standardPlanes}`).click();
+  await page.locator('xpath=(//div[text()="Standard Planes"])[1]').click();
   await page.locator(`xpath=${Locator.standardPlanesToggle}`).click();
   await expect(page.locator(`xpath=${Locator.showPlanesToggle}`)).toBeChecked({ timeout: CONFIG.timeout.medium });
-  await verifyViewerScreenshot(page, 'CuttingPlane-Default');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Default');
 
   await dragPlaneSlider(page, 'topPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Top-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Top-50');
   await dragPlaneSlider(page, 'topPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Top-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Top-100');
   await dragPlaneSlider(page, 'topPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Top-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Top-0');
 
   await dragPlaneSlider(page, 'bottomPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Bottom-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Bottom-50');
   await dragPlaneSlider(page, 'bottomPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Bottom-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Bottom-100');
   await dragPlaneSlider(page, 'bottomPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Bottom-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Bottom-0');
 
   await dragPlaneSlider(page, 'frontPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Front-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Front-50');
   await dragPlaneSlider(page, 'frontPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Front-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Front-100');
   await dragPlaneSlider(page, 'frontPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Front-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Front-0');
 
   await dragPlaneSlider(page, 'backPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Back-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Back-50');
   await dragPlaneSlider(page, 'backPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Back-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Back-100');
   await dragPlaneSlider(page, 'backPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Back-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Back-0');
 
   await dragPlaneSlider(page, 'leftPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Left-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Left-50');
   await dragPlaneSlider(page, 'leftPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Left-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Left-100');
   await dragPlaneSlider(page, 'leftPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Left-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Left-0');
 
   await dragPlaneSlider(page, 'rightPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Right-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Right-50');
   await dragPlaneSlider(page, 'rightPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Right-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Right-100');
   await dragPlaneSlider(page, 'rightPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-Right-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-Right-0');
 });
 
 test('Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes OFF', async ({ page }) => {
@@ -156,52 +155,52 @@ test('Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes OFF', as
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
   await openCuttingPlane(page);
 
-  await page.locator(`xpath=${Locator.standardPlanes}`).click();
+  await page.locator('xpath=(//div[text()="Standard Planes"])[1]').click();
   await page.locator(`xpath=${Locator.standardPlanesToggle}`).click();
   await page.locator(`xpath=${Locator.showPlanesToggle}`).click();
   await expect(page.locator(`xpath=${Locator.showPlanesToggle}`)).not.toBeChecked({ timeout: CONFIG.timeout.medium });
 
   await dragPlaneSlider(page, 'topPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Top-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Top-50');
   await dragPlaneSlider(page, 'topPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Top-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Top-100');
   await dragPlaneSlider(page, 'topPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Top-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Top-0');
 
   await dragPlaneSlider(page, 'bottomPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Bottom-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Bottom-50');
   await dragPlaneSlider(page, 'bottomPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Bottom-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Bottom-100');
   await dragPlaneSlider(page, 'bottomPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Bottom-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Bottom-0');
 
   await dragPlaneSlider(page, 'frontPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Front-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Front-50');
   await dragPlaneSlider(page, 'frontPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Front-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Front-100');
   await dragPlaneSlider(page, 'frontPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Front-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Front-0');
 
   await dragPlaneSlider(page, 'backPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Back-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Back-50');
   await dragPlaneSlider(page, 'backPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Back-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Back-100');
   await dragPlaneSlider(page, 'backPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Back-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Back-0');
 
   await dragPlaneSlider(page, 'leftPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Left-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Left-50');
   await dragPlaneSlider(page, 'leftPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Left-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Left-100');
   await dragPlaneSlider(page, 'leftPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Left-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Left-0');
 
   await dragPlaneSlider(page, 'rightPlaneSlider', 50);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Right-50');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Right-50');
   await dragPlaneSlider(page, 'rightPlaneSlider', 100);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Right-100');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Right-100');
   await dragPlaneSlider(page, 'rightPlaneSlider', 0);
-  await verifyViewerScreenshot(page, 'CuttingPlane-ShowOff-Right-0');
+  await verifyCuttingPlaneScreenshot(page, 'CuttingPlane-ShowOff-Right-0');
 });
 
 test('Viewer Toolbar - Cutting Plane - Focused Planes', async ({ page }) => {
@@ -212,7 +211,7 @@ test('Viewer Toolbar - Cutting Plane - Focused Planes', async ({ page }) => {
   await selectElement(page);
   await openCuttingPlane(page);
 
-  const focusedPlanes = page.locator(`xpath=${Locator.focusedPlanes}`);
+  const focusedPlanes = page.locator('xpath=(//div[text()="Focused Planes"])[1]');
   await expect(focusedPlanes).toBeVisible({ timeout: CONFIG.timeout.medium });
   await focusedPlanes.click();
 
@@ -225,19 +224,19 @@ test('Viewer Toolbar - Cutting Plane - Focused Planes', async ({ page }) => {
   const changeFocusBtn = page.locator(`xpath=${Locator.changeFocusBtn}`);
   await expect(changeFocusBtn).toBeVisible({ timeout: CONFIG.timeout.medium });
   await changeFocusBtn.click();
-  await verifyViewerScreenshot(page, 'FocusedPlanes-Size-100');
+  await verifyCuttingPlaneScreenshot(page, 'FocusedPlanes-Size-100');
 
   await dragPlaneSlider(page, 'focusedPlanesSizeSlider', 75);
-  await verifyViewerScreenshot(page, 'FocusedPlanes-Size-75');
+  await verifyCuttingPlaneScreenshot(page, 'FocusedPlanes-Size-75');
 
   await dragPlaneSlider(page, 'focusedPlanesSizeSlider', 50);
-  await verifyViewerScreenshot(page, 'FocusedPlanes-Size-50');
+  await verifyCuttingPlaneScreenshot(page, 'FocusedPlanes-Size-50');
 
   await dragPlaneSlider(page, 'focusedPlanesSizeSlider', 25);
-  await verifyViewerScreenshot(page, 'FocusedPlanes-Size-25');
+  await verifyCuttingPlaneScreenshot(page, 'FocusedPlanes-Size-25');
 
   await dragPlaneSlider(page, 'focusedPlanesSizeSlider', 0);
-  await verifyViewerScreenshot(page, 'FocusedPlanes-Size-0');
+  await verifyCuttingPlaneScreenshot(page, 'FocusedPlanes-Size-0');
 });
 
 test('Viewer Toolbar - 3D Viewer', async ({ page }) => {
@@ -249,12 +248,10 @@ test('Viewer Toolbar - 3D Viewer', async ({ page }) => {
   const viewer3DBtn = page.locator(Locator.viewer3DToolbar);
   await expect(viewer3DBtn).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  // disable - 3D canvas hidden, 2D view shown, screenshot full page
   await viewer3DBtn.click();
   await page.waitForLoadState('networkidle');
   await expect(page).toHaveScreenshot('3DViewer-Disabled.png', { maxDiffPixelRatio: 0.03 });
 
-  // enable - 3D canvas restored
   await viewer3DBtn.click();
   await verifyViewerScreenshot(page, '3DViewer-Enabled');
 });
@@ -335,11 +332,9 @@ test('Viewer Toolbar - 2D Viewer - Disable and Enable', async ({ page }) => {
   const viewer2DBtn = page.locator(Locator.viewer2DToolbar);
   await expect(viewer2DBtn).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  // disable - 2D is on by default, click to turn off
   await viewer2DBtn.click();
   await verifyViewerScreenshot(page, '2DViewer-Disabled');
 
-  // enable - click again to restore 2D
   await viewer2DBtn.click();
   await page.waitForLoadState('networkidle');
   await expect(page).toHaveScreenshot('2DViewer-Enabled.png', { maxDiffPixelRatio: 0.03 });
@@ -368,4 +363,3 @@ test('Viewer Toolbar - Focus Mode Disable', async ({ page }) => {
   await selectElement(page);
   await verifyViewerScreenshot(page, 'FocusMode-Disabled');
 });
-
