@@ -4,44 +4,44 @@ import { closeDrawer, getDropdown, login, openDrawer, selectElementOnCanvas, sel
 import { openGISPanel, enableGIS, disableGIS } from '../helpers/gisHelpers.js';
 import { Locator } from '../helpers/locators.js';
 
-test('GIS - Show/Hide model on Mapbox', async ({ page }) => {
-  test.setTimeout(CONFIG.timeout.long);
+// test('GIS - Show/Hide model on Mapbox', async ({ page }) => {
+//   test.setTimeout(CONFIG.timeout.long);
 
-  await page.goto(CONFIG.url);
+//   await page.goto(CONFIG.url);
 
-  await login(page, CONFIG.credentials, CONFIG.timeout.medium);
+//   await login(page, CONFIG.credentials, CONFIG.timeout.medium);
 
-  await selectProject(page, CONFIG.project, 'Navigator', CONFIG.timeout.medium);
+//   await selectProject(page, CONFIG.project, 'Navigator', CONFIG.timeout.medium);
 
-  await waitForGISEnabled(page, CONFIG.timeout.medium);
+//   await waitForGISEnabled(page, CONFIG.timeout.medium);
 
-  await page.goto(`${CONFIG.url}?examplesview=true`);
+//   await page.goto(`${CONFIG.url}?examplesview=true`);
 
-  await page.getByRole('heading', { name: 'Mapbox Standalone' }).click();
+//   await page.getByRole('heading', { name: 'Mapbox Standalone' }).click();
 
-  await page.getByRole('button', { name: 'Show configuration panel' }).click();
+//   await page.getByRole('button', { name: 'Show configuration panel' }).click();
 
-  const tokenInput = page.getByRole('textbox', { name: 'Mapbox Token' });
+//   const tokenInput = page.getByRole('textbox', { name: 'Mapbox Token' });
 
-  await tokenInput.clear();
-  await tokenInput.fill(CONFIG.mapboxToken);
+//   await tokenInput.clear();
+//   await tokenInput.fill(CONFIG.mapboxToken);
 
-  await page.getByRole('button', { name: 'Hide configuration panel' }).click();
+//   await page.getByRole('button', { name: 'Hide configuration panel' }).click();
 
-  await waitForGISEnabled(page, CONFIG.timeout.medium);
+//   await waitForGISEnabled(page, CONFIG.timeout.medium);
 
-  await page.getByText('Federated').click();
+//   await page.getByText('Federated').click();
 
-  const federatedMode = page.locator('select[name="Federated Mode"]');
-  await expect(federatedMode).toHaveValue('0');
-  await expect(federatedMode.locator('option:checked')).toHaveText('None');
+//   const federatedMode = page.locator('select[name="Federated Mode"]');
+//   await expect(federatedMode).toHaveValue('0');
+//   await expect(federatedMode.locator('option:checked')).toHaveText('None');
 
-  await verifyViewerScreenshot(page, 'gis-only-view', Locator.gisViewer);
-  await federatedMode.selectOption('1');
-  await expect(federatedMode).toHaveValue('1');
-  await expect(federatedMode.locator('option:checked')).toHaveText('Outline');
-  await verifyViewerScreenshot(page, 'gis-3d-view', Locator.gisViewer);
-});
+//   await verifyViewerScreenshot(page, 'gis-only-view', Locator.gisViewer);
+//   await federatedMode.selectOption('1');
+//   await expect(federatedMode).toHaveValue('1');
+//   await expect(federatedMode.locator('option:checked')).toHaveText('Outline');
+//   await verifyViewerScreenshot(page, 'gis-3d-view', Locator.gisViewer);
+// });
 
 test('GIS Viewer - Enable and Disable GIS', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);

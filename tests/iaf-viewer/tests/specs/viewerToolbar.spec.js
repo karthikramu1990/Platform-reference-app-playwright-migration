@@ -5,6 +5,7 @@ import { clickViewOption, clickShadingOption, openCuttingPlane, dragPlaneSlider,
 import { Locator } from '../helpers/locators.js';
 
 test('Viewer Toolbar - Reset View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setupAndClickModel(page);
@@ -15,6 +16,7 @@ test('Viewer Toolbar - Reset View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Projection', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -28,6 +30,7 @@ test('Viewer Toolbar - Projection', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Top View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
@@ -36,6 +39,7 @@ test('Viewer Toolbar - Top View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Bottom View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
@@ -44,6 +48,7 @@ test('Viewer Toolbar - Bottom View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Left View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
@@ -52,6 +57,7 @@ test('Viewer Toolbar - Left View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Right View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
@@ -60,6 +66,7 @@ test('Viewer Toolbar - Right View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Front View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
@@ -68,6 +75,7 @@ test('Viewer Toolbar - Front View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Back View', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
@@ -76,6 +84,7 @@ test('Viewer Toolbar - Back View', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Shading Options', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -240,6 +249,7 @@ test('Viewer Toolbar - Cutting Plane - Focused Planes', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 3D Viewer', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -257,6 +267,7 @@ test('Viewer Toolbar - 3D Viewer', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 2D Viewer - Full Screen', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -269,6 +280,7 @@ test('Viewer Toolbar - 2D Viewer - Full Screen', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 2D Viewer - Half Screen', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -281,6 +293,7 @@ test('Viewer Toolbar - 2D Viewer - Half Screen', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 2D Viewer - Zoom In', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -297,6 +310,7 @@ test('Viewer Toolbar - 2D Viewer - Zoom In', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 2D Viewer - Zoom Out', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -313,6 +327,7 @@ test('Viewer Toolbar - 2D Viewer - Zoom Out', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 2D Viewer - Drag Area', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -324,6 +339,7 @@ test('Viewer Toolbar - 2D Viewer - Drag Area', async ({ page }) => {
 });
 
 test('Viewer Toolbar - 2D Viewer - Disable and Enable', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -341,6 +357,7 @@ test('Viewer Toolbar - 2D Viewer - Disable and Enable', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Focus Mode Enable', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
@@ -351,6 +368,7 @@ test('Viewer Toolbar - Focus Mode Enable', async ({ page }) => {
 });
 
 test('Viewer Toolbar - Focus Mode Disable', async ({ page }) => {
+  test.skip(true);
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);

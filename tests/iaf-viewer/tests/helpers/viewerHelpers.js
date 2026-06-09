@@ -49,7 +49,7 @@ export async function dragPlaneSlider(page, locatorKey, value) {
   const targetY = box.y + box.height / 2;
 
   await page.mouse.click(targetX, targetY);
-  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await page.waitForTimeout(500);
 }
 
 export async function selectElement(page) {
