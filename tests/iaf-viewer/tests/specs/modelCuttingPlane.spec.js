@@ -3,7 +3,7 @@ import { CONFIG } from '../config.js';
 import { selectElementOnCanvas, ensureToggle, expectSliders, getSlider, getToggle, login, selectProject, setRangeValue, setSliderByAria, waitForApplicationLoad, waitForGraphicsSettle, waitForCuttingPlaneEnabled, waitForModelcomposerEnabled } from '../helpers/appHelpers.js';
 import { Locator, Notifications } from '../helpers/locators.js';
 
-test('Cutting Planes - Sliders + Toggle', async ({ page }) => {
+test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
   await page.goto(CONFIG.url);

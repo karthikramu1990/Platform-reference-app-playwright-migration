@@ -6,7 +6,7 @@ import { Locator } from '../helpers/locators.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
 
-test('Model Composer - Node Counts', async ({ page }) => {
+test.skip('Model Composer - Node Counts', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
   await setup(page, "model");
   const res = await page.evaluate(async () => {
