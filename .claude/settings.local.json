@@ -2,7 +2,16 @@
   "permissions": {
     "allow": [
       "Bash(npm install:*)",
-      "Bash(npx playwright:*)"
+      "Bash(npx playwright:*)",
+      "mcp__claude_ai_Atlassian_Rovo__getAccessibleAtlassianResources",
+      "mcp__claude_ai_Atlassian_Rovo__getVisibleJiraProjects",
+      "mcp__claude_ai_Atlassian_Rovo__searchJiraIssuesUsingJql",
+      "mcp__claude_ai_Atlassian_Rovo__getJiraIssue",
+      "mcp__claude_ai_Atlassian_Rovo__createJiraIssue",
+      "Bash(curl -s -X POST -H 'Authorization: Basic __CMDSUB_OUTPUT__')",
+      "Read(//tmp/**)",
+      "Bash(curl --version)",
+      "mcp__claude_ai_Atlassian_Rovo__addCommentToJiraIssue"
     ]
   }
 }
