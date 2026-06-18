@@ -12,7 +12,7 @@
 
     },
     "qa1": {
-      "RfUrl": "https://qa1-app.in.invicara.com/reference/#/",
+      "RfUrl": "https://apps.qa1.oci.in.twinit.io/reference/#/",
       "ProjectList": "Automation",
       "UserGroup": "Automation Proj Admin"
     },

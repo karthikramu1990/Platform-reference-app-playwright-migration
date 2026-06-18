@@ -32,7 +32,7 @@ npm test
 ### Run against a specific environment
 | Command | Environment |
 |---|---|
-| `npm run test:qa1` | QA1 — https://qa1-app.in.invicara.com/reference/#/ |
+| `npm run test:qa1` | QA1 — https://apps.qa1.oci.in.twinit.io/reference/#/ |
 | `npm run test:qa2` | QA2 — https://qa2-app.in.invicara.com/reference/#/ |
 | `npm run test:eu-staging` | EU Staging — https://staging.invicara.com/reference/#/ |
 | `npm run test:oci-staging` | OCI Staging — https://apps.staging3.oci.in.twinit.io/reference/#/ |
