@@ -1,0 +1,1 @@
+FAIL: Failed to Validate Image - Error: ENOENT: no such file or directory, open 'C:\Users\KarthikRamu\Sources\Platform-reference-app-playwright-migration\imagevalidation\Modelimage.png'

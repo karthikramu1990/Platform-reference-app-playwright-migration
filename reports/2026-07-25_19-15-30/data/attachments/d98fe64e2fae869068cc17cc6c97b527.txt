@@ -1,0 +1,8 @@
+INFO: Navigator Search button clicked
+INFO: Element category selected
+INFO: Element type selected
+INFO: Fetch button clicked
+INFO: Navigator Showing List selected
+INFO: Navigator showing result selected
+PASS: File uploaded in navigator screen
+PASS: File deleted in navigator screen

@@ -1,0 +1,17 @@
+PASS: sample.pdf uploaded
+PASS: Ref_app_est.xlsx uploaded
+PASS: H-M_Indoor.png uploaded
+PASS: sample.pdf searched successfully
+PASS: Search removed successfully
+PASS: Search clicked successfully
+PASS: Ref_app_est.xlsx searched successfully
+PASS: Search removed successfully
+PASS: Search clicked successfully
+PASS: H-M_Indoor.png searched successfully
+PASS: Search removed successfully
+PASS: sample.pdf Deleted
+PASS: sample.pdf verified as deleted
+PASS: Ref_app_est.xlsx Deleted
+PASS: Ref_app_est.xlsx verified as deleted
+PASS: H-M_Indoor.png Deleted
+PASS: H-M_Indoor.png verified as deleted

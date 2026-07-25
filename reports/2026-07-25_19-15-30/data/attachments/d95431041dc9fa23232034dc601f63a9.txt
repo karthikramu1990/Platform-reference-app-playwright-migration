@@ -1,0 +1,18 @@
+INFO: 2D/3D menu hovered
+INFO: Navigator menu Selected
+INFO: Navigator Search button clicked
+INFO: Element category selected
+INFO: Element type selected
+INFO: Fetch button clicked
+INFO: Group selected in GroupBy dropdown
+INFO: Property selected
+INFO: Function selected
+INFO: Value selected
+INFO: Add Button clicked
+INFO: Navigator Showing List selected
+INFO: Navigator showing result selected
+INFO: Element properties Table validated
+INFO: TelemetryCollection Table validated
+INFO: WarrantyData Table validated
+INFO: Telemetry Channel Readings Table validated
+INFO: Files Menu validated

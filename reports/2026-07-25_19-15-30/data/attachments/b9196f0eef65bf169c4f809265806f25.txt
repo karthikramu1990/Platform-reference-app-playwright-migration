@@ -1,0 +1,5 @@
+INFO: Files menu Selected
+INFO: Inner Files menu Selected
+PASS: sample.pdf uploaded
+PASS: sample.pdf Deleted
+PASS: sample.pdf verified as deleted

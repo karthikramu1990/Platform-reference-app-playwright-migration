@@ -1,0 +1,5 @@
+INFO: Admin menu Selected
+INFO: usergroupMenu Selected
+PASS: Add icon clicked successfully
+PASS: User added into sent to section
+PASS: User sent invites to respective user

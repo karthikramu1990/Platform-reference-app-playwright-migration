@@ -1,0 +1,8 @@
+ERROR: selectProjectFromDd failed: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for getByRole('option', { name: 'Automation', exact: true }) to be visible
+
+ERROR: selectUserGroupFromDd failed: locator.waitFor: Timeout 10000ms exceeded.
+Call log:
+  - waiting for getByRole('option', { name: 'Automation Proj Admin', exact: true }) to be visible
+

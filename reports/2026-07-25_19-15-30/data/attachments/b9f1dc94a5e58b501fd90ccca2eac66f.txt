@@ -1,0 +1,18 @@
+ERROR: Unable to select 2D/3D menu
+ERROR: Unable to select navigator menu
+ERROR: Failed to click Navigator Search button
+ERROR: Failed to select Element category
+ERROR: Failed to select Element type
+ERROR: Failed to click Fetch button
+ERROR: Failed to select Group in GroupBy dropdown: locator.click: Target page, context or browser has been closed
+ERROR: Failed to select property: locator.click: Target page, context or browser has been closed
+ERROR: Failed to select Function
+ERROR: Failed to select Value
+ERROR: Failed to click Add button
+ERROR: Failed to select Navigator Showing List
+ERROR: Failed to select Navigator Showing result
+FAIL: Failed to validate elementproperties Table
+FAIL: Failed to validate TelemetryCollection Table
+FAIL: Failed to validate WarrantyData Table
+FAIL: Failed to validate Telemetry MQTT Table
+FAIL: Failed to validate Files Menu
