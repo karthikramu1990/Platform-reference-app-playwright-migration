@@ -1,5 +1,6 @@
 import { test } from '@playwright/test';
 import config from '../testdata/config.json';
+import { envConfig } from '../testdata/env';
 
 import { LoginintoTheApplicationTest } from './LoginintoTheApplicationTest';
 import { NavigatorTest }               from './NavigatorTest';
@@ -24,7 +25,7 @@ test.describe('Reference App Suite', () => {
       recordVideo: { dir: 'C:/pw-test-results/' },
     });
     sharedPage = await sharedContext.newPage();
-    await sharedPage.goto(config.Environments[config.Env].RfUrl, { waitUntil: 'networkidle', timeout: 60000 });
+    await sharedPage.goto(envConfig.RfUrl, { waitUntil: 'networkidle', timeout: 60000 });
   });
 
   test.afterAll(async ({}, testInfo) => {

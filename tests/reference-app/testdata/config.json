@@ -1,7 +1,7 @@
 {
-  "Env": "staging",
+  "Env": "qa2",
   "Browser": "chrome",
-  "Rfusername": "karthik.r@invicara.com",
+  "Rfusername": "automationref@yopmail.com",
   "RfPassword": "Test@123",
   "Headless": "no",
   "Environments": {
@@ -18,8 +18,8 @@
     },
     "qa2": {
       "RfUrl": "https://qa2-app.in.invicara.com/reference/#/",
-      "ProjectList": "",
-      "UserGroup": ""
+      "ProjectList": "automation",
+      "UserGroup": "automation Proj Admin"
     },
     "staging3": {
       "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",

@@ -3,6 +3,7 @@ import { HomePage } from '../page/HomePage';
 import { UserGroupPage } from '../page/UserGroupPage';
 import testData from '../testdata/TestData.json';
 import config from '../testdata/config.json';
+import { envConfig } from '../testdata/env';
 
 export class AdminUserGroupTest {
   private page: Page;
@@ -20,7 +21,7 @@ export class AdminUserGroupTest {
     this.page = page;
     this.user = new UserGroupPage(page);
     this.hp   = new HomePage(page);
-    const project = config.Environments[config.Env].ProjectList;
+    const project = envConfig.ProjectList;
     this.email            = testData['Collection-User group'].Email;
     this.filecontribution = `${project} File Contributor`;
     this.projadmin        = `${project} Proj Admin`;

@@ -11,7 +11,16 @@
       "Bash(curl -s -X POST -H 'Authorization: Basic __CMDSUB_OUTPUT__')",
       "Read(//tmp/**)",
       "Bash(curl --version)",
-      "mcp__claude_ai_Atlassian_Rovo__addCommentToJiraIssue"
+      "mcp__claude_ai_Atlassian_Rovo__addCommentToJiraIssue",
+      "PowerShell($env:Path = 'C:\\\\Program Files\\\\nodejs;' + $env:Path; npm install)",
+      "PowerShell($env:Path = 'C:\\\\Program Files\\\\nodejs;' + $env:Path; npx allure --version)",
+      "PowerShell(java -version)",
+      "PowerShell($env:Path = 'C:\\\\Program Files\\\\nodejs;' + $env:Path; npm uninstall allure-commandline; npx --yes allure@3.14.3 generate --help)",
+      "PowerShell($env:Path = 'C:\\\\Program Files\\\\nodejs;' + $env:Path; npx --yes allure@3.14.3 --help)",
+      "PowerShell($env:Path = 'C:\\\\Program Files\\\\nodejs;' + $env:Path; npx --yes allure@3.14.3 classic --help)",
+      "PowerShell($env:Path = 'C:\\\\Program Files\\\\nodejs;' + $env:Path; node generate-allure-report.js)",
+      "PowerShell(Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned -Force)",
+      "PowerShell(Get-ExecutionPolicy -List)"
     ]
   }
 }

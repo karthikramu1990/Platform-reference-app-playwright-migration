@@ -13,21 +13,18 @@ async function globalTeardown() {
 
   const now = new Date();
   const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}-${String(now.getMinutes()).padStart(2,'0')}-${String(now.getSeconds()).padStart(2,'0')}`;
-  const tempFolder = path.join(process.cwd(), 'allure-temp');
-  const htmlFile   = path.join(reportsFolder, `Reference-App-Automation-${timestamp}.html`);
+  const reportFolder = path.join(reportsFolder, `Reference-App-Automation-${timestamp}`);
 
   fs.mkdirSync(reportsFolder, { recursive: true });
 
-  console.log('Generating Allure single-file report...');
+  console.log('Generating Allure report...');
   execSync(
-    `npx allure generate "${resultsFolder}" --single-file -o "${tempFolder}" --clean`,
+    `npx allure classic "${resultsFolder}" -o "${reportFolder}"`,
     { stdio: 'inherit' }
   );
 
-  fs.renameSync(path.join(tempFolder, 'index.html'), htmlFile);
-  fs.rmSync(tempFolder, { recursive: true });
-
-  console.log(`Allure report saved: ${htmlFile}`);
+  console.log(`Allure report saved: ${reportFolder}`);
+  console.log(`View it with: npx allure open "${reportFolder}"`);
 }
 
 export default globalTeardown;

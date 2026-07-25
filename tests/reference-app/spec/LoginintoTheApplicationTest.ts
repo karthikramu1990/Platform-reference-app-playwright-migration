@@ -2,6 +2,7 @@ import { Page } from '@playwright/test';
 import { LoginPage } from '../page/LoginPage';
 import { ProjectSelectionPage } from '../page/ProjectSelectionPage';
 import config from '../testdata/config.json';
+import { envConfig } from '../testdata/env';
 
 export class LoginintoTheApplicationTest {
   private page: Page;
@@ -18,9 +19,8 @@ export class LoginintoTheApplicationTest {
   }
 
   async ProjectSelection(): Promise<void> {
-    const env = config.Environments[config.Env];
     const psp = new ProjectSelectionPage(this.page);
-    await psp.selectProjectFromDd(env.ProjectList);
-    await psp.selectUserGroupFromDd(env.UserGroup);
+    await psp.selectProjectFromDd(envConfig.ProjectList);
+    await psp.selectUserGroupFromDd(envConfig.UserGroup);
   }
 }

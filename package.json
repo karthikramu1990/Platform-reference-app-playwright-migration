@@ -20,6 +20,7 @@
   "devDependencies": {
     "@playwright/test": "^1.59.1",
     "@types/node": "^25.6.0",
+    "allure": "3.14.3",
     "allure-playwright": "^3.7.0",
     "cross-env": "^7.0.3",
     "pptxgenjs": "^4.0.1",
