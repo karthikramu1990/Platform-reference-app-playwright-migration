@@ -25,10 +25,10 @@ export const CONFIG = {
   url: E2E_BASE_URL[e2eTarget],
 
   credentials: {
-    email: requiredEnv('iputmodelsegmented@yopmail.com'),
-    password: requiredEnv('Test@123'),
+    email: requiredEnv('IAFVIEWER_INVICARA_USERNAME'),
+    password: requiredEnv('IAFVIEWER_INVICARA_PASSWORD'),
   },
-  mapboxToken: requiredEnv('IAFVIEWER_MAPBOX_TOKEN'),
+  mapboxToken: requiredEnv('IAFVIEWER_MAPBOX_TOKEN', ''),
   project: 'iputmodelsegmented',
   switchModel: "EX11034-INV-Federated-4.6",
   timeout: {
