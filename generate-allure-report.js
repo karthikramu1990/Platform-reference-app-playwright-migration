@@ -7,6 +7,7 @@ const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0
 
 const resultsFolder = path.join(__dirname, 'allure-results');
 const reportFolder  = path.join(__dirname, 'reports', timestamp);
+const htmlOutput    = path.join(reportFolder, 'allure-report.html');
 
 // Resolve environment: TEST_ENV var → config.json Env → fallback "qa1"
 let environment = process.env.TEST_ENV;
@@ -30,8 +31,12 @@ const envProps = [
 fs.mkdirSync(resultsFolder, { recursive: true });
 fs.writeFileSync(path.join(resultsFolder, 'environment.properties'), envProps);
 
-console.log(`Generating Allure report: ${timestamp}`);
-execSync(`npx allure classic "${resultsFolder}" -o "${reportFolder}"`, { stdio: 'inherit' });
+fs.mkdirSync(reportFolder, { recursive: true });
 
-console.log(`Report saved: ${reportFolder}`);
-console.log(`View it with: npx allure open "${reportFolder}"`);
+console.log(`Generating Allure single-file report: ${timestamp}`);
+execSync(`npx allure awesome "${resultsFolder}" --single-file -o "${path.join(reportFolder, 'allure-html')}"`, { stdio: 'inherit' });
+
+fs.renameSync(path.join(reportFolder, 'allure-html', 'index.html'), htmlOutput);
+fs.rmSync(path.join(reportFolder, 'allure-html'), { recursive: true });
+
+console.log(`Report saved: ${htmlOutput}`);

@@ -1,8 +1,0 @@
-INFO: 2D/3D menu hovered
-INFO: Model element menu Selected
-INFO: Element category selected
-INFO: Element type selected
-INFO: Fetch button clicked
-INFO: Showing element selected
-PASS: File uploaded
-PASS: File deleted successfully

@@ -1,3 +1,0 @@
-INFO: Files menu Selected
-INFO: Inner Files menu Selected
-PASS: sample.pdf uploaded

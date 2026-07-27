@@ -1,4 +1,0 @@
-INFO: Admin menu Selected
-INFO: Generic Rest Connector page Selected
-PASS: genericConnectorButton clicked successfully
-PASS: genericConnector selected successfully

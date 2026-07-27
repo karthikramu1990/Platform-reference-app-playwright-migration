@@ -1,9 +1,0 @@
-INFO: Navigator Search button clicked
-INFO: Element category selected
-INFO: Element type selected
-INFO: Fetch button clicked
-INFO: Navigator Showing List selected
-INFO: Navigator showing result selected
-INFO: New Warranty Details added
-PASS: Navigator warranty Details Edited successfully
-PASS: Navigator warranty Details Deleted successfully

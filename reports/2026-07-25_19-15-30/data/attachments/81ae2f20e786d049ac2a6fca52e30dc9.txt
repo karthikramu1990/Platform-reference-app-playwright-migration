@@ -1,4 +1,0 @@
-PASS: TestNewFolder1 folder created
-PASS: TestNewFolder1 folder clicked
-PASS: TestNewFolder1 folder Deleted
-PASS: TestNewFolder1 folder verified as deleted

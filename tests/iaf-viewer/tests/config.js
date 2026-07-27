@@ -25,8 +25,8 @@ export const CONFIG = {
   url: E2E_BASE_URL[e2eTarget],
 
   credentials: {
-    email: requiredEnv('IAFVIEWER_INVICARA_USERNAME'),
-    password: requiredEnv('IAFVIEWER_INVICARA_PASSWORD'),
+    email: requiredEnv('iputmodelsegmented@yopmail.com'),
+    password: requiredEnv('Test@123'),
   },
   mapboxToken: requiredEnv('IAFVIEWER_MAPBOX_TOKEN'),
   project: 'iputmodelsegmented',

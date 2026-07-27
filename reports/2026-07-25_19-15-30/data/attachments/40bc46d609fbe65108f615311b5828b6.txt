@@ -1,8 +1,0 @@
-INFO: Admin menu Selected
-INFO: manageModel menu Selected
-PASS: Mapbox username entered successfully
-PASS: Mapbox scopes entered successfully
-PASS: Mapbox expiry entered successfully
-PASS: Mapbox secret token entered successfully
-PASS: Add temp token config clicked successfully
-PASS: Mapbox temp token config uploaded message displayed
