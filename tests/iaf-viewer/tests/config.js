@@ -28,7 +28,7 @@ export const CONFIG = {
     email: requiredEnv('IAFVIEWER_INVICARA_USERNAME'),
     password: requiredEnv('IAFVIEWER_INVICARA_PASSWORD'),
   },
-  mapboxToken: requiredEnv('IAFVIEWER_MAPBOX_TOKEN', ''),
+  mapboxToken: process.env.IAFVIEWER_MAPBOX_TOKEN ?? '',
   project: 'iputmodelsegmented',
   switchModel: "EX11034-INV-Federated-4.6",
   timeout: {
