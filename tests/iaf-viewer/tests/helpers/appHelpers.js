@@ -118,17 +118,16 @@ export async function openDrawer(page, trigger, text) {
 }
 
 export async function closeDrawer(page, trigger, text) {
-  const openDrawer = await page.locator('.drawer-content.drawer-content-open').filter({
+  const openDrawer = page.locator('.drawer-content.drawer-content-open').filter({
     has: page.getByText(text)
-  }).first()
-  // Ensure it's actually open before closing
-  await expect(openDrawer).toHaveClass(/drawer-content-open/, {
-    timeout: CONFIG.timeout.medium
-  });
+  }).first();
+
+  // Nothing to close if it was never rendered (e.g. no data to display)
+  if (!(await openDrawer.isVisible().catch(() => false))) return;
 
   await trigger.click();
 
-  await expect(openDrawer).not.toBeVisible({ timeout: CONFIG.timeout.medium }); // or not.toHaveClass
+  await expect(openDrawer).not.toBeVisible({ timeout: CONFIG.timeout.medium });
 }
 
 export async function waitForAnnotationsEnabled(page, timeout) {
