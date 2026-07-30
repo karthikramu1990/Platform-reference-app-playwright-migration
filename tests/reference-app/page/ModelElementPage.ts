@@ -39,6 +39,9 @@ export class ModelElementPage {
   private selectTelemetryData: Locator;
   private telemetryMQTTTable: Locator;
   private drawerToggle: Locator;
+  private changeModelButton: Locator;
+  private currentModelValue: Locator;
+  private currentModelControl: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -76,11 +79,58 @@ export class ModelElementPage {
     this.selectTelemetryData         = page.locator("//div[@class='css-19bb58m']").nth(4);
     this.telemetryMQTTTable          = page.locator("//h1[contains(text(),'Telemetry via MQTT')]");
     this.drawerToggle                = page.locator("//div[contains(@class,'drawer-toggle')]");
+    this.changeModelButton           = page.getByRole('button', { name: 'Change model' });
+    this.currentModelValue           = page.locator("//label[text()='Current Model']/..//div[@class='css-1dimb5e-singleValue']");
+    this.currentModelControl         = page.locator("//label[text()='Current Model']/..//div[@class='css-19bb58m']");
   }
 
   private async logStep(message: string): Promise<void> {
     console.log(message);
     await step(message, async () => {});
+  }
+
+  private async waitUntilLoadingDisappear(): Promise<void> {
+    const spinner = this.page.locator("//div[@id='modelSpinner']");
+    let i = 0;
+    while (true) {
+      try {
+        const visible = await spinner.isVisible();
+        if (!visible) break;
+        if (i >= 600) { console.error('Model loading exceeded 10 minutes'); break; }
+        await this.page.waitForTimeout(1000);
+        i++;
+      } catch { break; }
+    }
+  }
+
+  private async selectFromReactSelect(name: string): Promise<void> {
+    await this.page.waitForTimeout(500);
+    await this.page.locator('input[role="combobox"][aria-expanded="true"]').fill(name);
+    await this.page.waitForTimeout(500);
+    await this.page.locator('[role="option"]').filter({ hasText: name }).first().click();
+  }
+
+  async ensureModel1801Selected(
+    modelName: string = '1801KS-INV-01-ZZ-M3-Z-0001_Federated'
+  ): Promise<void> {
+    try {
+      await this.currentModelValue.waitFor({ state: 'visible', timeout: 15000 });
+      const currentModel = (await this.currentModelValue.textContent())?.trim() ?? '';
+
+      if (currentModel.includes('1801')) {
+        await this.logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+        return;
+      }
+
+      await this.currentModelControl.click();
+      await this.selectFromReactSelect(modelName);
+
+      await this.changeModelButton.click();
+      await this.waitUntilLoadingDisappear();
+      await this.logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
+    } catch (e: any) {
+      console.error('ERROR: Unable to ensure 1801 model selected:', e.message);
+    }
   }
 
   async selectElementCategory(name: string): Promise<void> {

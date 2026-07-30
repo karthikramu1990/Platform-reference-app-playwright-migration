@@ -13,8 +13,17 @@ async function globalTeardown() {
 
   const now = new Date();
   const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}-${String(now.getMinutes()).padStart(2,'0')}-${String(now.getSeconds()).padStart(2,'0')}`;
+
+  let environment = process.env.TEST_ENV;
+  if (!environment) {
+    try {
+      const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tests/reference-app/testdata/config.json'), 'utf8'));
+      environment = config.Env || 'qa1';
+    } catch { environment = 'qa1'; }
+  }
+
   const tempFolder = path.join(process.cwd(), 'allure-temp');
-  const htmlFile   = path.join(reportsFolder, `Reference-App-Automation-${timestamp}.html`);
+  const htmlFile   = path.join(reportsFolder, `Reference-App-Automation-${environment.toUpperCase()}-${timestamp}.html`);
 
   fs.mkdirSync(reportsFolder, { recursive: true });
 

@@ -15,6 +15,7 @@ export class NavigatorTest {
     const navigator = new NavigatorPage(this.page);
     await hp.selectElementMenu();
     await hp.selectNavigatorScreen();
+    await navigator.ensureModel1801Selected();
     await navigator.clickNavigatorSearch();
     await navigator.selectElementCategory(testData.ModelElement[0].Category);
     await navigator.selectElementType(testData.ModelElement[0].Type);
@@ -36,6 +37,7 @@ export class NavigatorTest {
   async verifyModelImage(): Promise<void> {
     const navigator = new NavigatorPage(this.page);
     await this.page.reload({ waitUntil: 'networkidle' });
+    await navigator.ensureModel1801Selected();
     await navigator.clickNavigatorSearch();
     await navigator.selectElementCategory(testData.ModelElement[0].Category);
     await navigator.selectElementType(testData.ModelElement[0].Type);
@@ -50,6 +52,7 @@ export class NavigatorTest {
   async verifyWarrantyDataDetails(): Promise<void> {
     const navigator = new NavigatorPage(this.page);
     await this.page.reload({ waitUntil: 'networkidle' });
+    await navigator.ensureModel1801Selected();
     await navigator.clickNavigatorSearch();
     await navigator.selectElementCategory(testData.ModelElement[0].Category);
     await navigator.selectElementType(testData.ModelElement[0].Type);
@@ -64,6 +67,7 @@ export class NavigatorTest {
   async verifyTelemetryviaRestAPI(): Promise<void> {
     const navigator = new NavigatorPage(this.page);
     await this.page.reload({ waitUntil: 'networkidle' });
+    await navigator.ensureModel1801Selected();
     await navigator.clickNavigatorSearch();
     await navigator.selectElementCategory(testData.ModelElement[1].Category);
     await navigator.selectElementType(testData.ModelElement[1].Type);
@@ -77,6 +81,7 @@ export class NavigatorTest {
   async verifyTelemetryMQTTReadings(): Promise<void> {
     const navigator = new NavigatorPage(this.page);
     await this.page.reload({ waitUntil: 'networkidle' });
+    await navigator.ensureModel1801Selected();
     await navigator.clickNavigatorSearch();
     await navigator.selectElementCategory(testData.ModelElement[1].Category);
     await navigator.selectElementType(testData.ModelElement[1].Type);
@@ -89,6 +94,7 @@ export class NavigatorTest {
   async uploadDeleteFiles(): Promise<void> {
     const navigator = new NavigatorPage(this.page);
     await this.page.reload({ waitUntil: 'networkidle' });
+    await navigator.ensureModel1801Selected();
     await navigator.clickNavigatorSearch();
     await navigator.selectElementCategory(testData.ModelElement[1].Category);
     await navigator.selectElementType(testData.ModelElement[1].Type);

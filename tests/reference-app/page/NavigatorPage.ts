@@ -16,6 +16,7 @@ export class NavigatorPage {
   private navigatorModelSearchTable: Locator;
   private navigatorModelSelectDropdown: Locator;
   private navigatorChangeModelButton: Locator;
+  private navigatorCurrentModelValue: Locator;
   private navigatorSearch: Locator;
   private navigatorFilter: Locator;
   private navigatorList: Locator;
@@ -72,9 +73,10 @@ export class NavigatorPage {
     this.elementCategory                 = page.locator("//div[@class='ipa-select__indicators css-1wy0on6']").first();
     this.elementType                     = page.locator("//div[@class='ipa-select__indicators css-1wy0on6']").nth(1);
     this.fetchButton                     = page.getByRole('button', { name: /Fetch/ });
-    this.navigatorModelSearchTable       = page.locator("//i[@class='fas fa-table']");
+    this.navigatorModelSearchTable       = page.locator("//div[@class='navigator-bottom-search unselected']/..//i[@class='fas fa-table']");
     this.navigatorModelSelectDropdown    = page.locator("//div[@class='css-19bb58m']").nth(1);
     this.navigatorChangeModelButton      = page.getByRole('button', { name: 'Change model' });
+    this.navigatorCurrentModelValue      = page.locator('div[class*="singleValue"]').first();
     this.navigatorSearch                 = page.locator("//i[@class='fas fa-search']");
     this.navigatorFilter                 = page.locator("//i[@class='fas fa-filter']");
     this.navigatorList                   = page.locator("//i[@class='fas fa-list']");
@@ -140,6 +142,32 @@ export class NavigatorPage {
         await this.page.waitForTimeout(1000);
         i++;
       } catch { break; }
+    }
+  }
+
+  async ensureModel1801Selected(
+    modelName: string = '1801KS-INV-01-ZZ-M3-Z-0001_Federated'
+  ): Promise<void> {
+    try {
+      await this.navigatorModelSearchTable.waitFor({ state: 'visible', timeout: 15000 });
+      await this.navigatorModelSearchTable.click();
+
+      await this.navigatorCurrentModelValue.waitFor({ state: 'visible', timeout: 15000 });
+      const currentModel = (await this.navigatorCurrentModelValue.textContent())?.trim() ?? '';
+
+      if (currentModel.includes('1801')) {
+        await this.logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+        return;
+      }
+
+      await this.navigatorModelSelectDropdown.click();
+      await this.selectFromReactSelect(modelName);
+
+      await this.navigatorChangeModelButton.click();
+      await this.waitUntilLoadingDisappear();
+      await this.logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
+    } catch (e: any) {
+      console.error('ERROR: Unable to ensure 1801 model selected:', e.message);
     }
   }
 

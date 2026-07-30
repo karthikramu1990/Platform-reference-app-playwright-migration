@@ -5,10 +5,6 @@ const path = require('path');
 const now = new Date();
 const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}-${String(now.getMinutes()).padStart(2,'0')}-${String(now.getSeconds()).padStart(2,'0')}`;
 
-const resultsFolder = path.join(__dirname, 'allure-results');
-const reportFolder  = path.join(__dirname, 'reports', timestamp);
-const htmlOutput    = path.join(reportFolder, 'allure-report.html');
-
 // Resolve environment: TEST_ENV var → config.json Env → fallback "qa1"
 let environment = process.env.TEST_ENV;
 if (!environment) {
@@ -17,6 +13,10 @@ if (!environment) {
     environment = config.Env || 'qa1';
   } catch { environment = 'qa1'; }
 }
+
+const resultsFolder = path.join(__dirname, 'allure-results');
+const reportFolder  = path.join(__dirname, 'reports', `${environment.toUpperCase()}-${timestamp}`);
+const htmlOutput    = path.join(reportFolder, 'allure-report.html');
 
 const date = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
 const time = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;

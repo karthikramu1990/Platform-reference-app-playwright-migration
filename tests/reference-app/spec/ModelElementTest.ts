@@ -15,6 +15,7 @@ export class ModelElementTest {
     const model = new ModelElementPage(this.page);
     await hp.selectElementMenu();
     await hp.selectModelElementScreen();
+    await model.ensureModel1801Selected();
     await model.selectElementCategory(testData.ModelElement[0].Category);
     await model.selectElementType(testData.ModelElement[0].Type);
     await model.clickFetchButton();
@@ -32,6 +33,7 @@ export class ModelElementTest {
     await this.page.reload({ waitUntil: 'networkidle' });
     await hp.selectElementMenu();
     await hp.selectModelElementScreen();
+    await model.ensureModel1801Selected();
     await model.selectElementCategory(testData.ModelElement[0].Category);
     await model.selectElementType(testData.ModelElement[0].Type);
     await model.clickFetchButton();
@@ -46,6 +48,7 @@ export class ModelElementTest {
     await this.page.reload({ waitUntil: 'networkidle' });
     await hp.selectElementMenu();
     await hp.selectModelElementScreen();
+    await model.ensureModel1801Selected();
     await model.selectElementCategory(testData.ModelElement[0].Category);
     await model.selectElementType(testData.ModelElement[0].Type);
     await model.clickFetchButton();
@@ -61,6 +64,7 @@ export class ModelElementTest {
     await this.page.reload({ waitUntil: 'networkidle' });
     await hp.selectElementMenu();
     await hp.selectModelElementScreen();
+    await model.ensureModel1801Selected();
     await model.selectElementCategory(testData.ModelElement[1].Category);
     await model.selectElementType(testData.ModelElement[1].Type);
     await model.clickFetchButton();
@@ -74,6 +78,7 @@ export class ModelElementTest {
     await this.page.reload({ waitUntil: 'networkidle' });
     await hp.selectElementMenu();
     await hp.selectModelElementScreen();
+    await model.ensureModel1801Selected();
     await model.selectElementCategory(testData.ModelElement[1].Category);
     await model.selectElementType(testData.ModelElement[1].Type);
     await model.clickFetchButton();
