@@ -7,9 +7,10 @@
   "Environments": {
     "staging": {
       "RfUrl": "https://staging.invicara.com/reference/#/",
-      "ProjectList": "PLG-1602",
-      "UserGroup": "PLG-1602 Proj Admin"
-
+      "ProjectList": "EU staging 5.2",
+      "UserGroup": "EU staging 5.2 Proj Admin",
+      "Rfusername": "karthik.r@invicara.com",
+      "RfPassword": "Test@123"
     },
     "qa1": {
       "RfUrl": "https://apps.qa1.oci.in.twinit.io/reference/#/",
@@ -23,13 +24,17 @@
     },
     "staging3": {
       "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "",
-      "UserGroup": ""
+      "ProjectList": "Staging3 5.2",
+      "UserGroup": "Staging3 5.2 Proj Admin",
+      "Rfusername": "karthik.r@invicara.com",
+      "RfPassword": "Test@123"
     },
     "qa3": {
       "RfUrl": "https://apps.qa3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "Automation",
-      "UserGroup": "Automation Proj Admin"
+      "ProjectList": "OciQA3 5.2",
+      "UserGroup": "OciQA3 5.2 Proj Admin",
+      "Rfusername": "karthik.r@invicara.com",
+      "RfPassword": "Test@123"
     }
   }
 }

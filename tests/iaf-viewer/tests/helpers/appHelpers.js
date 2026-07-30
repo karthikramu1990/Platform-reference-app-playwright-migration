@@ -89,14 +89,44 @@ export const getPanels = (page, panelName) => {
   return panels[panelName];
 };
 
-export async function setup(page, panel = null) {
+// Generalized version of setup() that accepts a specific account/project,
+// for tickets that need to log in as a different user against a different
+// project than the suite's default CONFIG.credentials/CONFIG.project
+// (e.g. PLG-1471, which uses a dedicated BIAL account/project).
+export async function setupWithAccount(page, credentials, projectName, panel = null) {
   await page.goto(CONFIG.url);
-  await login(page, CONFIG.credentials, CONFIG.timeout.medium);
-  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
+  await login(page, credentials, CONFIG.timeout.medium);
+  await selectProject(page, projectName, "Navigator", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
-  if(panel){
+  if (panel) {
     await openPanel(page, CONFIG.timeout.medium, panel);
   }
+}
+
+export async function setup(page, panel = null) {
+  await setupWithAccount(page, CONFIG.credentials, CONFIG.project, panel);
+}
+
+// Attaches console/page-error listeners and returns the array they push
+// into. Attach this before any navigation happens so nothing is missed.
+// Used for tickets that need to assert "no console errors" (e.g. PLG-1471).
+export function captureConsoleErrors(page) {
+  const errors = [];
+  page.on('console', (msg) => {
+    if (msg.type() === 'error') errors.push(msg.text());
+  });
+  page.on('pageerror', (err) => {
+    errors.push(err.message);
+  });
+  return errors;
+}
+
+// Times how long an async action takes, in milliseconds. Used for
+// performance-flavored tickets (e.g. PLG-1471 initial load time).
+export async function measureElapsed(action) {
+  const start = Date.now();
+  await action();
+  return Date.now() - start;
 }
 
 export function getDropdown(page, label) {

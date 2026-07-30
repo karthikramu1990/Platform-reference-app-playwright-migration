@@ -31,6 +31,18 @@ export const CONFIG = {
   mapboxToken: process.env.IAFVIEWER_MAPBOX_TOKEN ?? '',
   project: 'iputmodelsegmented',
   switchModel: "EX11034-INV-Federated-4.6",
+
+  // PLG-1471 - BIAL T2 large-project performance/console-error regression.
+  // Separate account + project from the default credentials/project above.
+  skinnyBial: {
+    credentials: {
+      email: requiredEnv('IAFVIEWER_BIAL_USERNAME'),
+      password: requiredEnv('IAFVIEWER_BIAL_PASSWORD'),
+    },
+    project: 'Skinny_BIAL_AllModels',
+    switchModel: 'T2-ELEC-Federated',
+  },
+
   timeout: {
     short: 15000,
     medium: 60000,
