@@ -11,7 +11,7 @@ test('Annotations test', async ({ page }) => {
 
   await login(page, CONFIG.credentials, CONFIG.timeout.medium);
 
-  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
+  await selectProject(page, CONFIG.project, CONFIG.userGroup, "Navigator", CONFIG.timeout.medium);
 
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 

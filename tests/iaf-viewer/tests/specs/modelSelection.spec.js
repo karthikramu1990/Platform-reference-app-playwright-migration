@@ -11,7 +11,7 @@ test('Model Selection - Direct Viewer Click', async ({ page }) => {
 
   await login(page, CONFIG.credentials, CONFIG.timeout.medium);
 
-  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
+  await selectProject(page, CONFIG.project, CONFIG.userGroup, "Navigator", CONFIG.timeout.medium);
 
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
@@ -272,7 +272,7 @@ test('Model Isolation - BookMark', async ({ page }) => {
 
   await page.goto(CONFIG.url);
   await login(page, CONFIG.credentials, CONFIG.timeout.medium);
-  await selectProject(page, CONFIG.project, "Model Elements", CONFIG.timeout.medium);
+  await selectProject(page, CONFIG.project, CONFIG.userGroup, "Model Elements", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
   const elementCategory = await getDropdown(page, 'ElementCategory');

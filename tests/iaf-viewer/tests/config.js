@@ -29,7 +29,10 @@ export const CONFIG = {
     password: requiredEnv('IAFVIEWER_INVICARA_PASSWORD'),
   },
   mapboxToken: process.env.IAFVIEWER_MAPBOX_TOKEN ?? '',
+  // Standing rule: always log in with the Proj Admin user group, i.e.
+  // userGroup is always "<project> Proj Admin".
   project: 'iputmodelsegmented',
+  userGroup: 'iputmodelsegmented Proj Admin',
   switchModel: "EX11034-INV-Federated-4.6",
 
   // PLG-1471 - BIAL T2 large-project performance/console-error regression.
@@ -40,7 +43,20 @@ export const CONFIG = {
       password: requiredEnv('IAFVIEWER_BIAL_PASSWORD'),
     },
     project: 'Skinny_BIAL_AllModels',
+    userGroup: 'Skinny_BIAL_AllModels Proj Admin',
     switchModel: 'T2-ELEC-Federated',
+  },
+
+  // PLG-1417 - "Review 2D Animations" support ticket. The Workflow (2D
+  // Animation) screen is only visible to Proj Admin user groups.
+  autocad2D: {
+    credentials: {
+      email: requiredEnv('IAFVIEWER_AUTOCAD2D_USERNAME'),
+      password: requiredEnv('IAFVIEWER_AUTOCAD2D_PASSWORD'),
+    },
+    project: 'autocad 2D animations',
+    userGroup: 'autocad 2D animations Proj Admin',
+    workflow: 'WF1',
   },
 
   timeout: {

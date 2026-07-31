@@ -18,16 +18,24 @@ export async function login(page, credentials, timeout) {
   await page.getByRole('button', { name: 'Login' }).click();
 }
 
-export async function selectProject(page, projectName, path, timeout) {
+export async function selectProject(page, projectName, userGroup, path, timeout) {
   await expect(page.getByText('Project Selection')).toBeVisible({ timeout });
 
   // const projectDropdown = page.locator('.select__control');
   const projectDropdown = page.locator('input[name="projectSelect"]').locator('..').locator('.select__control');
   await projectDropdown.click();
 
-  const projectOption = page.getByRole('option', { name: projectName });
+  const projectOption = page.getByRole('option', { name: projectName, exact: true });
   await expect(projectOption).toBeVisible({ timeout });
   await projectOption.click();
+
+  const userGroupDropdown = page.locator('input[name="userGroupSelect"]').locator('..').locator('.select__control');
+  if (await userGroupDropdown.isVisible().catch(() => false)) {
+    await userGroupDropdown.click();
+    const userGroupOption = page.getByRole('option', { name: userGroup, exact: true });
+    await expect(userGroupOption).toBeVisible({ timeout });
+    await userGroupOption.click();
+  }
 
   const loadProjectBtn = page.getByRole('button', { name: 'Load Project' });
   await expect(loadProjectBtn).toBeVisible({ timeout: 15000 });
@@ -93,10 +101,10 @@ export const getPanels = (page, panelName) => {
 // for tickets that need to log in as a different user against a different
 // project than the suite's default CONFIG.credentials/CONFIG.project
 // (e.g. PLG-1471, which uses a dedicated BIAL account/project).
-export async function setupWithAccount(page, credentials, projectName, panel = null) {
+export async function setupWithAccount(page, credentials, projectName, userGroup, panel = null) {
   await page.goto(CONFIG.url);
   await login(page, credentials, CONFIG.timeout.medium);
-  await selectProject(page, projectName, "Navigator", CONFIG.timeout.medium);
+  await selectProject(page, projectName, userGroup, "Navigator", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
   if (panel) {
     await openPanel(page, CONFIG.timeout.medium, panel);
@@ -104,7 +112,7 @@ export async function setupWithAccount(page, credentials, projectName, panel = n
 }
 
 export async function setup(page, panel = null) {
-  await setupWithAccount(page, CONFIG.credentials, CONFIG.project, panel);
+  await setupWithAccount(page, CONFIG.credentials, CONFIG.project, CONFIG.userGroup, panel);
 }
 
 // Attaches console/page-error listeners and returns the array they push
@@ -473,7 +481,7 @@ export async function selectElementOnCanvas(page, canvas,options = {}) {
 export async function setupAndClickModel(page) {
   await page.goto(CONFIG.url);
   await login(page, CONFIG.credentials, CONFIG.timeout.medium);
-  await selectProject(page, CONFIG.project, "Navigator", CONFIG.timeout.medium);
+  await selectProject(page, CONFIG.project, CONFIG.userGroup, "Navigator", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
   await page.waitForTimeout(20000);
 

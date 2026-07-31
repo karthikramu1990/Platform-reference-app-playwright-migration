@@ -127,6 +127,18 @@ export const Locator = {
   gisVerticalAlignmentTogglebutton: '//div[contains(text(),"Vertical Alignment")]/..//input[@type="checkbox"]',
   gisTerrainHeightSliderValue: '//div[contains(text(),"Terrain Height")]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
   gisResetButton: '//p[text()="Reset"]',
+
+  // ── Workflow (2D Animation) - Proj Admin only ────────────────────────
+  elementMenuIcon: 'i.inv-icon-assets', // 2D/3D hover flyout icon (Navigator/Model Elements/Workflow)
+  workflowNavLink: 'a[href="#/workflow"] span.menu-item',
+  workflowFilterToggle: 'div.navigator-bottom-filter i.fa-filter', // the icon itself, not just the wrapper div - toggles the "Search For Workflows" panel
+  workflowSelectDropdown: 'text=Select a workflow...', // anchored on placeholder text, not class (collides with ipa-select__control)
+  workflowGoLiveBtn: '[aria-label="Go Live"]',
+  workflowStopLiveBtn: '[aria-label="Stop Live"]',
+  workflowLiveToast: 'text=The workflow visualisation is now live',
+  workflowActionLogPanel: '.log-container',
+  workflowActionLogEntries: '.log-container li',
+  workflowClockDisplay: '.time-display',
 }
 
 export const Notifications = {
