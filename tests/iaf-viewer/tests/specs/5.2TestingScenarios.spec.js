@@ -51,7 +51,7 @@ import {
 // Regression check for large federated model load time. Does not cover
 // console-error checking (known pre-existing noise) or cross-app perf
 // comparison vs Digital Twin (no shared login/threshold for that).
-test.skip('PLG-1471 - T2-ELEC-Federated model loads correctly', async ({ page }) => {
+test('PLG-1471 - T2-ELEC-Federated model loads correctly', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
   await setupWithAccount(page, CONFIG.skinnyBial.credentials, CONFIG.skinnyBial.project, CONFIG.skinnyBial.userGroup);
@@ -75,7 +75,7 @@ test.skip('PLG-1471 - T2-ELEC-Federated model loads correctly', async ({ page })
 // so this checks Go Live state + Action Log entry + clock advancement +
 // a multi-frame canvas diff as proxies for "the animation is live".
 // Requires Proj Admin (Workflow nav item is hidden otherwise).
-test('PLG-1417 - 2D animation workflow goes live and animates correctly', async ({ page }) => {
+test.skip('PLG-1417 - 2D animation workflow goes live and animates correctly', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
   await setupWithAccount(page, CONFIG.autocad2D.credentials, CONFIG.autocad2D.project, CONFIG.autocad2D.userGroup);

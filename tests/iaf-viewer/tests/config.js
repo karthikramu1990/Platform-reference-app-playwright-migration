@@ -11,6 +11,9 @@ const requiredEnv = (name, fallback) => {
 const E2E_BASE_URL = {
   qa1: 'https://apps.qa1.oci.in.twinit.io/reference/#/',
   qa2: 'https://qa2-app.in.invicara.com/reference/#/navigator',
+  qa3: 'https://apps.qa3.oci.in.twinit.io/reference/#/',
+  staging3: 'https://apps.staging3.oci.in.twinit.io/reference/#/',
+  staging: 'https://staging.invicara.com/reference/#/',
   local: 'http://localhost:8086/referenceapp/#/navigator',
 };
 

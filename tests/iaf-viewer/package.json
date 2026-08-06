@@ -81,6 +81,9 @@
     "endtoend": "playwright test --project=chromium --workers=3",
     "endtoend:report": "playwright show-report",
     "endtoend:update": "playwright test --project=chromium --update-snapshots --workers=3",
+    "endtoend:qa3": "cross-env IAFVIEWER_ENVIRONMENT=qa3 playwright test 5.2TestingScenarios.spec.js --project=chromium --workers=1",
+    "endtoend:eu-staging": "cross-env IAFVIEWER_ENVIRONMENT=staging playwright test 5.2TestingScenarios.spec.js --project=chromium --workers=1",
+    "endtoend:oci-staging": "cross-env IAFVIEWER_ENVIRONMENT=staging3 playwright test 5.2TestingScenarios.spec.js --project=chromium --workers=1",
     "codegen": "playwright codegen http://localhost:8086/referenceapp/#/"
   },
   "babel": {

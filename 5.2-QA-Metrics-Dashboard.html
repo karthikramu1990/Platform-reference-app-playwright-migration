@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Release 5.2 — QA Metrics Dashboard (Karthik Ramu)</title>
+<style>
+  :root {
+    --navy: #1b2a4a; --navy2: #223761; --blue: #2563eb; --green: #16a34a; --amber: #d97706;
+    --red: #dc2626; --gray: #6b7280; --bg: #f4f6fb; --card: #ffffff; --border: #e2e6ef;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: var(--bg); color: #1f2430; line-height: 1.5; }
+  header { background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%); color: #fff; padding: 32px 40px; }
+  header h1 { margin: 0 0 6px; font-size: 26px; font-weight: 650; }
+  header .sub { opacity: 0.85; font-size: 14px; }
+  .tags { margin-top: 14px; display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag { background: rgba(255,255,255,0.14); border: 1px solid rgba(255,255,255,0.25); padding: 4px 12px; border-radius: 20px; font-size: 12.5px; }
+  main { max-width: 1240px; margin: 0 auto; padding: 28px 40px 60px; }
+  .kpis { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px,1fr)); gap: 14px; margin-bottom: 30px; }
+  .kpi { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; }
+  .kpi .num { font-size: 26px; font-weight: 700; color: var(--navy); }
+  .kpi .label { font-size: 12.5px; color: var(--gray); margin-top: 2px; }
+  .kpi.accent-green .num { color: var(--green); }
+  .kpi.accent-red .num { color: var(--red); }
+  .kpi.accent-amber .num { color: var(--amber); }
+  section { margin-bottom: 38px; }
+  section h2 { font-size: 17px; color: var(--navy); border-left: 4px solid var(--blue); padding-left: 10px; margin-bottom: 4px; }
+  section .desc { color: var(--gray); font-size: 13px; margin: 4px 0 14px 14px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+  table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+  th { text-align: left; background: #eef1f8; color: #333; font-weight: 600; padding: 10px 12px; position: sticky; top: 0; }
+  td { padding: 8px 12px; border-top: 1px solid var(--border); vertical-align: top; }
+  tr:hover td { background: #fafbfe; }
+  a { color: var(--blue); text-decoration: none; font-weight: 600; }
+  a:hover { text-decoration: underline; }
+  .scroll { max-height: 480px; overflow-y: auto; }
+  .badge { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 11.5px; font-weight: 600; }
+  .st-done { background: #dcfce7; color: #166534; }
+  .st-todo { background: #e5e7eb; color: #374151; }
+  .st-progress { background: #dbeafe; color: #1e40af; }
+  .st-deferred { background: #fef3c7; color: #92400e; }
+  .pr-blocker { background: #fee2e2; color: #991b1b; }
+  .pr-major { background: #fef3c7; color: #92400e; }
+  .chip { display: inline-block; background: #eef1f8; color: #444; border-radius: 6px; padding: 1px 7px; font-size: 11px; margin: 1px 2px 1px 0; }
+  .chip-me { background: #dbeafe; color: #1e40af; font-weight: 600; }
+  .chip-warn { background: #fef3c7; color: #92400e; }
+  .muted { color: var(--gray); }
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  @media (max-width: 900px) { .split { grid-template-columns: 1fr; } header, main { padding-left: 18px; padding-right: 18px; } }
+  .metric-table td:first-child { font-weight: 600; color: #333; width: 42%; }
+  .searchbar { margin: 0 0 10px; }
+  .searchbar input { width: 100%; max-width: 320px; padding: 7px 10px; border: 1px solid var(--border); border-radius: 8px; font-size: 13px; }
+  .filterbtns { display:flex; gap:6px; margin-bottom:10px; flex-wrap: wrap; }
+  .filterbtns button { border: 1px solid var(--border); background:#fff; padding: 5px 12px; border-radius: 20px; font-size: 12.5px; cursor: pointer; color:#333; }
+  .filterbtns button.active { background: var(--navy); color: #fff; border-color: var(--navy); }
+  .note { background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 14px 18px; font-size: 13px; color: #78530a; }
+  .note ul { margin: 8px 0 0 18px; padding: 0; }
+  code { background: #eef1f8; padding: 1px 5px; border-radius: 4px; font-size: 12px; }
+  footer { text-align: center; color: var(--gray); font-size: 12px; padding: 20px 0 40px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Release 5.2 — QA Metrics Dashboard</h1>
+  <div class="sub">Karthik Ramu · Reference Application &amp; Platform Graphics (iaf-viewer) · Generated August 05, 2026</div>
+  <div class="tags">
+    <span class="tag">Jira: PA (Reference App V5.2)</span>
+    <span class="tag">Jira: PLG (Platform V5.2)</span>
+    <span class="tag">Defects: reporter = assignee = Karthik Ramu</span>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <h2>At a glance</h2>
+  <div class="kpis">
+    <div class="kpi accent-red"><div class="num">18</div><div class="label">Defects raised by me</div></div>
+    <div class="kpi accent-green"><div class="num">17</div><div class="label">Defects closed</div></div>
+    <div class="kpi"><div class="num">41</div><div class="label">Worked tickets (Done)</div></div>
+    <div class="kpi"><div class="num">99</div><div class="label">Xray test cases (5.2 only)</div></div>
+    <div class="kpi accent-green"><div class="num">100.0%</div><div class="label">Test cases verified</div></div>
+    <div class="kpi accent-amber"><div class="num">0</div><div class="label">Test cases pending</div></div>
+  </div>
+</section>
+
+<section>
+  <h2>Release metrics summary</h2>
+  <div class="desc">Defects = raised (reporter) AND assigned to Karthik Ramu. Worked tickets = Done tickets from the JQL filters you provided.</div>
+  <div class="card">
+    <table class="metric-table">
+      <tr><th>Metric / Field</th><th>Reference App v5.2 (PA)</th><th>Platform Graphics v5.2 (PLG)</th></tr>
+      <tr><td>Release Version</td><td>Reference App V5.2</td><td>Platform V5.2</td></tr>
+      <tr><td>Defects Raised by Me</td><td>14</td><td>4</td></tr>
+      <tr><td>Blocker Defects</td><td>2</td><td>0</td></tr>
+      <tr><td>Closed / Done Defects</td><td>13</td><td>4</td></tr>
+      <tr><td>Deferred Defects</td><td>1</td><td>0</td></tr>
+      <tr><td>Worked Tickets (Done)</td><td>3 (Task)</td><td>38 (21 Bug, 16 Story, 1 Task)</td></tr>
+      <tr><td>Total Test Cases (Xray, 5.2 only)</td><td>18</td><td>81</td></tr>
+      <tr><td>Test Cases Verified (Done)</td><td>18</td><td>81</td></tr>
+      <tr><td>Test Cases Pending</td><td>0</td><td>0</td></tr>
+      <tr><td>Automated Tests Run</td><td>20</td><td>62</td></tr>
+      <tr><td>Automated Tests Passed</td><td>20</td><td>62</td></tr>
+      <tr><td>Automated Tests Failed</td><td>0</td><td>0</td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Defects raised by me — Platform Graphics / Viewer (PLG)</h2>
+  <div class="desc">4 of 27 PLG bugs on fixVersion "Platform V5.2" have Karthik Ramu as both reporter and assignee.</div>
+  <div class="card scroll">
+    <table>
+      <tr><th>#</th><th>Key</th><th>Description</th><th>Priority</th><th>Status</th></tr>
+      <tr><td>1</td><td><a href="https://invicara.atlassian.net/browse/PLG-2837" target="_blank" rel="noopener">PLG-2837</a></td><td>DevTools Panel hidden until another Panel is opened</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>2</td><td><a href="https://invicara.atlassian.net/browse/PLG-2838" target="_blank" rel="noopener">PLG-2838</a></td><td>Reference app: Viewer stuck loading indefinitely after disabling GIS post horizontal alignment move</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>3</td><td><a href="https://invicara.atlassian.net/browse/PLG-2839" target="_blank" rel="noopener">PLG-2839</a></td><td>GIS Outline Mode - GLB bounding box does not match SCZ bounding box after fix for PLG-1833</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>4</td><td><a href="https://invicara.atlassian.net/browse/PLG-2854" target="_blank" rel="noopener">PLG-2854</a></td><td>Models are not loading in any of the staging environments</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Defects raised by me — Reference App (PA)</h2>
+  <div class="desc">14 of 16 PA bugs on fixVersion "Reference App V5.2" have Karthik Ramu as both reporter and assignee.</div>
+  <div class="card scroll">
+    <table>
+      <tr><th>#</th><th>Key</th><th>Description</th><th>Priority</th><th>Status</th></tr>
+      <tr><td>1</td><td><a href="https://invicara.atlassian.net/browse/PA-1629" target="_blank" rel="noopener">PA-1629</a></td><td>Reference App QA2 - Blocker: Setup Project fails for multimodel</td><td><span class="badge pr-blocker">Blocker</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>2</td><td><a href="https://invicara.atlassian.net/browse/PA-1630" target="_blank" rel="noopener">PA-1630</a></td><td>Ref App QA2: Project Selection shows No User Groups</td><td><span class="badge pr-blocker">Blocker</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>3</td><td><a href="https://invicara.atlassian.net/browse/PA-1731" target="_blank" rel="noopener">PA-1731</a></td><td>Energy Prediction MCP tool does not reject requests beyond the 30-day boundary (31 days out)</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>4</td><td><a href="https://invicara.atlassian.net/browse/PA-1733" target="_blank" rel="noopener">PA-1733</a></td><td>Manage Model screen shows &quot;No Models in Project&quot; despite models existing</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>5</td><td><a href="https://invicara.atlassian.net/browse/PA-1735" target="_blank" rel="noopener">PA-1735</a></td><td>Reference app: Project Selection Page Does Not Load After Project Creation</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>6</td><td><a href="https://invicara.atlassian.net/browse/PA-1736" target="_blank" rel="noopener">PA-1736</a></td><td>RefApp: UI model import fails</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>7</td><td><a href="https://invicara.atlassian.net/browse/PA-1737" target="_blank" rel="noopener">PA-1737</a></td><td>Reference app: Unable to create project setup in qa1 environment getting struck in first step</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>8</td><td><a href="https://invicara.atlassian.net/browse/PA-1742" target="_blank" rel="noopener">PA-1742</a></td><td>Reference app: No action on clear icon</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>9</td><td><a href="https://invicara.atlassian.net/browse/PA-1744" target="_blank" rel="noopener">PA-1744</a></td><td>Reference app: while importing large models and latest converted plugin models getting too much of time no result</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>10</td><td><a href="https://invicara.atlassian.net/browse/PA-1749" target="_blank" rel="noopener">PA-1749</a></td><td>Reference app: Previous User Session Is Retained After Logout, Preventing Login with a Different User Account</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>11</td><td><a href="https://invicara.atlassian.net/browse/PA-1753" target="_blank" rel="noopener">PA-1753</a></td><td>Reference app: Get Latest Readings&quot; fails with JavaScript error when generating indoor temperature and energy consumption readings</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>12</td><td><a href="https://invicara.atlassian.net/browse/PA-1756" target="_blank" rel="noopener">PA-1756</a></td><td>Reference app: version are not displayed in an Reference App user profile</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-deferred">Deferred</span></td></tr>
+<tr><td>13</td><td><a href="https://invicara.atlassian.net/browse/PA-1765" target="_blank" rel="noopener">PA-1765</a></td><td>No data Fetch opens AI Chat panel</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>14</td><td><a href="https://invicara.atlassian.net/browse/PA-1776" target="_blank" rel="noopener">PA-1776</a></td><td>Reference app: After long session when user tries to refresh getting something went wrong error in all the staging environments</td><td><span class="badge pr-major">Major</span></td><td><span class="badge st-done">Done</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Worked tickets — Platform Graphics (PLG)</h2>
+  <div class="desc">38 Done tickets from your filter (<code>filter = 26617 AND assignee in (...) AND statusCategory = Done</code>) — 34 assigned to Karthik Ramu, 4 to teammates on the same filter.</div>
+  <div class="card scroll">
+    <table>
+      <tr><th>#</th><th>Key</th><th>Description</th><th>Type</th><th>Assignee</th><th>Status</th></tr>
+      <tr><td>1</td><td><a href="https://invicara.atlassian.net/browse/PLG-1417" target="_blank" rel="noopener">PLG-1417</a></td><td>Support Ticket - Ibrahim - Review 2D Animations in Multisheet environment</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>2</td><td><a href="https://invicara.atlassian.net/browse/PLG-1471" target="_blank" rel="noopener">PLG-1471</a></td><td>Support Ticket - Srini/Balaji - Review initial loading performance of BIAL T2 project on https://digitaltwin.invicara.io/#/navigator</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>3</td><td><a href="https://invicara.atlassian.net/browse/PLG-1475" target="_blank" rel="noopener">PLG-1475</a></td><td>Dependency Updates - Communicator</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>4</td><td><a href="https://invicara.atlassian.net/browse/PLG-1477" target="_blank" rel="noopener">PLG-1477</a></td><td>Federated Projects - Review realignments after model switching</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>5</td><td><a href="https://invicara.atlassian.net/browse/PLG-1478" target="_blank" rel="noopener">PLG-1478</a></td><td>Federated Projects - Review orientation differences after reference model switching</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>6</td><td><a href="https://invicara.atlassian.net/browse/PLG-1479" target="_blank" rel="noopener">PLG-1479</a></td><td>Federated Projects - Review Dynamic Mode to Show Soft Models unless Layers are enabled</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>7</td><td><a href="https://invicara.atlassian.net/browse/PLG-1488" target="_blank" rel="noopener">PLG-1488</a></td><td>Federated Projects - Enabling Dynamic Mode should set the display mode to Quick Surface</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>8</td><td><a href="https://invicara.atlassian.net/browse/PLG-1492" target="_blank" rel="noopener">PLG-1492</a></td><td>Federated Projects - GIS - Layers - Demonstrate Clusters to represent location based population</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>9</td><td><a href="https://invicara.atlassian.net/browse/PLG-1517" target="_blank" rel="noopener">PLG-1517</a></td><td>NO FIX NEEDED - Support Ticket - Balaji - Cutting Planes - Custom Levels</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>10</td><td><a href="https://invicara.atlassian.net/browse/PLG-1570" target="_blank" rel="noopener">PLG-1570</a></td><td>Model Switching - Initial Camera is incorrect On Model Switching</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>11</td><td><a href="https://invicara.atlassian.net/browse/PLG-1607" target="_blank" rel="noopener">PLG-1607</a></td><td>Search Isolation Issue – Model Goes to Just empty glass mode for small spread items</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>12</td><td><a href="https://invicara.atlassian.net/browse/PLG-1624" target="_blank" rel="noopener">PLG-1624</a></td><td>TO REVIEW &amp; MERGE INTO 5.1 | Performance - Dynamic Load Check Fails Because Percentages Are Spread Across Disciplines</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>13</td><td><a href="https://invicara.atlassian.net/browse/PLG-1666" target="_blank" rel="noopener">PLG-1666</a></td><td>Get permissions API returns 500 Internal Server Error in qa2 for graphicssvc.</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>14</td><td><a href="https://invicara.atlassian.net/browse/PLG-1670" target="_blank" rel="noopener">PLG-1670</a></td><td>Support Ticket - Gangai Mangesh - Navigator || When Asset element is selected after isolation zooming out is not happening</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>15</td><td><a href="https://invicara.atlassian.net/browse/PLG-1671" target="_blank" rel="noopener">PLG-1671</a></td><td>Regression - View3d - Non-optimized projects goes on loading forever - UI remains disabled</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>16</td><td><a href="https://invicara.atlassian.net/browse/PLG-1674" target="_blank" rel="noopener">PLG-1674</a></td><td>GraphicsSvc - Logs - Identify by Prefix</td><td>Story</td><td><span class="muted">Atul Kulkarni</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>17</td><td><a href="https://invicara.atlassian.net/browse/PLG-1682" target="_blank" rel="noopener">PLG-1682</a></td><td>GIS 2.0 - Federated Projects - Realignment of buildings get overwritten on switching models and/or on realignment</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>18</td><td><a href="https://invicara.atlassian.net/browse/PLG-1685" target="_blank" rel="noopener">PLG-1685</a></td><td>GIS 2.0 - Outlined Models not centered at 0, 0, 0 are displaced from the original location</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>19</td><td><a href="https://invicara.atlassian.net/browse/PLG-1688" target="_blank" rel="noopener">PLG-1688</a></td><td>View3d Regression - EVMDemo Test Mode | Failed to load wasm engine: failed to load https://qa2-api.in.invicara.com/graphicssvc/scripts/mapbox/engine-wasm.js</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>20</td><td><a href="https://invicara.atlassian.net/browse/PLG-1689" target="_blank" rel="noopener">PLG-1689</a></td><td>GIS 2.0 - Dynamic Mode - Updating Styles gives console errors</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>21</td><td><a href="https://invicara.atlassian.net/browse/PLG-1690" target="_blank" rel="noopener">PLG-1690</a></td><td>GIS 2.0 - Fresh(New) Project gives 400 errors on enabling GIS due to invalid Schema</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>22</td><td><a href="https://invicara.atlassian.net/browse/PLG-1691" target="_blank" rel="noopener">PLG-1691</a></td><td>GraphicsService - Review QA Envrionment Pods Destroyed Too Soon</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>23</td><td><a href="https://invicara.atlassian.net/browse/PLG-1725" target="_blank" rel="noopener">PLG-1725</a></td><td>TO ADD ERROR HANDLING - Support Ticket - Naveen - L&amp;T FED EGH ASBUILT_2024-5.1.bimpk - Error: Cannot get the bounding of node without geometry</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>24</td><td><a href="https://invicara.atlassian.net/browse/PLG-1726" target="_blank" rel="noopener">PLG-1726</a></td><td>Performance - Tweaking Model Composition Switches for Disciplines aka Layers have inconsistent results</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>25</td><td><a href="https://invicara.atlassian.net/browse/PLG-1760" target="_blank" rel="noopener">PLG-1760</a></td><td>Model Composition UX - Review the notification and spinner to be added when composition settings are updated including Discipline Switches &amp; Display Accuracy</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>26</td><td><a href="https://invicara.atlassian.net/browse/PLG-1761" target="_blank" rel="noopener">PLG-1761</a></td><td>Support Ticket - Srini, Jon - GIS 2.0 - Lightweight Outline View (Project View)</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>27</td><td><a href="https://invicara.atlassian.net/browse/PLG-1764" target="_blank" rel="noopener">PLG-1764</a></td><td>Support Ticket - Raymond - Model Composition - Loading by linked models</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>28</td><td><a href="https://invicara.atlassian.net/browse/PLG-1771" target="_blank" rel="noopener">PLG-1771</a></td><td>Optimized Models &amp; Keep Alive - Gracefully handle the non-primary file sets https://qa2-api.in.invicara.com/graphicssvc/api/spawns/keepalive?fileSetId=17c4b0a2-7961-45a2-bd53-46addb225ad3&amp;nsfilter=outorg51_fVWR1zTP 404 (Not Found)</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>29</td><td><a href="https://invicara.atlassian.net/browse/PLG-1774" target="_blank" rel="noopener">PLG-1774</a></td><td>Keep Alive - Optimized Models - Time Out - On Idle - Bad Model Error message</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>30</td><td><a href="https://invicara.atlassian.net/browse/PLG-1779" target="_blank" rel="noopener">PLG-1779</a></td><td>GIS 2.0 - Clustered Models</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>31</td><td><a href="https://invicara.atlassian.net/browse/PLG-1787" target="_blank" rel="noopener">PLG-1787</a></td><td>EVM - Property Store - showToolbar &amp; showLauncher</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>32</td><td><a href="https://invicara.atlassian.net/browse/PLG-1793" target="_blank" rel="noopener">PLG-1793</a></td><td>Model Composition - Enable Compose at Asset Level - Using initial discipline property of {load: true, visible: false}</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>33</td><td><a href="https://invicara.atlassian.net/browse/PLG-1804" target="_blank" rel="noopener">PLG-1804</a></td><td>GIS Alignment UI is accessible only if gis is enabled via properties from app</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>34</td><td><a href="https://invicara.atlassian.net/browse/PLG-1805" target="_blank" rel="noopener">PLG-1805</a></td><td>Dev Tools does not show up after adding devToolsIaf=true to query string</td><td>Bug</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>35</td><td><a href="https://invicara.atlassian.net/browse/PLG-1840" target="_blank" rel="noopener">PLG-1840</a></td><td>Security - IafViewer - Review Security Scanning Results by GHAS</td><td>Story</td><td><span class="muted">Atul Kulkarni</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>36</td><td><a href="https://invicara.atlassian.net/browse/PLG-1842" target="_blank" rel="noopener">PLG-1842</a></td><td>Security - GraphicsSvc - Review Security Scanning Results by GHAS</td><td>Story</td><td><span class="muted">Atul Kulkarni</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>37</td><td><a href="https://invicara.atlassian.net/browse/PLG-1870" target="_blank" rel="noopener">PLG-1870</a></td><td>Log verbosity - GraphicsService</td><td>Task</td><td><span class="muted">Atul Kulkarni</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>38</td><td><a href="https://invicara.atlassian.net/browse/PLG-1858" target="_blank" rel="noopener">PLG-1858</a></td><td>Dependency Updates - Communicator</td><td>Story</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Worked tickets — Reference App (PA)</h2>
+  <div class="desc">3 Done tickets (Story/Sub-task/Task) on fixVersion "Reference App V5.2" — all Karthik Ramu.</div>
+  <div class="card">
+    <table>
+      <tr><th>#</th><th>Key</th><th>Description</th><th>Type</th><th>Assignee</th><th>Status</th></tr>
+      <tr><td>1</td><td><a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a></td><td>Custom MCP tool Integration</td><td>Task</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>2</td><td><a href="https://invicara.atlassian.net/browse/PA-1615" target="_blank" rel="noopener">PA-1615</a></td><td>Model import POC: types as related items not relationships</td><td>Task</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>3</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td>Generate graph data</td><td>Task</td><td><span class="chip chip-me">Karthik Ramu</span></td><td><span class="badge st-done">Done</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Test case coverage — Platform Graphics (PLG)</h2>
+  <div class="desc">All 81 Xray Test cases in the "Viewer 5.2 Test cases" folder, fixVersion "Platform V5.2" — pulled live from Jira on August 05, 2026. All 81 are Done, assigned and reported by Karthik Ramu. "Related ticket" is the worked ticket each test verifies (parsed from the test title).</div>
+  <div class="card scroll">
+    <table id="table-plg">
+      <tr><th>#</th><th>Key</th><th>Description</th><th>Related ticket</th><th>Status</th></tr>
+<tr><td>1</td><td><a href="https://invicara.atlassian.net/browse/PLG-2731" target="_blank" rel="noopener">PLG-2731</a></td><td>Verify 2D workflow animations play correctly in a multisheet environment</td><td><a href="https://invicara.atlassian.net/browse/PLG-1417" target="_blank" rel="noopener">PLG-1417</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>2</td><td><a href="https://invicara.atlassian.net/browse/PLG-2732" target="_blank" rel="noopener">PLG-2732</a></td><td>Verify Initial Model Load Time in Reference App for Large Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1471" target="_blank" rel="noopener">PLG-1471</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>3</td><td><a href="https://invicara.atlassian.net/browse/PLG-2733" target="_blank" rel="noopener">PLG-2733</a></td><td>Compare Initial Loading Performance: Reference App vs Digital Twin</td><td><a href="https://invicara.atlassian.net/browse/PLG-1471" target="_blank" rel="noopener">PLG-1471</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>4</td><td><a href="https://invicara.atlassian.net/browse/PLG-2734" target="_blank" rel="noopener">PLG-2734</a></td><td>Verify Reference App Loads Large Project Without Errors or Timeouts</td><td><a href="https://invicara.atlassian.net/browse/PLG-1471" target="_blank" rel="noopener">PLG-1471</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>5</td><td><a href="https://invicara.atlassian.net/browse/PLG-2735" target="_blank" rel="noopener">PLG-2735</a></td><td>Verify Model Realignment is Maintained After Switching Models in a Federated Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1477" target="_blank" rel="noopener">PLG-1477</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>6</td><td><a href="https://invicara.atlassian.net/browse/PLG-2736" target="_blank" rel="noopener">PLG-2736</a></td><td>Verify Repeated Model Switching Does Not Cause Realignment Degradation in Federated Projects</td><td><a href="https://invicara.atlassian.net/browse/PLG-1477" target="_blank" rel="noopener">PLG-1477</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>7</td><td><a href="https://invicara.atlassian.net/browse/PLG-2737" target="_blank" rel="noopener">PLG-2737</a></td><td>Verify Model Orientation is Consistent After Switching the Reference Model in a Federated Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1478" target="_blank" rel="noopener">PLG-1478</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>8</td><td><a href="https://invicara.atlassian.net/browse/PLG-2738" target="_blank" rel="noopener">PLG-2738</a></td><td>Verify Orientation Remains Stable After Multiple Reference Model Switches in a Federated Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1478" target="_blank" rel="noopener">PLG-1478</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>9</td><td><a href="https://invicara.atlassian.net/browse/PLG-2739" target="_blank" rel="noopener">PLG-2739</a></td><td>Verify Soft Models are Displayed in Ghosted State by Default in Dynamic Mode</td><td><a href="https://invicara.atlassian.net/browse/PLG-1479" target="_blank" rel="noopener">PLG-1479</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>10</td><td><a href="https://invicara.atlassian.net/browse/PLG-2740" target="_blank" rel="noopener">PLG-2740</a></td><td>Verify Soft Models Render Fully When Layers are Enabled in Dynamic Mode</td><td><a href="https://invicara.atlassian.net/browse/PLG-1479" target="_blank" rel="noopener">PLG-1479</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>11</td><td><a href="https://invicara.atlassian.net/browse/PLG-2741" target="_blank" rel="noopener">PLG-2741</a></td><td>Verify Soft Models Revert to Ghosted State When Layers are Disabled in Dynamic Mode</td><td><a href="https://invicara.atlassian.net/browse/PLG-1479" target="_blank" rel="noopener">PLG-1479</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>12</td><td><a href="https://invicara.atlassian.net/browse/PLG-2744" target="_blank" rel="noopener">PLG-2744</a></td><td>Verify GIS Cluster Layer Renders Location-Based Data as Clusters on the Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1492" target="_blank" rel="noopener">PLG-1492</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>13</td><td><a href="https://invicara.atlassian.net/browse/PLG-2745" target="_blank" rel="noopener">PLG-2745</a></td><td>Verify Clusters Expand into Individual Markers on Zoom In</td><td><a href="https://invicara.atlassian.net/browse/PLG-1492" target="_blank" rel="noopener">PLG-1492</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>14</td><td><a href="https://invicara.atlassian.net/browse/PLG-2746" target="_blank" rel="noopener">PLG-2746</a></td><td>Verify Clusters Re-aggregate When Zooming Out on the GIS Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1492" target="_blank" rel="noopener">PLG-1492</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>15</td><td><a href="https://invicara.atlassian.net/browse/PLG-2747" target="_blank" rel="noopener">PLG-2747</a></td><td>Verify Cutting Planes Apply Correctly at a Selected Custom Level in Reference App</td><td><a href="https://invicara.atlassian.net/browse/PLG-1517" target="_blank" rel="noopener">PLG-1517</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>16</td><td><a href="https://invicara.atlassian.net/browse/PLG-2748" target="_blank" rel="noopener">PLG-2748</a></td><td>Verify Switching Between Custom Levels Updates the Cutting Plane Correctly</td><td><a href="https://invicara.atlassian.net/browse/PLG-1517" target="_blank" rel="noopener">PLG-1517</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>17</td><td><a href="https://invicara.atlassian.net/browse/PLG-2749" target="_blank" rel="noopener">PLG-2749</a></td><td>Verify Removing the Cutting Plane Restores Full Model View</td><td><a href="https://invicara.atlassian.net/browse/PLG-1517" target="_blank" rel="noopener">PLG-1517</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>18</td><td><a href="https://invicara.atlassian.net/browse/PLG-2750" target="_blank" rel="noopener">PLG-2750</a></td><td>Verify Initial Camera View is Correct When Switching from Model A to Model B</td><td><a href="https://invicara.atlassian.net/browse/PLG-1570" target="_blank" rel="noopener">PLG-1570</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>19</td><td><a href="https://invicara.atlassian.net/browse/PLG-2751" target="_blank" rel="noopener">PLG-2751</a></td><td>Verify Saved Default Camera View is Restored Correctly After Model Switch and Switch Back</td><td><a href="https://invicara.atlassian.net/browse/PLG-1570" target="_blank" rel="noopener">PLG-1570</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>20</td><td><a href="https://invicara.atlassian.net/browse/PLG-2752" target="_blank" rel="noopener">PLG-2752</a></td><td>Verify Each Model Retains Its Own Independent Camera State After Multiple Switches</td><td><a href="https://invicara.atlassian.net/browse/PLG-1570" target="_blank" rel="noopener">PLG-1570</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>21</td><td><a href="https://invicara.atlassian.net/browse/PLG-2755" target="_blank" rel="noopener">PLG-2755</a></td><td>Verify Reference App 3D Viewer Loads and Functions Correctly After Communicator Dependency Update</td><td><a href="https://invicara.atlassian.net/browse/PLG-1475" target="_blank" rel="noopener">PLG-1475</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>22</td><td><a href="https://invicara.atlassian.net/browse/PLG-2756" target="_blank" rel="noopener">PLG-2756</a></td><td>Verify No WebGL Context Loss During Extended Viewer Sessions After Communicator Update</td><td><a href="https://invicara.atlassian.net/browse/PLG-1475" target="_blank" rel="noopener">PLG-1475</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>23</td><td><a href="https://invicara.atlassian.net/browse/PLG-2759" target="_blank" rel="noopener">PLG-2759</a></td><td>Verify Searching for Elements Correctly Isolates Them in the Reference App Viewer</td><td><a href="https://invicara.atlassian.net/browse/PLG-1607" target="_blank" rel="noopener">PLG-1607</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>24</td><td><a href="https://invicara.atlassian.net/browse/PLG-2760" target="_blank" rel="noopener">PLG-2760</a></td><td>Verify Small and Spread Elements are Isolated Without Entering Blank Glass Mode</td><td><a href="https://invicara.atlassian.net/browse/PLG-1607" target="_blank" rel="noopener">PLG-1607</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>25</td><td><a href="https://invicara.atlassian.net/browse/PLG-2761" target="_blank" rel="noopener">PLG-2761</a></td><td>Verify Dynamic Load Check Correctly Calculates Percentages Across All Disciplines</td><td><a href="https://invicara.atlassian.net/browse/PLG-1624" target="_blank" rel="noopener">PLG-1624</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>26</td><td><a href="https://invicara.atlassian.net/browse/PLG-2762" target="_blank" rel="noopener">PLG-2762</a></td><td>Verify Dynamic Load Check Does Not Fail When Elements Are Distributed Across Multiple Disciplines</td><td><a href="https://invicara.atlassian.net/browse/PLG-1624" target="_blank" rel="noopener">PLG-1624</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>27</td><td><a href="https://invicara.atlassian.net/browse/PLG-2763" target="_blank" rel="noopener">PLG-2763</a></td><td>Verify the graphicssvc Permissions GET API Returns 200 and Correct Data in QA2</td><td><a href="https://invicara.atlassian.net/browse/PLG-1666" target="_blank" rel="noopener">PLG-1666</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>28</td><td><a href="https://invicara.atlassian.net/browse/PLG-2764" target="_blank" rel="noopener">PLG-2764</a></td><td>Verify Reference App Functions Without Errors After graphicssvc Permissions API Fix</td><td><a href="https://invicara.atlassian.net/browse/PLG-1666" target="_blank" rel="noopener">PLG-1666</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>29</td><td><a href="https://invicara.atlassian.net/browse/PLG-2765" target="_blank" rel="noopener">PLG-2765</a></td><td>Verify Zooming Out Works Correctly After Asset Element Selection Post-Isolation in Navigator</td><td><a href="https://invicara.atlassian.net/browse/PLG-1670" target="_blank" rel="noopener">PLG-1670</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>30</td><td><a href="https://invicara.atlassian.net/browse/PLG-2766" target="_blank" rel="noopener">PLG-2766</a></td><td>Verify Viewer Camera Behaviour is Consistent Before and After Asset Element Selection with Isolation</td><td><a href="https://invicara.atlassian.net/browse/PLG-1670" target="_blank" rel="noopener">PLG-1670</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>31</td><td><a href="https://invicara.atlassian.net/browse/PLG-2767" target="_blank" rel="noopener">PLG-2767</a></td><td>Verify Non-Optimized Projects Load Successfully Without Infinite Loading State</td><td><a href="https://invicara.atlassian.net/browse/PLG-1671" target="_blank" rel="noopener">PLG-1671</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>32</td><td><a href="https://invicara.atlassian.net/browse/PLG-2768" target="_blank" rel="noopener">PLG-2768</a></td><td>Verify Reference App UI is Fully Enabled After Loading a Non-Optimized Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1671" target="_blank" rel="noopener">PLG-1671</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>33</td><td><a href="https://invicara.atlassian.net/browse/PLG-2769" target="_blank" rel="noopener">PLG-2769</a></td><td>Verify GraphicsSvc Log Entries are Correctly Prefixed for Easy Identification</td><td><a href="https://invicara.atlassian.net/browse/PLG-1674" target="_blank" rel="noopener">PLG-1674</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>34</td><td><a href="https://invicara.atlassian.net/browse/PLG-2770" target="_blank" rel="noopener">PLG-2770</a></td><td>Verify Log Prefix Filtering Returns Only Relevant GraphicsSvc Entries</td><td><a href="https://invicara.atlassian.net/browse/PLG-1674" target="_blank" rel="noopener">PLG-1674</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>35</td><td><a href="https://invicara.atlassian.net/browse/PLG-2771" target="_blank" rel="noopener">PLG-2771</a></td><td>Verify Building Realignment is Preserved After Switching Models in a Federated GIS Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1682" target="_blank" rel="noopener">PLG-1682</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>36</td><td><a href="https://invicara.atlassian.net/browse/PLG-2772" target="_blank" rel="noopener">PLG-2772</a></td><td>Verify Building Realignment is Preserved After Switching Models in a Federated GIS Project</td><td><a href="https://invicara.atlassian.net/browse/PLG-1682" target="_blank" rel="noopener">PLG-1682</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>37</td><td><a href="https://invicara.atlassian.net/browse/PLG-2773" target="_blank" rel="noopener">PLG-2773</a></td><td>Verify Realignment is Not Overwritten When Re-triggering Realignment on an Already Aligned Building</td><td><a href="https://invicara.atlassian.net/browse/PLG-1682" target="_blank" rel="noopener">PLG-1682</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>38</td><td><a href="https://invicara.atlassian.net/browse/PLG-2774" target="_blank" rel="noopener">PLG-2774</a></td><td>Verify Outlined Models with Non-Zero Origin are Rendered at Correct Geographic Position on GIS Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1685" target="_blank" rel="noopener">PLG-1685</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>39</td><td><a href="https://invicara.atlassian.net/browse/PLG-2775" target="_blank" rel="noopener">PLG-2775</a></td><td>Verify Outlined Model Position Remains Accurate After Zooming and Panning the GIS Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1685" target="_blank" rel="noopener">PLG-1685</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>40</td><td><a href="https://invicara.atlassian.net/browse/PLG-2776" target="_blank" rel="noopener">PLG-2776</a></td><td>Verify the WASM Engine Loads Successfully Without Console Errors on Viewer Initialisation</td><td><a href="https://invicara.atlassian.net/browse/PLG-1688" target="_blank" rel="noopener">PLG-1688</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>41</td><td><a href="https://invicara.atlassian.net/browse/PLG-2777" target="_blank" rel="noopener">PLG-2777</a></td><td>Verify the Reference App 3D Viewer is Fully Functional After WASM Engine Load Fix</td><td><a href="https://invicara.atlassian.net/browse/PLG-1688" target="_blank" rel="noopener">PLG-1688</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>42</td><td><a href="https://invicara.atlassian.net/browse/PLG-2778" target="_blank" rel="noopener">PLG-2778</a></td><td>Verify Updating GIS Layer Styles in Dynamic Mode Does Not Produce Console Errors</td><td><a href="https://invicara.atlassian.net/browse/PLG-1689" target="_blank" rel="noopener">PLG-1689</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>43</td><td><a href="https://invicara.atlassian.net/browse/PLG-2779" target="_blank" rel="noopener">PLG-2779</a></td><td>Verify GIS Layer Style Updates are Applied Correctly in Dynamic Mode Without Breaking the Map View</td><td><a href="https://invicara.atlassian.net/browse/PLG-1689" target="_blank" rel="noopener">PLG-1689</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>44</td><td><a href="https://invicara.atlassian.net/browse/PLG-2780" target="_blank" rel="noopener">PLG-2780</a></td><td>Verify Enabling GIS on a New Project Does Not Return 400 Bad Request Errors</td><td><a href="https://invicara.atlassian.net/browse/PLG-1690" target="_blank" rel="noopener">PLG-1690</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>45</td><td><a href="https://invicara.atlassian.net/browse/PLG-2781" target="_blank" rel="noopener">PLG-2781</a></td><td>Verify GIS is Fully Enabled and Functional for a Newly Created Project Without Schema Errors</td><td><a href="https://invicara.atlassian.net/browse/PLG-1690" target="_blank" rel="noopener">PLG-1690</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>46</td><td><a href="https://invicara.atlassian.net/browse/PLG-2782" target="_blank" rel="noopener">PLG-2782</a></td><td>Verify GraphicsService Pods Remain Active During Active Viewer Sessions Without Premature Timeout</td><td><a href="https://invicara.atlassian.net/browse/PLG-1691" target="_blank" rel="noopener">PLG-1691</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>47</td><td><a href="https://invicara.atlassian.net/browse/PLG-2783" target="_blank" rel="noopener">PLG-2783</a></td><td>Verify the Reference App Viewer Handles a Pod Restart Gracefully Without Data Loss</td><td><a href="https://invicara.atlassian.net/browse/PLG-1691" target="_blank" rel="noopener">PLG-1691</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>48</td><td><a href="https://invicara.atlassian.net/browse/PLG-2784" target="_blank" rel="noopener">PLG-2784</a></td><td>Verify Models with Geometry-Less Nodes Load Without Bounding Box Errors in the Reference App</td><td><a href="https://invicara.atlassian.net/browse/PLG-1725" target="_blank" rel="noopener">PLG-1725</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>49</td><td><a href="https://invicara.atlassian.net/browse/PLG-2785" target="_blank" rel="noopener">PLG-2785</a></td><td>Verify the Reference App Handles Gracefully Elements Without Geometry During Load</td><td><a href="https://invicara.atlassian.net/browse/PLG-1725" target="_blank" rel="noopener">PLG-1725</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>50</td><td><a href="https://invicara.atlassian.net/browse/PLG-2786" target="_blank" rel="noopener">PLG-2786</a></td><td>Verify Toggling Discipline Switches in Model Composition Produces Consistent Results</td><td><a href="https://invicara.atlassian.net/browse/PLG-1726" target="_blank" rel="noopener">PLG-1726</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>51</td><td><a href="https://invicara.atlassian.net/browse/PLG-2787" target="_blank" rel="noopener">PLG-2787</a></td><td>Verify Discipline Switch State is Correctly Reflected in the 3D Viewer After Each Toggle</td><td><a href="https://invicara.atlassian.net/browse/PLG-1726" target="_blank" rel="noopener">PLG-1726</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>52</td><td><a href="https://invicara.atlassian.net/browse/PLG-2788" target="_blank" rel="noopener">PLG-2788</a></td><td>Verify a Loading Spinner Displays When Model Composition Settings are Updated</td><td><a href="https://invicara.atlassian.net/browse/PLG-1760" target="_blank" rel="noopener">PLG-1760</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>53</td><td><a href="https://invicara.atlassian.net/browse/PLG-2789" target="_blank" rel="noopener">PLG-2789</a></td><td>Verify a Notification is Shown to the User After Composition Settings Have Been Applied</td><td><a href="https://invicara.atlassian.net/browse/PLG-1760" target="_blank" rel="noopener">PLG-1760</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>54</td><td><a href="https://invicara.atlassian.net/browse/PLG-2790" target="_blank" rel="noopener">PLG-2790</a></td><td>Verify the GIS Lightweight Outline View Renders Building Footprints Correctly on the GIS Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1761" target="_blank" rel="noopener">PLG-1761</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>55</td><td><a href="https://invicara.atlassian.net/browse/PLG-2791" target="_blank" rel="noopener">PLG-2791</a></td><td>Verify Selecting an Outline in Lightweight View Highlights the Corresponding Element in the 3D Viewer</td><td><a href="https://invicara.atlassian.net/browse/PLG-1761" target="_blank" rel="noopener">PLG-1761</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>56</td><td><a href="https://invicara.atlassian.net/browse/PLG-2792" target="_blank" rel="noopener">PLG-2792</a></td><td>Verify Linked Models Load Correctly via Model Composition in the Reference App</td><td><a href="https://invicara.atlassian.net/browse/PLG-1764" target="_blank" rel="noopener">PLG-1764</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>57</td><td><a href="https://invicara.atlassian.net/browse/PLG-2793" target="_blank" rel="noopener">PLG-2793</a></td><td>Verify Model Composition Handles Multiple Linked Models Without Performance Degradation</td><td><a href="https://invicara.atlassian.net/browse/PLG-1764" target="_blank" rel="noopener">PLG-1764</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>58</td><td><a href="https://invicara.atlassian.net/browse/PLG-2794" target="_blank" rel="noopener">PLG-2794</a></td><td>Verify Keep Alive Handles Non-Primary File Sets Gracefully Without 404 Errors</td><td><a href="https://invicara.atlassian.net/browse/PLG-1771" target="_blank" rel="noopener">PLG-1771</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>59</td><td><a href="https://invicara.atlassian.net/browse/PLG-2795" target="_blank" rel="noopener">PLG-2795</a></td><td>Verify Reference App Viewer Remains Stable When Keep Alive Returns 404 for Non-Primary File Sets</td><td><a href="https://invicara.atlassian.net/browse/PLG-1771" target="_blank" rel="noopener">PLG-1771</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>60</td><td><a href="https://invicara.atlassian.net/browse/PLG-2796" target="_blank" rel="noopener">PLG-2796</a></td><td>Verify Optimized Models Do Not Show Bad Model Error After an Idle Period</td><td><a href="https://invicara.atlassian.net/browse/PLG-1774" target="_blank" rel="noopener">PLG-1774</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>61</td><td><a href="https://invicara.atlassian.net/browse/PLG-2797" target="_blank" rel="noopener">PLG-2797</a></td><td>Verify Keep Alive Prevents Session Timeout for Optimized Models During Idle Time</td><td><a href="https://invicara.atlassian.net/browse/PLG-1774" target="_blank" rel="noopener">PLG-1774</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>62</td><td><a href="https://invicara.atlassian.net/browse/PLG-2798" target="_blank" rel="noopener">PLG-2798</a></td><td>Verify Multiple Models in a GIS Project are Represented as Cluster Markers on the GIS Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1779" target="_blank" rel="noopener">PLG-1779</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>63</td><td><a href="https://invicara.atlassian.net/browse/PLG-2799" target="_blank" rel="noopener">PLG-2799</a></td><td>Verify Clicking a Cluster Marker Expands to Show Individual Model Locations on the GIS Map</td><td><a href="https://invicara.atlassian.net/browse/PLG-1779" target="_blank" rel="noopener">PLG-1779</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>64</td><td><a href="https://invicara.atlassian.net/browse/PLG-2800" target="_blank" rel="noopener">PLG-2800</a></td><td>Verify the showToolbar Property Correctly Shows or Hides the EVM Toolbar in the Reference App</td><td><a href="https://invicara.atlassian.net/browse/PLG-1787" target="_blank" rel="noopener">PLG-1787</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>65</td><td><a href="https://invicara.atlassian.net/browse/PLG-2801" target="_blank" rel="noopener">PLG-2801</a></td><td>Verify the showLauncher Property Correctly Shows or Hides the EVM Launcher in the Reference App</td><td><a href="https://invicara.atlassian.net/browse/PLG-1787" target="_blank" rel="noopener">PLG-1787</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>66</td><td><a href="https://invicara.atlassian.net/browse/PLG-2802" target="_blank" rel="noopener">PLG-2802</a></td><td>Verify Elements with load:true visible:false Initial Discipline Property Load But Are Not Visible in Viewer</td><td><a href="https://invicara.atlassian.net/browse/PLG-1793" target="_blank" rel="noopener">PLG-1793</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>67</td><td><a href="https://invicara.atlassian.net/browse/PLG-2803" target="_blank" rel="noopener">PLG-2803</a></td><td>Verify Asset-Level Composition Using Initial Discipline Property Does Not Affect Other Elements</td><td><a href="https://invicara.atlassian.net/browse/PLG-1793" target="_blank" rel="noopener">PLG-1793</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>68</td><td><a href="https://invicara.atlassian.net/browse/PLG-2804" target="_blank" rel="noopener">PLG-2804</a></td><td>Verify GIS Alignment UI is Accessible Regardless of How GIS is Enabled</td><td><a href="https://invicara.atlassian.net/browse/PLG-1804" target="_blank" rel="noopener">PLG-1804</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>69</td><td><a href="https://invicara.atlassian.net/browse/PLG-2805" target="_blank" rel="noopener">PLG-2805</a></td><td>Verify GIS Alignment UI Functions Correctly When Accessed via App Property and Manual Toggle</td><td><a href="https://invicara.atlassian.net/browse/PLG-1804" target="_blank" rel="noopener">PLG-1804</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>70</td><td><a href="https://invicara.atlassian.net/browse/PLG-2806" target="_blank" rel="noopener">PLG-2806</a></td><td>Verify Dev Tools Panel Appears When devToolsIaf=true is Added to the Query String</td><td><a href="https://invicara.atlassian.net/browse/PLG-1805" target="_blank" rel="noopener">PLG-1805</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>71</td><td><a href="https://invicara.atlassian.net/browse/PLG-2807" target="_blank" rel="noopener">PLG-2807</a></td><td>Verify Dev Tools Panel Displays Accurate Viewer Debug Information When Enabled</td><td><a href="https://invicara.atlassian.net/browse/PLG-1805" target="_blank" rel="noopener">PLG-1805</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>72</td><td><a href="https://invicara.atlassian.net/browse/PLG-2808" target="_blank" rel="noopener">PLG-2808</a></td><td>Verify E2E Tests Can Be Triggered Directly from GitHub CI Pipeline Successfully</td><td><a href="https://invicara.atlassian.net/browse/PLG-1838" target="_blank" rel="noopener">PLG-1838</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>73</td><td><a href="https://invicara.atlassian.net/browse/PLG-2809" target="_blank" rel="noopener">PLG-2809</a></td><td>Verify E2E Tests Validate Backward Compatibility Across Supported Reference App Versions</td><td><a href="https://invicara.atlassian.net/browse/PLG-1838" target="_blank" rel="noopener">PLG-1838</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>74</td><td><a href="https://invicara.atlassian.net/browse/PLG-2810" target="_blank" rel="noopener">PLG-2810</a></td><td>Verify Critical and High Severity GHAS Security Vulnerabilities in IafViewer Are Resolved</td><td><a href="https://invicara.atlassian.net/browse/PLG-1840" target="_blank" rel="noopener">PLG-1840</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>75</td><td><a href="https://invicara.atlassian.net/browse/PLG-2811" target="_blank" rel="noopener">PLG-2811</a></td><td>Verify Reference App 3D Viewer Functions Correctly After IafViewer Security Fixes Are Applied</td><td><a href="https://invicara.atlassian.net/browse/PLG-1840" target="_blank" rel="noopener">PLG-1840</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>76</td><td><a href="https://invicara.atlassian.net/browse/PLG-2812" target="_blank" rel="noopener">PLG-2812</a></td><td>Verify Critical and High Severity GHAS Security Vulnerabilities in GraphicsSvc Are Resolved</td><td><a href="https://invicara.atlassian.net/browse/PLG-1842" target="_blank" rel="noopener">PLG-1842</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>77</td><td><a href="https://invicara.atlassian.net/browse/PLG-2813" target="_blank" rel="noopener">PLG-2813</a></td><td>Verify GraphicsSvc APIs Return Correct Responses After Security Fixes Are Applied</td><td><a href="https://invicara.atlassian.net/browse/PLG-1842" target="_blank" rel="noopener">PLG-1842</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>78</td><td><a href="https://invicara.atlassian.net/browse/PLG-2814" target="_blank" rel="noopener">PLG-2814</a></td><td>Verify Reference App 3D Viewer Loads and Renders Correctly After Latest Communicator Dependency Update</td><td><a href="https://invicara.atlassian.net/browse/PLG-1858" target="_blank" rel="noopener">PLG-1858</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>79</td><td><a href="https://invicara.atlassian.net/browse/PLG-2815" target="_blank" rel="noopener">PLG-2815</a></td><td>Verify No Regression in Viewer Functionality After Communicator Dependency Update</td><td><a href="https://invicara.atlassian.net/browse/PLG-1858" target="_blank" rel="noopener">PLG-1858</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>80</td><td><a href="https://invicara.atlassian.net/browse/PLG-2816" target="_blank" rel="noopener">PLG-2816</a></td><td>Verify GraphicsService Log Verbosity Level Can Be Configured Correctly</td><td><a href="https://invicara.atlassian.net/browse/PLG-1870" target="_blank" rel="noopener">PLG-1870</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>81</td><td><a href="https://invicara.atlassian.net/browse/PLG-2817" target="_blank" rel="noopener">PLG-2817</a></td><td>Verify Logs at the Configured Verbosity Level Are Generated Accurately Without Missing Entries</td><td><a href="https://invicara.atlassian.net/browse/PLG-1870" target="_blank" rel="noopener">PLG-1870</a></td><td><span class="badge st-done">Done</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Test case coverage — PA-1594 &amp; PA-1716 only</h2>
+  <div class="desc">18 Xray Test cases total, scoped to only the worked tickets you named — 5 linked to <a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a> (Custom MCP tool Integration), 10 linked to <a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a> (Generate graph data), and 3 linked to <a href="https://invicara.atlassian.net/browse/PA-1615" target="_blank" rel="noopener">PA-1615</a> (Model import POC: types as related items not relationships). All other test cases (81 PLG + 62 PA previously shown) have been removed from this section.</div>
+  <div class="card scroll">
+    <table id="table-pa">
+      <tr><th>#</th><th>Key</th><th>Description</th><th>Tests ticket</th><th>Status</th></tr>
+      <tr><td>1</td><td><a href="https://invicara.atlassian.net/browse/PA-1706" target="_blank" rel="noopener">PA-1706</a></td><td>Verify AI Chat Predicts Electricity Consumption for a Valid Future Date Within 30 Days</td><td><a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>2</td><td><a href="https://invicara.atlassian.net/browse/PA-1707" target="_blank" rel="noopener">PA-1707</a></td><td>Verify the ±10% Range Is Mathematically Accurate Relative to the Absolute kWh Prediction</td><td><a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>3</td><td><a href="https://invicara.atlassian.net/browse/PA-1708" target="_blank" rel="noopener">PA-1708</a></td><td>Verify Reasoning in the Prediction References Both Weather Forecast and Day of the Week</td><td><a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>4</td><td><a href="https://invicara.atlassian.net/browse/PA-1709" target="_blank" rel="noopener">PA-1709</a></td><td>Verify Prediction Request for a Date Exactly 30 Days in the Future (Upper Boundary)</td><td><a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>5</td><td><a href="https://invicara.atlassian.net/browse/PA-1710" target="_blank" rel="noopener">PA-1710</a></td><td>Verify Prediction Request for a Date Exactly 31 Days in the Future (Beyond Upper Boundary)</td><td><a href="https://invicara.atlassian.net/browse/PA-1594" target="_blank" rel="noopener">PA-1594</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>6</td><td><a href="https://invicara.atlassian.net/browse/PA-1777" target="_blank" rel="noopener">PA-1777</a></td><td>Verify Energy Prediction Agent Returns Historical Energy Graph Data Successfully</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>7</td><td><a href="https://invicara.atlassian.net/browse/PA-1778" target="_blank" rel="noopener">PA-1778</a></td><td>Verify Energy Prediction Agent Returns Predicted Energy Usage Graph Data Successfully</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>8</td><td><a href="https://invicara.atlassian.net/browse/PA-1779" target="_blank" rel="noopener">PA-1779</a></td><td>Verify Graph Data Response Contains Both Historical and Predicted Series When Requested</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>9</td><td><a href="https://invicara.atlassian.net/browse/PA-1780" target="_blank" rel="noopener">PA-1780</a></td><td>Verify Graph Data Request with Invalid Asset ID Returns Appropriate Error</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>10</td><td><a href="https://invicara.atlassian.net/browse/PA-1781" target="_blank" rel="noopener">PA-1781</a></td><td>Verify Graph Data Request with Invalid Date Range (Start Date After End Date) Returns Error</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>11</td><td><a href="https://invicara.atlassian.net/browse/PA-1782" target="_blank" rel="noopener">PA-1782</a></td><td>Verify Graph Data Request with Missing Asset ID Returns Validation Error</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>12</td><td><a href="https://invicara.atlassian.net/browse/PA-1783" target="_blank" rel="noopener">PA-1783</a></td><td>Verify Graph Data Request with Missing Date Range Returns Validation Error</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>13</td><td><a href="https://invicara.atlassian.net/browse/PA-1784" target="_blank" rel="noopener">PA-1784</a></td><td>Verify Historical Graph Data Returns Correct Series Structure with Expected Fields</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>14</td><td><a href="https://invicara.atlassian.net/browse/PA-1785" target="_blank" rel="noopener">PA-1785</a></td><td>Verify Predicted Graph Data Returns Future-Dated Data Points Only</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>15</td><td><a href="https://invicara.atlassian.net/browse/PA-1786" target="_blank" rel="noopener">PA-1786</a></td><td>Verify Graph Data Request for a Single-Day Date Range Returns Exactly One Data Point</td><td><a href="https://invicara.atlassian.net/browse/PA-1716" target="_blank" rel="noopener">PA-1716</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>16</td><td><a href="https://invicara.atlassian.net/browse/PA-1711" target="_blank" rel="noopener">PA-1711</a></td><td>PA-1615 - Verify Existing Model Import Works Correctly with Types as Related Items</td><td><a href="https://invicara.atlassian.net/browse/PA-1615" target="_blank" rel="noopener">PA-1615</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>17</td><td><a href="https://invicara.atlassian.net/browse/PA-1712" target="_blank" rel="noopener">PA-1712</a></td><td>PA-1615 - Verify Existing Model Import with Mapping (Import + Upload Type Map Combined)</td><td><a href="https://invicara.atlassian.net/browse/PA-1615" target="_blank" rel="noopener">PA-1615</a></td><td><span class="badge st-done">Done</span></td></tr>
+<tr><td>18</td><td><a href="https://invicara.atlassian.net/browse/PA-1713" target="_blank" rel="noopener">PA-1713</a></td><td>PA-1615 - Verify New Experimental Model Import Without Mapping Required</td><td><a href="https://invicara.atlassian.net/browse/PA-1615" target="_blank" rel="noopener">PA-1615</a></td><td><span class="badge st-done">Done</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Automation Test Execution</h2>
+  <div class="desc">Real execution results from the two attached reports (run August 05, 2026), skipped tests excluded. This reflects actual pass/fail from the test runners — separate from the Xray "Test" issue status shown elsewhere, which only tracks ticket state.</div>
+  <div class="kpis" style="margin-bottom:20px;">
+    <div class="kpi"><div class="num">82</div><div class="label">Automated tests run</div></div>
+    <div class="kpi accent-green"><div class="num">82</div><div class="label">Passed</div></div>
+    <div class="kpi accent-red"><div class="num">0</div><div class="label">Failed</div></div>
+  </div>
+
+  <h3 style="font-size:14.5px;color:var(--navy);margin:18px 0 4px;">Reference App (PA) — RunnerClass.spec.ts — Allure Report</h3>
+  <div class="desc">20/20 passed · host INVIN-LTW-070 · run window 08:05:16–08:19:57 UTC (~14.7 min) · <a href="reference-app-qa2-automation-report.html" target="_blank" rel="noopener">open full Allure report</a></div>
+  <div class="card scroll">
+    <table>
+      <tr><th>#</th><th>Test</th><th>Suite</th><th>Duration</th><th>Result</th></tr>
+<tr><td>1</td><td>01 - Login and Project Setup</td><td class="muted">Reference App Suite</td><td>4.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>2</td><td>02 - Verify Model Details</td><td class="muted">Reference App Suite &gt; Navigator</td><td>62.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>3</td><td>03 - Verify Model Image</td><td class="muted">Reference App Suite &gt; Navigator</td><td>35.2s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>4</td><td>04 - Verify Warranty Data Details</td><td class="muted">Reference App Suite &gt; Navigator</td><td>45.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>5</td><td>05 - Verify Telemetry via REST API</td><td class="muted">Reference App Suite &gt; Navigator</td><td>48.2s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>6</td><td>06 - Verify Telemetry MQTT Readings</td><td class="muted">Reference App Suite &gt; Navigator</td><td>73.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>7</td><td>07 - Upload and Delete Files</td><td class="muted">Reference App Suite &gt; Navigator</td><td>47.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>8</td><td>08 - Verify Model Details</td><td class="muted">Reference App Suite &gt; Model Elements</td><td>26.0s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>9</td><td>09 - Upload and Delete Files</td><td class="muted">Reference App Suite &gt; Model Elements</td><td>37.5s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>10</td><td>10 - Verify Warranty Data</td><td class="muted">Reference App Suite &gt; Model Elements</td><td>37.5s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>11</td><td>11 - Verify Telemetry REST API</td><td class="muted">Reference App Suite &gt; Model Elements</td><td>34.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>12</td><td>12 - Verify Telemetry MQTT</td><td class="muted">Reference App Suite &gt; Model Elements</td><td>51.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>13</td><td>13 - Upload Rename Delete File</td><td class="muted">Reference App Suite &gt; Files Menu</td><td>39.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>14</td><td>14 - Create Folder Handling Files</td><td class="muted">Reference App Suite &gt; Files Menu</td><td>29.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>15</td><td>15 - Handling Multiple Files with Search</td><td class="muted">Reference App Suite &gt; Files Menu</td><td>156.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>16</td><td>16 - Send Invites</td><td class="muted">Reference App Suite &gt; Admin User Group</td><td>38.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>17</td><td>17 - Pending Invites</td><td class="muted">Reference App Suite &gt; Admin User Group</td><td>16.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>18</td><td>18 - Remove Invites</td><td class="muted">Reference App Suite &gt; Admin User Group</td><td>41.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>19</td><td>19 - MapBox Activation</td><td class="muted">Reference App Suite &gt; Manage Model</td><td>11.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>20</td><td>20 - Verify Connector</td><td class="muted">Reference App Suite &gt; Generic REST Connector</td><td>34.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+    </table>
+  </div>
+
+  <h3 style="font-size:14.5px;color:var(--navy);margin:22px 0 4px;">Platform Graphics / Viewer (PLG) — Playwright Report</h3>
+  <div class="desc">62 passed, 0 failed across 7 spec files (5 skipped tests excluded from this table) · project chromium · run started 07:23:23 UTC (~32.6 min total) · <a href="viewer-plg-automation-report.html" target="_blank" rel="noopener">open full Playwright report</a></div>
+  <div class="card scroll">
+    <table>
+      <tr><th>#</th><th>Spec file</th><th>Test</th><th>Duration</th><th>Result</th></tr>
+<tr><td>1</td><td class="muted">5.2TestingScenarios</td><td>PLG-1471 - T2-ELEC-Federated model loads correctly <span class="chip">load=1517ms</span></td><td>70.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>2</td><td class="muted">annotations</td><td>Annotations test</td><td>45.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>3</td><td class="muted">annotations</td><td>Environment readiness</td><td>5.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>4</td><td class="muted">annotations</td><td>Annotations - Check Distance</td><td>57.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>5</td><td class="muted">annotations</td><td>Annotations - Line</td><td>54.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>6</td><td class="muted">annotations</td><td>Annotations - Circle</td><td>52.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>7</td><td class="muted">annotations</td><td>Annotations - Rectangle</td><td>55.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>8</td><td class="muted">annotations</td><td>Annotations - Polyline</td><td>53.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>9</td><td class="muted">annotations</td><td>Annotations - Polygon</td><td>55.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>10</td><td class="muted">annotations</td><td>Annotations - Leader Note</td><td>55.5s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>11</td><td class="muted">annotations</td><td>Annotations - Text</td><td>52.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>12</td><td class="muted">annotations</td><td>Annotations - Freehand</td><td>53.5s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>13</td><td class="muted">annotations</td><td>Annotations - Import</td><td>54.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>14</td><td class="muted">gis</td><td>GIS Viewer - Enable and Disable GIS</td><td>68.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>15</td><td class="muted">gis</td><td>GIS Viewer - Interact - Zoom</td><td>94.0s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>16</td><td class="muted">gis</td><td>GIS Viewer - Interact - Pitch</td><td>186.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>17</td><td class="muted">gis</td><td>GIS Viewer - Interact - Bearing</td><td>184.5s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>18</td><td class="muted">gis</td><td>GIS Viewer - Appearance - Style</td><td>186.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>19</td><td class="muted">gis</td><td>GIS Viewer - Appearance - Layer</td><td>102.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>20</td><td class="muted">gis</td><td>GIS Viewer - Appearance - Elevation Mode</td><td>200.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>21</td><td class="muted">gis</td><td>GIS Viewer - Appearance - Globe View</td><td>106.2s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>22</td><td class="muted">gis</td><td>GIS Viewer - Appearance - Show Markers</td><td>125.5s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>23</td><td class="muted">modelComposer</td><td>Model Composer - Auto Compose Visiblity</td><td>58.0s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>24</td><td class="muted">modelComposer</td><td>Model Composer - All disciplines - Low vs High</td><td>91.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>25</td><td class="muted">modelComposer</td><td>Model Composer - No disciplines - Low vs High</td><td>76.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>26</td><td class="muted">modelComposer</td><td>Model Composer - Architectural only Low &amp; High</td><td>81.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>27</td><td class="muted">modelComposer</td><td>Model Composer - Plumbing only Low &amp; High</td><td>72.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>28</td><td class="muted">modelComposer</td><td>Model Composer - Electrical only Low &amp; High</td><td>78.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>29</td><td class="muted">modelComposer</td><td>Model Composer - GUI Helper only Low &amp; High</td><td>75.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>30</td><td class="muted">modelComposer</td><td>Model Composer - Federated - Switch to Load Everything</td><td>60.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>31</td><td class="muted">modelComposer</td><td>Model Composer - Federated - Show All</td><td>63.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>32</td><td class="muted">modelComposer</td><td>Model Composer - Federated - Hide All</td><td>61.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>33</td><td class="muted">modelComposer</td><td>Model Composer - Structural Sub-Item Actions</td><td>111.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>34</td><td class="muted">modelComposer</td><td>Model Composer - Architectural Sub-Item Actions</td><td>113.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>35</td><td class="muted">modelComposer</td><td>Model Composer - Mechanical Sub-Item Actions</td><td>112.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>36</td><td class="muted">modelComposer</td><td>Model Composer - Electrical Sub-Item Actions</td><td>115.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>37</td><td class="muted">modelComposer</td><td>Model Composer - Plumbing Sub-Item Actions</td><td>114.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>38</td><td class="muted">modelComposer</td><td>Model Composer - FireProtection Sub-Item Actions</td><td>115.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>39</td><td class="muted">modelSelection</td><td>Model Selection - Direct Viewer Click</td><td>53.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>40</td><td class="muted">modelSelection</td><td>Model Isolation - Search and select model elements (Glass mode) - Architectural Elements</td><td>96.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>41</td><td class="muted">modelSelection</td><td>Model Isolation - BookMark</td><td>93.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>42</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Reset View</td><td>77.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>43</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Projection</td><td>104.6s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>44</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Top View</td><td>75.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>45</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Bottom View</td><td>72.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>46</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Left View</td><td>70.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>47</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Right View</td><td>68.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>48</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Front View</td><td>69.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>49</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Back View</td><td>70.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>50</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Shading Options</td><td>205.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>51</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes ON</td><td>383.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>52</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Cutting Plane - Standard Planes with Show Planes OFF</td><td>364.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>53</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Cutting Plane - Focused Planes</td><td>137.8s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>54</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 3D Viewer</td><td>69.7s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>55</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 2D Viewer - Full Screen</td><td>44.9s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>56</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 2D Viewer - Half Screen</td><td>45.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>57</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 2D Viewer - Zoom In</td><td>45.2s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>58</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 2D Viewer - Zoom Out</td><td>46.3s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>59</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 2D Viewer - Drag Area</td><td>49.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>60</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - 2D Viewer - Disable and Enable</td><td>71.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>61</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Focus Mode Enable</td><td>69.4s</td><td><span class="badge st-done">Passed</span></td></tr>
+<tr><td>62</td><td class="muted">viewerToolbar</td><td>Viewer Toolbar - Focus Mode Disable</td><td>72.1s</td><td><span class="badge st-done">Passed</span></td></tr>
+    </table>
+  </div>
+</section>
+
+<section>
+  <h2>Data sources &amp; caveats</h2>
+  <div class="note">
+    <strong>Read this before reporting these numbers upward:</strong>
+    <ul>
+      <li>Defect counts require Karthik Ramu to be <strong>both</strong> reporter and assignee — bugs you're assigned but someone else reported (e.g. most PLG bugs, reported by Atul Kulkarni) are excluded from the defect count, though they still exist in the release.</li>
+      <li>"Worked tickets" uses the exact JQL you supplied: PLG from saved filter 26617 with assignee in your 3-person team list, statusCategory = Done; PA from status = Done AND type IN (Story, Sub-task, Task). The PLG result includes 4 tickets assigned to a teammate because your filter's assignee list included them — flagged per row so nothing is hidden.</li>
+      <li>The two former housekeeping tickets PLG-1864 and PLG-1870 (assigned to someone else) have been removed from this dashboard.</li>
+      <li>Automation Test Execution section reflects the actual Allure (Reference App QA2) and Playwright (iaf-viewer) reports you attached on August 05, 2026 — not a live Xray sync. Re-upload updated reports to refresh these numbers.</li>
+      <li>Test-case catalog is scoped strictly to fixVersion "Platform V5.2" / "Reference App V5.2" — no other release's test cases are included. PLG shows all 81 Xray Test cases in that fixVersion; PA is narrowed further to only the tickets you named (PA-1594, PA-1716, PA-1615).</li>
+      <li>All figures pulled live from Jira on August 05, 2026. Credentials intentionally excluded.</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>Release 5.2 QA Metrics Dashboard · Karthik Ramu</footer>
+
+<script>
+function filterTable(prefix) {
+  const q = document.getElementById('search-' + prefix).value.toLowerCase();
+  const activeBtn = document.querySelector('#filters-' + prefix + ' button.active');
+  const statusFilter = activeBtn ? activeBtn.dataset.status : 'all';
+  applyFilters(prefix, q, statusFilter);
+}
+function setStatusFilter(prefix, status, btn) {
+  document.querySelectorAll('#filters-' + prefix + ' button').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const q = document.getElementById('search-' + prefix).value.toLowerCase();
+  applyFilters(prefix, q, status);
+}
+function applyFilters(prefix, q, status) {
+  const rows = document.querySelectorAll('#table-' + prefix + ' tr[data-search]');
+  rows.forEach(r => {
+    const matchesText = !q || r.dataset.search.includes(q);
+    const matchesStatus = status === 'all' || r.dataset.status === status;
+    r.style.display = (matchesText && matchesStatus) ? '' : 'none';
+  });
+}
+</script>
+
+</body>
+</html>
