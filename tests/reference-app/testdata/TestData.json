@@ -48,5 +48,9 @@
   },
   "ProjectSelect": {
     "UserType": "TestAI File Contributor"
+  },
+  "AIchat": {
+    "BimQueryQuestion": "Show me all doors on this floor",
+    "EnergyPredictionQuestionTemplate": "Predict the building energy consumption for {date}"
   }
 }

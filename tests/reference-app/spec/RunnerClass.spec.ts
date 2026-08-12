@@ -9,6 +9,7 @@ import { FilesMenuTest }               from './FilesMenuTest';
 import { AdminUserGroupTest }          from './AdminUserGroupTest';
 import { ManageModelTest }             from './ManageModelTest';
 import { GenericRestConnectorTest }    from './GenericRestConnectorTest';
+import { AIChatTest }                  from './AIChatTest';
 
 import { Browser, BrowserContext, Page } from '@playwright/test';
 
@@ -162,6 +163,24 @@ test.describe('Reference App Suite', () => {
     test('20 - Verify Connector', async () => {
       const grcTest = new GenericRestConnectorTest(sharedPage);
       await grcTest.verifyGenericRestConnector();
+    });
+  });
+
+  // ── AI Chat (PA-1261/PA-1370/PA-1594) ───────────────────────────────────────
+  test.describe('AI Chat', () => {
+    test('21 - Verify BIM Query Team Chat Response', async () => {
+      const chatTest = new AIChatTest(sharedPage);
+      await chatTest.verifyBimQueryTeamChatResponse();
+    });
+
+    test('22 - Verify Energy Prediction MCP Setup', async () => {
+      const chatTest = new AIChatTest(sharedPage);
+      await chatTest.verifyEnergyPredictionMcpSetup();
+    });
+
+    test('23 - Verify Energy Prediction Team Chat Response', async () => {
+      const chatTest = new AIChatTest(sharedPage);
+      await chatTest.verifyEnergyPredictionChatResponse();
     });
   });
 

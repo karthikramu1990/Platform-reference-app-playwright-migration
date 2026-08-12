@@ -171,6 +171,33 @@ export class NavigatorPage {
     }
   }
 
+  // AI Chat scenarios need the EX model - confirmed live as "EX11034-INV-Federated" in the Models dropdown.
+  async ensureModelExSelected(
+    modelName: string = 'EX11034-INV-Federated'
+  ): Promise<void> {
+    try {
+      await this.navigatorModelSearchTable.waitFor({ state: 'visible', timeout: 15000 });
+      await this.navigatorModelSearchTable.click();
+
+      await this.navigatorCurrentModelValue.waitFor({ state: 'visible', timeout: 15000 });
+      const currentModel = (await this.navigatorCurrentModelValue.textContent())?.trim() ?? '';
+
+      if (currentModel.includes('EX')) {
+        await this.logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+        return;
+      }
+
+      await this.navigatorModelSelectDropdown.click();
+      await this.selectFromReactSelect(modelName);
+
+      await this.navigatorChangeModelButton.click();
+      await this.waitUntilLoadingDisappear();
+      await this.logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
+    } catch (e: any) {
+      console.error('ERROR: Unable to ensure EX model selected:', e.message);
+    }
+  }
+
   async clickNavigatorSearch(): Promise<void> {
     try {
       await this.navigatorSearch.waitFor({ state: 'visible' });
