@@ -38,6 +38,12 @@ export const CONFIG = {
   userGroup: 'iputmodelsegmented Proj Admin',
   switchModel: "EX11034-INV-Federated-4.6",
 
+  // PLG-1477 - Federated project realignment after model switching. Same
+  // project/account as above; 4.6 is the model loaded by default (Model A),
+  // 4.4 is the model we switch to and back (Model B).
+  federatedModelA: 'EX11034-INV-Federated-4.6',
+  federatedModelB: 'EX11034-INV-Federated-4.4',
+
   // PLG-1471 - BIAL T2 large-project performance/console-error regression.
   // Separate account + project from the default credentials/project above.
   skinnyBial: {
