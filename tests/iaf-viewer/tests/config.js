@@ -54,6 +54,14 @@ export const CONFIG = {
     project: 'Skinny_BIAL_AllModels',
     userGroup: 'Skinny_BIAL_AllModels Proj Admin',
     switchModel: 'T2-ELEC-Federated',
+
+    // PLG-1570 - Model Switching camera tests. Model A is this project's own
+    // default landing model; Model B is a distinct federated model to switch
+    // to/from, so the two models are visually different enough to catch a
+    // camera actually carrying over incorrectly (unlike the iput federated
+    // 4.6/4.4 pair, which look nearly identical to each other).
+    modelA: 'L&T_CUP_FED_ASBUILT CORE_2024',
+    modelB: 'T2-ELEC-Federated',
   },
 
   // PLG-1417 - "Review 2D Animations" support ticket. The Workflow (2D

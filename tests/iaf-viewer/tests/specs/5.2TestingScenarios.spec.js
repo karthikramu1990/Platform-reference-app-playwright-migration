@@ -36,7 +36,7 @@ import {
   measureElapsed,
 } from '../helpers/appHelpers.js';
 import { switchModel } from '../helpers/modelHelpers.js';
-import { openCuttingPlane, dragPlaneSlider, verifyCuttingPlaneScreenshot } from '../helpers/viewerHelpers.js';
+import { openCuttingPlane, dragPlaneSlider, verifyCuttingPlaneScreenshot, clickViewOption } from '../helpers/viewerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 import {
   goToWorkflowScreen,
@@ -121,4 +121,46 @@ test('PLG-1517 - Cutting Planes custom levels: slider cuts model, updates instan
   // Re-enabling restores the previous custom cut (same baseline as above).
   await page.locator(`xpath=${Locator.standardPlanesToggle}`).click();
   await verifyCuttingPlaneScreenshot(page, 'PLG-1517-CustomLevel-45');
+});
+
+// PLG-1570 - Model Switching: switching to another model loads that model's own initial camera, not the previous model's.
+test('PLG-1570 - Model Switching: initial camera view is correct when switching from Model A to Model B', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setupWithAccount(page, CONFIG.skinnyBial.credentials, CONFIG.skinnyBial.project, CONFIG.skinnyBial.userGroup);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await verifyViewerScreenshot(page, 'PLG-1570-ModelA-InitialView');
+
+  await switchModel(page, CONFIG.skinnyBial.modelB, CONFIG.timeout.long);
+  await verifyViewerScreenshot(page, 'PLG-1570-ModelB-InitialView');
+});
+
+// PLG-1570 - Model Switching: a camera position set on Model A is restored when switching away to Model B and back to Model A.
+test('PLG-1570 - Model Switching: camera position is restored correctly after switching away and back to the same model', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setupWithAccount(page, CONFIG.skinnyBial.credentials, CONFIG.skinnyBial.project, CONFIG.skinnyBial.userGroup);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await clickViewOption(page, 'topView');
+  await verifyViewerScreenshot(page, 'PLG-1570-ModelA-TopView');
+
+  await switchModel(page, CONFIG.skinnyBial.modelB, CONFIG.timeout.long);
+  await switchModel(page, CONFIG.skinnyBial.modelA, CONFIG.timeout.long);
+
+  await verifyViewerScreenshot(page, 'PLG-1570-ModelA-TopView-AfterSwitch');
+});
+
+// PLG-1570 - Model Switching: a saved camera position survives a full page reload (Save View -> Refresh).
+test('PLG-1570 - Model Switching: saved camera position survives a page reload', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setupWithAccount(page, CONFIG.skinnyBial.credentials, CONFIG.skinnyBial.project, CONFIG.skinnyBial.userGroup);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await clickViewOption(page, 'topView');
+  await verifyViewerScreenshot(page, 'PLG-1570-ModelA-TopView-Reload');
+
+  await page.reload();
+  await waitForApplicationLoad(page, CONFIG.timeout.long);
+
+  await verifyViewerScreenshot(page, 'PLG-1570-ModelA-TopView-AfterReload');
 });
