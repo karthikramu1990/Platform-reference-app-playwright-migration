@@ -18,7 +18,6 @@ test('Model Selection - Direct Viewer Click', async ({ page }) => {
   await page.waitForTimeout(20000);
 
   const canvas = page.locator(Locator.viewer3D);
-  // select element
   await selectElementOnCanvas(page, canvas,
     {
       timeout: CONFIG.timeout.medium,
@@ -42,8 +41,7 @@ test('Model Selection - Direct Viewer Click', async ({ page }) => {
     expect(selection).toEqual(singleSelection);
   }
 
-  // unselect an element
-    await selectElementOnCanvas(page, canvas,
+  await selectElementOnCanvas(page, canvas,
     {
       timeout: CONFIG.timeout.medium,
       xRatio: 0.85,
@@ -96,21 +94,16 @@ test('Model Isolation - Search and select model elements (Glass mode) - Architec
   await openDrawer(page, listIcon, 'Entity Name');
   await page.waitForTimeout(8000);
 
-  // Close drawers (reverse order)
   await closeDrawer(page, searchIcon, 'Search For');
   await closeDrawer(page, filterIcon, 'Group By');
 
   const selectAll = page.locator('.header-column.checkbox input[type="checkbox"]');
   await expect(selectAll).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  // Select all
   await selectAll.click();
   await expect(selectAll).toBeChecked();
 
-  // Row checkboxes
   const rowCheckboxes = page.locator('.content-column input[type="checkbox"]');
-
-  // Wait until ALL are checked
   const count = await rowCheckboxes.count();
 
   for (let i = 0; i < count; i++) {
@@ -135,14 +128,9 @@ test('Model Isolation - Search and select model elements (Glass mode) - Architec
 
   await openDrawer(page, listIcon, 'Entity Name');
 
-  // unselect all
   await selectAll.click();
 
-  // await page.locator('.navigator-bottom-reset').click({ force: true });
-
-  const clearFiltersBtn = page
-    // .locator('.navigator-bottom-reset')
-    .locator('i[aria-label="Clear filters"]');
+  const clearFiltersBtn = page.locator('i[aria-label="Clear filters"]');
   await clearFiltersBtn.click({ force: true });
 
   await closeDrawer(page, filterIcon, 'No data');
@@ -159,10 +147,6 @@ test('Model Isolation - Search and select model elements (Glass mode) - Architec
   await verifyViewerScreenshot(page, "isolatedElements_shaded");
 });
 
-// BLOCKED: qa2 model "EX11034-INV-Federated-4.6" currently has zero "Electrical Equipment > Generator"
-// elements — confirmed both via automation and manual verification in the app (2026-07-29). This is an
-// app/data issue, not a test defect. Re-enable once the model data is fixed or the fixture/element type
-// is updated to one that has data in this model.
 test.fixme('Model Isolation - Search and select model elements (Glass mode) - Electrical Elements', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
@@ -195,21 +179,16 @@ test.fixme('Model Isolation - Search and select model elements (Glass mode) - El
   await openDrawer(page, listIcon, 'Entity Name');
   await page.waitForTimeout(8000);
 
-  // Close drawers (reverse order)
   await closeDrawer(page, searchIcon, 'Search For');
   await closeDrawer(page, filterIcon, 'Group By');
 
   const selectAll = page.locator('.header-column.checkbox input[type="checkbox"]');
   await expect(selectAll).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  // Select all
   await selectAll.click();
   await expect(selectAll).toBeChecked();
 
-  // Row checkboxes
   const rowCheckboxes = page.locator('.content-column input[type="checkbox"]');
-
-  // Wait until ALL are checked
   const count = await rowCheckboxes.count();
 
   for (let i = 0; i < count; i++) {
@@ -235,22 +214,16 @@ test.fixme('Model Isolation - Search and select model elements (Glass mode) - El
   const root = page.locator('div:has-text("Compose On Demand")')
     .locator('xpath=ancestor::div[@disabled]').first();
 
-  // Ensure section is disabled at container level
   await expect(root).toHaveAttribute('disabled', '');
-
-  // Ensure no enabled inputs inside
   await expect(root.locator('input:not([disabled])')).toHaveCount(0);
 
   await verifyViewerScreenshot(page, "isolatedElements_Electrical_glass");
 
   await openDrawer(page, listIcon, 'Entity Name');
 
-  // unselect all
   await selectAll.click();
 
-  const clearFiltersBtn = page
-    // .locator('.navigator-bottom-reset')
-    .locator('i[aria-label="Clear filters"]');
+  const clearFiltersBtn = page.locator('i[aria-label="Clear filters"]');
   await clearFiltersBtn.click({ force: true });
 
   await closeDrawer(page, filterIcon, 'No data');
@@ -293,14 +266,10 @@ test('Model Isolation - BookMark', async ({ page }) => {
   const selectAll = page.locator('.header-column.checkbox input[type="checkbox"]');
   await expect(selectAll).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  // Select all
   await selectAll.click();
   await expect(selectAll).toBeChecked();
 
-  // Row checkboxes
   const rowCheckboxes = page.locator('.content-column input[type="checkbox"]');
-
-  // Wait until ALL are checked
   const count = await rowCheckboxes.count();
 
   for (let i = 0; i < count; i++) {
@@ -318,7 +287,6 @@ test('Model Isolation - BookMark', async ({ page }) => {
 
   await verifyViewerScreenshot(page, "isolatedElements_glass_book");
 
-  // Refresh
   await page.reload();
   await waitForAnnotationsEnabled(page, CONFIG.timeout.medium);
   const decodedUrl = decodeURIComponent(page.url());
@@ -328,6 +296,5 @@ test('Model Isolation - BookMark', async ({ page }) => {
 
   await page.locator('.bottom-panel__icons--right-icons').getByLabel('Collapse panel').click();
   await filterIcon.click();
-  // Refresh
   await verifyViewerScreenshot(page, "isolatedElements_glass_book_refresh");
 });

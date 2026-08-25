@@ -12,13 +12,11 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
   await page.waitForTimeout(20000);
-  
+
   await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
 
   await waitForModelcomposerEnabled(page, CONFIG.timeout.medium);
 
-  // --- Open panel ---
-  // await page.getByLabel(Locator.cuttingPlane).click();
   await waitForCuttingPlaneEnabled(page,  CONFIG.timeout.medium)
   const standardPlane = page.getByText(Locator.standardPlanes, { exact: true }).first();
   await standardPlane.click();
@@ -37,20 +35,11 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   const standardToggle = getToggle(container, 'Standard Planes');
   const showPlanesToggle = getToggle(container, 'Show planes');
 
-  // ============================================================
-  // 1. Initial → disabled
-  // ============================================================
   await expectSliders(container, planes, false);
 
-  // ============================================================
-  // 2. Enable Standard → sliders enabled
-  // ============================================================
   await ensureToggle(standardToggle, true);
   await expectSliders(container, planes, true);
 
-  // ============================================================
-  // 3. Adjust sliders
-  // ============================================================
   for (const plane of planes) {
     await setSliderByAria(getSlider(container, plane), 0.2);
     await page.waitForTimeout(100);
@@ -58,17 +47,11 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
 
   await page.waitForLoadState('networkidle');
 
-  // ============================================================
-  // 4. Screenshot
-  // ============================================================
   await expect(page).toHaveScreenshot('cutting-planes-helpers.png', {
     maxDiffPixelRatio: 0.03,
     timeout: CONFIG.timeout.medium
   });
 
-  // ============================================================
-  // 5. Dependency check
-  // ============================================================
   await ensureToggle(showPlanesToggle, false);
   await expect(page).toHaveScreenshot('cutting-planes-show-planes.png', {
     maxDiffPixelRatio: 0.03,
@@ -77,33 +60,31 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   await ensureToggle(standardToggle, false);
   await expectSliders(container, planes, false);
 
-  // Turn ON Standard → Show should auto ON
   await ensureToggle(standardToggle, true);
   await expect(showPlanesToggle).toBeChecked({ timeout: CONFIG.timeout.medium });
   await expectSliders(container, planes, true);
 
 
-  // const focusedPlanesTitle = page.getByText(Locator.focusedPlanes, { exact: true }).first();
   const sidePanel = page.locator('[class*="SidePanel-module_sidePanelContent"]');
 
   console.log('Side panel count:', await sidePanel.count());
-  
+
   const subTitles = sidePanel.locator('[class*="IafSubHeader-module_list-item-sub-title"]');
-  
+
   console.log('Subtitle count:', await subTitles.count());
-  
+
   const allTexts = await subTitles.allTextContents();
-  
+
   console.log('All subtitle texts:', allTexts);
-  
+
   const focusedPlanesTitle = subTitles.filter({ hasText: Locator.focusedPlanes }).first();
-  
+
   console.log('Focused planes count:', await focusedPlanesTitle.count());
-  
+
   await expect(focusedPlanesTitle).toBeVisible({
     timeout: CONFIG.timeout.medium,
   });
-  
+
   await focusedPlanesTitle.click();
 
   const focusedPlanesContainer = focusedPlanesTitle.locator(
@@ -162,5 +143,5 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
       timeout: CONFIG.timeout.medium
     });
   }
-  
+
 });

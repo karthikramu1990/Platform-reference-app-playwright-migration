@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(IAFVIEWER_IPUTNONOPT_USERNAME=placeholder IAFVIEWER_IPUTNONOPT_PASSWORD=placeholder npx playwright test --config=tests/iaf-viewer/playwright.config.js --project=chromium --list)",
+      "Bash(IAFVIEWER_IPUTNONOPT_USERNAME=placeholder IAFVIEWER_IPUTNONOPT_PASSWORD=placeholder IAFVIEWER_IPUT51_USERNAME=placeholder IAFVIEWER_IPUT51_PASSWORD=placeholder npx playwright test --config=tests/iaf-viewer/playwright.config.js --project=chromium --list)",
+      "Bash(IAFVIEWER_IPUTNONOPT_USERNAME=placeholder IAFVIEWER_IPUTNONOPT_PASSWORD=placeholder npx playwright test --config=tests/iaf-viewer/playwright.config.js --project=chromium -g \"PLG-1607\" --reporter=list --workers=1)",
+      "Bash(IAFVIEWER_IPUTNONOPT_USERNAME=placeholder IAFVIEWER_IPUTNONOPT_PASSWORD=placeholder IAFVIEWER_IPUT51_USERNAME=placeholder IAFVIEWER_IPUT51_PASSWORD=placeholder IAFVIEWER_T2ALLFEDERATED_USERNAME=placeholder IAFVIEWER_T2ALLFEDERATED_PASSWORD=placeholder npx playwright test --config=tests/iaf-viewer/playwright.config.js --project=chromium --list)",
+      "Bash(IAFVIEWER_IPUTNONOPT_USERNAME=placeholder IAFVIEWER_IPUTNONOPT_PASSWORD=placeholder IAFVIEWER_IPUT51_USERNAME=placeholder IAFVIEWER_IPUT51_PASSWORD=placeholder IAFVIEWER_T2ALLFEDERATED_USERNAME=placeholder IAFVIEWER_T2ALLFEDERATED_PASSWORD=placeholder npx playwright test --config=tests/iaf-viewer/playwright.config.js --project=chromium -g \"PLG-1607\" --reporter=list --workers=1)",
+      "Bash(IAFVIEWER_IPUTNONOPT_USERNAME=placeholder IAFVIEWER_IPUTNONOPT_PASSWORD=placeholder IAFVIEWER_IPUT51_USERNAME=placeholder IAFVIEWER_IPUT51_PASSWORD=placeholder IAFVIEWER_T2ALLFEDERATED_USERNAME=placeholder IAFVIEWER_T2ALLFEDERATED_PASSWORD=placeholder npx playwright test --config=tests/iaf-viewer/playwright.config.js --project=chromium -g \"PLG-1607\" --update-snapshots --reporter=list --workers=1)"
+    ]
+  }
+}

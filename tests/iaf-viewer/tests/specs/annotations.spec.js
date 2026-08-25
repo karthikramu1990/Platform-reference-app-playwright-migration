@@ -61,17 +61,13 @@ test('Environment readiness', async ({ page }) => {
     };
   });
 
-  // WebGL must exist
   expect(result.hasWebGL).toBeTruthy();
 
-  // DPR should be valid (Mac=2, Windows=1 or scaled)
   expect(result.dpr).toBe(2);
 
-  // Viewport must be valid
   expect(result.width).toBeGreaterThan(0);
   expect(result.height).toBeGreaterThan(0);
 
-  // Optional: Ensure NOT software rendering
   if (result.renderer) {
     expect(result.renderer.toLowerCase()).not.toContain('swiftshader');
   }

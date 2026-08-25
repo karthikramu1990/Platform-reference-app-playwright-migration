@@ -32,20 +32,13 @@ export const CONFIG = {
     password: requiredEnv('IAFVIEWER_INVICARA_PASSWORD'),
   },
   mapboxToken: process.env.IAFVIEWER_MAPBOX_TOKEN ?? '',
-  // Standing rule: always log in with the Proj Admin user group, i.e.
-  // userGroup is always "<project> Proj Admin".
   project: 'iputmodelsegmented',
   userGroup: 'iputmodelsegmented Proj Admin',
   switchModel: "EX11034-INV-Federated-4.6",
 
-  // PLG-1477 - Federated project realignment after model switching. Same
-  // project/account as above; 4.6 is the model loaded by default (Model A),
-  // 4.4 is the model we switch to and back (Model B).
   federatedModelA: 'EX11034-INV-Federated-4.6',
   federatedModelB: 'EX11034-INV-Federated-4.4',
 
-  // PLG-1471 - BIAL T2 large-project performance/console-error regression.
-  // Separate account + project from the default credentials/project above.
   skinnyBial: {
     credentials: {
       email: requiredEnv('IAFVIEWER_BIAL_USERNAME'),
@@ -55,17 +48,41 @@ export const CONFIG = {
     userGroup: 'Skinny_BIAL_AllModels Proj Admin',
     switchModel: 'T2-ELEC-Federated',
 
-    // PLG-1570 - Model Switching camera tests. Model A is this project's own
-    // default landing model; Model B is a distinct federated model to switch
-    // to/from, so the two models are visually different enough to catch a
-    // camera actually carrying over incorrectly (unlike the iput federated
-    // 4.6/4.4 pair, which look nearly identical to each other).
+    secondSwitchModel: 'T2-HVAC-Federated',
+
     modelA: 'L&T_CUP_FED_ASBUILT CORE_2024',
     modelB: 'T2-ELEC-Federated',
+
+    badGeometryModel: 'L&T FED EGH ASBUILT_2024-5.1',
   },
 
-  // PLG-1417 - "Review 2D Animations" support ticket. The Workflow (2D
-  // Animation) screen is only visible to Proj Admin user groups.
+  iputNonOptimised: {
+    credentials: {
+      email: requiredEnv('IAFVIEWER_IPUTNONOPT_USERNAME'),
+      password: requiredEnv('IAFVIEWER_IPUTNONOPT_PASSWORD'),
+    },
+    project: 'iputnonoptimised',
+    userGroup: 'iputnonoptimised Proj Admin',
+  },
+
+  iput51: {
+    credentials: {
+      email: requiredEnv('IAFVIEWER_IPUT51_USERNAME'),
+      password: requiredEnv('IAFVIEWER_IPUT51_PASSWORD'),
+    },
+    project: 'iput 5.1',
+    userGroup: 'iput 5.1 Proj Admin',
+  },
+
+  t2AllFederated: {
+    credentials: {
+      email: requiredEnv('IAFVIEWER_T2ALLFEDERATED_USERNAME'),
+      password: requiredEnv('IAFVIEWER_T2ALLFEDERATED_PASSWORD'),
+    },
+    project: 'T2_All_Federated',
+    userGroup: 'T2_All_Federated Proj Admin',
+  },
+
   autocad2D: {
     credentials: {
       email: requiredEnv('IAFVIEWER_AUTOCAD2D_USERNAME'),

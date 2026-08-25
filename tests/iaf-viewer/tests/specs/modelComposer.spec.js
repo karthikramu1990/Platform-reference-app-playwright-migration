@@ -16,11 +16,9 @@ test.skip('Model Composer - Node Counts', async ({ page }) => {
 
   console.log('Benchmark Result:', res);
 
-  // assertions
   expect(res).toBeTruthy();
   expect(res.results.length).toBeGreaterThan(0);
 
-  // snapshot (like screenshot comparison)
   expect(JSON.stringify(res, null, 2))
     .toMatchSnapshot('model-composer-benchmark.json');
 });

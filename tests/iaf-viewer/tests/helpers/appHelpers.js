@@ -21,7 +21,6 @@ export async function login(page, credentials, timeout) {
 export async function selectProject(page, projectName, userGroup, path, timeout) {
   await expect(page.getByText('Project Selection')).toBeVisible({ timeout });
 
-  // const projectDropdown = page.locator('.select__control');
   const projectDropdown = page.locator('input[name="projectSelect"]').locator('..').locator('.select__control');
   await projectDropdown.click();
 
@@ -58,19 +57,52 @@ export async function waitForApplicationLoad(page, timeout = CONFIG.timeout.medi
   });
 }
 
+export function captureGraphicsSvcOrigin(page) {
+  let origin = null;
+  const listener = (req) => {
+    const url = req.url();
+    if (!origin && url.includes('/graphicssvc/')) {
+      origin = new URL(url).origin;
+    }
+  };
+  page.on('request', listener);
+  return {
+    get: () => origin,
+    stop: () => page.off('request', listener),
+  };
+}
+
+export async function getAuthContext(page) {
+  return page.evaluate(() => {
+    const authKey = Object.keys(localStorage).find((k) =>
+      /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(k)
+    );
+    const stored = authKey ? JSON.parse(localStorage.getItem(authKey)) : null;
+    const auth = stored ? JSON.parse(stored.auth) : null;
+    const project = JSON.parse(sessionStorage.getItem('project') || 'null');
+
+    return {
+      token: auth?.access_token ?? null,
+      namespace: project?._namespaces?.[0] ?? null,
+    };
+  });
+}
+
+export async function ensureProjectDialogDismissed(page, timeout = CONFIG.timeout.short) {
+  const loadProjectBtn = page.getByRole('button', { name: 'Load Project' });
+  if (await loadProjectBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
+    await loadProjectBtn.click();
+    await waitForApplicationLoad(page, timeout);
+  }
+}
+
 export async function openPanel(page, timeout, panel = "model", ) {
   const cfg = getPanels(page, panel);
-
-  // const ready = page.getByTestId(cfg.ready);
   const ready = await cfg.ready;
 
-
-  // already open
   if (await ready.isVisible().catch(() => false)) return;
 
-  // const btn = page.getByTestId(cfg.btn);
   const btn = await page.locator(cfg.btn);
-
 
   await expect(btn).toBeVisible({ timeout });
   await expect(btn).not.toHaveClass(/disabled/, { timeout });
@@ -97,10 +129,6 @@ export const getPanels = (page, panelName) => {
   return panels[panelName];
 };
 
-// Generalized version of setup() that accepts a specific account/project,
-// for tickets that need to log in as a different user against a different
-// project than the suite's default CONFIG.credentials/CONFIG.project
-// (e.g. PLG-1471, which uses a dedicated BIAL account/project).
 export async function setupWithAccount(page, credentials, projectName, userGroup, panel = null) {
   await page.goto(CONFIG.url);
   await login(page, credentials, CONFIG.timeout.medium);
@@ -115,9 +143,6 @@ export async function setup(page, panel = null) {
   await setupWithAccount(page, CONFIG.credentials, CONFIG.project, CONFIG.userGroup, panel);
 }
 
-// Attaches console/page-error listeners and returns the array they push
-// into. Attach this before any navigation happens so nothing is missed.
-// Used for tickets that need to assert "no console errors" (e.g. PLG-1471).
 export function captureConsoleErrors(page) {
   const errors = [];
   page.on('console', (msg) => {
@@ -129,8 +154,6 @@ export function captureConsoleErrors(page) {
   return errors;
 }
 
-// Times how long an async action takes, in milliseconds. Used for
-// performance-flavored tickets (e.g. PLG-1471 initial load time).
 export async function measureElapsed(action) {
   const start = Date.now();
   await action();
@@ -160,7 +183,6 @@ export async function closeDrawer(page, trigger, text) {
     has: page.getByText(text)
   }).first();
 
-  // Nothing to close if it was never rendered (e.g. no data to display)
   if (!(await openDrawer.isVisible().catch(() => false))) return;
 
   await trigger.click();
@@ -169,7 +191,6 @@ export async function closeDrawer(page, trigger, text) {
 }
 
 export async function waitForAnnotationsEnabled(page, timeout) {
-  // const annotationsBtn = page.getByTestId('annotations-submenu-btn');
   const annotationsBtn = await page.locator(Locator.annotationsBtn).first()
 
   await expect(annotationsBtn).toBeVisible({ timeout });
@@ -179,7 +200,6 @@ export async function waitForAnnotationsEnabled(page, timeout) {
 }
 
 export async function waitForModelcomposerEnabled(page, timeout) {
-  // const modelcomposerBtn = page.getByTestId('modelcomposer-submenu');
   const modelcomposerBtn = await page.locator(Locator.modelcomposerBtn).first()
 
   await expect(modelcomposerBtn).toBeVisible({ timeout });
@@ -261,11 +281,9 @@ export async function verifyAllDisciplineStatus(page, isEnabled) {
 export async function verifyMenuItems(page) {
   const menu = page.getByRole('menu');
 
-  // Rename should be enabled
   const rename = menu.getByRole('menuitem', { name: 'Rename' });
   await expect(rename).toBeEnabled();
 
-  // All other menu items should be disabled
   const items = menu.getByRole('menuitem');
   const count = await items.count();
 
@@ -280,7 +298,6 @@ export async function verifyMenuItems(page) {
 }
 
 export async function getAllLayerKeys(page) {
-  //  get the container right after "Disciplines"
   const container = page.locator(
     'xpath=//div[normalize-space()="Disciplines"]/following-sibling::div[1]'
   );
@@ -313,56 +330,40 @@ export async function setAccuracy(page, quality) {
   const map = { low: 0, medium: 1, high: 2 };
   const value = map[quality];
 
-  // const wrapper = page.getByTestId("display-accuracy-slider");
   const slider = page.locator(Locator.displayAccuracyBtn).first();
   await slider.waitFor({
     state: "visible",
     timeout: CONFIG.timeout.medium
   });
 
-  // focus slider
   await slider.focus();
-
-  // reset to min
   await slider.press('Home');
 
-  // move to target
   for (let i = 0; i < value; i++) {
     await slider.press('ArrowRight');
   }
-
-  // ✅ verify UI (IMPORTANT)
-  // const label = wrapper.locator('[class*="range-value"]');
-  // await expect(label).toHaveText(
-  //   quality.charAt(0).toUpperCase() + quality.slice(1)
-  // );
 }
 
 export async function verifyViewerScreenshot(page, name, canvasContainer = Locator.viewer3D, settleMs = 10000) {
   await waitForApplicationLoad(page, 120000);
 
   await page.waitForTimeout(settleMs);
-
-  // Wait for network + rendering readiness
   await page.waitForLoadState('networkidle');
 
   const canvas = page.locator(canvasContainer);
   await expect(canvas).toBeVisible({ timeout: 120000 });
 
-  // Wait until canvas has valid size
   await page.waitForFunction(() => {
     const c = document.querySelector('canvas');
     return c && c.width > 0 && c.height > 0;
   });
 
-  // freeze rendering if possible
   await page.evaluate(() => {
     if (window.viewer?.pause) {
       window.viewer.pause();
     }
   });
 
-  // Screenshot with proper timeout
   await expect(canvas).toHaveScreenshot(`${name}.png`, {
     maxDiffPixelRatio: 0.03,
     timeout: 30000
@@ -392,10 +393,6 @@ export async function setSliderByAria(slider, ratio = 0.5) {
 
   const value = min + (max - min) * ratio;
 
-  // console.log("actual", min, max, value);
-
-
-  // More reliable than fill for MUI sliders
   await slider.evaluate((el, val) => {
     const setter = Object.getOwnPropertyDescriptor(
       HTMLInputElement.prototype,
@@ -407,12 +404,6 @@ export async function setSliderByAria(slider, ratio = 0.5) {
     el.dispatchEvent(new Event('input', { bubbles: true }));
     el.dispatchEvent(new Event('change', { bubbles: true }));
   }, value);
-
-  // const actual = parseFloat(await slider.inputValue());
-  // console.log("actual", value, actual);
-  // const tolerance = 0.05;
-  // console.log("s", actual , value)
-  // // expect(Math.abs(actual - value)).toBeLessThanOrEqual(tolerance);
 }
 
 export const getToggle = (container, label) =>
@@ -461,20 +452,16 @@ export async function waitForGraphicsSettle(page) {
 export async function selectElementOnCanvas(page, canvas,options = {}) {
   const { timeout = 5000, xRatio = 0.45, yRatio = 0.4 } = options;
 
-  // wait for canvas
   await expect(canvas).toBeVisible({ timeout });
 
-  // get bounds
   const box = await canvas.boundingBox();
   if (!box) {
     throw new Error('Canvas bounding box is null');
   }
 
-  // calculate click position
   const cx = box.x + box.width * xRatio;
   const cy = box.y + box.height * yRatio;
 
-  // click
   await page.mouse.click(cx, cy);
 }
 

@@ -13,13 +13,10 @@ export const Locator = {
   autoCompose: 'input[name="enableAutoComposeTitle"]',
   helpers: '//div[text()="Helpers"]',
 
-  // ── Panel Title ───────────────────────────────────────────────────────
   federatedPanelTitle: '(//div[contains(@class,"IafHeading-module_list-item-title")])[2]',
 
-  // ── Search ────────────────────────────────────────────────────────────
   searchPhysicalModels: '.MuiInputBase-input.MuiInput-input',
 
-  // ── 3-dot (MoreVert) buttons ──────────────────────────────────────────
   federatedThreeDots: 'li:has(p[withsubtext="Federated"]) button',
   federatedSThreeDots: 'li:has(p[withsubtext*="-S-"]) button',
   federatedAThreeDots: 'li:has(p[withsubtext*="-A-"]) button',
@@ -28,26 +25,22 @@ export const Locator = {
   federatedPThreeDots: 'li:has(p[withsubtext*="-P"]) button',
   federatedFThreeDots: 'xpath=//p[contains(@withsubtext,"-F")]/ancestor::li//button',
 
-  // ── Federated parent dropdown menu items ─────────────────────────────
   menuRename: '//li[@role="menuitem" and contains(.,"Rename")]',
   menuSwitchToLoadEverything: '//li[@role="menuitem" and contains(.,"Switch to Load Everything")]',
   menuShowAll: '//li[@role="menuitem" and contains(.,"Show All")]',
   menuHideAll: '//li[@role="menuitem" and contains(.,"Hide All")]',
 
-  // ── Sub-item dropdown menu items ──────────────────────────────────────
   menuLoad: '//li[@role="menuitem" and contains(.,"Load")]',
   menuShow: '//li[@role="menuitem" and contains(.,"Show")]',
   menuHide: '//li[@role="menuitem" and contains(.,"Hide")]',
   menuRenameSubItem: '//li[@role="menuitem" and contains(.,"Rename")]',
 
-  // ── 2D Viewer Controls ────────────────────────────────────────────────
   twoDDragArea: '(//div[@aria-label="Drag Area"])[1]',
   twoDFullScreen: '(//div[@aria-label="Full Screen"])[1]',
   twoDHalfScreen: '(//div[@aria-label="Half Screen"])[1]',
   twoDZoomIn: '(//div[@aria-label="Zoom In"])[1]',
   twoDZoomOut: '(//div[@aria-label="Zoom Out"])[1]',
 
-  // ── Viewer Toolbar ────────────────────────────────────────────────────
   resetView: '[aria-label="Reset View"]',
   projection: '[aria-label="Projection"]',
   viewToolbar: '[aria-label="View"]',
@@ -55,7 +48,6 @@ export const Locator = {
   viewer3DToolbar: '[aria-label="3D Viewer"]',
   focusMode: '//div[@aria-label="Focus Mode"]',
 
-  // ── View Options ──────────────────────────────────────────────────────
   topView: '//span[text()="Top View"]',
   bottomView: '//span[text()="Bottom View"]',
   leftView: '//span[text()="Left View"]',
@@ -63,17 +55,45 @@ export const Locator = {
   frontView: '//span[text()="Front View"]',
   backView: '//span[text()="Back View"]',
 
-  // ── Shading Options ───────────────────────────────────────────────────
   shadingToolbar: '[aria-label="Shading"]',
   fullShadingWithLines: '//span[text()="Full Shading, with Lines"]',
   fullShadingNoLines: '//span[text()="Full Shading, no Lines"]',
   edgesAndLines: '//span[text()="Edges & Lines"]',
   glassView: '//span[text()="Glass View"]',
 
-  // ── Cutting Plane ─────────────────────────────────────────────────────
+  elementSearchToolbar: "//i[@class='fas fa-search']",
+  elementCategorySelect: '//div[text()="ElementCategory"]/ancestor::div[1]//div[contains(@class,"ipa-select__control")]',
+  elementTypeSelect: '//div[text()="ElementType"]/ancestor::div[1]//div[contains(@class,"ipa-select__control")]',
+
+  searchIcon: '.fas.fa-search',
+  filterIcon: '.fas.fa-filter',
+  listIconContainer: '.navigator-bottom-data',
+  listIconGlyph: '.fa-list',
+  resultContentColumn: '.content-column',
+  selectAllCheckbox: '.header-column.checkbox input[type="checkbox"]',
+  rowAncestorWithCheckbox: 'ancestor::*[.//input[@type="checkbox"]][1]',
+  collapsePanelIcons: '.bottom-panel__icons--right-icons',
+
+  resultRowCheckbox: '.content-column input[type="checkbox"]',
+
+  disciplinesContainer: '//div[normalize-space()="Disciplines"]/following-sibling::div[1]',
+  disabledDisciplineCheckbox: 'input[type="checkbox"][name]:disabled',
+
+  modelSpinner: '#modelSpinner',
+  compositionApplyingNotification: 'text=Please wait while the model composition settings are being applied',
+  compositionAccuracyOverrideNotification: 'text=The visibility of some of the selected elements is overriden by the Model Layers Composition Settings',
+
+  plg1764ArchLinkedFileThreeDots: 'li:has(p[withsubtext*="ARCH_AR-T2-ASM-ENCL_2024"]) button',
+  plg1764IntPartitionLinkedFileThreeDots: 'li:has(p[withsubtext*="INT_PARTITION_GFC CORE_R1_2024"]) button',
+
+  disciplineVisibilityUpdatingNotification: 'text=The visibility of disciplines is being updated',
+  privilegedDisciplineTooltip: 'text=This has been designated as a privileged discipline',
+
+  devToolsPanelHeading: 'text=Dev Tools',
+  devToolsGltfToolsLink: 'text=GLTF Tools',
+
   cuttingPlaneToolbar: '[aria-label="Cutting Plane"]',
 
-  // Standard Planes
   standardPlanes: '(//div[text()="Standard Planes"])[1]',
   standardPlanesToggle: '(//div[text()="Standard Planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
   topPlaneSlider: '(//div[text()="Top plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
@@ -84,13 +104,11 @@ export const Locator = {
   rightPlaneSlider: '(//div[text()="Right plane:"]/following::span[contains(@class,"MuiSlider-root")])[1]',
   showPlanesToggle: '(//div[text()="Show planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
 
-  // Focused Planes
   focusedPlanes: '(//div[text()="Focused Planes"])[1]',
   focusedPlanesToggle: '(//div[text()="Focused Planes"]//following::input[contains(@class,"PrivateSwitchBase-input")])[1]',
   focusedPlanesSizeSlider: '(//div[text()="Focused Planes"]/following::div[text()="Size"]/following::span[contains(@class,"MuiSlider-root")])[1]',
   changeFocusBtn: '//p[text()="Change Focus"]',
 
-  // ── Annotations ───────────────────────────────────────────────────────
   annotationsToolbar: '//div[@aria-label="Annotations"]',
   annotationsCheckDistance: '//span[text()="Check Distance"]',
   annotationsLine: '//span[text()="Line"]',
@@ -105,7 +123,6 @@ export const Locator = {
   annotationsImport: '//span[text()="Import"]',
   annotationsDeleteAllMarkup: '//input[@name="deleteAllMarkup"]',
 
-  // ── GIS Viewer ────────────────────────────────────────────────────────
   gisMenu: '//div[@aria-label="GIS Viewer"]',
   enableGISToggle: '//div[contains(text(),"Enable GIS")]/..//input[@type="checkbox"]',
   gisInteractSectionHeader: '//div[text()="Interact"]',
@@ -119,6 +136,10 @@ export const Locator = {
   gisGlobeViewToggle: '//div[text()="Globe View"]/..//input[@type="checkbox"]',
   gisShowMarkersToggle: '//div[text()="Show Markers"]/..//input[@type="checkbox"]',
   gisFederatedModelSection: '//div[contains(@class,"IafSubHeader-module_list-item")]/..//div[contains(text(),"Federated")]',
+  gisFederatedSectionHeader: '//div[text()="Federated"]',
+  gisFederatedModeDropdown: '//select[contains(@class,"IafDropdown-module_select-component") and @name="Federated Mode"]',
+  gisFederatedIPUTExchangeItem: '//div[contains(@class,"IafSubHeader-module_list-item-sub-title") and text()="IPUT Exchange"]',
+  gisOutlineShowModelToggle: '//div[contains(@class,"IafSwitch-module_switch-title") and text()="Show Model"]/..//input[@type="checkbox"]',
   gisHorizontalAlignmentTogglebutton: '//div[contains(text(),"Horizontal Alignment")]/..//input[@type="checkbox"]',
   gisBearingSliderValue: '//div[text()="Bearing"]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
   gisLongitudeSliderValue: '//div[text()="Longitude"]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
@@ -128,11 +149,10 @@ export const Locator = {
   gisTerrainHeightSliderValue: '//div[contains(text(),"Terrain Height")]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
   gisResetButton: '//p[text()="Reset"]',
 
-  // ── Workflow (2D Animation) - Proj Admin only ────────────────────────
-  elementMenuIcon: 'i.inv-icon-assets', // 2D/3D hover flyout icon (Navigator/Model Elements/Workflow)
+  elementMenuIcon: 'i.inv-icon-assets',
   workflowNavLink: 'a[href="#/workflow"] span.menu-item',
-  workflowFilterToggle: 'div.navigator-bottom-filter i.fa-filter', // the icon itself, not just the wrapper div - toggles the "Search For Workflows" panel
-  workflowSelectDropdown: 'text=Select a workflow...', // anchored on placeholder text, not class (collides with ipa-select__control)
+  workflowFilterToggle: 'div.navigator-bottom-filter i.fa-filter',
+  workflowSelectDropdown: 'text=Select a workflow...',
   workflowGoLiveBtn: '[aria-label="Go Live"]',
   workflowStopLiveBtn: '[aria-label="Stop Live"]',
   workflowLiveToast: 'text=The workflow visualisation is now live',
