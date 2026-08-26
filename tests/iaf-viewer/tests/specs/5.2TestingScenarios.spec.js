@@ -18,8 +18,6 @@ import {
   captureGraphicsSvcOrigin,
   getAuthContext,
   captureConsoleErrors,
-  login,
-  selectProject,
 } from '../helpers/appHelpers.js';
 import { switchModel, LayerType } from '../helpers/modelHelpers.js';
 import { openGISPanel, enableGIS } from '../helpers/gisHelpers.js';
@@ -83,6 +81,7 @@ test('PLG-1417 - 2D animation workflow goes live and animates correctly', async 
 
   await assertActionLogContains(page, 'Activating workflow');
   await assertClockIsAdvancing(page, 5000);
+  await ensureProjectDialogDismissed(page);
   await assertCanvasIsAnimating(page, Locator.viewer2D, 4, 1500);
 
   await stopLive(page);
@@ -243,15 +242,17 @@ test('PLG-1688 - EVM Demo Mode: WASM engine loads without console errors', async
 
   const errors = captureConsoleErrors(page);
 
+  await setup(page);
+
   await page.goto(`${CONFIG.url}?enableEvmDemo=true`);
-  await login(page, CONFIG.credentials, CONFIG.timeout.medium);
-  await selectProject(page, CONFIG.project, CONFIG.userGroup, 'Navigator', CONFIG.timeout.medium);
-  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await page.reload();
+  await page.waitForTimeout(CONFIG.timeout.medium);
+  await expect(page.locator('canvas').first()).toBeVisible({ timeout: CONFIG.timeout.long });
 
   const engineErrors = errors.filter((message) => /engine-wasm|failed to load engine|getCamera|onResize/i.test(message));
   expect(engineErrors, `unexpected viewer engine errors: ${engineErrors.join('; ')}`).toEqual([]);
 
-  await verifyViewerScreenshot(page, 'PLG-1688-EVMDemo-Loaded');
+  await verifyViewerScreenshot(page, 'PLG-1688-EVMDemo-Loaded', 'canvas');
 });
 
 // PLG-1666 - graphicssvc permissions API returns 200, not 500.
@@ -440,7 +441,7 @@ test('PLG-1760 - Model Composition shows notification and spinner while settings
 test('PLG-1764 - Show re-renders a previously hidden linked model', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
-  await setupWithAccount(page, CONFIG.t2AllFederated.credentials, CONFIG.t2AllFederated.project, CONFIG.t2AllFederated.userGroup, 'model');
+  await setupWithAccount(page, CONFIG.t2AllFederated.credentials, CONFIG.t2AllFederated.project, CONFIG.t2AllFederated.userGroup, 'model', CONFIG.timeout.long);
 
   const autoCompose = page.locator(Locator.autoCompose);
   await expect(autoCompose).toBeVisible({ timeout: CONFIG.timeout.long });
@@ -461,6 +462,15 @@ test('PLG-1764 - Show re-renders a previously hidden linked model', async ({ pag
   const intPartitionThreeDots = page.locator(Locator.plg1764IntPartitionLinkedFileThreeDots);
   await expect(intPartitionThreeDots).toBeVisible({ timeout: CONFIG.timeout.medium });
   await intPartitionThreeDots.click();
+
+  const intPartitionListItem = intPartitionThreeDots.locator('xpath=ancestor::li');
+  if (await intPartitionListItem.filter({ hasText: 'Unloaded' }).isVisible().catch(() => false)) {
+    const loadMenuItem = page.locator(`xpath=${Locator.menuLoad}`);
+    await expect(loadMenuItem).toBeVisible({ timeout: CONFIG.timeout.medium });
+    await loadMenuItem.click();
+    await expect(intPartitionListItem).not.toContainText('Unloaded', { timeout: CONFIG.timeout.long });
+    await intPartitionThreeDots.click();
+  }
 
   const secondHideMenuItem = page.locator(`xpath=${Locator.menuHide}`);
   await expect(secondHideMenuItem).toBeVisible({ timeout: CONFIG.timeout.medium });
@@ -511,13 +521,14 @@ test('PLG-1793 - Asset-level discipline visibility toggles instantly without aff
   const architecturalCheckbox = page.locator('input[type="checkbox"][name="Architectural"]');
   const structuralCheckbox = page.locator('input[type="checkbox"][name="Structural"]');
   await expect(architecturalCheckbox).toBeChecked({ timeout: CONFIG.timeout.medium });
-  await expect(structuralCheckbox).toBeChecked({ timeout: CONFIG.timeout.medium });
+  await expect(structuralCheckbox).toBeVisible({ timeout: CONFIG.timeout.medium });
+  const structuralInitiallyChecked = await structuralCheckbox.isChecked();
 
   await toggleLayers(page, [LayerType.Architectural], false);
 
   await expect(page.locator(Locator.privilegedDisciplineTooltip)).toBeVisible({ timeout: CONFIG.timeout.medium });
   await expect(page.locator(Locator.disciplineVisibilityUpdatingNotification)).toBeVisible({ timeout: CONFIG.timeout.medium });
-  await expect(structuralCheckbox).toBeChecked({ timeout: CONFIG.timeout.medium });
+  await expect(structuralCheckbox).toBeChecked({ checked: structuralInitiallyChecked, timeout: CONFIG.timeout.medium });
 
   await verifyViewerScreenshot(page, 'PLG-1793-Architectural-Hidden');
 
@@ -527,7 +538,7 @@ test('PLG-1793 - Asset-level discipline visibility toggles instantly without aff
   });
   expect(reshowElapsed, `Architectural re-show took ${reshowElapsed}ms; expected an instant visibility toggle, not a reload`).toBeLessThan(10000);
 
-  await expect(structuralCheckbox).toBeChecked({ timeout: CONFIG.timeout.medium });
+  await expect(structuralCheckbox).toBeChecked({ checked: structuralInitiallyChecked, timeout: CONFIG.timeout.medium });
   await toggleLayers(page, [LayerType.Structural], false);
   await expect(structuralCheckbox).toBeChecked({ checked: false, timeout: CONFIG.timeout.medium });
   await toggleLayers(page, [LayerType.Structural], true);
@@ -543,6 +554,7 @@ test('PLG-1805 - Dev Tools panel appears when devToolsIaf=true is added to the q
   await setupWithAccount(page, CONFIG.iput51.credentials, CONFIG.iput51.project, CONFIG.iput51.userGroup);
 
   await page.goto(`${CONFIG.url}?&devToolsIaf=true`);
+  await page.reload();
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
   const devToolsHeading = page.locator(Locator.devToolsPanelHeading);

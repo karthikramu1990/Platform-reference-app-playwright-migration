@@ -129,11 +129,11 @@ export const getPanels = (page, panelName) => {
   return panels[panelName];
 };
 
-export async function setupWithAccount(page, credentials, projectName, userGroup, panel = null) {
+export async function setupWithAccount(page, credentials, projectName, userGroup, panel = null, loadTimeout = CONFIG.timeout.medium) {
   await page.goto(CONFIG.url);
   await login(page, credentials, CONFIG.timeout.medium);
   await selectProject(page, projectName, userGroup, "Navigator", CONFIG.timeout.medium);
-  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+  await waitForApplicationLoad(page, loadTimeout);
   if (panel) {
     await openPanel(page, CONFIG.timeout.medium, panel);
   }

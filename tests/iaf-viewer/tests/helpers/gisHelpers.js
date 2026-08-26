@@ -16,7 +16,7 @@ export async function enableGIS(page) {
   await expect(toggle).toBeVisible({ timeout: CONFIG.timeout.medium });
   const isChecked = await toggle.isChecked();
   if (!isChecked) {
-    await toggle.click();
+    await toggle.click({ timeout: CONFIG.timeout.medium });
   }
   await expect(toggle).toBeChecked({ timeout: CONFIG.timeout.medium });
 
