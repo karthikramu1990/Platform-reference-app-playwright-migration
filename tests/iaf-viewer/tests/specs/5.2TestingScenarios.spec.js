@@ -18,11 +18,15 @@ import {
   captureGraphicsSvcOrigin,
   getAuthContext,
   captureConsoleErrors,
+  createProject,
+  goToManageModel,
+  goToNavigator,
 } from '../helpers/appHelpers.js';
 import { switchModel, LayerType } from '../helpers/modelHelpers.js';
-import { openGISPanel, enableGIS } from '../helpers/gisHelpers.js';
+import { openGISPanel, enableGIS, configureMapboxTempToken } from '../helpers/gisHelpers.js';
 import { openCuttingPlane, dragPlaneSlider, verifyCuttingPlaneScreenshot, clickViewOption } from '../helpers/viewerHelpers.js';
 import { Locator } from '../helpers/locators.js';
+import { plg1690FreshProject } from '../data/projectFixtures.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
 import {
   goToWorkflowScreen,
@@ -563,6 +567,28 @@ test('PLG-1805 - Dev Tools panel appears when devToolsIaf=true is added to the q
   await expect(gltfToolsLink).toBeVisible({ timeout: CONFIG.timeout.medium });
 
   await verifyViewerScreenshot(page, 'PLG-1805-DevTools-Visible');
+});
+
+// PLG-1690 - Enabling GIS on a freshly created project completes without the reported 400 schema-validation error, and the GIS view renders.
+test('PLG-1690 - Enabling GIS on a fresh project produces no schema validation error', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.projectSetup + CONFIG.timeout.medium);
+
+  await createProject(page, CONFIG.automationRef.credentials, plg1690FreshProject, CONFIG.timeout.long);
+
+  await goToManageModel(page, CONFIG.timeout.medium);
+  await configureMapboxTempToken(page, CONFIG.automationRef.mapbox, CONFIG.timeout.medium);
+
+  await goToNavigator(page, CONFIG.timeout.long);
+
+  const errors = captureConsoleErrors(page);
+
+  await openGISPanel(page);
+  await enableGIS(page);
+
+  const schemaErrors = errors.filter((e) => /schema|400/i.test(e));
+  expect(schemaErrors, `unexpected GIS schema/400 error on a fresh project: ${schemaErrors.join('; ')}`).toEqual([]);
+
+  await verifyGISScreenshot(page, 'PLG-1690-GIS-Enabled-NoSchemaError');
 });
 
 // PLG-1624 - Disabled discipline has no impact when the Model Composer quality slider moves.

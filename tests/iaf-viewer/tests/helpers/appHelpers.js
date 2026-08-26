@@ -45,6 +45,79 @@ export async function selectProject(page, projectName, userGroup, path, timeout)
   await navigatorHeading.click();
 }
 
+export async function createProject(page, credentials, project, timeout) {
+  await page.goto(CONFIG.url);
+  await login(page, credentials, timeout);
+
+  await expect(page.getByText('Project Selection')).toBeVisible({ timeout });
+  const createBtn = page.getByRole('button', { name: 'Create Project' });
+  await expect(createBtn).toBeVisible({ timeout });
+  await createBtn.click();
+
+  const nameInput = page.locator(`xpath=${Locator.setupProjectNameInput}`);
+  await expect(nameInput).toBeVisible({ timeout });
+  await nameInput.fill(project.name);
+
+  const shortNameInput = page.locator(`xpath=${Locator.setupProjectShortNameInput}`);
+  await shortNameInput.fill(project.shortName);
+
+  const descriptionInput = page.locator(`xpath=${Locator.setupProjectDescriptionInput}`);
+  await descriptionInput.fill(project.description);
+
+  const multiModelCheckbox = page.locator(`xpath=${Locator.setupProjectMultiModelCheckbox}`);
+  await expect(multiModelCheckbox).toBeVisible({ timeout });
+  await multiModelCheckbox.check();
+
+  const setupBtn = page.getByRole('button', { name: 'Set Up' });
+  await setupBtn.click();
+
+  const agreeBtn = page.getByRole('button', { name: 'Agree', exact: true });
+  await expect(agreeBtn).toBeVisible({ timeout });
+  await agreeBtn.click();
+
+  const doneBtn = page.getByRole('button', { name: 'Done' });
+  await expect(doneBtn).toBeVisible({ timeout: CONFIG.timeout.projectSetup });
+  await doneBtn.click();
+
+  await selectProject(page, project.name, `${project.name} Proj Admin`, 'Navigator', timeout);
+}
+
+export async function goToManageModel(page, timeout) {
+  const adminIcon = page.locator(Locator.adminRailIconGlyph).first();
+  await expect(adminIcon).toBeVisible({ timeout });
+
+  const manageModelItem = page.locator(Locator.manageModelMenuItem);
+  let opened = false;
+  for (let attempt = 0; attempt < 5 && !opened; attempt++) {
+    await page.mouse.move(0, 0);
+    await page.waitForTimeout(300);
+    await adminIcon.hover();
+    opened = await manageModelItem.isVisible({ timeout: 5000 }).catch(() => false);
+  }
+
+  await expect(manageModelItem).toBeVisible({ timeout });
+  await manageModelItem.click();
+}
+
+export async function goToNavigator(page, timeout) {
+  const navIcon = page.locator(Locator.elementMenuIcon).first();
+  await expect(navIcon).toBeVisible({ timeout });
+
+  const navigatorTile = page.locator(Locator.navigatorMenuTile).first();
+  let opened = false;
+  for (let attempt = 0; attempt < 5 && !opened; attempt++) {
+    await page.mouse.move(0, 0);
+    await page.waitForTimeout(300);
+    await navIcon.hover();
+    opened = await navigatorTile.isVisible({ timeout: 5000 }).catch(() => false);
+  }
+
+  await expect(navigatorTile).toBeVisible({ timeout });
+  await navigatorTile.click();
+
+  await waitForApplicationLoad(page, timeout);
+}
+
 export async function waitForApplicationLoad(page, timeout = CONFIG.timeout.medium) {
   await page.locator('#modelSpinner').waitFor({
     state: 'visible',

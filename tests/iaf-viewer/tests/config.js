@@ -83,6 +83,22 @@ export const CONFIG = {
     userGroup: 'T2_All_Federated Proj Admin',
   },
 
+  // PLG-1690 - GIS enable-on-fresh-project regression; this account's Setup Project flow
+  // creates (and each run overwrites) its own throwaway project, then configures its own
+  // Mapbox temp token via Manage Model before enabling GIS.
+  automationRef: {
+    credentials: {
+      email: requiredEnv('IAFVIEWER_AUTOMATIONREF_USERNAME'),
+      password: requiredEnv('IAFVIEWER_AUTOMATIONREF_PASSWORD'),
+    },
+    mapbox: {
+      username: requiredEnv('IAFVIEWER_AUTOMATIONREF_MAPBOX_USERNAME'),
+      scopes: '["tokens:write", "styles:read", "datasets:read", "map:read", "fonts:read"]',
+      expiry: '3600',
+      secretToken: requiredEnv('IAFVIEWER_AUTOMATIONREF_MAPBOX_SECRET'),
+    },
+  },
+
   autocad2D: {
     credentials: {
       email: requiredEnv('IAFVIEWER_AUTOCAD2D_USERNAME'),
@@ -96,6 +112,7 @@ export const CONFIG = {
   timeout: {
     short: 15000,
     medium: 60000,
-    long: 600000
+    long: 600000,
+    projectSetup: 4200000
   }
 };

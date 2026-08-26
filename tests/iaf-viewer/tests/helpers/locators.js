@@ -92,6 +92,17 @@ export const Locator = {
   devToolsPanelHeading: 'text=Dev Tools',
   devToolsGltfToolsLink: 'text=GLTF Tools',
 
+  setupProjectNameInput: '//*[normalize-space(text())="Name"]/following::input[1]',
+  setupProjectShortNameInput: '//*[normalize-space(text())="Short Name"]/following::input[1]',
+  setupProjectDescriptionInput: '//*[normalize-space(text())="Description"]/following::input[1]',
+  setupProjectMultiModelCheckbox: "//label[text()='Enable multiple model support']/..//input[@type='checkbox']",
+  navigatorRailIcon: 'text=2D/3D',
+  adminRailIcon: 'text=Admin',
+  adminRailIconGlyph: 'i.fa-user-shield',
+  manageModelMenuItem: 'text=Manage Model',
+  navigatorMenuTile: 'text=Navigator',
+  mapboxTempTokenConfigHeading: 'text=Mapbox temp token config',
+
   cuttingPlaneToolbar: '[aria-label="Cutting Plane"]',
 
   standardPlanes: '(//div[text()="Standard Planes"])[1]',
