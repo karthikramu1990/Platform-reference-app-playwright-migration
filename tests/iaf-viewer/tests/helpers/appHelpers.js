@@ -91,7 +91,7 @@ export async function getAuthContext(page) {
 export async function ensureProjectDialogDismissed(page, timeout = CONFIG.timeout.short) {
   const loadProjectBtn = page.getByRole('button', { name: 'Load Project' });
   if (await loadProjectBtn.isVisible({ timeout: 2000 }).catch(() => false)) {
-    await loadProjectBtn.click();
+    await loadProjectBtn.click({ timeout: CONFIG.timeout.medium });
     await waitForApplicationLoad(page, timeout);
   }
 }

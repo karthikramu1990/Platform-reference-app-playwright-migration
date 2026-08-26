@@ -80,9 +80,8 @@ test('PLG-1417 - 2D animation workflow goes live and animates correctly', async 
   await goLive(page);
 
   await assertActionLogContains(page, 'Activating workflow');
-  await assertClockIsAdvancing(page, 5000);
-  await ensureProjectDialogDismissed(page);
   await assertCanvasIsAnimating(page, Locator.viewer2D, 4, 1500);
+  await assertClockIsAdvancing(page, 5000);
 
   await stopLive(page);
 });
