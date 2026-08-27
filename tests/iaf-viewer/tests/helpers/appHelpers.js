@@ -227,6 +227,16 @@ export function captureConsoleErrors(page) {
   return errors;
 }
 
+export function captureNetworkRequestUrls(page) {
+  const urls = [];
+  const listener = (req) => urls.push(req.url());
+  page.on('request', listener);
+  return {
+    urls,
+    stop: () => page.off('request', listener),
+  };
+}
+
 export async function measureElapsed(action) {
   const start = Date.now();
   await action();

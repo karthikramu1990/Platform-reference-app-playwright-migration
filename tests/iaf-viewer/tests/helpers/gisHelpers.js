@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { CONFIG } from '../config';
-import { Locator } from './locators';
+import { Locator, Notifications } from './locators';
+import { setRangeValue } from './appHelpers';
 
 export async function openGISPanel(page) {
   await page.waitForLoadState('networkidle');
@@ -49,6 +50,33 @@ export async function configureMapboxTempToken(page, mapbox, timeout) {
   await addBtn.click();
 
   await expect(secretTokenInput).toHaveValue('', { timeout });
+}
+
+export async function setGISBearing(page, value, timeout) {
+  const toggle = page.locator(`xpath=${Locator.gisHorizontalAlignmentTogglebutton}`);
+  await expect(toggle).toBeVisible({ timeout });
+  if (!(await toggle.isChecked())) {
+    await toggle.click();
+  }
+
+  const bearingInput = page.locator(`xpath=${Locator.gisBearingInput}`);
+  await expect(bearingInput).toBeEnabled({ timeout });
+  await setRangeValue(bearingInput, value);
+
+  const confirmPrompt = page.getByText(Notifications.gisAlignmentConfirmPrompt);
+  await expect(confirmPrompt).toBeVisible({ timeout });
+  await page.waitForTimeout(2000);
+  await bearingInput.focus();
+  await bearingInput.press('Enter');
+
+  await expect(confirmPrompt).not.toBeVisible({ timeout });
+}
+
+export async function switchGISReferenceModel(page, index, timeout) {
+  const dropdown = page.locator(`xpath=${Locator.gisReferenceModelDropdown}`);
+  await expect(dropdown).toBeVisible({ timeout });
+  await dropdown.selectOption({ index });
+  await page.waitForTimeout(2000);
 }
 
 export async function disableGIS(page) {

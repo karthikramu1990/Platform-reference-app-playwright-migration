@@ -18,6 +18,7 @@ import {
   captureGraphicsSvcOrigin,
   getAuthContext,
   captureConsoleErrors,
+  captureNetworkRequestUrls,
   createProject,
   goToManageModel,
   goToNavigator,
@@ -653,4 +654,27 @@ test('PLG-1570 - Model Switching: saved camera position survives a page reload',
   await waitForApplicationLoad(page, CONFIG.timeout.long);
 
   await verifyViewerScreenshot(page, 'PLG-1570-ModelA-TopView-AfterReload');
+});
+
+// PLG-1771 - Optimized Models & Keep Alive: the old keep-alive endpoint (/graphicssvc/api/spawns/keepalive) that used to 404 for non-primary file sets has been obsoleted (replaced by periodically fetching the federated graphics node instead), so it should never be called and the viewer should stay stable on a federated model. No screenshot needed for this one.
+test('PLG-1771 - Keep Alive no longer calls the obsoleted spawns endpoint for non-primary file sets', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  const errors = captureConsoleErrors(page);
+  const requests = captureNetworkRequestUrls(page);
+
+  await setupWithAccount(page, CONFIG.iput51.credentials, CONFIG.iput51.project, CONFIG.iput51.userGroup);
+  await waitForApplicationLoad(page, CONFIG.timeout.long);
+
+  await page.waitForTimeout(150000);
+
+  requests.stop();
+
+  const keepAliveRequests = requests.urls.filter((url) => /spawns\/keepalive/i.test(url));
+  expect(keepAliveRequests, `unexpected call(s) to the obsoleted keep-alive endpoint: ${keepAliveRequests.join('; ')}`).toEqual([]);
+
+  const keepAliveErrors = errors.filter((e) => /keepalive|spawns/i.test(e));
+  expect(keepAliveErrors, `unexpected keep-alive related console error: ${keepAliveErrors.join('; ')}`).toEqual([]);
+
+  await expect(page.locator(Locator.viewer3D)).toBeVisible({ timeout: CONFIG.timeout.medium });
 });

@@ -159,6 +159,11 @@ export const Locator = {
   gisVerticalAlignmentTogglebutton: '//div[contains(text(),"Vertical Alignment")]/..//input[@type="checkbox"]',
   gisTerrainHeightSliderValue: '//div[contains(text(),"Terrain Height")]/..//div[@class="IafSlider-module_range-value__tY7ul"]',
   gisResetButton: '//p[text()="Reset"]',
+  gisReferenceModelDropdown: '//select[contains(@class,"IafDropdown-module_select-component") and @name="Reference Model"]',
+  gisBearingInput: '//div[text()="Bearing"]/following::input[@type="range"][1]',
+  gisLongitudeInput: '//div[text()="Longitude"]/following::input[@type="range"][1]',
+  gisLatitudeInput: '//div[text()="Latitude"]/following::input[@type="range"][1]',
+  gisTerrainHeightInput: '//div[contains(text(),"Terrain Height")]/following::input[@type="range"][1]',
 
   elementMenuIcon: 'i.inv-icon-assets',
   workflowNavLink: 'a[href="#/workflow"] span.menu-item',
@@ -173,5 +178,7 @@ export const Locator = {
 }
 
 export const Notifications = {
-    focusPlane : "You may want to select an element to enable focused planes"
+    focusPlane : "You may want to select an element to enable focused planes",
+    gisConfigUpdated: "GIS configuration has been updated",
+    gisAlignmentConfirmPrompt: "press ENTER to confirm",
 }
