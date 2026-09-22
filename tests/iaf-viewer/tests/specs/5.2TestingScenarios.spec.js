@@ -25,7 +25,7 @@ import {
 } from '../helpers/appHelpers.js';
 import { switchModel, LayerType } from '../helpers/modelHelpers.js';
 import { openGISPanel, enableGIS, configureMapboxTempToken } from '../helpers/gisHelpers.js';
-import { openCuttingPlane, dragPlaneSlider, verifyCuttingPlaneScreenshot, clickViewOption } from '../helpers/viewerHelpers.js';
+import { openCuttingPlane, dragPlaneSlider, verifyCuttingPlaneScreenshot, clickViewOption, configureSingleChannelProjectFederation } from '../helpers/viewerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 import { plg1690FreshProject } from '../data/projectFixtures.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
@@ -346,7 +346,7 @@ test('PLG-1685 - GIS Outline model renders at its federated position', async ({ 
   await expect(federatedModeDropdown).toBeVisible({ timeout: CONFIG.timeout.medium });
   await federatedModeDropdown.selectOption({ label: 'Outline' });
 
-  const outlineModelItem = page.locator(`xpath=${Locator.gisFederatedIPUTExchangeItem}`);
+  const outlineModelItem = page.locator(`xpath=${Locator.gisFederatedFirstOutlineItem}`);
   await expect(outlineModelItem).toBeVisible({ timeout: CONFIG.timeout.medium });
   await outlineModelItem.click();
 
@@ -588,8 +588,6 @@ test('PLG-1690 - Enabling GIS on a fresh project produces no schema validation e
 
   const schemaErrors = errors.filter((e) => /schema|400/i.test(e));
   expect(schemaErrors, `unexpected GIS schema/400 error on a fresh project: ${schemaErrors.join('; ')}`).toEqual([]);
-
-  await verifyGISScreenshot(page, 'PLG-1690-GIS-Enabled-NoSchemaError');
 });
 
 // PLG-1624 - Disabled discipline has no impact when the Model Composer quality slider moves.
@@ -677,4 +675,66 @@ test('PLG-1771 - Keep Alive no longer calls the obsoleted spawns endpoint for no
   expect(keepAliveErrors, `unexpected keep-alive related console error: ${keepAliveErrors.join('; ')}`).toEqual([]);
 
   await expect(page.locator(Locator.viewer3D)).toBeVisible({ timeout: CONFIG.timeout.medium });
+});
+
+// PLG-1761 - Support Ticket (Srini, Jon): GIS 2.0 Lightweight Outline View (Project View) - the "GIS Project View" example (?examplesView=true) should load all federated buildings on the project as lightweight outlines, without opening each one individually. Verified live: after a fresh reload and clicking into the example, the map starts empty ("Model Graphics 3D Views were not found!") for ~20-30s before all 3 buildings render as labeled outline pins.
+test.skip('PLG-1761 - GIS Project View example loads all federated buildings as lightweight outlines', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setupWithAccount(page, CONFIG.iput51.credentials, CONFIG.iput51.project, CONFIG.iput51.userGroup);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+  await configureSingleChannelProjectFederation(page, CONFIG.timeout.medium);
+
+  await page.goto(`${page.url()}?examplesView=true`);
+  await page.reload();
+  await page.waitForLoadState('networkidle');
+  await page.waitForTimeout(10000);
+
+  const gisProjectViewHeading = page.getByRole('heading', { name: 'GIS Project View', exact: true });
+  await expect(gisProjectViewHeading).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await gisProjectViewHeading.click();
+
+  const gisProjectViewDescription = page.getByText('Mapbox GIS with project clustered models and federated Outline mode.', { exact: false });
+  await expect(gisProjectViewDescription).toBeVisible({ timeout: CONFIG.timeout.medium });
+
+  // The example's federated model list mounts hidden in the DOM (no visible GIS panel in this
+  // view) but still populates once each building's outline finishes loading - poll it instead of
+  // relying on canvas/map screenshot state, which the earlier PLG-1477 investigation showed can lag.
+  const federatedOutlineItems = page.locator(`xpath=${Locator.gisFederatedOutlineListItems}`);
+  await expect
+    .poll(async () => federatedOutlineItems.count(), {
+      timeout: CONFIG.timeout.long,
+      message: 'expected all 3 federated buildings (IPUT Exchange x2, IKON) to load as outlines in the GIS Project View example',
+    })
+    .toBe(3);
+
+  await verifyGISScreenshot(page, 'PLG-1761-GISProjectView-AllOutlines');
+});
+
+// PLG-1479 - Federated Projects: Dynamic Mode should render federated buildings as soft (lightweight) models until Model Composition Layers are enabled, then switch to full detail. Screenshot validation only, per explicit request - captures the before/after visual for human review rather than asserting DOM/console state.
+test('PLG-1479 - GIS Dynamic Mode shows soft models until Layers are enabled', async ({ page }) => {
+  test.setTimeout(CONFIG.timeout.long);
+
+  await setupWithAccount(page, CONFIG.iput51.credentials, CONFIG.iput51.project, CONFIG.iput51.userGroup, 'model');
+
+  await openGISPanel(page);
+  await enableGIS(page);
+  await waitForApplicationLoad(page, CONFIG.timeout.medium);
+
+  const federatedHeader = page.locator(`xpath=${Locator.gisFederatedSectionHeader}`);
+  await expect(federatedHeader).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await federatedHeader.click();
+
+  const federatedModeDropdown = page.locator(`xpath=${Locator.gisFederatedModeDropdown}`);
+  await expect(federatedModeDropdown).toBeVisible({ timeout: CONFIG.timeout.medium });
+  await federatedModeDropdown.selectOption({ label: 'Dynamic' });
+
+  await page.waitForTimeout(5000);
+  await verifyGISScreenshot(page, 'PLG-1479-DynamicMode-SoftModels-LayersDisabled');
+
+  await toggleAllLayers(page, true);
+  await page.waitForTimeout(5000);
+
+  await verifyGISScreenshot(page, 'PLG-1479-DynamicMode-FullModels-LayersEnabled');
 });

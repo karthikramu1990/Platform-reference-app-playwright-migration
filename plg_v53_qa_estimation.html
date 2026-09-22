@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Platform V5.3 — QA Effort Estimation</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+:root{
+  --font-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --color-background-primary:#ffffff;
+  --color-background-secondary:#F7F6F3;
+  --color-border-tertiary:#E3E1DA;
+  --color-text-primary:#1A1A18;
+  --color-text-secondary:#6B6A65;
+  --border-radius-md:8px;
+  --border-radius-lg:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans);background:#FAF9F7;color:var(--color-text-primary)}
+.wrap{padding:1.5rem;max-width:1360px;margin:0 auto}
+.hdr-band{background:linear-gradient(135deg,#1F3864 0%,#185FA5 100%);border-radius:var(--border-radius-lg);padding:1.25rem 1.5rem;margin-bottom:1.25rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.hdr-band h1{font-size:15px;font-weight:500;color:#fff;margin-bottom:3px}
+.hdr-band p{font-size:11px;color:rgba(255,255,255,.7)}
+.hdr-right{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.member-chip{display:flex;align-items:center;gap:6px;padding:5px 10px;border-radius:20px;background:rgba(255,255,255,.15)}
+.av{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:500;color:#fff;flex-shrink:0}
+.chip-name{font-size:11px;font-weight:500;color:#fff}
+.chip-role{font-size:9px;color:rgba(255,255,255,.65)}
+.kpi-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:1.25rem}
+.kpi{border-radius:var(--border-radius-md);padding:14px 16px;position:relative;overflow:hidden}
+.kpi-ico{position:absolute;right:12px;top:12px;font-size:22px;opacity:.15}
+.kpi-lbl{font-size:10px;font-weight:500;letter-spacing:.05em;text-transform:uppercase;margin-bottom:6px}
+.kpi-val{font-size:28px;font-weight:500;line-height:1}
+.kpi-sub{font-size:11px;margin-top:4px;opacity:.8}
+.charts-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:1.25rem}
+.chart-card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.1rem}
+.card-ttl{font-size:12px;font-weight:500;color:var(--color-text-primary);margin-bottom:8px}
+.leg{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px}
+.leg span{font-size:10px;color:var(--color-text-secondary);display:flex;align-items:center;gap:4px}
+.leg b{width:8px;height:8px;border-radius:2px;display:inline-block;flex-shrink:0}
+.filter-row{display:flex;align-items:center;gap:8px;margin-bottom:1.1rem;flex-wrap:wrap}
+.filter-lbl{font-size:11px;color:var(--color-text-secondary);font-weight:500}
+.filt-btn{padding:5px 13px;border-radius:20px;font-size:11px;font-weight:500;border:1.5px solid;cursor:pointer;transition:all .15s;background:transparent}
+.epic-block{margin-bottom:1rem;border-radius:var(--border-radius-lg);overflow:hidden;border:0.5px solid var(--color-border-tertiary);background:var(--color-background-primary)}
+.epic-hdr{padding:10px 14px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;user-select:none}
+.epic-pill{font-size:10px;font-weight:500;padding:3px 9px;border-radius:10px;background:rgba(255,255,255,.2);color:#fff;white-space:nowrap}
+.epic-arrow{color:rgba(255,255,255,.7);font-size:16px;transition:transform .2s}
+.tbl-hdr{display:grid;grid-template-columns:88px 1fr 62px 88px 118px 92px 78px;gap:6px;padding:6px 12px;background:var(--color-background-secondary);border-bottom:0.5px solid var(--color-border-tertiary)}
+.tbl-hdr span{font-size:9px;color:var(--color-text-secondary);font-weight:500;text-transform:uppercase;letter-spacing:.04em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tkt-row{display:grid;grid-template-columns:88px 1fr 62px 88px 118px 92px 78px;gap:6px;align-items:center;padding:7px 12px;border-bottom:0.5px solid var(--color-border-tertiary);transition:background .1s}
+.tkt-row:hover{background:var(--color-background-secondary)}
+.tkt-row:last-child{border-bottom:none}
+.tkt-key{font-size:11px;font-weight:500;color:#185FA5;font-family:var(--font-mono);white-space:nowrap}
+.tkt-sum{font-size:11px;color:var(--color-text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.badge{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500;white-space:nowrap}
+.b-bug{background:#FCEBEB;color:#791F1F}
+.b-story{background:#E6F1FB;color:#0C447C}
+.b-task{background:#FAEEDA;color:#633806}
+.b-todo{background:#F1EFE8;color:#444441}
+.b-qa{background:#EAF3DE;color:#27500A}
+.b-inp{background:#FAEEDA;color:#633806}
+.b-man{background:#E6F1FB;color:#0C447C}
+.b-auto{background:#EAF3DE;color:#27500A}
+.b-both{background:#EEEDFE;color:#3C3489}
+.b-na{background:#F1EFE8;color:#888780}
+.role-qa{background:#EEEDFE;color:#3C3489;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500}
+.role-dev{background:#F1EFE8;color:#5F5E5A;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:500}
+.no-test-banner{background:#FCEBEB;padding:8px 14px;font-size:11px;color:#A32D2D;font-weight:500;display:flex;align-items:center;gap:6px}
+.std-row{background:#EAF3DE;display:grid;grid-template-columns:1fr 80px 100px;align-items:center;padding:8px 14px;font-size:11px;color:#27500A;font-weight:500;border-bottom:0.5px solid #C0DD97}
+.std-row:last-child{border-bottom:none}
+.summary-box{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.2rem;margin-top:1rem}
+.summary-box h3{font-size:12px;font-weight:500;margin-bottom:10px;color:var(--color-text-primary)}
+.sum-grid{display:grid;grid-template-columns:1fr 90px;gap:4px 12px;font-size:11px;color:var(--color-text-secondary)}
+.sum-grid .tot{font-weight:600;color:var(--color-text-primary);border-top:0.5px solid var(--color-border-tertiary);padding-top:7px;margin-top:5px}
+.note-box{background:#FFF8E6;border:0.5px solid #E8CE8A;border-radius:var(--border-radius-md);padding:10px 14px;font-size:11px;color:#633806;margin-bottom:1.1rem}
+@media(max-width:1000px){.kpi-row,.charts-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.kpi-row,.charts-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr-band">
+  <div>
+    <h1><i class="ti ti-chart-bar" aria-hidden="true" style="margin-right:6px"></i>Platform V5.3 — QA Effort Estimation</h1>
+    <p>18 tickets total &nbsp;·&nbsp; Fix Version: Platform V5.3 &nbsp;·&nbsp; Project: PLG &nbsp;·&nbsp; Filter 26747</p>
+  </div>
+  <div class="hdr-right">
+    <div class="member-chip">
+      <div class="av" style="background:#534AB7">KR</div>
+      <div><div class="chip-name">Karthik Ramu</div><div class="chip-role">🔬 QA Engineer · 17 tickets</div></div>
+    </div>
+    <div class="member-chip">
+      <div class="av" style="background:#0F6E56">AK</div>
+      <div><div class="chip-name">Atul Kulkarni</div><div class="chip-role">💻 Developer · 10 tickets</div></div>
+    </div>
+    <div class="member-chip">
+      <div class="av" style="background:#185FA5">FR</div>
+      <div><div class="chip-name">Fan Rong</div><div class="chip-role">💻 Developer · 5 tickets</div></div>
+    </div>
+    <div class="member-chip">
+      <div class="av" style="background:#D85A30">RR</div>
+      <div><div class="chip-name">Raja Rajendraprasath</div><div class="chip-role">💻 Developer · 3 tickets</div></div>
+    </div>
+  </div>
+</div>
+
+<div class="kpi-row">
+  <div class="kpi" style="background:#E6F1FB;color:#0C447C">
+    <i class="ti ti-file-description kpi-ico" aria-hidden="true"></i>
+    <div class="kpi-lbl">Total tickets</div>
+    <div class="kpi-val">18</div>
+    <div class="kpi-sub">17 QA testable · 1 dev only</div>
+  </div>
+  <div class="kpi" style="background:#EEEDFE;color:#3C3489">
+    <i class="ti ti-test-pipe kpi-ico" aria-hidden="true"></i>
+    <div class="kpi-lbl">QA Engineer</div>
+    <div class="kpi-val" style="font-size:18px;padding-top:5px">Karthik Ramu</div>
+    <div class="kpi-sub">Atul, Fan Rong &amp; Raja → Developers</div>
+  </div>
+  <div class="kpi" style="background:#FAEEDA;color:#633806">
+    <i class="ti ti-clock kpi-ico" aria-hidden="true"></i>
+    <div class="kpi-lbl">Total QA Effort</div>
+    <div class="kpi-val">18 <span style="font-size:14px;font-weight:400">days</span></div>
+    <div class="kpi-sub">7 feature + 4 regression + 7 automation</div>
+  </div>
+  <div class="kpi" style="background:#EAF3DE;color:#27500A">
+    <i class="ti ti-robot kpi-ico" aria-hidden="true"></i>
+    <div class="kpi-lbl">Automation scope</div>
+    <div class="kpi-val">7 <span style="font-size:14px;font-weight:400">days</span></div>
+    <div class="kpi-sub">Navigation menu E2E + QA viewer framework</div>
+  </div>
+</div>
+
+<div class="note-box">
+  <i class="ti ti-info-circle" aria-hidden="true" style="margin-right:5px"></i>
+  <b>PLG-2879</b> (GHAS - Graphicssvc - update GHAS-identified dependencies) is a <b>dev team ticket</b> — no QA coverage planned, listed for visibility only.
+</div>
+
+<div class="charts-grid">
+  <div class="chart-card">
+    <p class="card-ttl">QA effort by epic (man days) — 7 days feature testing</p>
+    <div class="leg">
+      <span><b style="background:#993C1D"></b>EVM View3D/2D 1.5d</span>
+      <span><b style="background:#0F6E56"></b>GIS 1.5d</span>
+      <span><b style="background:#185FA5"></b>IPA ACAD 1.5d</span>
+      <span><b style="background:#854F0B"></b>Enhanced EVM 1d</span>
+      <span><b style="background:#534AB7"></b>IPA Revit 0.5d</span>
+      <span><b style="background:#3B6D11"></b>i18n 0.5d</span>
+      <span><b style="background:#A32D2D"></b>Security 0.25d</span>
+      <span><b style="background:#D85A30"></b>IPA Plugins 0.25d</span>
+    </div>
+    <div style="position:relative;height:170px"><canvas id="c1" role="img" aria-label="Effort by epic bar chart">EVM View3D 1.5, GIS 1.5, IPA ACAD 1.5, Enhanced EVM 1, IPA Revit 0.5, i18n 0.5, Security 0.25, IPA Plugins 0.25.</canvas></div>
+    <p style="font-size:10px;color:var(--color-text-secondary);margin-top:6px">Plus 11 days fixed: 4 regression across all staging environments, 3 navigation-menu E2E, 4 viewer-framework automation.</p>
+  </div>
+  <div class="chart-card">
+    <p class="card-ttl">Tickets by developer — total 18</p>
+    <div class="leg">
+      <span><b style="background:#1D9E75"></b>Atul 10</span>
+      <span><b style="background:#378ADD"></b>Fan Rong 5</span>
+      <span><b style="background:#D85A30"></b>Raja 3</span>
+    </div>
+    <div style="position:relative;height:170px"><canvas id="c2" role="img" aria-label="Tickets by developer: Atul 10, Fan Rong 5, Raja 3">Atul 10, Fan Rong 5, Raja 3.</canvas></div>
+  </div>
+  <div class="chart-card">
+    <p class="card-ttl">Manual vs automation testing scope</p>
+    <div class="leg">
+      <span><b style="background:#378ADD"></b>Manual only 9</span>
+      <span><b style="background:#534AB7"></b>Manual+Auto 8</span>
+      <span><b style="background:#888780"></b>N/A (Dev) 1</span>
+    </div>
+    <div style="position:relative;height:170px"><canvas id="c3" role="img" aria-label="Manual vs automation scope">Manual 9, Manual plus Auto 8, NA 1.</canvas></div>
+  </div>
+  <div class="chart-card">
+    <p class="card-ttl">Ticket status distribution — 18 total</p>
+    <div class="leg">
+      <span><b style="background:#378ADD"></b>QA To Do 12</span>
+      <span><b style="background:#BA7517"></b>In Progress 3</span>
+      <span><b style="background:#888780"></b>To Do 3</span>
+    </div>
+    <div style="position:relative;height:170px"><canvas id="c4" role="img" aria-label="Status: QA To Do 12, In Progress 3, To Do 3">QA To Do 12, In Progress 3, To Do 3.</canvas></div>
+  </div>
+</div>
+
+<div class="filter-row">
+  <span class="filter-lbl"><i class="ti ti-filter" aria-hidden="true"></i> Filter:</span>
+  <button class="filt-btn active" id="fa" onclick="filter('all')" style="border-color:#1F3864;color:#1F3864">All 18</button>
+  <button class="filt-btn" id="fat" onclick="filter('Atul')" style="border-color:#0F6E56;color:#0F6E56">💻 Atul · Dev (10)</button>
+  <button class="filt-btn" id="ff" onclick="filter('Fan Rong')" style="border-color:#185FA5;color:#185FA5">💻 Fan Rong · Dev (5)</button>
+  <button class="filt-btn" id="fr" onclick="filter('Raja')" style="border-color:#D85A30;color:#D85A30">💻 Raja · Dev (3)</button>
+</div>
+
+<div id="epics-container"></div>
+
+<div class="summary-box">
+  <h3><i class="ti ti-robot" aria-hidden="true" style="margin-right:5px"></i>Automation scope — Platform V5.3</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+    <div>
+      <p style="font-size:11px;font-weight:600;color:#3C3489;margin-bottom:6px">1 · E2E — Navigation menu (complete menu) &nbsp;<span class="badge b-both">3 days</span></p>
+      <p style="font-size:11px;color:var(--color-text-secondary);margin-bottom:6px">New for this release: full end-to-end coverage of the navigation menu rather than ticket-by-ticket coverage only. Every menu entry is walked and asserted, so a silent regression like PLG-2984 fails a run instead of being found by hand.</p>
+      <ul style="font-size:11px;color:var(--color-text-secondary);padding-left:16px;line-height:1.7">
+        <li>2D/3D flyout — Navigator, Model Elements, Workflow</li>
+        <li>Right icon rail — every toolbar button and its active state</li>
+        <li>Viewer settings panel — all switches and sliders</li>
+        <li>Bottom toolbar — Search, Filter, List, Settings, Undo, Chat</li>
+        <li>Admin menu — User Group, Manage Model, Rest Connectors</li>
+        <li>Walk / BIM Walk modes including keyboard navigation</li>
+      </ul>
+    </div>
+    <div>
+      <p style="font-size:11px;font-weight:600;color:#3C3489;margin-bottom:6px">2 · Feasible tickets — QA viewer framework &nbsp;<span class="badge b-both">4 days</span></p>
+      <p style="font-size:11px;color:var(--color-text-secondary);margin-bottom:6px">The 8 tickets marked <b>Manual+Auto</b> are automated in the existing QA viewer framework. The 4 IPA plugin tickets stay manual — the Revit and AutoCAD plugins are desktop software outside the framework's reach.</p>
+      <ul style="font-size:11px;color:var(--color-text-secondary);padding-left:16px;line-height:1.7">
+        <li>PLG-2833 — View2d callback and property</li>
+        <li>PLG-2901 — Navigator deselect/select, zoom, highlight</li>
+        <li>PLG-2984 — Keyboard Walk Mode</li>
+        <li>PLG-2942 — GeoBim View3d side by side and camera</li>
+        <li>PLG-2989 — GIS initial center, None to Outline</li>
+        <li>PLG-2941 — ArcGIS _addLine / _addMesh</li>
+        <li>PLG-2958 — Internationalisation</li>
+        <li>PLG-2846 — Navigator selection after React 18</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="summary-box">
+  <h3><i class="ti ti-sum" aria-hidden="true" style="margin-right:5px"></i>Effort summary</h3>
+  <div class="sum-grid">
+    <span>Feature testing — 17 tickets (functional, UI, defect verification, retest)</span><span style="text-align:right">7 days</span>
+    <span>Regression Testing — QA1, SAQA1, EU &amp; SA Staging (all staging environments)</span><span style="text-align:right">4 days</span>
+    <span>E2E Automation — Navigation menu, complete menu coverage</span><span style="text-align:right">3 days</span>
+    <span>Automation — remaining feasible tickets in QA viewer framework</span><span style="text-align:right">4 days</span>
+    <span class="tot">Total QA effort for Platform V5.3</span><span class="tot" style="text-align:right">18 days</span>
+  </div>
+</div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const EPICS=[
+ {key:'PLG-1587',name:'EVM - View3D/View2D',color:'#993C1D',effort:1.5,noTest:false,rows:[
+  {id:'PLG-2833',sum:'Support Ticket - Jon Wong - View2d - Expose callback and property to deal with 2D Drawing sheets',type:'Story',status:'QA To Do',assignee:'Atul',testing:'Both'},
+  {id:'PLG-2901',sum:'Support Ticket - Enhancement - Cesar - Apps: Space: New Navigator: Facing issues with Deselect/Select, Zoom and Highlight',type:'Story',status:'QA To Do',assignee:'Atul',testing:'Both'},
+  {id:'PLG-2967',sum:'Support Ticket - Documentation - Dominica - Optimized/Unoptimized Models & Programatic Cutting Planes - How To',type:'Story',status:'To Do',assignee:'Raja',testing:'Manual'},
+  {id:'PLG-2984',sum:'Regression - View3d - Keybaord Walk Mode if enabled, does not work',type:'Bug',status:'QA To Do',assignee:'Atul',testing:'Both'},
+ ]},
+ {key:'PLG-119',name:'IafViewer - GIS',color:'#0F6E56',effort:1.5,noTest:false,rows:[
+  {id:'PLG-2924',sum:'Mapbox remains activated after the GIS license is completely removed in Example view',type:'Bug',status:'To Do',assignee:'Raja',testing:'Manual'},
+  {id:'PLG-2942',sum:'IafViewer EVM - View3d - GeoBimView3d Side By Side and Camera',type:'Story',status:'In Progress',assignee:'Atul',testing:'Both'},
+  {id:'PLG-2948',sum:'EVM Examples - GeoBim View3d - Multiple IafViewer View3d Instances should render relative (not absolute) spinners',type:'Bug',status:'QA To Do',assignee:'Atul',testing:'Manual'},
+  {id:'PLG-2989',sum:'Support Ticket - Gangai - GIS - gis.initial.center & None to Outline centers on primary',type:'Bug',status:'To Do',assignee:'Atul',testing:'Both'},
+ ]},
+ {key:'PLG-2891',name:'IPA ACAD Plugin - Enhancement & Maintenance',color:'#185FA5',effort:1.5,noTest:false,rows:[
+  {id:'PLG-2889',sum:'IPA AutoCAD Plugin - Improve export performance and reduce output file size',type:'Story',status:'QA To Do',assignee:'Fan Rong',testing:'Manual'},
+  {id:'PLG-2890',sum:'IPA AutoCAD Plugin - Exported Dimension geometry is incorrect',type:'Bug',status:'QA To Do',assignee:'Fan Rong',testing:'Manual'},
+  {id:'PLG-2892',sum:'IPA AutoCAD Plugin - Export embedded image in 2D DWG',type:'Story',status:'In Progress',assignee:'Fan Rong',testing:'Manual'},
+ ]},
+ {key:'PLG-533',name:'IafViewer - Enhanced Viewing Modes',color:'#854F0B',effort:1,noTest:false,rows:[
+  {id:'PLG-1839',sum:'EVM - APS - Autodesk Format & product depth',type:'Story',status:'In Progress',assignee:'Atul',testing:'Manual'},
+  {id:'PLG-2941',sum:'Support Ticket - Dominica - IafViewer - ArcGIS _addLine / _addMesh graphics throw Graphic/Mesh are not defined',type:'Bug',status:'QA To Do',assignee:'Atul',testing:'Both'},
+ ]},
+ {key:'PLG-2858',name:'IPA Revit Plugin - Enhancements',color:'#534AB7',effort:0.5,noTest:false,rows:[
+  {id:'PLG-2857',sum:'IPA Revit Plugin - Support scz segmentation by Linked Files & Discipline Layers',type:'Story',status:'QA To Do',assignee:'Fan Rong',testing:'Manual'},
+ ]},
+ {key:'PLG-2978',name:'IafViewer Internationalisation',color:'#3B6D11',effort:0.5,noTest:false,rows:[
+  {id:'PLG-2958',sum:'IafViewer Internationalisation & Examples',type:'Story',status:'QA To Do',assignee:'Atul',testing:'Both'},
+ ]},
+ {key:'PLG-1453',name:'IPA Plugins - Change all IPA plugins',color:'#D85A30',effort:0.25,noTest:false,rows:[
+  {id:'PLG-2919',sum:'All IPA Plugins - Improve Bimpk file upload error handling due to existing incomplete file-upload done by other user',type:'Task',status:'QA To Do',assignee:'Fan Rong',testing:'Manual'},
+ ]},
+ {key:'PLG-269',name:'IafViewer - Security & Dev Tools & Code Refactoring',color:'#A32D2D',effort:0.25,noTest:false,rows:[
+  {id:'PLG-2846',sum:'Navigator initial selection fails — entities empty after React 18 upgrade',type:'Bug',status:'QA To Do',assignee:'Raja',testing:'Both'},
+  {id:'PLG-2879',sum:'DEV TICKET - GHAS - Graphicssvc - update GHAS-identified dependencies (new findings)',type:'Task',status:'QA To Do',assignee:'Atul',testing:'N/A'},
+ ]},
+];
+
+function typeBadge(t){return t==='Bug'?'<span class="badge b-bug">Bug</span>':t==='Story'?'<span class="badge b-story">Story</span>':'<span class="badge b-task">Task</span>'}
+function stBadge(s){return s==='QA To Do'?'<span class="badge b-qa">QA To Do</span>':s==='In Progress'?'<span class="badge b-inp">In Progress</span>':'<span class="badge b-todo">To Do</span>'}
+function roleBadge(a){
+  if(a==='Atul')    return '<span class="role-dev">💻 Atul</span>';
+  if(a==='Fan Rong')return '<span class="role-dev">💻 Fan Rong</span>';
+  return '<span class="role-dev">💻 Raja</span>';
+}
+function testBadge(t){
+  if(t==='Manual')    return '<span class="badge b-man">Manual</span>';
+  if(t==='Automation')return '<span class="badge b-auto">Automation</span>';
+  if(t==='Both')      return '<span class="badge b-both">Manual+Auto</span>';
+  return '<span class="badge b-na">— Dev only</span>';
+}
+
+function renderEpics(f){
+  const con=document.getElementById('epics-container');
+  con.innerHTML='';
+  EPICS.forEach(ep=>{
+    const vis=ep.rows.filter(r=>f==='all'||r.assignee===f);
+    if(!vis.length) return;
+    const bugs=vis.filter(r=>r.type==='Bug').length;
+    const stories=vis.filter(r=>r.type==='Story').length;
+    const auto=vis.filter(r=>r.testing==='Automation'||r.testing==='Both').length;
+    const na=vis.filter(r=>r.testing==='N/A').length;
+    const block=document.createElement('div');
+    block.className='epic-block';
+    const efHtml=ep.effort>0?`<span class="epic-pill">${ep.effort} days</span>`:'';
+    const autoHtml=auto>0?`<span class="epic-pill" style="background:rgba(60,200,100,.25)">${auto} Automation</span>`:'';
+    const naHtml=na>0?`<span class="epic-pill" style="background:rgba(220,50,50,.3)">${na} Dev only</span>`:'';
+    block.innerHTML=`
+      <div class="epic-hdr" style="background:${ep.color}" onclick="toggle(this)">
+        <div style="display:flex;align-items:center;gap:8px">
+          <span style="font-size:10px;padding:2px 8px;border-radius:10px;background:rgba(255,255,255,.25);color:#fff;font-weight:500">${ep.key}</span>
+          <span style="font-size:13px;font-weight:500;color:#fff">${ep.name}</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:6px">
+          ${bugs>0?`<span class="epic-pill" style="background:rgba(220,50,50,.3)">${bugs}B</span>`:''}
+          ${stories>0?`<span class="epic-pill" style="background:rgba(80,140,240,.3)">${stories}S</span>`:''}
+          <span class="epic-pill">${vis.length} tickets</span>
+          ${efHtml}${autoHtml}${naHtml}
+          <i class="ti ti-chevron-down epic-arrow" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="tbl-hdr">
+        <span>Issue Key</span><span>Summary</span><span>Type</span><span>Status</span><span>Developer</span><span>Testing</span><span>Automation</span>
+      </div>
+      <div>${vis.map(r=>`<div class="tkt-row"${r.testing==='N/A'?' style="background:#FCF4F4"':''}>
+        <span class="tkt-key">${r.id}</span>
+        <span class="tkt-sum" title="${r.sum}">${r.sum}</span>
+        ${typeBadge(r.type)}
+        ${stBadge(r.status)}
+        ${roleBadge(r.assignee)}
+        ${testBadge(r.testing)}
+        <span style="font-size:11px;color:${r.testing==='Automation'||r.testing==='Both'?'#27500A':'var(--color-text-secondary)'}">${r.testing==='Automation'||r.testing==='Both'?'✓ Yes':'—'}</span>
+      </div>`).join('')}</div>`;
+    con.appendChild(block);
+  });
+
+  const std=document.createElement('div');
+  std.className='epic-block'; std.style.borderColor='#639922';
+  std.innerHTML=`
+    <div style="background:#3B6D11;padding:10px 14px;display:flex;align-items:center;gap:10px">
+      <span style="font-size:13px;font-weight:500;color:#fff"><i class="ti ti-checklist" aria-hidden="true" style="margin-right:6px"></i>Standard QA Activities</span>
+      <span class="epic-pill" style="background:rgba(255,255,255,.2)">11 days fixed</span>
+    </div>
+    <div style="background:var(--color-background-primary)">
+      <div class="std-row"><span>Regression Testing — QA1, SAQA1, EU &amp; SA Staging (all staging environments)</span><span style="text-align:right;color:#27500A">4 days</span><span style="text-align:right;color:#534AB7;font-weight:500">Automation</span></div>
+      <div class="std-row"><span>E2E Automation — Navigation menu, complete menu coverage</span><span style="text-align:right;color:#27500A">3 days</span><span style="text-align:right;color:#534AB7;font-weight:500">Automation</span></div>
+      <div class="std-row" style="border-bottom:none"><span>Automation — remaining feasible tickets in QA viewer framework</span><span style="text-align:right;color:#27500A">4 days</span><span style="text-align:right;color:#534AB7;font-weight:500">Automation</span></div>
+    </div>`;
+  con.appendChild(std);
+}
+
+function toggle(hdr){
+  const block=hdr.closest('.epic-block');
+  const children=Array.from(block.children).slice(1);
+  const hidden=children[0]?.style.display==='none';
+  children.forEach(c=>c.style.display=hidden?'':'none');
+  const arr=hdr.querySelector('.epic-arrow');
+  if(arr) arr.style.transform=hidden?'':'rotate(180deg)';
+}
+
+function filter(who){
+  ['fa','fat','ff','fr'].forEach(id=>{
+    const b=document.getElementById(id); b.classList.remove('active');
+    b.style.background='transparent';
+    b.style.color=id==='fat'?'#0F6E56':id==='ff'?'#185FA5':id==='fr'?'#D85A30':'#1F3864';
+  });
+  const map={all:'fa','Atul':'fat','Fan Rong':'ff','Raja':'fr'};
+  const ab=document.getElementById(map[who]); ab.classList.add('active');
+  const bg=map[who]==='fat'?'#0F6E56':map[who]==='ff'?'#185FA5':map[who]==='fr'?'#D85A30':'#1F3864';
+  ab.style.background=bg; ab.style.color='#fff';
+  renderEpics(who);
+}
+
+renderEpics('all');
+
+new Chart(document.getElementById('c1'),{type:'bar',data:{
+  labels:['EVM View3D/2D','GIS','IPA ACAD','Enh. EVM','IPA Revit','i18n','Security','IPA Plugins'],
+  datasets:[{data:[1.5,1.5,1.5,1,0.5,0.5,0.25,0.25],backgroundColor:['#993C1D','#0F6E56','#185FA5','#854F0B','#534AB7','#3B6D11','#A32D2D','#D85A30'],borderRadius:4}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},
+    scales:{x:{ticks:{font:{size:9},autoSkip:false,maxRotation:25}},y:{ticks:{font:{size:9}},grid:{color:'rgba(0,0,0,0.04)'}}}}
+});
+new Chart(document.getElementById('c2'),{type:'doughnut',data:{
+  labels:['Atul (10)','Fan Rong (5)','Raja (3)'],
+  datasets:[{data:[10,5,3],backgroundColor:['#1D9E75','#378ADD','#D85A30'],borderWidth:3,borderColor:'#fff',hoverOffset:4}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false}}}
+});
+new Chart(document.getElementById('c3'),{type:'doughnut',data:{
+  labels:['Manual only (9)','Manual+Auto (8)','N/A Dev (1)'],
+  datasets:[{data:[9,8,1],backgroundColor:['#378ADD','#534AB7','#888780'],borderWidth:3,borderColor:'#fff',hoverOffset:4}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false}}}
+});
+new Chart(document.getElementById('c4'),{type:'doughnut',data:{
+  labels:['QA To Do (12)','In Progress (3)','To Do (3)'],
+  datasets:[{data:[12,3,3],backgroundColor:['#378ADD','#BA7517','#888780'],borderWidth:3,borderColor:'#fff',hoverOffset:4}]},
+  options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{display:false}}}
+});
+</script>
+</body>
+</html>

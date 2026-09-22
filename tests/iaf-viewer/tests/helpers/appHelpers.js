@@ -2,6 +2,10 @@ import { expect } from '@playwright/test';
 import { CONFIG } from '../config';
 import { Locator } from "./locators"
 import { LayerType } from './modelHelpers';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const testsDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 export async function login(page, credentials, timeout) {
   const emailInput = page.getByRole('textbox', { name: 'Enter your email address' });
@@ -457,13 +461,14 @@ export async function toggleLayers(page, keys, enable = true) {
   for (const key of keys) {
     const checkbox = page.locator(`input[type="checkbox"][name="${key}"]`);
 
-    await expect(checkbox).toBeVisible();
+    await expect(checkbox).toBeVisible({ timeout: CONFIG.timeout.short });
 
     const checked = await checkbox.isChecked();
 
     if (checked !== enable) {
       await checkbox.click();
-      await expect(checkbox).toBeChecked({ checked: enable });
+      await waitForApplicationLoad(page, CONFIG.timeout.long);
+      await expect(checkbox).toBeChecked({ checked: enable, timeout: CONFIG.timeout.short });
     }
   }
 }
@@ -595,7 +600,7 @@ export async function captureAnnotationScreenshot(page, name) {
   await page.waitForLoadState('networkidle');
   await page.waitForTimeout(3000);
 
-  const snapshotPath = `tests/snapshots/annotations.spec.js/${name}-chromium.png`;
+  const snapshotPath = path.join(testsDir, 'snapshots', 'annotations.spec.js', `${name}-chromium.png`);
   await page.screenshot({ path: snapshotPath });
 }
 

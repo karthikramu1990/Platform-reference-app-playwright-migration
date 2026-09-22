@@ -1,7 +1,7 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
 import { login, selectProject, setup, waitForApplicationLoad, waitForAnnotationsEnabled, verifyAnnotationScreenshot, captureAnnotationScreenshot } from '../helpers/appHelpers.js';
-import { runAnnotations, drawCheckDistance, drawLine, drawCircle, drawRectangle, drawPolyline, drawPolygon, drawLeaderNote, drawText, drawFreehand, drawExportAnnotations, exportAnnotations, importAnnotations, clearAnnotations } from '../helpers/annotationHelpers.js';
+import { runAnnotations, drawCheckDistance, drawLine, drawCircle, drawRectangle, drawPolyline, drawPolygon, drawLeaderNote, drawText, drawFreehand, drawExportAnnotations, exportAnnotations, importAnnotations, clearAnnotations, annotationsFixturePath } from '../helpers/annotationHelpers.js';
 import { Locator } from '../helpers/locators.js';
 
 test('Annotations test', async ({ page }) => {
@@ -234,7 +234,7 @@ test('Annotations - Import', async ({ page }, testInfo) => {
 
   const annotationsBtn = page.locator(Locator.annotationsBtn);
 
-  await importAnnotations(page, annotationsBtn, 'tests/files/iaf-viewer-annotations.json');
+  await importAnnotations(page, annotationsBtn, annotationsFixturePath);
   await page.waitForTimeout(2000);
   await verifyAnnotationScreenshot(page, 'Annotations-ExportImport');
   await clearAnnotations(page, annotationsBtn);

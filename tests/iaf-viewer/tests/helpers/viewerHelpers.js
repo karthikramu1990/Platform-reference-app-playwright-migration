@@ -3,6 +3,30 @@ import { CONFIG } from '../config';
 import { Locator } from './locators';
 import { waitForApplicationLoad, verifyViewerScreenshot } from './appHelpers';
 
+export async function configureSingleChannelProjectFederation(page, timeout = CONFIG.timeout.medium) {
+  const settingsBtn = page.locator(Locator.settingsToolbar);
+  await expect(settingsBtn).toBeVisible({ timeout });
+  await settingsBtn.click();
+
+  const performanceTab = page.getByText('Performance', { exact: true });
+  await expect(performanceTab).toBeVisible({ timeout });
+  await performanceTab.click();
+
+  const streamToggle = page.locator(Locator.singleStreamingChannelToggle);
+  await expect(streamToggle).toBeVisible({ timeout });
+  if (!(await streamToggle.isChecked())) {
+    await streamToggle.click();
+  }
+
+  const federationDropdown = page.locator(Locator.defaultFederationTypeDropdown);
+  await expect(federationDropdown).toBeVisible({ timeout });
+  await federationDropdown.selectOption({ label: 'Project' });
+
+  const cacheSettingsBtn = page.getByText('Cache Settings', { exact: true });
+  await expect(cacheSettingsBtn).toBeVisible({ timeout });
+  await cacheSettingsBtn.click();
+}
+
 export async function verifyCuttingPlaneScreenshot(page, name) {
   await verifyViewerScreenshot(page, name, Locator.viewer3D, 2000);
 }

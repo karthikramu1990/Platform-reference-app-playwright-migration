@@ -3,6 +3,10 @@ import { Locator } from "./locators"
 import { CONFIG } from '../config';
 import fs from 'fs';
 import path from 'path';
+import { fileURLToPath } from 'url';
+
+const testsDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
+export const annotationsFixturePath = path.join(testsDir, 'files', 'iaf-viewer-annotations.json');
 
 export function toolRow(page, label) {
   return page.getByText(label, { exact: true }).locator('xpath=..');
@@ -271,10 +275,9 @@ export async function exportAnnotations(page, annotationsBtn) {
   await exportBtn.click();
   const download = await downloadPromise;
 
-  fs.mkdirSync('tests/files', { recursive: true });
-  const filePath = path.join('tests/files', 'iaf-viewer-annotations.json');
-  await download.saveAs(filePath);
-  return filePath;
+  fs.mkdirSync(path.dirname(annotationsFixturePath), { recursive: true });
+  await download.saveAs(annotationsFixturePath);
+  return annotationsFixturePath;
 }
 
 export async function importAnnotations(page, annotationsBtn, filePath) {

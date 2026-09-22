@@ -1,14 +1,14 @@
 {
   "Env": "qa2",
   "Browser": "chrome",
-  "Rfusername": "automationref@yopmail.com",
+  "Rfusername": "karthik.r@invicara.com",
   "RfPassword": "Test@123",
   "Headless": "no",
   "Environments": {
     "staging": {
       "RfUrl": "https://staging.invicara.com/reference/#/",
-      "ProjectList": "EU staging 5.2",
-      "UserGroup": "EU staging 5.2 Proj Admin",
+      "ProjectList": "5.1 Patch Release",
+      "UserGroup": "5.1 Patch Release Proj Admin",
       "Rfusername": "karthik.r@invicara.com",
       "RfPassword": "Test@123"
     },
@@ -19,20 +19,20 @@
     },
     "qa2": {
       "RfUrl": "https://qa2-app.in.invicara.com/reference/#/",
-      "ProjectList": "automation",
-      "UserGroup": "automation Proj Admin"
+      "ProjectList": "TestQA2",
+      "UserGroup": "TestQA2 Proj Admin"
     },
     "staging3": {
       "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "Staging3 5.2",
-      "UserGroup": "Staging3 5.2 Proj Admin",
+      "ProjectList": "5.1 Patch Release",
+      "UserGroup": "5.1 Patch Release Proj Admin",
       "Rfusername": "karthik.r@invicara.com",
       "RfPassword": "Test@123"
     },
     "qa3": {
       "RfUrl": "https://apps.qa3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "OciQA3 5.2",
-      "UserGroup": "OciQA3 5.2 Proj Admin",
+      "ProjectList": "5.1 Patch Release",
+      "UserGroup": "5.1 Patch Release Proj Admin",
       "Rfusername": "karthik.r@invicara.com",
       "RfPassword": "Test@123"
     }

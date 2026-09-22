@@ -38,6 +38,7 @@ export class AIChatTest {
       await chat.enterSecretKey(process.env.REFAPP_AI_CHAT_SECRET_KEY ?? '');
     }
     await chat.closeSettings();
+    await chat.ensureChatResourcesConfigured();
 
     await chat.selectTeam('BIM Query Team');
     await chat.askQuestion(testData.AIchat.BimQueryQuestion);
@@ -62,7 +63,18 @@ export class AIChatTest {
     await this.page.reload();
     const chat = new AIChatPage(this.page);
     await chat.openChatPanel();
-    await chat.selectTeam('Energy Prediction Team');
+    await chat.ensureChatResourcesConfigured();
+
+    // One reload isn't always enough for the newly-created team to appear - confirmed live on
+    // the staging environment (backend propagation is slower there than on qa3/staging3). Retry
+    // with a fresh reload once before giving up.
+    try {
+      await chat.selectTeam('Energy Prediction Team');
+    } catch {
+      await this.page.reload();
+      await chat.openChatPanel();
+      await chat.selectTeam('Energy Prediction Team');
+    }
     const expectedDate = daysFromNowIso(10);
     const question = testData.AIchat.EnergyPredictionQuestionTemplate.replace('{date}', expectedDate);
     await chat.askQuestion(question);

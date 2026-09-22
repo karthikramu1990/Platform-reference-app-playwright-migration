@@ -29,6 +29,9 @@ export class AIChatPage {
   private mcpTokensRefreshedMessage: Locator;
   private mcpReadingsGeneratedMessage: Locator;
 
+  // Gates the chat panel body until clicked, separate from the LLM secret key - confirmed live.
+  private setupAIResourcesButton: Locator;
+
   // Team selector (MUI Autocomplete) - confirmed live.
   private teamSelect: Locator;
 
@@ -61,6 +64,7 @@ export class AIChatPage {
     this.mcpTokensRefreshedMessage = page.getByText('MCP server tokens update completed successfully');
     this.mcpReadingsGeneratedMessage = page.getByText('Tool scripts update completed successfully');
 
+    this.setupAIResourcesButton = page.getByRole('button', { name: 'Setup AI Resources' });
     this.teamSelect = page.getByPlaceholder('Select a Team');
 
     this.chatInputBox = page.locator('textarea.chat-input');
@@ -147,6 +151,33 @@ export class AIChatPage {
     await this.settingsDialogCloseButton.click();
   }
 
+  // An instant isVisible() check right after closeSettings() can race the panel's own
+  // re-render and miss the button - confirmed live. Wait for whichever of the two shows up
+  // first instead: if "Select a Team" wins, resources are already configured, no-op; if the
+  // setup button wins, click it and then wait for "Select a Team" (button disappears within
+  // 5s of clicking, team select appears by ~15s - confirmed live).
+  //
+  // After a page.reload(), the setup button can also render as a brief transient state
+  // before the panel settles on "already configured" and swaps to the team selector on its
+  // own - confirmed live. If it vanishes before the click lands, don't treat that as a
+  // failure; just fall through to waiting for the team selector.
+  async ensureChatResourcesConfigured(timeout = 60000): Promise<void> {
+    const winner = await Promise.race([
+      this.setupAIResourcesButton.waitFor({ state: 'visible', timeout }).then(() => 'setup' as const),
+      this.teamSelect.waitFor({ state: 'visible', timeout }).then(() => 'team' as const),
+    ]);
+
+    if (winner === 'setup') {
+      try {
+        await this.setupAIResourcesButton.click({ timeout: 10000 });
+        await this.logStep('INFO: Setup AI Resources clicked');
+      } catch {
+        // Vanished on its own - fall through.
+      }
+      await this.teamSelect.waitFor({ state: 'visible', timeout });
+    }
+  }
+
   // Opens dropdown then clicks the matching option - confirmed live.
   async selectTeam(teamName: string): Promise<void> {
     await this.teamSelect.click();
@@ -160,15 +191,20 @@ export class AIChatPage {
     await this.logStep(`INFO: Asked chat: "${question}"`);
   }
 
-  // LLM + BIM query round trip can take 20-45s+.
-  async waitForResponse(timeout = 60000): Promise<string> {
+  // LLM + BIM query round trip can take 20-45s+, sometimes well past 60s under load - confirmed live.
+  async waitForResponse(timeout = 180000): Promise<string> {
     await this.chatLatestResponse.waitFor({ state: 'visible', timeout });
     return (await this.chatLatestResponse.textContent())?.trim() ?? '';
   }
 
   // Energy prediction responses render an actual mermaid xychart svg, not just text - confirmed live.
-  async responseHasChart(): Promise<boolean> {
-    return (await this.chatLatestResponse.locator('.mermaid-container svg').count()) > 0;
+  // The text response can become visible before the Mermaid syntax finishes rendering
+  // into an SVG client-side - confirmed live. Wait for it rather than checking instantly.
+  async responseHasChart(timeout = 15000): Promise<boolean> {
+    return this.chatLatestResponse.locator('.mermaid-container svg').first()
+      .waitFor({ state: 'visible', timeout })
+      .then(() => true)
+      .catch(() => false);
   }
 
   async responseHasHistoricalReference(): Promise<boolean> {
@@ -178,14 +214,20 @@ export class AIChatPage {
 
   private static readonly MONTHS = ['january','february','march','april','may','june','july','august','september','october','november','december'];
 
-  // The "Date:" line's whole surrounding structure varies between calls - confirmed live in two shapes:
-  // ISO inline prose ("Date: 2026-08-22, Day: Saturday") and a long-form bullet ("Date: Saturday, August 22, 2026").
-  // Try ISO first since it needs no month-name lookup, then fall back to the long form. Returns YYYY-MM-DD or null.
+  // The predicted date's label and surrounding structure vary between calls - confirmed live in three
+  // shapes: ISO inline prose ("Date: 2026-08-22, Day: Saturday"), a long-form bullet
+  // ("Date: Saturday, August 22, 2026"), and an unlabeled-prefix form ("Predicted day: Chennai, India,
+  // September 17, 2026, Thursday, Weekday"). Rather than chase label wording, scope to the text before
+  // "Based on:" (which only ever contains the predicted date, never historical ones) and pull the first
+  // date-shaped match there. Try ISO first since it needs no month-name lookup, then the long form.
+  // Returns YYYY-MM-DD or null.
   extractPredictedDate(response: string): string | null {
-    const isoMatch = response.match(/Date:\s*(\d{4})-(\d{2})-(\d{2})/);
+    const header = response.split(/Based on:/i)[0];
+
+    const isoMatch = header.match(/(\d{4})-(\d{2})-(\d{2})/);
     if (isoMatch) return `${isoMatch[1]}-${isoMatch[2]}-${isoMatch[3]}`;
 
-    const longMatch = response.match(/Date:\s*(?:[A-Za-z]+,\s*)?([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
+    const longMatch = header.match(/([A-Za-z]+)\s+(\d{1,2}),\s*(\d{4})/);
     if (!longMatch) return null;
     const monthIndex = AIChatPage.MONTHS.indexOf(longMatch[1].toLowerCase());
     if (monthIndex === -1) return null;
