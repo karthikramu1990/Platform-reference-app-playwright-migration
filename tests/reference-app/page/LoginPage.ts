@@ -13,8 +13,9 @@ export class LoginPage {
   constructor(page: Page) {
     this.page = page;
     this.invicaraLogo       = page.locator('.logo').first();
-    this.userName           = page.locator('[name="username"]');
-    this.loginButton        = page.getByRole('button', { name: 'Login' });
+    this.userName           = page.locator('#email-field input, [name="username"]').first();
+    // Email page button has id="loginSubmitBtn"; the password page's submit button has no id
+    this.loginButton        = page.getByRole('button', { name: 'Sign In', exact: true });
     this.passWord           = page.locator('#password');
     this.invalidUserNameMsg = page.locator('.alert.alert-danger.alert-warning');
     this.signUpButton       = page.locator('button.secondary').first();

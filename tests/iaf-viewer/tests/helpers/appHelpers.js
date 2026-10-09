@@ -8,18 +8,18 @@ import { fileURLToPath } from 'url';
 const testsDir = path.join(path.dirname(fileURLToPath(import.meta.url)), '..');
 
 export async function login(page, credentials, timeout) {
-  const emailInput = page.getByRole('textbox', { name: 'Enter your email address' });
+  const emailInput = page.locator('#email-field input, [name="username"]').first();
   await expect(emailInput).toBeVisible({ timeout });
   await emailInput.fill(credentials.email);
 
-  const loginBtn = page.getByRole('button', { name: 'Login' });
+  const loginBtn = page.getByRole('button', { name: 'Sign In', exact: true });
   await loginBtn.click();
 
-  const passwordInput = page.getByRole('textbox', { name: 'Password' });
+  const passwordInput = page.locator('#password');
   await expect(passwordInput).toBeVisible({ timeout });
   await passwordInput.fill(credentials.password);
 
-  await page.getByRole('button', { name: 'Login' }).click();
+  await page.getByRole('button', { name: 'Sign In', exact: true }).click();
 }
 
 export async function selectProject(page, projectName, userGroup, path, timeout) {
