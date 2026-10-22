@@ -25,6 +25,8 @@ test('Model Selection - Direct Viewer Click', async ({ page }) => {
       yRatio: 0.4,
     }
   );
+  // Transient "No 2D association was found..." toast overlaps the canvas; let it close first.
+  await expect(page.getByText(/No 2D association/)).toBeHidden({ timeout: CONFIG.timeout.medium });
   await expect(canvas).toHaveScreenshot('selection.png', {
     maxDiffPixelRatio: 0.02,
     timeout: CONFIG.timeout.medium
@@ -56,6 +58,7 @@ test('Model Selection - Direct Viewer Click', async ({ page }) => {
 
     expect(selection).toEqual([]);
   }
+  await expect(page.getByText(/No 2D association/)).toBeHidden({ timeout: CONFIG.timeout.medium });
   await expect(canvas).toHaveScreenshot('un-selection.png', {
     maxDiffPixelRatio: 0.02,
     timeout: CONFIG.timeout.medium

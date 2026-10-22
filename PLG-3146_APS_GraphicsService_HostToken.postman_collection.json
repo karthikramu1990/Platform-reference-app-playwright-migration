@@ -1,0 +1,331 @@
+{
+  "info": {
+    "name": "PLG-3146 - APS Graphics Service CRUD APIs use host token",
+    "description": "Retest of PLG-3146. The two APIs under Test Cases in the ticket: GET /aps/buckets and GET /aps/models.\n\nBefore running set the collection variables: graphicsBase, twinitToken, nsfilter, apsOssToken, apsViewerToken, bucketKey.\nGet apsOssToken / apsViewerToken with the token script from the Confluence page 'Dev Test Cases - APS' (needs APS_CLIENT_ID / APS_CLIENT_SECRET in the script's .env).\n\nOPEN ITEMS to confirm with Atul/dev: exact Graphics Service base path, how the host token is passed to the service (header name), and the expected status code for the viewer token.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "graphicsBase",
+      "value": "https://qa2-api.in.invicara.com/graphicssvc/api/v1",
+      "description": "Captured from Reference App network calls on qa2."
+    },
+    {
+      "key": "twinitToken",
+      "value": "",
+      "description": "Your Twinit/Platform user bearer token (login to qa2)"
+    },
+    {
+      "key": "nsfilter",
+      "value": "TestQA2_aW0qOt8s",
+      "description": "Project namespace (sent as ?nsfilter=) - TestQA2"
+    },
+    {
+      "key": "apsOssToken",
+      "value": "",
+      "description": "Token from: get-viewer-token oss"
+    },
+    {
+      "key": "apsViewerToken",
+      "value": "",
+      "description": "Token from: get-viewer-token viewable (viewables:read only)"
+    },
+    {
+      "key": "bucketKey",
+      "value": "",
+      "description": "Bucket key returned by GET /aps/buckets"
+    }
+  ],
+  "item": [
+    {
+      "name": "1 - GET /aps/buckets",
+      "item": [
+        {
+          "name": "OSS token (expect success)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Response lists buckets', () => {",
+                  "  const j = pm.response.json();",
+                  "  const items = j.items || j.buckets || j;",
+                  "  pm.expect(items).to.be.an('array');",
+                  "  if (items.length) pm.collectionVariables.set('bucketKey', items[0].bucketKey || items[0].key);",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{twinitToken}}"
+              },
+              {
+                "key": "X-APS-Token",
+                "value": "{{apsOssToken}}",
+                "description": "TODO confirm header name used to pass the host token"
+              }
+            ],
+            "url": {
+              "raw": "{{graphicsBase}}/aps/buckets?nsfilter={{nsfilter}}",
+              "host": [
+                "{{graphicsBase}}"
+              ],
+              "path": [
+                "aps",
+                "buckets"
+              ],
+              "query": [
+                {
+                  "key": "nsfilter",
+                  "value": "{{nsfilter}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Viewer token (expect rejected - no API access)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Not 200 with viewer token', () => pm.expect(pm.response.code).to.not.equal(200));",
+                  "pm.test('Auth/permission error (401/403)', () => pm.expect([401, 403]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{twinitToken}}"
+              },
+              {
+                "key": "X-APS-Token",
+                "value": "{{apsViewerToken}}",
+                "description": "TODO confirm header name used to pass the host token"
+              }
+            ],
+            "url": {
+              "raw": "{{graphicsBase}}/aps/buckets?nsfilter={{nsfilter}}",
+              "host": [
+                "{{graphicsBase}}"
+              ],
+              "path": [
+                "aps",
+                "buckets"
+              ],
+              "query": [
+                {
+                  "key": "nsfilter",
+                  "value": "{{nsfilter}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "No host token (expect error)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Fails without host token', () => pm.expect(pm.response.code).to.be.within(400, 499));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{twinitToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{graphicsBase}}/aps/buckets?nsfilter={{nsfilter}}",
+              "host": [
+                "{{graphicsBase}}"
+              ],
+              "path": [
+                "aps",
+                "buckets"
+              ],
+              "query": [
+                {
+                  "key": "nsfilter",
+                  "value": "{{nsfilter}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2 - GET /aps/models",
+      "item": [
+        {
+          "name": "OSS token (expect success)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Status is 200', () => pm.response.to.have.status(200));",
+                  "pm.test('Response lists models/objects', () => {",
+                  "  const j = pm.response.json();",
+                  "  const items = j.items || j.models || j.objects || j;",
+                  "  pm.expect(items).to.be.an('array');",
+                  "});"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{twinitToken}}"
+              },
+              {
+                "key": "X-APS-Token",
+                "value": "{{apsOssToken}}",
+                "description": "TODO confirm header name used to pass the host token"
+              }
+            ],
+            "url": {
+              "raw": "{{graphicsBase}}/aps/models?nsfilter={{nsfilter}}&bucketKey={{bucketKey}}",
+              "host": [
+                "{{graphicsBase}}"
+              ],
+              "path": [
+                "aps",
+                "models"
+              ],
+              "query": [
+                {
+                  "key": "nsfilter",
+                  "value": "{{nsfilter}}"
+                },
+                {
+                  "key": "bucketKey",
+                  "value": "{{bucketKey}}",
+                  "description": "TODO confirm how bucketKey is passed (query/config)"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Viewer token (expect rejected - no API access)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Not 200 with viewer token', () => pm.expect(pm.response.code).to.not.equal(200));",
+                  "pm.test('Auth/permission error (401/403)', () => pm.expect([401, 403]).to.include(pm.response.code));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{twinitToken}}"
+              },
+              {
+                "key": "X-APS-Token",
+                "value": "{{apsViewerToken}}",
+                "description": "TODO confirm header name used to pass the host token"
+              }
+            ],
+            "url": {
+              "raw": "{{graphicsBase}}/aps/models?nsfilter={{nsfilter}}&bucketKey={{bucketKey}}",
+              "host": [
+                "{{graphicsBase}}"
+              ],
+              "path": [
+                "aps",
+                "models"
+              ],
+              "query": [
+                {
+                  "key": "nsfilter",
+                  "value": "{{nsfilter}}"
+                },
+                {
+                  "key": "bucketKey",
+                  "value": "{{bucketKey}}"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "No host token (expect error)",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "type": "text/javascript",
+                "exec": [
+                  "pm.test('Fails without host token', () => pm.expect(pm.response.code).to.be.within(400, 499));"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{twinitToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{graphicsBase}}/aps/models?nsfilter={{nsfilter}}&bucketKey={{bucketKey}}",
+              "host": [
+                "{{graphicsBase}}"
+              ],
+              "path": [
+                "aps",
+                "models"
+              ],
+              "query": [
+                {
+                  "key": "nsfilter",
+                  "value": "{{nsfilter}}"
+                },
+                {
+                  "key": "bucketKey",
+                  "value": "{{bucketKey}}"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

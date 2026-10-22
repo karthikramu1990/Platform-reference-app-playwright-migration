@@ -36,11 +36,14 @@ export async function configureMapboxTempToken(page, mapbox, timeout) {
   await expect(usernameInput).toBeVisible({ timeout });
   await usernameInput.fill(mapbox.username);
 
-  const scopesInput = page.getByLabel(/tokens:write/);
+  // Newer "Token config" form labels scopes "Defaults to [...]" and has no expiry field.
+  const scopesInput = page.getByLabel(/tokens:write|Defaults to/);
   await scopesInput.fill(mapbox.scopes);
 
   const expiryInput = page.getByLabel(/expiry time in seconds/);
-  await expiryInput.fill(mapbox.expiry);
+  if (await expiryInput.count()) {
+    await expiryInput.fill(mapbox.expiry);
+  }
 
   const secretTokenInput = page.getByLabel('Mapbox secret token for current model');
   await secretTokenInput.fill(mapbox.secretToken);

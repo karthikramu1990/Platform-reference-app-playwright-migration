@@ -104,7 +104,7 @@ export const Locator = {
   adminRailIconGlyph: 'i.fa-user-shield',
   manageModelMenuItem: 'text=Manage Model',
   navigatorMenuTile: 'text=Navigator',
-  mapboxTempTokenConfigHeading: 'text=Mapbox temp token config',
+  mapboxTempTokenConfigHeading: 'text=/^(Mapbox temp token config|Token config)$/',
 
   cuttingPlaneToolbar: '[aria-label="Cutting Plane"]',
 

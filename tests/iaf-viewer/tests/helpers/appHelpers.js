@@ -13,10 +13,15 @@ export async function login(page, credentials, timeout) {
   await emailInput.fill(credentials.email);
 
   const loginBtn = page.getByRole('button', { name: 'Sign In', exact: true });
-  await loginBtn.click();
-
   const passwordInput = page.locator('#password');
-  await expect(passwordInput).toBeVisible({ timeout });
+
+  // Single-page sign-in shows email and password together; submitting with an
+  // empty password counts as a failed attempt and locks the account.
+  const singlePage = await passwordInput.waitFor({ state: 'visible', timeout: 5000 }).then(() => true, () => false);
+  if (!singlePage) {
+    await loginBtn.click();
+    await expect(passwordInput).toBeVisible({ timeout });
+  }
   await passwordInput.fill(credentials.password);
 
   await page.getByRole('button', { name: 'Sign In', exact: true }).click();
