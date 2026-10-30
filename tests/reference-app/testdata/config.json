@@ -7,8 +7,8 @@
   "Environments": {
     "staging": {
       "RfUrl": "https://staging.invicara.com/reference/#/",
-      "ProjectList": "5.1 Patch Release",
-      "UserGroup": "5.1 Patch Release Proj Admin",
+      "ProjectList": "5.3 Testing",
+      "UserGroup": "5.3 Testing Proj Admin",
       "Rfusername": "karthik.r@invicara.com",
       "RfPassword": "Test@123"
     },
@@ -24,15 +24,15 @@
     },
     "staging3": {
       "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "5.1 Patch Release",
-      "UserGroup": "5.1 Patch Release Proj Admin",
+      "ProjectList": "5.3 Testing",
+      "UserGroup": "5.3 Testing Proj Admin",
       "Rfusername": "karthik.r@invicara.com",
       "RfPassword": "Test@123"
     },
     "qa3": {
       "RfUrl": "https://apps.qa3.oci.in.twinit.io/reference/#/",
-      "ProjectList": "5.1 Patch Release",
-      "UserGroup": "5.1 Patch Release Proj Admin",
+      "ProjectList": "5.3 Testing",
+      "UserGroup": "5.3 Testing Proj Admin",
       "Rfusername": "karthik.r@invicara.com",
       "RfPassword": "Test@123"
     }

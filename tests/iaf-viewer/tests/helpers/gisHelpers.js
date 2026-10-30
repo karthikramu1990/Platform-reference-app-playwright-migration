@@ -14,6 +14,28 @@ export async function openGISPanel(page) {
   await expect(enableToggle).toBeVisible({ timeout: CONFIG.timeout.medium });
 }
 
+// GIS on/off is saved on the project, so a test that leaves it enabled changes the toolbar
+// (extra GIS button) for every later test on the same project. Best-effort cleanup: never
+// fails the test that called it.
+export async function resetGIS(page) {
+  try {
+    if (page.isClosed()) return;
+    const toggle = page.locator(`xpath=${Locator.enableGISToggle}`);
+    if (!(await toggle.isVisible())) {
+      const gisMenu = page.locator(`xpath=${Locator.gisMenu}`);
+      if (!(await gisMenu.isVisible())) return;
+      await gisMenu.click({ timeout: 10000 });
+      await toggle.waitFor({ state: 'visible', timeout: 10000 });
+    }
+    if (await toggle.isChecked()) {
+      await toggle.click({ timeout: 10000 });
+      await expect(toggle).not.toBeChecked({ timeout: 30000 });
+    }
+  } catch (e) {
+    console.warn(`resetGIS: could not switch GIS off - ${e.message.split('\n')[0]}`);
+  }
+}
+
 export async function enableGIS(page) {
   const toggle = page.locator(`xpath=${Locator.enableGISToggle}`);
   await expect(toggle).toBeVisible({ timeout: CONFIG.timeout.medium });

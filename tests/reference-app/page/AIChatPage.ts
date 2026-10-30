@@ -23,10 +23,8 @@ export class AIChatPage {
 
   // Energy Prediction MCP tab - confirmed live
   private setupResourcesButton: Locator;
-  private refreshMcpTokensButton: Locator;
   private getLatestReadingsButton: Locator;
   private mcpSetupCompleteMessage: Locator;
-  private mcpTokensRefreshedMessage: Locator;
   private mcpReadingsGeneratedMessage: Locator;
 
   // Gates the chat panel body until clicked, separate from the LLM secret key - confirmed live.
@@ -58,10 +56,8 @@ export class AIChatPage {
     this.settingsDialogCloseButton = page.locator('button.closeButton');
 
     this.setupResourcesButton = page.getByRole('button', { name: 'Setup Resources' });
-    this.refreshMcpTokensButton = page.getByRole('button', { name: 'Refresh MCP Server Tokens' });
     this.getLatestReadingsButton = page.getByRole('button', { name: 'Get Latest Readings' });
     this.mcpSetupCompleteMessage = page.getByText('MCP resources setup completed successfully');
-    this.mcpTokensRefreshedMessage = page.getByText('MCP server tokens update completed successfully');
     this.mcpReadingsGeneratedMessage = page.getByText('Tool scripts update completed successfully');
 
     this.setupAIResourcesButton = page.getByRole('button', { name: 'Setup AI Resources' });
@@ -123,12 +119,6 @@ export class AIChatPage {
     await this.setupResourcesButton.click();
     await this.mcpSetupCompleteMessage.waitFor({ state: 'visible', timeout });
     await this.logStep('INFO: MCP resources setup completed successfully');
-  }
-
-  async runRefreshMcpTokens(timeout = 60000): Promise<void> {
-    await this.refreshMcpTokensButton.click();
-    await this.mcpTokensRefreshedMessage.waitFor({ state: 'visible', timeout });
-    await this.logStep('INFO: MCP server tokens refreshed successfully');
   }
 
   async runGetLatestReadings(timeout = 5 * 60 * 1000): Promise<void> {

@@ -1,0 +1,750 @@
+{
+  "release": "5.3",
+  "owner": "Karthik Ramu",
+  "plg_version": "Platform V5.3",
+  "pa_version": "Reference App V5.3",
+  "data_loaded": true,
+  "generated": "October 29, 2026",
+  "worked_filter": "project = PLG AND fixVersion = \"Platform V5.3\" AND assignee in (Karthik, Atul, Raja) AND reporter in (Karthik, Atul, Raja) AND statusCategory = Done",
+  "pa_worked_jql": "PA-1932 (Reference App V5.3, assignee Karthik Ramu, reporter Atul Kulkarni, Done)",
+  "plg_bugs_total": null,
+  "pa_bugs_total": null,
+  "plg_defects": [
+    {
+      "key": "PLG-2924",
+      "summary": "Mapbox remains activated after the GIS license is completely removed in Example view",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3128",
+      "summary": "\"Composer\" modelling tool mistranslated as music composer (de, ko, zh, gu, ml, bn) and ambiguous in fr, es, it, pt",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3130",
+      "summary": "Inconsistent \"Viewer\" terminology/digits across 2D/3D Viewer labels (Tamil, Marathi, Bengali)",
+      "priority": "Minor",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3144",
+      "summary": "UX-UI - 2D,3D,MapBox Widgets zoom in and out is not working (reported by Raja Rajendraprasath)",
+      "priority": "Major",
+      "status": "Done"
+    }
+  ],
+  "pa_defects": [
+    {
+      "key": "PA-1908",
+      "summary": "QA2 – AI Chat Returns Incorrect Response for “Find AC Unit cassettes” and also bim query team is missing",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1920",
+      "summary": "Reference App - Manage Model: Unable to upload model due to \"Invalid URL\" error",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1921",
+      "summary": "Reference App - Manage Model: Model import remains in progress for a long time after successful upload",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1923",
+      "summary": "Latest model version not appearing as expected",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1926",
+      "summary": "Unable to upload the model getting error in console",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1927",
+      "summary": "Project Selection screen remains stuck intermittently on “Loading your project information …” for an extended period and does not display the available projects.",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1930",
+      "summary": "Reference App Becomes Unresponsive After Long Inactive Session and Re-Login",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1937",
+      "summary": "Unable to Enable GIS for Existing Projects - \"No License Found\" Error",
+      "priority": "Major",
+      "status": "Done"
+    },
+    {
+      "key": "PA-1943",
+      "summary": "Regression - Element Properties panel overlaps the Navigator UI and sidebar content and chat icon overlapping in element name",
+      "priority": "Major",
+      "status": "Done"
+    }
+  ],
+  "plg_worked": [
+    {
+      "key": "PLG-1839",
+      "summary": "EVM - APS 1.0 - Standalone, Properties (Config, Camera, Cutting Planes, Navigation, Rendering Callbacks), Examples",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-2833",
+      "summary": "Support Ticket - Jon Wong - View2d - Expose callback and property to deal with 2D Drawing sheets",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": "In progress"
+    },
+    {
+      "key": "PLG-2901",
+      "summary": "Support Ticket - Enhancement - Cesar - Apps: Space: New Navigator: Facing issues with Deselect/Select, Zoom and Highlight",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": "Need to do"
+    },
+    {
+      "key": "PLG-2924",
+      "summary": "Mapbox remains activated after the GIS license is completely removed in Example view",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-2941",
+      "summary": "Support Ticket - Dominica - IafViewer - ArcGIS _addLine / _addMesh graphics throw Graphic/Mesh are not defined",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": "Need to do"
+    },
+    {
+      "key": "PLG-2942",
+      "summary": "IafViewer EVM - View3d - GeoBimView3d (ESRI LIKE) Side By Side",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-2948",
+      "summary": "Enhanced Viewing Modes - Multiple IafViewer View3d Instances should render relative (not absolute) spinners",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-2958",
+      "summary": "IafViewer Internationalisation & Examples",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": "Need to do"
+    },
+    {
+      "key": "PLG-2984",
+      "summary": "Regression - View3d - Keyboard Walk Mode if enabled, does not work",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3052",
+      "summary": "Support Ticket - Ashutosh - Regression - modelVersionId falls back to the first version",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3055",
+      "summary": "IafViewer EVM - APS - Model Composition + APS GeoBim (ESRI LIKE) Side By Side",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3108",
+      "summary": "EVM APS 1.1 - Design Optional GIS Overlay",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3111",
+      "summary": "The right-toolbar toggle brings 2D back the same way 3D already did, without reloading",
+      "type": "Sub-task",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3128",
+      "summary": "\"Composer\" modelling tool mistranslated as music composer (de, ko, zh, gu, ml, bn) and ambiguous in fr, es, it, pt",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3130",
+      "summary": "Inconsistent \"Viewer\" terminology/digits across 2D/3D Viewer labels (Tamil, Marathi, Bengali)",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3144",
+      "summary": "UX-UI - 2D,3D,MapBox Widgets zoom in and out is not working",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3145",
+      "summary": "GIS - Outline Mode - Regression - Outline Models (Project View, Geo Referenced View3d, etc.) do not load at times",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3146",
+      "summary": "APS 1.1 - Graphics Service CRUD Apis do not use host token",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3151",
+      "summary": "IafViewer GIS Examples - Outline Model Load errors in console while running GIS examples in 5.3",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3154",
+      "summary": "Backward Compatibility Manual Tests - qa2 against 5.3, 5.2, 5.1",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3163",
+      "summary": "5.3 QUALITY - Local Storage / Settings / Projection overwrites GIS Projection from Perspective to Orthographic",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    },
+    {
+      "key": "PLG-3164",
+      "summary": "5.3 QUALITY - GIS - Clustered Geo-Referenced View3d fails to load id mappings for views after index 6",
+      "type": "Bug",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    }
+  ],
+  "pa_worked": [
+    {
+      "key": "PA-1932",
+      "summary": "Create APS (Mapbox like) Tokens in Ref App",
+      "type": "Story",
+      "assignee": "Karthik Ramu",
+      "status": "Done",
+      "automation": ""
+    }
+  ],
+  "tests": [
+    {
+      "key": "PLG-3029",
+      "summary": "PLG-1839 - Verify EVM APS Autodesk Format Files Load with Correct Product Depth",
+      "tests_ticket": "PLG-1839",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3030",
+      "summary": "PLG-2833 - Verify View2d Exposes Sheet Callback and Property for 2D Drawing Sheet Navigation",
+      "tests_ticket": "PLG-2833",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3031",
+      "summary": "PLG-2846 - Verify Navigator Initial Selection Populates Entities Correctly After React 18 Upgrade",
+      "tests_ticket": "PLG-2846",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3032",
+      "summary": "PLG-2857 - Verify IPA Revit Plugin Supports scz Segmentation by Linked Files and Discipline Layers",
+      "tests_ticket": "PLG-2857",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3033",
+      "summary": "PLG-2889 - Verify IPA AutoCAD Plugin Export Performance Improved and Output File Size Reduced",
+      "tests_ticket": "PLG-2889",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3034",
+      "summary": "PLG-2890 - Verify IPA AutoCAD Plugin Exports Dimension Geometry Correctly",
+      "tests_ticket": "PLG-2890",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3035",
+      "summary": "PLG-2892 - Verify IPA AutoCAD Plugin Exports Embedded Images in 2D DWG",
+      "tests_ticket": "PLG-2892",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3036",
+      "summary": "PLG-2901 - Verify Navigator Deselect, Select, Zoom and Highlight Operations Function Correctly",
+      "tests_ticket": "PLG-2901",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3037",
+      "summary": "PLG-2919 - Verify IPA Plugins Show Clear Error When Bimpk Upload Conflicts with Incomplete Upload by Another User",
+      "tests_ticket": "PLG-2919",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3038",
+      "summary": "PLG-2924 - Verify Mapbox is Deactivated After GIS License is Removed in Example View",
+      "tests_ticket": "PLG-2924",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3039",
+      "summary": "PLG-2941 - Verify IafViewer ArcGIS _addLine and _addMesh Methods Work Without Errors",
+      "tests_ticket": "PLG-2941",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3040",
+      "summary": "PLG-2942 - Verify GeoBimView3d Side By Side Mode and Camera Synchronisation Work Correctly",
+      "tests_ticket": "PLG-2942",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3041",
+      "summary": "PLG-2948 - Verify Multiple IafViewer View3d Instances Render Relative Spinners in GeoBim View3d",
+      "tests_ticket": "PLG-2948",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3042",
+      "summary": "PLG-2958 - Verify IafViewer Internationalisation Renders UI Labels and Examples in Selected Locale",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3043",
+      "summary": "PLG-2967 - Verify Programmatic Cutting Planes Work on Both Optimized and Unoptimized Models",
+      "tests_ticket": "PLG-2967",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3044",
+      "summary": "PLG-2984 - Verify Keyboard Walk Mode Works Correctly in View3d",
+      "tests_ticket": "PLG-2984",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3045",
+      "summary": "PLG-2989 - Verify GIS Map Centers on Primary Model Outline When gis.initial.center is None",
+      "tests_ticket": "PLG-2989",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3067",
+      "summary": "PLG-2958 - TC01 - Verify Default English Locale is Applied When No i18n Prop is Passed",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3068",
+      "summary": "PLG-2958 - TC02 - Verify Viewer Chrome Switches to a Shipped Non-English Locale (Japanese)",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3069",
+      "summary": "PLG-2958 - TC03 - Verify All 16 Non-English Shipped Locales Render Correctly",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3070",
+      "summary": "PLG-2958 - TC04 - Verify Unknown Locale Falls Back to English",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3071",
+      "summary": "PLG-2958 - TC05 - Verify Partial Message Overrides via the messages Prop",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3072",
+      "summary": "PLG-2958 - TC06 - Verify Message Overrides on a Non-English Locale",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3073",
+      "summary": "PLG-2958 - TC07 - Verify Custom fontFamily Prop Replaces the Derived Font Stack",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3074",
+      "summary": "PLG-2958 - TC08 - Verify Custom fonts Prop Appends Fonts to the Markup Style Dropdown",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3075",
+      "summary": "PLG-2958 - TC09 - Verify i18n Prop Changes at Runtime Apply Immediately",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3076",
+      "summary": "PLG-2958 - TC10 - Verify Viewer Chrome is Localised but Model Content is Not",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3077",
+      "summary": "PLG-2958 - TC11 - Verify IafViewer Examples Gallery Locale Works Independently of Viewer Chrome",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3078",
+      "summary": "PLG-2958 - TC12 - Verify Toolbar Layout Handles Localised Long Strings Correctly",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    },
+    {
+      "key": "PLG-3079",
+      "summary": "PLG-2958 - TC13 - Verify Property Store i18n Defaults are Overridden by Host-Supplied i18n Prop",
+      "tests_ticket": "PLG-2958",
+      "status": "Done"
+    }
+  ],
+  "extra_notes": [
+    "Your tracker listed PLG-3114 with the title of PLG-3144 (UX-UI - 2D,3D,MapBox Widgets zoom in and out is not working); PLG-3144 (assignee Karthik Ramu, reporter Raja Rajendraprasath, Done) is used. PLG-3144 has no fix version in Jira, so it is added by hand and the PLG defect list includes it although Raja reported it.",
+    "PLG-2967 (assignee and reporter Atul Kulkarni, no 5.3 fix version) does not meet the assignee and reporter rule and is not counted.",
+    "All 23 test cases are shown as Done on the tester's confirmation that they were completed; the Xray Test issues in Jira still show To Do and need updating. Tests linked to other 5.3 tickets are not counted, and no PA tests are linked to the worked tickets.",
+    "All 30 Xray test cases (PLG, fix version Platform V5.3, assignee Karthik Ramu) are Done in Jira."
+  ],
+  "tests_loaded": true,
+  "provisional_notes": [
+    "Release notes list features only and are drafted from the ticket titles; check them against the Scrum Presentation 5.3 page, which could not be read."
+  ],
+  "release_notes": [
+    {
+      "theme": "APS (Autodesk) viewing",
+      "text": "APS Standalone viewer with configurable properties (config, camera, cutting planes, navigation, rendering callbacks) and examples; APS with Model Composition and Geo BIM side by side; Graphics Service APIs use the host token; APS tokens created from the Reference App; design for an optional GIS overlay."
+    },
+    {
+      "theme": "GIS and federated viewing",
+      "text": "Geo BIM View3D: a Mapbox map with each building opening in its own side-by-side View3D pane."
+    },
+    {
+      "theme": "Viewer",
+      "text": "2D drawing-sheet callback and property for host apps; improved Navigator select, deselect, zoom and highlight; 2D/3D toggle without reloading."
+    },
+    {
+      "theme": "Internationalisation",
+      "text": "IafViewer interface and examples in 17 languages: English, Japanese, Korean, Chinese (Simplified), Hindi, Telugu, Tamil, Kannada, Marathi, Gujarati, Malayalam, Bengali, German, French, Spanish, Italian and Portuguese (Brazil)."
+    },
+    {
+      "theme": "Compatibility",
+      "text": "Release validated against 5.2 and 5.1 on qa2 with developer sign-off."
+    }
+  ],
+  "sanity": {
+    "title": "Backward compatibility sanity — qa2 against 5.3, 5.2, 5.1",
+    "desc": "Environment: qa2. Latest builds: 5.3.0-pre.28, 5.2.4, 5.1.18-pre.5. Developer sign-off in PLG-3173 by Atul Kulkarni and Raja Rajendraprasath (October 26, 2026); bugs found were logged on the 5.3 QA Observations page.",
+    "columns": [
+      "5.3 Latest (5.3.0-pre.28)",
+      "5.2 Latest (5.2.4)",
+      "5.1 Latest (5.1.18-pre.5)"
+    ],
+    "rows": [
+      {
+        "check": "1. Viewer opens and the default model loads",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "2. 3D model renders",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "3. 2D drawing opens",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "4. Orbit, pan, and zoom",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "5. Select an element and clear the selection",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "6. Isolate an element and restore the full model",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "7. Isolation stays after a refresh",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "8. Model composer shows and hides models",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "9. Composer quality switch (low and high)",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "10. Create a composer tag and toggle it",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "11. Default View switch",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "12. Cutting planes on and off",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "13. Distance measurement",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "14. Draw and delete an annotation",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "15. Markup text",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "16. Play an animation",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "17. GIS map loads",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "18. GIS elevation and terrain",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "19. GIS model alignment (drag and reset)",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "20. Mapbox standalone view",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "21. Clustered geo-referenced 3D view",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "22. ArcGIS standalone view",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "23. Photosphere view",
+        "results": [
+          "Checked",
+          "Checked",
+          "Not Applicable"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "24. Unreal Engine standalone view",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "25. Camera bookmark save and restore",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "26. Element properties panel opens on selection",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      },
+      {
+        "check": "27. Viewer resize and reload without a blank canvas",
+        "results": [
+          "Checked",
+          "Checked",
+          "Checked"
+        ],
+        "notes": ""
+      }
+    ]
+  }
+}

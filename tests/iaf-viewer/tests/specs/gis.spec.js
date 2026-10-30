@@ -1,8 +1,13 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
 import { closeDrawer, getDropdown, login, openDrawer, selectElementOnCanvas, selectProject, setup, verifyViewerScreenshot, verifyGISScreenshot, waitForAnnotationsEnabled, waitForApplicationLoad, waitForGISEnabled, waitForModelcomposerEnabled, setSliderValue } from '../helpers/appHelpers.js';
-import { openGISPanel, enableGIS, disableGIS } from '../helpers/gisHelpers.js';
+import { openGISPanel, enableGIS, disableGIS, resetGIS } from '../helpers/gisHelpers.js';
 import { Locator } from '../helpers/locators.js';
+
+// GIS state is saved on the shared project; switch it off so later toolbar baselines are unaffected.
+test.afterEach(async ({ page }) => {
+  await resetGIS(page);
+});
 
 test('GIS Viewer - Enable and Disable GIS', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);

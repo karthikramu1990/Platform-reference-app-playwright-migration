@@ -12,19 +12,22 @@ export async function login(page, credentials, timeout) {
   await expect(emailInput).toBeVisible({ timeout });
   await emailInput.fill(credentials.email);
 
-  const loginBtn = page.getByRole('button', { name: 'Sign In', exact: true });
-  const passwordInput = page.locator('#password');
+  // Sign-in is two pages: the platform email page, then the Keycloak password page
+  // (URL contains /realms/). The email page also holds hidden password inputs, so detect
+  // the step by URL, not by field presence. Never submit the Keycloak page with an empty
+  // password: that counts as a failed attempt and locks the account.
+  const submitBtn = page.getByRole('button', { name: /^(Sign In|Login)$/ }).first();
+  const onPasswordPage = () => /\/realms\//.test(page.url());
 
-  // Single-page sign-in shows email and password together; submitting with an
-  // empty password counts as a failed attempt and locks the account.
-  const singlePage = await passwordInput.waitFor({ state: 'visible', timeout: 5000 }).then(() => true, () => false);
-  if (!singlePage) {
-    await loginBtn.click();
-    await expect(passwordInput).toBeVisible({ timeout });
+  if (!onPasswordPage()) {
+    await submitBtn.click();
+    await page.waitForURL(/\/realms\//, { timeout });
   }
-  await passwordInput.fill(credentials.password);
 
-  await page.getByRole('button', { name: 'Sign In', exact: true }).click();
+  const passwordInput = page.locator('#password');
+  await expect(passwordInput).toBeVisible({ timeout });
+  await passwordInput.fill(credentials.password);
+  await submitBtn.click();
 }
 
 export async function selectProject(page, projectName, userGroup, path, timeout) {
@@ -84,8 +87,13 @@ export async function createProject(page, credentials, project, timeout) {
   await expect(agreeBtn).toBeVisible({ timeout });
   await agreeBtn.click();
 
+  // Fail fast if the platform reports a setup error rather than waiting out the full setup timeout.
   const doneBtn = page.getByRole('button', { name: 'Done' });
-  await expect(doneBtn).toBeVisible({ timeout: CONFIG.timeout.projectSetup });
+  const setupError = page.getByText('Setup did not complete');
+  await expect(doneBtn.or(setupError)).toBeVisible({ timeout: CONFIG.timeout.projectSetup });
+  if (await setupError.isVisible()) {
+    throw new Error(`Project setup for "${project.name}" failed: "Setup did not complete. An error occured during setup!"`);
+  }
   await doneBtn.click();
 
   await selectProject(page, project.name, `${project.name} Proj Admin`, 'Navigator', timeout);
@@ -250,6 +258,58 @@ export async function measureElapsed(action) {
   const start = Date.now();
   await action();
   return Date.now() - start;
+}
+
+// Records whether `text` appears in the page at any point after this call, so short-lived
+// notifications are not missed. Call before the action that triggers the notification,
+// then await the returned function to assert it was shown.
+export async function watchForText(page, text) {
+  const key = `__seenText_${Math.random().toString(36).slice(2)}`;
+  await page.evaluate(([k, t]) => {
+    window[k] = false;
+    const check = () => {
+      if (!window[k] && document.body.textContent.includes(t)) {
+        window[k] = true;
+        window[`${k}_mo`]?.disconnect();
+      }
+    };
+    window[`${k}_mo`] = new MutationObserver(check);
+    window[`${k}_mo`].observe(document.body, { subtree: true, childList: true, characterData: true });
+    check();
+  }, [key, text]);
+
+  return async (timeout) => {
+    await page.waitForFunction((k) => window[k] === true, key, { timeout })
+      .catch(() => { throw new Error(`Expected notification "${text}" to appear within ${timeout}ms`); });
+  };
+}
+
+// Same as watchForText, for an element (e.g. a spinner) that may only be visible briefly.
+export async function watchForSelector(page, selector) {
+  const key = `__seenSel_${Math.random().toString(36).slice(2)}`;
+  await page.evaluate(([k, sel]) => {
+    window[k] = false;
+    const check = () => {
+      const el = document.querySelector(sel);
+      if (!window[k] && el && el.getClientRects().length > 0 && getComputedStyle(el).visibility !== 'hidden') {
+        window[k] = true;
+        window[`${k}_mo`]?.disconnect();
+      }
+    };
+    window[`${k}_mo`] = new MutationObserver(check);
+    window[`${k}_mo`].observe(document.body, { subtree: true, childList: true, attributes: true });
+    check();
+  }, [key, selector]);
+
+  return async (timeout) => {
+    await page.waitForFunction((k) => window[k] === true, key, { timeout })
+      .catch(() => { throw new Error(`Expected "${selector}" to become visible within ${timeout}ms`); });
+  };
+}
+
+// Locator strings for notifications are written as 'text=...'; returns just the text.
+export function notificationText(locator) {
+  return locator.replace(/^text=/, '');
 }
 
 export function getDropdown(page, label) {
@@ -584,6 +644,9 @@ export async function verifyGISScreenshot(page, name) {
 
   const interactHeader = page.locator(`xpath=${Locator.gisInteractSectionHeader}`);
   await expect(interactHeader).toBeVisible({ timeout: 60000 });
+
+  // Transient toast overlaps the map; capture once it has closed.
+  await expect(page.locator(Locator.disciplineVisibilityUpdatingNotification)).toBeHidden({ timeout: 60000 });
 
   await expect(page).toHaveScreenshot(`${name}.png`, {
     maxDiffPixelRatio: 0.03,

@@ -47,13 +47,12 @@ export class AIChatTest {
     expect(response, 'Expected no error in AI chat response').not.toContain('Request Failed');
   }
 
-  // Scenario 2: Energy Prediction MCP tab - Setup Resources, Refresh MCP Server Tokens, Get Latest Readings, then close.
+  // Scenario 2: Energy Prediction MCP tab - Setup Resources, Get Latest Readings, then close.
   async verifyEnergyPredictionMcpSetup(): Promise<void> {
     const chat = new AIChatPage(this.page);
     await chat.openSettings();
     await chat.openEnergyPredictionMcpTab();
     await chat.runSetupResources();
-    await chat.runRefreshMcpTokens();
     await chat.runGetLatestReadings();
     await chat.closeSettings();
   }

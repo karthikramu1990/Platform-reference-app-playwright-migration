@@ -250,6 +250,8 @@ test('Viewer Toolbar - 3D Viewer', async ({ page }) => {
 
   await viewer3DBtn.click();
   await page.waitForLoadState('networkidle');
+  // Transient "mapping datasets have been loaded" toast overlaps the page; let it close first.
+  await expect(page.getByText(/The mapping datasets have been loaded/)).toBeHidden({ timeout: CONFIG.timeout.medium });
   await expect(page).toHaveScreenshot('3DViewer-Disabled.png', { maxDiffPixelRatio: 0.03 });
 
   await viewer3DBtn.click();
