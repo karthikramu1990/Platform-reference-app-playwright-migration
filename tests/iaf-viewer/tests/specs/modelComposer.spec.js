@@ -6,6 +6,8 @@ import { Locator } from '../helpers/locators.js';
 import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
 
+// SKIPPED 2026-11-02: window.generateModelComposerBenchmark is only attached in non-production builds
+// (src/callbacks/viewerDevTools.js), so it does not exist on qa2. Run against a local dev build.
 test.skip('Model Composer - Node Counts', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
   await setup(page, "model");

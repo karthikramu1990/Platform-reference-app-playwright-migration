@@ -220,8 +220,18 @@ export const getPanels = (page, panelName) => {
 };
 
 export async function setupWithAccount(page, credentials, projectName, userGroup, panel = null, loadTimeout = CONFIG.timeout.medium) {
+  // On a loaded environment the sign-in page or the post-login Project Selection screen
+  // occasionally never renders; one reload recovers it.
+  const appeared = (locator) => locator.waitFor({ state: 'visible', timeout: CONFIG.timeout.medium }).then(() => true, () => false);
+
   await page.goto(CONFIG.url);
+  if (!(await appeared(page.locator('#email-field input, [name="username"]').first()))) {
+    await page.reload();
+  }
   await login(page, credentials, CONFIG.timeout.medium);
+  if (!(await appeared(page.getByText('Project Selection')))) {
+    await page.goto(CONFIG.url);
+  }
   await selectProject(page, projectName, userGroup, "Navigator", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, loadTimeout);
   if (panel) {
@@ -516,10 +526,14 @@ export async function verifyViewerScreenshot(page, name, canvasContainer = Locat
     }
   });
 
-  await expect(canvas).toHaveScreenshot(`${name}.png`, {
-    maxDiffPixelRatio: 0.03,
-    timeout: 30000
-  });
+  // Camera moves (zoom-to-isolation, bookmark restore) and toasts can land after the frame
+  // first looks stable on a slow environment; keep comparing until the view settles.
+  await expect(async () => {
+    await expect(canvas).toHaveScreenshot(`${name}.png`, {
+      maxDiffPixelRatio: 0.03,
+      timeout: 15000
+    });
+  }).toPass({ timeout: 120000, intervals: [5000] });
 }
 
 export async function toggleLayers(page, keys, enable = true) {

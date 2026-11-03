@@ -1,6 +1,6 @@
 import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
-import { setup, setupAndClickModel, verifyViewerScreenshot, waitForApplicationLoad } from '../helpers/appHelpers.js';
+import { setup, setupAndClickModel, verifyViewerScreenshot, waitForApplicationLoad, waitForGraphicsSettle } from '../helpers/appHelpers.js';
 import { clickViewOption, clickShadingOption, openCuttingPlane, dragPlaneSlider, selectElement, dragLocator, verifyCuttingPlaneScreenshot } from '../helpers/viewerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 
@@ -348,6 +348,8 @@ test('Viewer Toolbar - Focus Mode Enable', async ({ page }) => {
   await setup(page);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
+  // Selecting before the scene finishes streaming can drop the camera fit; let it settle first.
+  await waitForGraphicsSettle(page);
   await selectElement(page);
   await verifyViewerScreenshot(page, 'FocusMode-Enabled');
 });

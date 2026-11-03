@@ -2,8 +2,9 @@ import { test, expect } from './baseTest.js';
 import { CONFIG } from '../config.js';
 import { selectElementOnCanvas, ensureToggle, expectSliders, getSlider, getToggle, login, selectProject, setRangeValue, setSliderByAria, waitForApplicationLoad, waitForGraphicsSettle, waitForCuttingPlaneEnabled, waitForModelcomposerEnabled } from '../helpers/appHelpers.js';
 import { Locator, Notifications } from '../helpers/locators.js';
+import { dragPlaneSlider, openCuttingPlane } from '../helpers/viewerHelpers.js';
 
-test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
+test('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
   await page.goto(CONFIG.url);
@@ -11,14 +12,10 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   await selectProject(page, CONFIG.project, CONFIG.userGroup, "Navigator", CONFIG.timeout.medium);
   await waitForApplicationLoad(page, CONFIG.timeout.medium);
 
-  await page.waitForTimeout(20000);
+  await waitForGraphicsSettle(page);
 
-  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
-
-  await waitForModelcomposerEnabled(page, CONFIG.timeout.medium);
-
-  await waitForCuttingPlaneEnabled(page,  CONFIG.timeout.medium)
-  const standardPlane = page.getByText(Locator.standardPlanes, { exact: true }).first();
+  await openCuttingPlane(page);
+  const standardPlane = page.locator(`xpath=${Locator.standardPlanes}`);
   await standardPlane.click();
 
   const container = standardPlane.locator('xpath=ancestor::div[4]');
@@ -77,7 +74,7 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
 
   console.log('All subtitle texts:', allTexts);
 
-  const focusedPlanesTitle = subTitles.filter({ hasText: Locator.focusedPlanes }).first();
+  const focusedPlanesTitle = subTitles.filter({ hasText: 'Focused Planes' }).first();
 
   console.log('Focused planes count:', await focusedPlanesTitle.count());
 
@@ -92,7 +89,7 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   );
   await expect(focusedPlanesContainer).toBeVisible({ timeout: CONFIG.timeout.medium });
 
-  const focusedPlanesSwitch = getToggle(focusedPlanesContainer, Locator.focusedPlanes);
+  const focusedPlanesSwitch = getToggle(focusedPlanesContainer, 'Focused Planes');
   await ensureToggle(focusedPlanesSwitch, true);
 
   await expect(page).toHaveScreenshot('focused-planes-toggle-off.png', {
@@ -124,10 +121,11 @@ test.skip('Cutting Planes - Sliders + Toggle', async ({ page }) => {
   const targets = [10, 50, 100];
 
   for (const target of targets) {
-    await setRangeValue(sizeSlider, target);
-    await expect(sizeSlider).toHaveValue(String(target), {
-      timeout: CONFIG.timeout.medium
-    });
+    // The MUI slider ignores a value written straight to its input, so click the rail instead.
+    await dragPlaneSlider(page, 'focusedPlanesSizeSlider', target);
+    await expect
+      .poll(async () => Math.abs(Number(await sizeSlider.inputValue()) - target), { timeout: CONFIG.timeout.medium })
+      .toBeLessThanOrEqual(2);
     await expect(changeFocusButton).toBeEnabled({
       timeout: CONFIG.timeout.medium,
     });

@@ -163,8 +163,7 @@ test('Annotations - Polygon', async ({ page }) => {
   await clearAnnotations(page, annotationsBtn);
 });
 
-// SKIPPED 2026-10-29: times out on qa2 (model / page load exceeds the wait) in the full parallel run, even on retry. Not a product bug - re-enable once qa2 load times are stable.
-test.skip('Annotations - Leader Note', async ({ page }) => {
+test('Annotations - Leader Note', async ({ page }) => {
   test.setTimeout(CONFIG.timeout.long);
 
   await setup(page);
