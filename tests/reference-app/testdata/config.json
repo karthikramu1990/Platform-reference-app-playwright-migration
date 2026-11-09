@@ -1,16 +1,12 @@
 {
   "Env": "qa2",
   "Browser": "chrome",
-  "Rfusername": "automationref@yopmail.com",
-  "RfPassword": "Test@123",
   "Headless": "no",
   "Environments": {
     "staging": {
       "RfUrl": "https://staging.invicara.com/reference/#/",
       "ProjectList": "5.3 Testing",
-      "UserGroup": "5.3 Testing Proj Admin",
-      "Rfusername": "karthik.r@invicara.com",
-      "RfPassword": "Test@123"
+      "UserGroup": "5.3 Testing Proj Admin"
     },
     "qa1": {
       "RfUrl": "https://apps.qa1.oci.in.twinit.io/reference/#/",
@@ -25,16 +21,12 @@
     "staging3": {
       "RfUrl": "https://apps.staging3.oci.in.twinit.io/reference/#/",
       "ProjectList": "5.3 Testing",
-      "UserGroup": "5.3 Testing Proj Admin",
-      "Rfusername": "karthik.r@invicara.com",
-      "RfPassword": "Test@123"
+      "UserGroup": "5.3 Testing Proj Admin"
     },
     "qa3": {
       "RfUrl": "https://apps.qa3.oci.in.twinit.io/reference/#/",
       "ProjectList": "5.3 Testing",
-      "UserGroup": "5.3 Testing Proj Admin",
-      "Rfusername": "karthik.r@invicara.com",
-      "RfPassword": "Test@123"
+      "UserGroup": "5.3 Testing Proj Admin"
     }
   }
 }

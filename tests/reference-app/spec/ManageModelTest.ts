@@ -2,6 +2,7 @@ import { Page } from '@playwright/test';
 import { HomePage } from '../page/HomePage';
 import { ManageModelPage } from '../page/ManageModelPage';
 import testData from '../testdata/TestData.json';
+import { mapboxSecretToken } from '../testdata/env';
 
 export class ManageModelTest {
   private page: Page;
@@ -33,7 +34,7 @@ export class ManageModelTest {
     await mp.enterMapBoxUserName(testData.ManageModel.MapboxUsername);
     await mp.enterMapBoxScopes(testData.ManageModel.MapboxScopes);
     await mp.enterMapBoxExpiry(testData.ManageModel.MapboxExpiry);
-    await mp.enterMapBoxSecretToken(testData.ManageModel.MapboxSecretToken);
+    await mp.enterMapBoxSecretToken(mapboxSecretToken());
     await mp.clickAddTempTokenConfig();
     await mp.verify_MapboxActivation();
   }

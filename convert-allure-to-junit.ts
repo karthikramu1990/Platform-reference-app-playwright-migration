@@ -2,7 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 const ALLURE_RESULTS = path.join(process.cwd(), 'allure-results');
-const OUTPUT_FILE = path.join(process.cwd(), 'test-results', 'results.xml');
+// Allure results only come from the Reference App suite.
+const OUTPUT_FILE = path.join(process.cwd(), 'test-results', 'reference-app', 'xray-results.xml');
 
 interface AllureResult {
   uuid: string;

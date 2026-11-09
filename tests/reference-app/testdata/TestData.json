@@ -24,8 +24,7 @@
     "ViewApiConfig": "View API Config",
     "MapboxUsername": "dc23",
     "MapboxScopes": "[\"tokens:write\", \"styles:read\", \"datasets:read\", \"map:read\", \"fonts:read\"]",
-    "MapboxExpiry": "3600",
-    "MapboxSecretToken": "sk.eyJ1IjoiZGMyMyIsImEiOiJjbTlpdTZteXAwMzV5MmxzOTgwZG16Z3lsIn0.qJFEpElxYsZzFtMEeneYvg"
+    "MapboxExpiry": "3600"
   },
   "GIS": {
     "MapSettings": [

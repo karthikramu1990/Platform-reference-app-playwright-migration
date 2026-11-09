@@ -7,8 +7,25 @@ dotenv.config();
 
 const JIRA_EMAIL = process.env.JIRA_EMAIL;
 const JIRA_API_TOKEN = process.env.JIRA_API_TOKEN;
-const XRAY_ENDPOINT = 'https://invicara.atlassian.net/rest/raven/1.0/import/execution/junit?projectKey=PLG';
-const RESULTS_FILE = path.join(process.cwd(), 'test-results', 'results.xml');
+// Which results to upload (one is required, so one app's results are never sent as the other's):
+//   --app=reference-app | --app=iaf-viewer   (or XRAY_APP)
+//   XRAY_RESULTS_FILE   - explicit path to a JUnit XML; overrides --app
+//   XRAY_TEST_EXEC_KEY  - upload into an existing Test Execution (default: create a new one)
+const APP_RESULTS: Record<string, string> = {
+  'reference-app': path.join('test-results', 'reference-app', 'xray-results.xml'),
+  'iaf-viewer': path.join('test-results', 'iaf-viewer', 'junit.xml'),
+};
+const APP = process.argv.find(a => a.startsWith('--app='))?.slice('--app='.length) || process.env.XRAY_APP;
+const EXEC_KEY = process.env.XRAY_TEST_EXEC_KEY;
+const XRAY_ENDPOINT =
+  'https://invicara.atlassian.net/rest/raven/1.0/import/execution/junit?projectKey=PLG' +
+  (EXEC_KEY ? `&testExecKey=${encodeURIComponent(EXEC_KEY)}` : '');
+
+if (!process.env.XRAY_RESULTS_FILE && !(APP && APP_RESULTS[APP])) {
+  console.error(`Error: say which results to upload: --app=${Object.keys(APP_RESULTS).join(' | --app=')}, or set XRAY_RESULTS_FILE`);
+  process.exit(1);
+}
+const RESULTS_FILE = path.resolve(process.env.XRAY_RESULTS_FILE || APP_RESULTS[APP!]);
 
 if (!JIRA_EMAIL || !JIRA_API_TOKEN) {
   console.error('Error: JIRA_EMAIL and JIRA_API_TOKEN must be defined in .env');

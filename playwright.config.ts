@@ -31,7 +31,7 @@ export default defineConfig({
       attachmentsBaseDirectory: './allure-results'
     }],
     ['list'],
-    ['junit', { outputFile: 'test-results/results.xml' }],
+    ['junit', { outputFile: 'test-results/reference-app/junit.xml' }],
   ],
   use: {
     baseURL: envConfig.RfUrl,
@@ -53,5 +53,5 @@ export default defineConfig({
       },
     },
   ],
-  outputDir: 'C:/pw-test-results/',
+  outputDir: 'C:/pw-test-results/reference-app',
 });

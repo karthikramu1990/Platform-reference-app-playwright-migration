@@ -23,7 +23,7 @@ test.describe('Reference App Suite', () => {
     sharedContext = await browser.newContext({
       viewport: null,
       ignoreHTTPSErrors: true,
-      recordVideo: { dir: 'C:/pw-test-results/' },
+      recordVideo: { dir: 'C:/pw-test-results/reference-app/videos' },
     });
     sharedPage = await sharedContext.newPage();
     await sharedPage.goto(envConfig.RfUrl, { waitUntil: 'networkidle', timeout: 60000 });

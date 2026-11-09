@@ -20,8 +20,10 @@ export class ProjectSelectionPage {
     this.page = page;
     this.loadProjectBtn        = page.getByRole('button', { name: 'Load Project' });
     this.textProjectSelection  = page.getByText('Project Selection', { exact: true });
-    this.projectSelectionDd    = page.locator("//div[@class='select__single-value css-1dimb5e-singleValue']").first();
-    this.userGroupDd           = page.locator("//div[@class='select__single-value css-1dimb5e-singleValue']").nth(1);
+    // Located by the select's input name: the generated css-* class names change between builds,
+    // and a missed user-group dropdown silently loads whichever group "Remember" kept.
+    this.projectSelectionDd    = page.locator('input[name="projectSelect"]').locator('..').locator('.select__control');
+    this.userGroupDd           = page.locator('input[name="userGroupSelect"]').locator('..').locator('.select__control');
     this.createNewProjectBtn   = page.getByRole('button', { name: 'Create Project' });
     this.createNewProjectName  = page.locator('#_name');
     this.createNewProjectshort = page.locator('#_shortName');
@@ -42,31 +44,25 @@ export class ProjectSelectionPage {
     }
   }
 
+  // No try/catch here: if the project or user group can't be chosen, Login must fail rather than
+  // carry on in the wrong project or group.
   async selectProjectFromDd(name: string): Promise<void> {
     await this.loadProjectBtn.waitFor({ state: 'visible', timeout: 150000 });
-    try {
-      await this.projectSelectionDd.click();
-      const option = this.page.getByRole('option', { name: name, exact: true });
-      await option.waitFor({ state: 'visible', timeout: 10000 });
-      await option.click();
-      await this.projectSelectionDd.waitFor({ state: 'visible', timeout: 5000 });
-    } catch (e: any) {
-      console.error(`ERROR: selectProjectFromDd failed: ${e.message}`);
-    }
+    await this.projectSelectionDd.click();
+    const option = this.page.getByRole('option', { name: name, exact: true });
+    await option.waitFor({ state: 'visible', timeout: 10000 });
+    await option.click();
   }
 
   async selectUserGroupFromDd(name: string): Promise<void> {
-    try {
-      const visible = await this.userGroupDd.isVisible().catch(() => false);
-      if (visible) {
-        await this.userGroupDd.click();
-        const option = this.page.getByRole('option', { name: name, exact: true });
-        await option.waitFor({ state: 'visible', timeout: 10000 });
-        await option.click();
-      }
-      await this.loadProjectBtn.click();
-    } catch (e: any) {
-      console.error(`ERROR: selectUserGroupFromDd failed: ${e.message}`);
+    // Accounts with a single group for the project get no user-group dropdown.
+    if (await this.userGroupDd.isVisible()) {
+      await this.userGroupDd.click();
+      const option = this.page.getByRole('option', { name: name, exact: true });
+      await option.waitFor({ state: 'visible', timeout: 10000 });
+      await option.click();
     }
+    await this.loadProjectBtn.click();
+    await this.loadProjectBtn.waitFor({ state: 'hidden', timeout: 120000 });
   }
 }

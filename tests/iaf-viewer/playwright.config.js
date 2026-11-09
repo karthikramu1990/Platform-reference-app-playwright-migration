@@ -29,7 +29,7 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html'],
-    ['junit', { outputFile: '../../test-results/results.xml' }]
+    ['junit', { outputFile: '../../test-results/iaf-viewer/junit.xml' }]
   ],
   snapshotPathTemplate: '{testDir}/snapshots/{testFileName}/{arg}-{projectName}{ext}',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
