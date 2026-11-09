@@ -3,7 +3,7 @@ import { CONFIG } from '../config.js';
 import { login, selectProject, setAccuracy, setup, toggleAllLayers, toggleLayers, verifyAllDisciplineStatus, verifyDisciplineStatus, verifyViewerScreenshot, waitForApplicationLoad, waitForModelcomposerEnabled } from '../helpers/appHelpers.js';
 import { clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoadEverything, structuralSubItemActions, architecturalSubItemActions, mechanicalSubItemActions, electricalSubItemActions, plumbingSubItemActions, fireProtectionSubItemActions } from '../helpers/modelComposerHelpers.js';
 import { Locator } from '../helpers/locators.js';
-import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
+import { EModelComposerQuality } from '../data/enums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
 
 // SKIPPED 2026-11-02: window.generateModelComposerBenchmark is only attached in non-production builds

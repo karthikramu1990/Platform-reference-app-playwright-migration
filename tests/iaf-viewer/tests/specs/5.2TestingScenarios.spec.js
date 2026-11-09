@@ -32,7 +32,7 @@ import { openGISPanel, enableGIS, configureMapboxTempToken, resetGIS } from '../
 import { openCuttingPlane, dragPlaneSlider, verifyCuttingPlaneScreenshot, clickViewOption, configureSingleChannelProjectFederation } from '../helpers/viewerHelpers.js';
 import { Locator } from '../helpers/locators.js';
 import { plg1690FreshProject } from '../data/projectFixtures.js';
-import { EModelComposerQuality } from '../../src/common/IafViewerEnums.js';
+import { EModelComposerQuality } from '../data/enums.js';
 import {
   goToWorkflowScreen,
   selectWorkflow,

@@ -8,3 +8,8 @@ test-results/
 C:/pw-test-results/
 *.log
 .env
+
+# Screenshots written by test runs
+screenshots/
+# Allure single-file reports written by generate-allure-report.js
+reports/
