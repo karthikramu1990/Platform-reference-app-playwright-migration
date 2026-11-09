@@ -1,6 +1,7 @@
 import path from 'path';
 import { Page, Locator } from '@playwright/test';
 import { logStep } from '../utils/logger';
+import { waitForModelLoaded } from '../utils/model-loading';
 import testData from '../data/test-data.json';
 
 export class ModelElementPage {
@@ -86,17 +87,7 @@ export class ModelElementPage {
 
 
   private async waitUntilLoadingDisappear(): Promise<void> {
-    const spinner = this.page.locator("//div[@id='modelSpinner']");
-    let i = 0;
-    while (true) {
-      try {
-        const visible = await spinner.isVisible();
-        if (!visible) break;
-        if (i >= 600) { console.error('Model loading exceeded 10 minutes'); break; }
-        await this.page.waitForTimeout(1000);
-        i++;
-      } catch { break; }
-    }
+    await waitForModelLoaded(this.page);
   }
 
   private async selectFromReactSelect(name: string): Promise<void> {

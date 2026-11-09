@@ -3,6 +3,7 @@ import fs from 'fs';
 import { PNG } from 'pngjs';
 import { Page, Locator } from '@playwright/test';
 import { logStep } from '../utils/logger';
+import { waitForModelLoaded } from '../utils/model-loading';
 import { isImageFound } from '../utils/image-compare';
 import testData from '../data/test-data.json';
 
@@ -128,17 +129,7 @@ export class NavigatorPage {
 
 
   async waitUntilLoadingDisappear(): Promise<void> {
-    const spinner = this.page.locator("//div[@id='modelSpinner']");
-    let i = 0;
-    while (true) {
-      try {
-        const visible = await spinner.isVisible();
-        if (!visible) break;
-        if (i >= 600) { console.error('Model loading exceeded 10 minutes'); break; }
-        await this.page.waitForTimeout(1000);
-        i++;
-      } catch { break; }
-    }
+    await waitForModelLoaded(this.page);
   }
 
   async ensureModel1801Selected(

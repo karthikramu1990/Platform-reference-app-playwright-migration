@@ -1,5 +1,6 @@
 import { test, expect } from '../fixtures';
 import testData from '../data/test-data.json';
+import { waitForModelLoaded } from '../utils/model-loading';
 
 // N days from today, formatted YYYY-MM-DD - never hardcode a literal date.
 // The Energy Prediction feature only forecasts within the next 15 days (confirmed live:
@@ -16,10 +17,12 @@ test.describe('AI Chat', () => {
   test.describe.configure({ mode: 'serial' });
 
   // Switch to the EX model, activate the LLM key (or close settings if already activated), then BIM Query Team + prompt + validate response.
-  test('21 - Verify BIM Query Team Chat Response', async ({ homePage, navigatorPage, aiChatPage }) => {
+  test('21 - Verify BIM Query Team Chat Response', async ({ appPage, homePage, navigatorPage, aiChatPage }) => {
     await homePage.selectElementMenu();
     await homePage.selectNavigatorScreen();
     await navigatorPage.ensureModelExSelected();
+    // Opening the chat while the model is still loading leaves the panel empty (no team list).
+    await waitForModelLoaded(appPage);
     await aiChatPage.openChatPanel();
     await aiChatPage.openSettings();
     await aiChatPage.openLlmSecretKeyTab();
