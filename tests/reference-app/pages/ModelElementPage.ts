@@ -1,7 +1,7 @@
 import path from 'path';
 import { Page, Locator } from '@playwright/test';
-import { step } from 'allure-js-commons';
-import testData from '../testdata/TestData.json';
+import { logStep } from '../utils/logger';
+import testData from '../data/test-data.json';
 
 export class ModelElementPage {
   private page: Page;
@@ -84,10 +84,6 @@ export class ModelElementPage {
     this.currentModelControl         = page.locator("//label[text()='Current Model']/..//div[@class='css-19bb58m']");
   }
 
-  private async logStep(message: string): Promise<void> {
-    console.log(message);
-    await step(message, async () => {});
-  }
 
   private async waitUntilLoadingDisappear(): Promise<void> {
     const spinner = this.page.locator("//div[@id='modelSpinner']");
@@ -118,7 +114,7 @@ export class ModelElementPage {
       const currentModel = (await this.currentModelValue.textContent())?.trim() ?? '';
 
       if (currentModel.includes('1801')) {
-        await this.logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+        await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
         return;
       }
 
@@ -127,7 +123,7 @@ export class ModelElementPage {
 
       await this.changeModelButton.click();
       await this.waitUntilLoadingDisappear();
-      await this.logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
+      await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
     } catch (e: any) {
       console.error('ERROR: Unable to ensure 1801 model selected:', e.message);
     }
@@ -138,7 +134,7 @@ export class ModelElementPage {
       await this.page.waitForTimeout(12000);
       await this.elementCategory.click();
       await this.page.locator(`//div[contains(text(),'${name}')]`).evaluate((el: HTMLElement) => el.click());
-      await this.logStep('INFO: Element category selected');
+      await logStep('INFO: Element category selected');
     } catch (e) {
       console.error('ERROR: Unable to select Element category');
     }
@@ -151,7 +147,7 @@ export class ModelElementPage {
       await this.page.locator(`//div[contains(text(),'${name}')]`).click();
       await this.page.keyboard.press('Enter');
       await this.invicaraLogo.click();
-      await this.logStep('INFO: Element type selected');
+      await logStep('INFO: Element type selected');
     } catch (e) {
       console.error('ERROR: Unable to select Element type');
     }
@@ -160,7 +156,7 @@ export class ModelElementPage {
   async clickFetchButton(): Promise<void> {
     try {
       await this.fetchButton.click();
-      await this.logStep('INFO: Fetch button clicked');
+      await logStep('INFO: Fetch button clicked');
     } catch (e) {
       console.error('ERROR: Unable to click Fetch button');
     }
@@ -171,7 +167,7 @@ export class ModelElementPage {
       await this.page.waitForTimeout(2000);
       await this.showingModel.waitFor({ state: 'visible' });
       await this.showingModel.click();
-      await this.logStep('INFO: Showing element selected');
+      await logStep('INFO: Showing element selected');
     } catch (e) {
       console.error('ERROR: Unable to select showing element');
     }
@@ -184,7 +180,7 @@ export class ModelElementPage {
       if (propSelected && filesSelected) {
         await this.files.click();
         await this.elementPropertiesTable.waitFor({ state: 'visible' });
-        await this.logStep('INFO: Element properties Table validated');
+        await logStep('INFO: Element properties Table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate element properties Table');
@@ -198,7 +194,7 @@ export class ModelElementPage {
         await this.elementProperties.click();
         await this.files.click();
         await this.filesTable.waitFor({ state: 'visible' });
-        await this.logStep('PASS: Files Table validated');
+        await logStep('PASS: Files Table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate Files Table');
@@ -213,7 +209,7 @@ export class ModelElementPage {
         await this.files.click();
         await this.warrantyData.click();
         await this.warrantyDataTable.waitFor({ state: 'visible' });
-        await this.logStep('PASS: Warranty data table validated');
+        await logStep('PASS: Warranty data table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate Warranty data table');
@@ -227,7 +223,7 @@ export class ModelElementPage {
         await this.warrantyData.click();
         await this.telemetryRestAPI.click();
         await this.telemetryRestAPITable.waitFor({ state: 'visible' });
-        await this.logStep('PASS: Telemetry collection table validated');
+        await logStep('PASS: Telemetry collection table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate telemetry collection table');
@@ -241,7 +237,7 @@ export class ModelElementPage {
         await this.warrantyData.click();
         await this.telemetryMQTT.click();
         await this.telemetryMQTTTable.waitFor({ state: 'visible' });
-        await this.logStep('PASS: Telemetry channels table validated');
+        await logStep('PASS: Telemetry channels table validated');
       }
     } catch (e) {
       console.error('ERROR: Unable to validate telemetry channels table');
@@ -256,7 +252,7 @@ export class ModelElementPage {
       const fileChooser = await fileChooserPromise;
       await fileChooser.setFiles(path.join(process.cwd(), 'files', file));
       await this.page.waitForTimeout(5000);
-      await this.logStep('PASS: File uploaded');
+      await logStep('PASS: File uploaded');
     } catch (e) {
       console.error('ERROR: Unable to upload file');
     }
@@ -268,7 +264,7 @@ export class ModelElementPage {
       await this.fileDeleteButton.evaluate((el: HTMLElement) => el.click());
       await this.dialogDelete.evaluate((el: HTMLElement) => el.click());
       await this.page.waitForTimeout(3000);
-      await this.logStep('PASS: File deleted successfully');
+      await logStep('PASS: File deleted successfully');
     } catch (e) {
       console.error('ERROR: Unable to delete file');
     }
@@ -289,7 +285,7 @@ export class ModelElementPage {
       await this.warrantyStartDate.fill(testData.WarrantyDetails[0].StartDate);
       await this.warrantyDuration.fill(testData.WarrantyDetails[0].Duration);
       await this.warrantySave.click();
-      await this.logStep('PASS: New Warranty Details added');
+      await logStep('PASS: New Warranty Details added');
     } catch (e) {
       console.error('ERROR: Unable to add new warranty details');
     }
@@ -303,7 +299,7 @@ export class ModelElementPage {
       await this.warrantyStartDate.fill(testData.WarrantyDetails[1].StartDate);
       await this.warrantyDuration.fill(testData.WarrantyDetails[1].Duration);
       await this.warrantySave.click();
-      await this.logStep('PASS: Warranty Details Edited successfully');
+      await logStep('PASS: Warranty Details Edited successfully');
     } catch (e) {
       console.error('ERROR: Unable to Edit warranty details');
     }
@@ -315,7 +311,7 @@ export class ModelElementPage {
       await this.warrantyDelete.click();
       await this.warrantyDeleteDialog.click();
       await this.page.waitForTimeout(3000);
-      await this.logStep('PASS: Warranty Details Deleted successfully');
+      await logStep('PASS: Warranty Details Deleted successfully');
     } catch (e) {
       console.error('ERROR: Unable to delete warranty details');
     }
@@ -332,7 +328,7 @@ export class ModelElementPage {
       await this.telemetryGenerateReadings.waitFor({ state: 'visible' });
       await this.telemetryGenerateReadings.click();
       await this.page.waitForTimeout(3000);
-      await this.logStep('PASS: Telemetry collection Fetch reading');
+      await logStep('PASS: Telemetry collection Fetch reading');
     } catch (e) {
       console.error('FAIL: Failed to Fetch Reading');
     }
@@ -356,7 +352,7 @@ export class ModelElementPage {
       await this.telemetryPublishData.click();
       await this.page.waitForTimeout(10000);
       await this.selectTelemetryDataselection(testData.TelemetryChannelSupport.DataType);
-      await this.logStep('PASS: Telemetry Channels readings captured');
+      await logStep('PASS: Telemetry Channels readings captured');
     } catch (e) {
       console.error('FAIL: Failed to Fetch Telemetry Channels readings');
     }
@@ -368,9 +364,18 @@ export class ModelElementPage {
       await this.page.waitForTimeout(5000);
       await this.selectTelemetryData.click();
       await this.page.locator(`//div[contains(text(),'${name}')]`).click();
-      await this.logStep(`INFO: Telemetry data '${name}' selected`);
+      await logStep(`INFO: Telemetry data '${name}' selected`);
     } catch (e) {
       console.error('ERROR: Unable to select Telemetry data type');
     }
+  }
+
+  // Fetch elements by category and type on the Model Elements screen and open the first result.
+  async fetchAndOpenElement(element: { Category: string; Type: string }): Promise<void> {
+    await this.ensureModel1801Selected();
+    await this.selectElementCategory(element.Category);
+    await this.selectElementType(element.Type);
+    await this.clickFetchButton();
+    await this.selectShowingModel();
   }
 }

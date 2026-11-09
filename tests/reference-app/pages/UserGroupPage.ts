@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { step } from 'allure-js-commons';
+import { logStep } from '../utils/logger';
 
 export class UserGroupPage {
   private page: Page;
@@ -22,10 +22,6 @@ export class UserGroupPage {
     this.successmsg          = page.locator("//div[@class='overlay-msg-content']");
   }
 
-  private async logStep(message: string): Promise<void> {
-    console.log(message);
-    await step(message, async () => {});
-  }
 
   async clickUserAddIcon(): Promise<boolean> {
     let flag = false;
@@ -33,7 +29,7 @@ export class UserGroupPage {
       await this.page.locator("//span[text()='Reference App']").hover();
       await this.page.waitForTimeout(1000);
       await this.icon_UserPlus.click();
-      await this.logStep('PASS: Add icon clicked successfully');
+      await logStep('PASS: Add icon clicked successfully');
       flag = true;
     } catch (e: any) {
       console.error(`FAIL: Add user icon is not displayed: ${e.message}`);
@@ -103,7 +99,7 @@ export class UserGroupPage {
       const element = this.page.locator(`//div[contains(text(),'${email}')]`).first();
       await element.waitFor({ state: 'visible', timeout: 15000 });
       flag = true;
-      await this.logStep('PASS: User added into sent to section');
+      await logStep('PASS: User added into sent to section');
     } catch (e: any) {
       console.error(`FAIL: User not added into sent to section: ${e.message}`);
     }
@@ -115,7 +111,7 @@ export class UserGroupPage {
     try {
       await this.successmsg.waitFor({ state: 'visible', timeout: 15000 });
       flag = true;
-      await this.logStep('PASS: User sent invites to respective user');
+      await logStep('PASS: User sent invites to respective user');
     } catch (e: any) {
       console.error(`FAIL: User invites not sent: ${e.message}`);
     }
@@ -128,7 +124,7 @@ export class UserGroupPage {
       const el = this.page.locator(`//div[contains(@class,'invite-user-info') and contains(.,'${email}')]`).first();
       await el.waitFor({ state: 'visible', timeout: 10000 });
       flag = true;
-      await this.logStep('PASS: User invites displayed under invites section');
+      await logStep('PASS: User invites displayed under invites section');
     } catch (e: any) {
       console.error(`FAIL: User invites not displayed under invites section: ${e.message}`);
     }
@@ -168,12 +164,12 @@ export class UserGroupPage {
       const el = this.page.locator(`//div[contains(@class,'invite-user-info') and contains(.,'${email}')]`).first();
       const visible = await el.isVisible().catch(() => false);
       if (!visible) {
-        await this.logStep('PASS: Removed user not displayed under invites section');
+        await logStep('PASS: Removed user not displayed under invites section');
       } else {
         console.error('FAIL: Removed user still displayed under invites section');
       }
     } catch (e) {
-      await this.logStep('PASS: Removed user not displayed under invites section');
+      await logStep('PASS: Removed user not displayed under invites section');
     }
   }
 

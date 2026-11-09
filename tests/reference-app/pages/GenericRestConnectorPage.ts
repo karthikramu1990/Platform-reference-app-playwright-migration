@@ -1,7 +1,7 @@
 import { Page, Locator } from '@playwright/test';
-import { step } from 'allure-js-commons';
+import { logStep } from '../utils/logger';
 
-export class GenericRestConnecterPage {
+export class GenericRestConnectorPage {
   private page: Page;
   private genericConnectorButton: Locator;
   private selectDropDown: Locator;
@@ -14,15 +14,11 @@ export class GenericRestConnecterPage {
     this.expandAllGeneric       = page.locator("(//*[@class='css-8mmkcg'])").first();
   }
 
-  private async logStep(message: string): Promise<void> {
-    console.log(message);
-    await step(message, async () => {});
-  }
 
   async clickGenericConnectorButton(): Promise<void> {
     try {
       await this.genericConnectorButton.click();
-      await this.logStep('PASS: genericConnectorButton clicked successfully');
+      await logStep('PASS: genericConnectorButton clicked successfully');
     } catch (e) {
       console.error('FAIL: Failed to click genericConnectorButton');
     }
@@ -35,7 +31,7 @@ export class GenericRestConnecterPage {
       const option = this.page.getByRole('option', { name, exact: true });
       await option.waitFor({ state: 'visible', timeout: 10000 });
       await option.click();
-      await this.logStep('PASS: genericConnector selected successfully');
+      await logStep('PASS: genericConnector selected successfully');
     } catch (e: any) {
       console.error(`FAIL: Failed to select genericConnector: ${e.message}`);
     }
@@ -44,7 +40,7 @@ export class GenericRestConnecterPage {
   async clickExpandAllGeneric(): Promise<void> {
     try {
       await this.expandAllGeneric.click();
-      await this.logStep('PASS: Expand all clicked successfully');
+      await logStep('PASS: Expand all clicked successfully');
     } catch (e) {
       console.error('FAIL: Failed to click Expand all');
     }

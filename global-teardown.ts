@@ -17,7 +17,7 @@ async function globalTeardown() {
   let environment = process.env.TEST_ENV;
   if (!environment) {
     try {
-      const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tests/reference-app/testdata/config.json'), 'utf8'));
+      const config = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'tests/reference-app/config/environments.json'), 'utf8'));
       environment = config.Env || 'qa1';
     } catch { environment = 'qa1'; }
   }

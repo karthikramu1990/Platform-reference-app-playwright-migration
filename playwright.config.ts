@@ -2,7 +2,7 @@ import { defineConfig } from '@playwright/test';
 import dotenv from 'dotenv';
 import path from 'path';
 dotenv.config({ path: path.resolve(__dirname, '.env') });
-import config from './tests/reference-app/testdata/config.json';
+import config from './tests/reference-app/config/environments.json';
 
 type EnvKey = keyof typeof config.Environments;
 const activeEnv = (process.env.TEST_ENV as EnvKey) || (config.Env as EnvKey);
@@ -14,8 +14,7 @@ if (!envConfig) {
 
 export default defineConfig({
   globalTeardown: './global-teardown.ts',
-  testDir: './tests',
-  testIgnore: ['**/iaf-viewer/**'],
+  testDir: './tests/reference-app/specs',
   snapshotDir: './imagevalidation',
   snapshotPathTemplate: '{snapshotDir}/{arg}{ext}',
   timeout: 300000,

@@ -15,10 +15,33 @@ UI automation for platform reference app
    ```
 
 2. Copy `.env.example` to `.env` and fill in the values. All credentials and tokens live in `.env`
-   (gitignored); nothing secret goes in `config.json` or `TestData.json`. An environment can use its
-   own Reference App account through `REFAPP_USERNAME_<ENV>` / `REFAPP_PASSWORD_<ENV>`.
+   (gitignored); nothing secret goes in `environments.json` or `test-data.json`. An environment can
+   use its own Reference App account through `REFAPP_USERNAME_<ENV>` / `REFAPP_PASSWORD_<ENV>`.
 
-3. Set the default environment via the `Env` field in `config.json` (default: `qa1`).
+3. Set the default environment via the `Env` field in
+   `tests/reference-app/config/environments.json`, or per run with `TEST_ENV`.
+
+## Reference App structure
+
+```
+tests/reference-app/
+  config/     env.ts (active environment, credentials from .env), environments.json (URLs, project, user group)
+  data/       test-data.json
+  fixtures/   index.ts (signed-in page + page objects), sign-in.ts
+  pages/      one page object per screen
+  utils/      logger.ts (logStep -> console + Allure step), image-compare.ts
+  specs/      one spec per feature, numbered so they run in the original order
+```
+
+- Specs import `test` from `../fixtures` and receive page objects as fixtures
+  (`async ({ navigatorPage }) => ...`); they never construct pages or sign in themselves.
+- The suite signs in once per worker and shares that page across tests. If a test fails, Playwright
+  starts a new worker, so the tests after it begin from a fresh sign-in.
+- A spec is `serial` only where its tests really depend on each other (Navigator, Files, Admin User
+  Group, AI Chat); a failure then skips the rest of that spec only.
+- Test titles (`"02 - Verify Model Details"`) are what Xray matches on. Don't rename them.
+- Adding a feature: add a page object in `pages/`, register it in `fixtures/index.ts`, add a
+  `NN-feature.spec.ts` in `specs/`.
 
 ## Running Tests
 

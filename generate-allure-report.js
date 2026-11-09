@@ -9,7 +9,7 @@ const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0
 let environment = process.env.TEST_ENV;
 if (!environment) {
   try {
-    const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'tests/reference-app/testdata/config.json'), 'utf8'));
+    const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'tests/reference-app/config/environments.json'), 'utf8'));
     environment = config.Env || 'qa1';
   } catch { environment = 'qa1'; }
 }

@@ -56,7 +56,10 @@ for (const [suiteName, tests] of suites) {
 
   for (const t of tests) {
     const duration = ((t.stop - t.start) / 1000).toFixed(3);
-    const classname = escape(t.fullName ?? suiteName);
+    // Xray identifies a test by classname + name, so the classname must not depend on the file
+    // path or line number (fullName is "file:line:col" and changes whenever code moves).
+    const describePath = t.labels?.find(l => l.name === 'subSuite')?.value;
+    const classname = escape(['reference-app', describePath].filter(Boolean).join(' > '));
     xml += `    <testcase name="${escape(t.name)}" classname="${classname}" time="${duration}">\n`;
 
     if (t.status === 'failed' || t.status === 'broken') {

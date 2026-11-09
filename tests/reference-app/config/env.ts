@@ -1,4 +1,4 @@
-import config from './config.json';
+import config from './environments.json';
 
 type EnvKey = keyof typeof config.Environments;
 export const activeEnv = (process.env.TEST_ENV as EnvKey) || (config.Env as EnvKey);

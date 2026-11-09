@@ -1,10 +1,10 @@
 import path from 'path';
 import fs from 'fs';
 import { PNG } from 'pngjs';
-import pixelmatch from 'pixelmatch';
 import { Page, Locator } from '@playwright/test';
-import { step } from 'allure-js-commons';
-import testData from '../testdata/TestData.json';
+import { logStep } from '../utils/logger';
+import { isImageFound } from '../utils/image-compare';
+import testData from '../data/test-data.json';
 
 export class NavigatorPage {
   private page: Page;
@@ -126,10 +126,6 @@ export class NavigatorPage {
     this.navigatorDeletePopup            = page.getByRole('button', { name: 'Delete' });
   }
 
-  private async logStep(message: string): Promise<void> {
-    console.log(message);
-    await step(message, async () => {});
-  }
 
   async waitUntilLoadingDisappear(): Promise<void> {
     const spinner = this.page.locator("//div[@id='modelSpinner']");
@@ -156,7 +152,7 @@ export class NavigatorPage {
       const currentModel = (await this.navigatorCurrentModelValue.textContent())?.trim() ?? '';
 
       if (currentModel.includes('1801')) {
-        await this.logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+        await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
         return;
       }
 
@@ -165,7 +161,7 @@ export class NavigatorPage {
 
       await this.navigatorChangeModelButton.click();
       await this.waitUntilLoadingDisappear();
-      await this.logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
+      await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
     } catch (e: any) {
       console.error('ERROR: Unable to ensure 1801 model selected:', e.message);
     }
@@ -183,7 +179,7 @@ export class NavigatorPage {
       const currentModel = (await this.navigatorCurrentModelValue.textContent())?.trim() ?? '';
 
       if (currentModel.includes('EX')) {
-        await this.logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+        await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
         return;
       }
 
@@ -192,7 +188,7 @@ export class NavigatorPage {
 
       await this.navigatorChangeModelButton.click();
       await this.waitUntilLoadingDisappear();
-      await this.logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
+      await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
     } catch (e: any) {
       console.error('ERROR: Unable to ensure EX model selected:', e.message);
     }
@@ -206,7 +202,7 @@ export class NavigatorPage {
       await this.navigatorSearch.hover();
       await this.navigatorSearch.click();
       await this.invicaraLogo.hover();
-      await this.logStep('INFO: Navigator Search button clicked');
+      await logStep('INFO: Navigator Search button clicked');
     } catch (e) {
       console.error('ERROR: Failed to click Navigator Search button');
     }
@@ -217,7 +213,7 @@ export class NavigatorPage {
       await this.elementCategory.waitFor({ state: 'visible' });
       await this.elementCategory.click();
       await this.page.locator(`//div[contains(text(),'${name}')]`).evaluate((el: HTMLElement) => el.click());
-      await this.logStep('INFO: Element category selected');
+      await logStep('INFO: Element category selected');
     } catch (e) {
       console.error('ERROR: Failed to select Element category');
     }
@@ -230,7 +226,7 @@ export class NavigatorPage {
       await this.page.locator(`//div[contains(text(),'${name}')]`).click();
       await this.page.keyboard.press('Enter');
       await this.invicaraLogo.click();
-      await this.logStep('INFO: Element type selected');
+      await logStep('INFO: Element type selected');
     } catch (e) {
       console.error('ERROR: Failed to select Element type');
     }
@@ -239,7 +235,7 @@ export class NavigatorPage {
   async clickfetchbutton(): Promise<void> {
     try {
       await this.fetchButton.click();
-      await this.logStep('INFO: Fetch button clicked');
+      await logStep('INFO: Fetch button clicked');
     } catch (e) {
       console.error('ERROR: Failed to click Fetch button');
     }
@@ -256,7 +252,7 @@ export class NavigatorPage {
     try {
       await this.navigatorGroupBy.click();
       await this.selectFromReactSelect(name);
-      await this.logStep('INFO: Group selected in GroupBy dropdown');
+      await logStep('INFO: Group selected in GroupBy dropdown');
     } catch (e: any) {
       console.error('ERROR: Failed to select Group in GroupBy dropdown:', e.message);
     }
@@ -267,7 +263,7 @@ export class NavigatorPage {
       await this.navigatorFilterBy.click();
       await this.navigatorSelectProperty.click();
       await this.selectFromReactSelect(name);
-      await this.logStep('INFO: Property selected');
+      await logStep('INFO: Property selected');
     } catch (e: any) {
       console.error('ERROR: Failed to select property:', e.message);
     }
@@ -277,7 +273,7 @@ export class NavigatorPage {
     try {
       await this.navigatorSelectFunction.click();
       await this.selectFromReactSelect(name);
-      await this.logStep('INFO: Function selected');
+      await logStep('INFO: Function selected');
     } catch (e) {
       console.error('ERROR: Failed to select Function');
     }
@@ -287,7 +283,7 @@ export class NavigatorPage {
     try {
       await this.navigatorSelectValue.click();
       await this.selectFromReactSelect(name);
-      await this.logStep('INFO: Value selected');
+      await logStep('INFO: Value selected');
     } catch (e) {
       console.error('ERROR: Failed to select Value');
     }
@@ -296,7 +292,7 @@ export class NavigatorPage {
   async clickNavigatorAddButton(): Promise<void> {
     try {
       await this.navigatorAdd.click();
-      await this.logStep('INFO: Add Button clicked');
+      await logStep('INFO: Add Button clicked');
     } catch (e) {
       console.error('ERROR: Failed to click Add button');
     }
@@ -306,7 +302,7 @@ export class NavigatorPage {
     try {
       await this.navigatorList.click();
       await this.page.waitForTimeout(1000);
-      await this.logStep('INFO: Navigator Showing List selected');
+      await logStep('INFO: Navigator Showing List selected');
     } catch (e) {
       console.error('ERROR: Failed to select Navigator Showing List');
     }
@@ -315,7 +311,7 @@ export class NavigatorPage {
   async clickNavigatorFilter(): Promise<void> {
     try {
       await this.navigatorFilter.click();
-      await this.logStep('INFO: Navigator Filter icon clicked');
+      await logStep('INFO: Navigator Filter icon clicked');
     } catch (e) {
       console.error('ERROR: Failed to click Navigator Filter icon');
     }
@@ -325,7 +321,7 @@ export class NavigatorPage {
     try {
       await this.page.waitForTimeout(2000);
       await this.navigatorShowingResult.click();
-      await this.logStep('INFO: Navigator showing result selected');
+      await logStep('INFO: Navigator showing result selected');
     } catch (e) {
       console.error('ERROR: Failed to select Navigator Showing result');
     }
@@ -335,7 +331,7 @@ export class NavigatorPage {
     try {
       await this.navigatorElementPropertiesTable.isVisible();
       await this.page.waitForTimeout(3000);
-      await this.logStep('INFO: Element properties Table validated');
+      await logStep('INFO: Element properties Table validated');
     } catch (e) {
       console.error('FAIL: Failed to validate elementproperties Table');
     }
@@ -348,7 +344,7 @@ export class NavigatorPage {
       await this.page.waitForTimeout(3000);
       await this.navigatorTelemetryRestAPITable.isVisible();
       // await this.verifyTelemetryviaRestAPI();
-      await this.logStep('INFO: TelemetryCollection Table validated');
+      await logStep('INFO: TelemetryCollection Table validated');
     } catch (e) {
       console.error('FAIL: Failed to validate TelemetryCollection Table');
     }
@@ -359,7 +355,7 @@ export class NavigatorPage {
       await this.telemetryviaMQTT.click();
       await this.page.waitForTimeout(3000);
       await this.telemetryChannelMQTTTable.isVisible();
-      await this.logStep('INFO: Telemetry Channel Readings Table validated');
+      await logStep('INFO: Telemetry Channel Readings Table validated');
     } catch (e) {
       console.error('FAIL: Failed to validate Telemetry MQTT Table');
     }
@@ -370,7 +366,7 @@ export class NavigatorPage {
       await this.navigatorWarrantyData.click();
       await this.page.waitForTimeout(3000);
       await this.navigatorWarrantyDataTable.isVisible();
-      await this.logStep('INFO: WarrantyData Table validated');
+      await logStep('INFO: WarrantyData Table validated');
     } catch (e) {
       console.error('FAIL: Failed to validate WarrantyData Table');
     }
@@ -380,7 +376,7 @@ export class NavigatorPage {
     try {
       await this.navigatorFilesMenu.click();
       await this.page.waitForTimeout(3000);
-      await this.logStep('INFO: Files Menu validated');
+      await logStep('INFO: Files Menu validated');
     } catch (e) {
       console.error('FAIL: Failed to validate Files Menu');
     }
@@ -405,7 +401,7 @@ export class NavigatorPage {
       await this.navigatorWarrantyDuration.fill(testData.WarrantyDetails[0].Duration);
       await this.navigatorWarrantySave.click();
       await this.page.waitForTimeout(3000);
-      await this.logStep('INFO: New Warranty Details added');
+      await logStep('INFO: New Warranty Details added');
     } catch (e) {
       console.error('FAIL: Failed to add new warranty data');
     }
@@ -420,7 +416,7 @@ export class NavigatorPage {
       await this.navigatorWarrantyDuration.fill(testData.WarrantyDetails[1].Duration);
       await this.navigatorWarrantySave.click();
       await this.page.waitForTimeout(3000);
-      await this.logStep('PASS: Navigator warranty Details Edited successfully');
+      await logStep('PASS: Navigator warranty Details Edited successfully');
     } catch (e) {
       console.error('FAIL: Failed to Edit navigator warranty details');
     }
@@ -432,7 +428,7 @@ export class NavigatorPage {
       await this.navigatorWarrantyDelete.click();
       await this.navigatorWarrantyDeleteDialog.click();
       await this.page.waitForTimeout(5000);
-      await this.logStep('PASS: Navigator warranty Details Deleted successfully');
+      await logStep('PASS: Navigator warranty Details Deleted successfully');
     } catch (e) {
       console.error('FAIL: Failed to delete navigator warranty details');
     }
@@ -450,7 +446,7 @@ export class NavigatorPage {
       await this.navigatorTelemetryImageScreen.scrollIntoViewIfNeeded();
       await this.page.waitForTimeout(3000);
       await this.page.screenshot({ path: 'screenshots/TelemetryRestAPI_Pass.png', fullPage: true });
-      await this.logStep('PASS: Fetch Reading for Telemetry collection');
+      await logStep('PASS: Fetch Reading for Telemetry collection');
     } catch (e) {
       await this.page.screenshot({ path: 'screenshots/TelemetryRestAPI_Fail.png', fullPage: true });
       console.error('FAIL: Failed to Fetch Reading');
@@ -476,7 +472,7 @@ export class NavigatorPage {
       await this.page.waitForTimeout(3000);
       await this.navigatorTelemetryMQTTScreen.scrollIntoViewIfNeeded();
       await this.page.waitForTimeout(3000);
-      await this.logStep('PASS: Telemetry Channel reading captured successfully');
+      await logStep('PASS: Telemetry Channel reading captured successfully');
     } catch (e) {
       console.error(`FAIL: Failed to Fetch Telemetry channel Reading: ${e}`);
     }
@@ -487,7 +483,7 @@ export class NavigatorPage {
       await this.page.waitForTimeout(3000);
       await this.selectTelemetryData.click();
       await this.page.locator(`//div[contains(text(),'${name}')]`).click();
-      await this.logStep('INFO: Telemetry data selected');
+      await logStep('INFO: Telemetry data selected');
     } catch (e) {
       console.error('ERROR: Failed to select Telemetry data type');
     }
@@ -503,7 +499,7 @@ export class NavigatorPage {
       const fileChooser = await fileChooserPromise;
       await fileChooser.setFiles(path.join(process.cwd(), 'files', file));
       await this.page.waitForTimeout(5000);
-      await this.logStep('PASS: File uploaded in navigator screen');
+      await logStep('PASS: File uploaded in navigator screen');
     } catch (e) {
       console.error('ERROR: Unable to upload file in navigator screen');
     }
@@ -515,24 +511,10 @@ export class NavigatorPage {
       await this.navigatorDeleteButton.click();
       await this.navigatorDeletePopup.click();
       await this.page.waitForTimeout(3000);
-      await this.logStep('PASS: File deleted in navigator screen');
+      await logStep('PASS: File deleted in navigator screen');
     } catch (e) {
       console.error('ERROR: Unable to delete the file in navigator screen');
     }
-  }
-
-  private isImageFound(actual: PNG, expected: PNG): boolean {
-    const step = 10;
-    const maxDiff = Math.floor(expected.width * expected.height * 0.4);
-    for (let y = 0; y <= actual.height - expected.height; y += step) {
-      for (let x = 0; x <= actual.width - expected.width; x += step) {
-        const crop = new PNG({ width: expected.width, height: expected.height });
-        PNG.bitblt(actual, crop, x, y, expected.width, expected.height, 0, 0);
-        const diff = pixelmatch(crop.data, expected.data, null, expected.width, expected.height, { threshold: 0.1 });
-        if (diff < maxDiff) return true;
-      }
-    }
-    return false;
   }
 
   async verifyingModelImage(imageName: string): Promise<void> {
@@ -541,13 +523,24 @@ export class NavigatorPage {
       await this.page.waitForTimeout(3000);
       const actual = PNG.sync.read(await this.page.screenshot({ fullPage: false }));
       const expected = PNG.sync.read(fs.readFileSync(path.join(process.cwd(), 'imagevalidation', imageName)));
-      if (this.isImageFound(actual, expected)) {
-        await this.logStep('PASS: Image validated Successfully');
+      if (isImageFound(actual, expected)) {
+        await logStep('PASS: Image validated Successfully');
       } else {
         console.error('FAIL: Reference image not found in canvas screenshot');
       }
     } catch (e) {
       console.error('FAIL: Failed to Validate Image - ' + e);
     }
+  }
+
+  // Search for an element by category and type on the Navigator screen and open the first result.
+  async searchAndOpenElement(element: { Category: string; Type: string }): Promise<void> {
+    await this.ensureModel1801Selected();
+    await this.clickNavigatorSearch();
+    await this.selectElementCategory(element.Category);
+    await this.selectElementType(element.Type);
+    await this.clickfetchbutton();
+    await this.selectNavigatorList();
+    await this.selectNavigatorShowingResult();
   }
 }

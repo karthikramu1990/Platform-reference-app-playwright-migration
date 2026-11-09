@@ -1,5 +1,5 @@
 import { Page, Locator } from '@playwright/test';
-import { step } from 'allure-js-commons';
+import { logStep } from '../utils/logger';
 
 // PA-1370/PA-1261 chat panel + PA-1269 setup status, both in the same Navigator settings dialog.
 export class AIChatPage {
@@ -69,17 +69,13 @@ export class AIChatPage {
     this.chatLatestResponse = page.locator('.chat-message-assistant').last();
   }
 
-  private async logStep(message: string): Promise<void> {
-    console.log(message);
-    await step(message, async () => {});
-  }
 
   async openChatPanel(): Promise<void> {
     try {
       await this.chatToggleIcon.waitFor({ state: 'visible' });
       await this.chatToggleIcon.click();
       await this.chatPanelHeading.waitFor({ state: 'visible' });
-      await this.logStep('INFO: Model element chat panel opened');
+      await logStep('INFO: Model element chat panel opened');
     } catch (e) {
       console.error('ERROR: Failed to open Model element chat panel');
     }
@@ -87,7 +83,7 @@ export class AIChatPage {
 
   async verifyChatPanelVisible(): Promise<void> {
     await this.chatPanelHeading.waitFor({ state: 'visible' });
-    await this.logStep('PASS: Model element chat heading is visible');
+    await logStep('PASS: Model element chat heading is visible');
   }
 
   async isSecretKeyConfigured(): Promise<boolean> {
@@ -98,7 +94,7 @@ export class AIChatPage {
     try {
       await this.chatSettingsIcon.click();
       await this.settingsDialogHeading.waitFor({ state: 'visible' });
-      await this.logStep('INFO: AI Chat Settings dialog opened');
+      await logStep('INFO: AI Chat Settings dialog opened');
     } catch (e) {
       console.error('ERROR: Failed to open AI Chat Settings dialog');
     }
@@ -118,13 +114,13 @@ export class AIChatPage {
   async runSetupResources(timeout = 5 * 60 * 1000): Promise<void> {
     await this.setupResourcesButton.click();
     await this.mcpSetupCompleteMessage.waitFor({ state: 'visible', timeout });
-    await this.logStep('INFO: MCP resources setup completed successfully');
+    await logStep('INFO: MCP resources setup completed successfully');
   }
 
   async runGetLatestReadings(timeout = 5 * 60 * 1000): Promise<void> {
     await this.getLatestReadingsButton.click();
     await this.mcpReadingsGeneratedMessage.waitFor({ state: 'visible', timeout });
-    await this.logStep('INFO: Latest readings generated successfully');
+    await logStep('INFO: Latest readings generated successfully');
   }
 
   // secretKey comes from process.env.REFAPP_AI_CHAT_SECRET_KEY (.env, gitignored - never a tracked file). One-time per-namespace setup - guard callers with isSecretKeyConfigured().
@@ -134,7 +130,7 @@ export class AIChatPage {
     }
     await this.secretKeyInput.fill(secretKey);
     await this.secretKeyUpdateButton.click();
-    await this.logStep('INFO: LLM secret key submitted for this namespace');
+    await logStep('INFO: LLM secret key submitted for this namespace');
   }
 
   async closeSettings(): Promise<void> {
@@ -160,7 +156,7 @@ export class AIChatPage {
     if (winner === 'setup') {
       try {
         await this.setupAIResourcesButton.click({ timeout: 10000 });
-        await this.logStep('INFO: Setup AI Resources clicked');
+        await logStep('INFO: Setup AI Resources clicked');
       } catch {
         // Vanished on its own - fall through.
       }
@@ -172,13 +168,13 @@ export class AIChatPage {
   async selectTeam(teamName: string): Promise<void> {
     await this.teamSelect.click();
     await this.page.getByRole('option', { name: teamName }).click();
-    await this.logStep(`INFO: Selected AI chat team "${teamName}"`);
+    await logStep(`INFO: Selected AI chat team "${teamName}"`);
   }
 
   async askQuestion(question: string): Promise<void> {
     await this.chatInputBox.fill(question);
     await this.chatSendButton.click();
-    await this.logStep(`INFO: Asked chat: "${question}"`);
+    await logStep(`INFO: Asked chat: "${question}"`);
   }
 
   // LLM + BIM query round trip can take 20-45s+, sometimes well past 60s under load - confirmed live.
