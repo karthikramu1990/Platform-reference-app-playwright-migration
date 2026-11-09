@@ -13,3 +13,6 @@ C:/pw-test-results/
 screenshots/
 # Allure single-file reports written by generate-allure-report.js
 reports/
+
+# Local Claude Code settings
+.claude/settings.local.json
