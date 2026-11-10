@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Load the project created by Basic Mode in the viewer.",
+  "data": "",
+  "result": "Default model loads in the viewer; version 1 (latest) is shown."
+ },
+ {
+  "action": "Inspect the model size and the available element categories.",
+  "data": "",
+  "result": "The model is a small QMV-style model and element categories are listed."
+ },
+ {
+  "action": "Orbit and select an element.",
+  "data": "",
+  "result": "Viewer responds normally and the element is highlighted."
+ }
+]

@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Open the query pane and review the element category dropdown.",
+  "data": "",
+  "result": "Element categories of the model are listed."
+ },
+ {
+  "action": "Select an element category and one or more element types, then Search.",
+  "data": "Category | Types",
+  "result": "Elements found count is shown and matches the table row count."
+ },
+ {
+  "action": "Click Clear and search again with a different category.",
+  "data": "",
+  "result": "Selections are reset as designed and a new result set is returned."
+ }
+]

@@ -1,0 +1,12 @@
+[
+ {
+  "action": "Open the side menu and review the available pages.",
+  "data": "",
+  "result": "Only the viewer page group, Modules, Admin and User Groups pages are present."
+ },
+ {
+  "action": "Open each page.",
+  "data": "",
+  "result": "Each page loads without error and no other pages exist."
+ }
+]

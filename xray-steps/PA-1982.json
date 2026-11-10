@@ -1,0 +1,12 @@
+[
+ {
+  "action": "Choose instance or type properties in Table Columns.",
+  "data": "",
+  "result": "Chosen columns appear in the results table."
+ },
+ {
+  "action": "Remove a column and use the export action.",
+  "data": "",
+  "result": "The column is removed and the table can be exported."
+ }
+]

@@ -1,0 +1,17 @@
+[
+ {
+  "action": "As admin, add a new user to the user group and send the invite.",
+  "data": "New user email",
+  "result": "Invite is sent."
+ },
+ {
+  "action": "As the new user, accept the invite and log in.",
+  "data": "",
+  "result": "Invite is accepted and the Project Selection dialog opens without endless loading."
+ },
+ {
+  "action": "As the new user, create a project with Basic mode.",
+  "data": "Basic mode",
+  "result": "Setup completes and the project loads without an error."
+ }
+]

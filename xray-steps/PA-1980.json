@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Start Basic Mode Setup Project and note the start time.",
+  "data": "Basic mode",
+  "result": "Setup starts."
+ },
+ {
+  "action": "Note the time when the success message appears.",
+  "data": "",
+  "result": "Setup completes in 5 minutes or less."
+ },
+ {
+  "action": "Click Done, load the project and wait for the model to draw.",
+  "data": "",
+  "result": "Model is visible and can be orbited, zoomed and selected within 5 minutes of the start."
+ }
+]

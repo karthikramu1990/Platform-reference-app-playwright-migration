@@ -1,0 +1,12 @@
+[
+ {
+  "action": "Log in and load a project.",
+  "data": "",
+  "result": "Reference App opens directly in the IafViewer, not a home page."
+ },
+ {
+  "action": "Refresh the browser and reselect the project.",
+  "data": "",
+  "result": "Viewer is shown again as the landing page."
+ }
+]

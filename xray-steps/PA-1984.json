@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Start Setup Project when a project already exists.",
+  "data": "Basic mode",
+  "result": "A confirmation warns that the previous project will be deleted."
+ },
+ {
+  "action": "Cancel the confirmation.",
+  "data": "",
+  "result": "Setup does not start and the existing project is unchanged."
+ },
+ {
+  "action": "Repeat, agree, and finish setup, then open Project Selection.",
+  "data": "",
+  "result": "The new project is listed and loads; the extra manual step is noted if the dialog reappears."
+ }
+]

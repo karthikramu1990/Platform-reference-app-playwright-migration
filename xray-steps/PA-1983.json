@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Open Manage Model in the viewer page group.",
+  "data": "",
+  "result": "Model import page opens in the same page group as the viewer."
+ },
+ {
+  "action": "Locate the Mapbox token form.",
+  "data": "",
+  "result": "A simplified Mapbox token form is available in the same page group."
+ },
+ {
+  "action": "Upload a model with an existing name.",
+  "data": "Model file",
+  "result": "Model is added as a new version of the same model, not a separate model."
+ }
+]

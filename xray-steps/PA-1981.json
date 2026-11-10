@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Open Project Selection, choose Create Project, select Basic mode and continue.",
+  "data": "Basic mode",
+  "result": "Setup Project form is shown with Basic mode selected."
+ },
+ {
+  "action": "Enter the project details and start Setup Project.",
+  "data": "Name | Short Name | Description",
+  "result": "Setup starts and a progress dialog shows percentage and the current step."
+ },
+ {
+  "action": "Wait for completion and click Done, then load the new project.",
+  "data": "",
+  "result": "Success message is shown, the new project is selectable and loads without manual configuration."
+ }
+]

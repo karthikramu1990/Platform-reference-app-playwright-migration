@@ -1,0 +1,12 @@
+[
+ {
+  "action": "Run Basic Mode setup and watch the listed progress steps.",
+  "data": "Basic mode",
+  "result": "Steps cover only the minimal resources and workflow steps."
+ },
+ {
+  "action": "Review the steps and the finished project for type mapping or relationship artefacts.",
+  "data": "",
+  "result": "No type mapping, no type map upload step and no model relationship import occur."
+ }
+]

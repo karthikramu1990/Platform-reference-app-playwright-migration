@@ -1,0 +1,17 @@
+[
+ {
+  "action": "Select a row in the results table.",
+  "data": "",
+  "result": "Row is selected and the element is highlighted in 3D."
+ },
+ {
+  "action": "Check the properties panel.",
+  "data": "",
+  "result": "Instance and type properties show the selected element."
+ },
+ {
+  "action": "Select another row, then clear the selection.",
+  "data": "",
+  "result": "Highlight and properties follow the selection and are removed on clear."
+ }
+]
