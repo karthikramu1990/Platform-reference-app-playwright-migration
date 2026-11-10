@@ -3,20 +3,24 @@
 //
 //   node scripts/run-tests.js <reference-app|iaf-viewer|all> [extra playwright args]
 //
-// Each app keeps its own config, output folder and JUnit file; `all` is two separate runs.
-const { spawnSync } = require('child_process');
+// Every app run gets one self-contained folder (see report-paths.js):
+//   reports/<app>/<ENV>/<yyyy-mm-dd_hh-mm-ss>/  report/, junit.xml, run-summary.json
+// which is then copied to reports/<app>/<ENV>/latest/.
+const { spawnSync, execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { ROOT, resolveEnv, envDir, latestDir, timestamp } = require('./report-paths');
+const { generateAllureReport } = require('./allure-report');
 
-const root = path.resolve(__dirname, '..');
-const playwrightCli = require.resolve('@playwright/test/cli', { paths: [root] });
+require('dotenv').config({ path: path.join(ROOT, '.env') });
+
+const playwrightCli = require.resolve('@playwright/test/cli', { paths: [ROOT] });
 
 const APPS = {
   'reference-app': {
     config: 'playwright.config.ts',
     defaultArgs: [],
-    before: () => fs.rmSync(path.join(root, 'allure-results'), { recursive: true, force: true }),
-    after: () => spawnSync(process.execPath, [path.join(root, 'generate-allure-report.js')], { cwd: root, stdio: 'inherit' }),
+    allure: true,
   },
   'iaf-viewer': {
     config: 'tests/iaf-viewer/playwright.config.js',
@@ -25,16 +29,77 @@ const APPS = {
   },
 };
 
+function git(args) {
+  try {
+    return execSync(`git ${args}`, { cwd: ROOT, stdio: ['ignore', 'pipe', 'ignore'] }).toString().trim();
+  } catch {
+    return null;
+  }
+}
+
+// Counts come from Playwright's JSON reporter (the only one that reports flaky tests); the
+// configs write it to RUN_DIR/.results.json when RUN_DIR is set, and it's removed here.
+function writeSummary(app, env, runDir, startedAt) {
+  const resultsFile = path.join(runDir, '.results.json');
+  let stats = null;
+  try {
+    stats = JSON.parse(fs.readFileSync(resultsFile, 'utf8')).stats;
+  } catch {
+    console.error(`No Playwright results at ${resultsFile}; run-summary.json will have no counts.`);
+  }
+  fs.rmSync(resultsFile, { force: true });
+
+  const count = key => (stats ? stats[key] : null);
+  const summary = {
+    app,
+    env: env.toUpperCase(),
+    branch: git('rev-parse --abbrev-ref HEAD'),
+    commit: git('rev-parse --short HEAD'),
+    startedAt: startedAt.toISOString(),
+    durationSec: Math.round((Date.now() - startedAt.getTime()) / 1000),
+    passed: count('expected'),
+    failed: count('unexpected'),
+    flaky: count('flaky'),
+    skipped: count('skipped'),
+    total: stats ? stats.expected + stats.unexpected + stats.flaky + stats.skipped : null,
+  };
+  fs.writeFileSync(path.join(runDir, 'run-summary.json'), JSON.stringify(summary, null, 2) + '\n');
+  return summary;
+}
+
 function run(appName, extraArgs) {
   const app = APPS[appName];
-  console.log(`\n=== ${appName} ===`);
-  app.before?.();
+  const env = resolveEnv(appName);
+  const startedAt = new Date();
+  const runDir = path.join(envDir(appName, env), timestamp(startedAt));
+  fs.mkdirSync(runDir, { recursive: true });
+  console.log(`\n=== ${appName} (${env.toUpperCase()}) ===\nRun folder: ${runDir}\n`);
+
+  if (app.allure) fs.rmSync(path.join(ROOT, 'allure-results'), { recursive: true, force: true });
+
   const result = spawnSync(
     process.execPath,
     [playwrightCli, 'test', '-c', app.config, ...app.defaultArgs, ...extraArgs],
-    { cwd: root, stdio: 'inherit' },
+    { cwd: ROOT, stdio: 'inherit', env: { ...process.env, TEST_ENV: env, RUN_DIR: runDir } },
   );
-  app.after?.();
+
+  if (app.allure) {
+    try {
+      generateAllureReport(runDir, env);
+    } catch (e) {
+      console.error(`Allure report generation failed: ${e.message}`);
+    }
+  }
+  const summary = writeSummary(appName, env, runDir, startedAt);
+
+  const latest = latestDir(appName, env);
+  fs.rmSync(latest, { recursive: true, force: true });
+  fs.cpSync(runDir, latest, { recursive: true });
+
+  console.log(`\n${appName}: ${summary.passed ?? '?'} passed, ${summary.failed ?? '?'} failed, `
+    + `${summary.flaky ?? '?'} flaky, ${summary.skipped ?? '?'} skipped`);
+  console.log(`Report: ${path.join(runDir, 'report', 'index.html')}`);
+  console.log(`Latest: ${latest}`);
   return result.status ?? 1;
 }
 

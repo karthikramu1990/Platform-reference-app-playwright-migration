@@ -18,6 +18,8 @@ test.describe('AI Chat', () => {
 
   // Switch to the EX model, activate the LLM key (or close settings if already activated), then BIM Query Team + prompt + validate response.
   test('21 - Verify BIM Query Team Chat Response', async ({ appPage, homePage, navigatorPage, aiChatPage }) => {
+    // Start from a clean screen: panels left open by the previous spec block the model switch.
+    await appPage.reload({ waitUntil: 'networkidle' });
     await homePage.selectElementMenu();
     await homePage.selectNavigatorScreen();
     await navigatorPage.ensureModelExSelected();

@@ -45,7 +45,7 @@ tests/reference-app/
 
 ## Running Tests
 
-The two applications run independently, each with its own config, output folder and JUnit file:
+The two applications run independently, each with its own config and report folder (see Reports):
 
 | Command | Runs |
 |---|---|
@@ -57,7 +57,7 @@ Extra Playwright arguments go after `--`, e.g. `npm run test:viewer -- -g "PLG-1
 (non-zero exit code) if any test fails.
 
 
-### Default environment (uses `Env` from config.json)
+### Default environment (uses `Env` from environments.json)
 ```
 npm test
 ```
@@ -79,16 +79,38 @@ npm run test:debug    # Run in debug mode
 
 ## Reports
 
-### Allure Report
+Every run of `npm run test:ref` / `test:viewer` / `test:all` produces one self-contained folder per app
+(all of this is gitignored):
+
 ```
-npm run allure:generate   # Generate report
-npm run allure:open       # Open in browser
+reports/
+  reference-app/
+    QA2/
+      2026-11-09_23-10-04/
+        report/index.html      Allure single-file report (Reference App) | Playwright HTML report (IAF Viewer)
+        junit.xml              the run's JUnit results
+        run-summary.json       app, env, branch, commit, startedAt, durationSec, passed, failed, flaky, skipped, total
+      latest/                  copy of the newest run
+  iaf-viewer/
+    QA2/ ...
+artifacts/
+  reference-app/               traces, videos, screenshots of the last run (Playwright outputDir)
+  iaf-viewer/
 ```
+
+`<ENV>` is `TEST_ENV` (for the viewer, `IAFVIEWER_ENVIRONMENT` from `.env` when `TEST_ENV` is not set), else
+`Env` in `tests/reference-app/config/environments.json`. Running `npx playwright test` directly still works; its
+JUnit goes to `reports/<app>/<ENV>/adhoc/` and no Allure report or summary is built.
+
+| Command | Does |
+|---|---|
+| `npm run report:open -- reference-app` | Open the latest Reference App report (add an env, e.g. `-- iaf-viewer qa3`) |
+| `npm run report:clean` | Keep the 10 newest run folders per app/env, delete the rest (`-- 5` to keep 5) |
 
 ## Xray (Jira) Integration
 
 ### Setup
-Create a `.env` file in the project root:
+Add to `.env`:
 ```
 JIRA_EMAIL=your-email@invicara.com
 JIRA_API_TOKEN=your-atlassian-api-token
@@ -96,20 +118,13 @@ JIRA_API_TOKEN=your-atlassian-api-token
 Generate your API token at: https://id.atlassian.com/manage-profile/security/api-tokens
 
 ### Upload test results to Xray
-Each app writes its own JUnit XML:
-
-| App | File |
-|---|---|
-| Reference App | `test-results/reference-app/junit.xml` (Playwright); `npm run xray:convert` writes the Xray file `test-results/reference-app/xray-results.xml` from `allure-results` |
-| IAF Viewer | `test-results/iaf-viewer/junit.xml` |
-
-The upload always needs to know which app it is sending:
+The upload sends Playwright's JUnit file from the latest run of the app you name,
+`reports/<app>/<ENV>/latest/junit.xml`:
 ```
-npm run xray:convert          # Reference App only: Allure results -> xray-results.xml
 npm run xray:upload:ref
 npm run xray:upload:viewer
 ```
-Set `XRAY_RESULTS_FILE` to upload some other file, and `XRAY_TEST_EXEC_KEY` to add results to an
-existing Test Execution instead of creating a new one.
+Set `TEST_ENV` to pick another environment's latest run, `XRAY_RESULTS_FILE` to upload some other file, and
+`XRAY_TEST_EXEC_KEY` to add results to an existing Test Execution instead of creating a new one.
 
 Results are uploaded to project key `PLG` in Jira: https://invicara.atlassian.net

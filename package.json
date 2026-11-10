@@ -14,13 +14,11 @@
     "test:eu-staging": "cross-env TEST_ENV=staging node scripts/run-tests.js reference-app",
     "test:oci-staging": "cross-env TEST_ENV=staging3 node scripts/run-tests.js reference-app",
     "test:oci-qa3": "cross-env TEST_ENV=qa3 node scripts/run-tests.js reference-app",
-    "allure:generate": "node generate-allure-report.js",
-    "allure:open": "npx allure open ./reports",
-    "report": "npx playwright show-report playwright-report",
-    "xray:convert": "ts-node convert-allure-to-junit.ts",
-    "xray:upload": "ts-node upload-to-xray.ts",
-    "xray:upload:ref": "ts-node upload-to-xray.ts --app=reference-app",
-    "xray:upload:viewer": "ts-node upload-to-xray.ts --app=iaf-viewer"
+    "xray:upload": "ts-node scripts/xray-upload.ts",
+    "xray:upload:ref": "ts-node scripts/xray-upload.ts --app=reference-app",
+    "xray:upload:viewer": "ts-node scripts/xray-upload.ts --app=iaf-viewer",
+    "report:open": "node scripts/report.js open",
+    "report:clean": "node scripts/report.js clean"
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

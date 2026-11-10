@@ -7,17 +7,29 @@ const isMac = process.platform === 'darwin';
  * https://github.com/motdotla/dotenv
  */
 import dotenv from 'dotenv';
+import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 dotenv.config({ path: path.resolve(__dirname, '../../.env') });
+
+// TEST_ENV selects the environment like it does for the Reference App; tests/config.js reads it as
+// IAFVIEWER_ENVIRONMENT, so TEST_ENV overrides the value from .env.
+if (process.env.TEST_ENV) process.env.IAFVIEWER_ENVIRONMENT = process.env.TEST_ENV;
+const env = (process.env.IAFVIEWER_ENVIRONMENT
+  || JSON.parse(fs.readFileSync(path.resolve(__dirname, '../reference-app/config/environments.json'), 'utf8')).Env)
+  .toUpperCase();
+
+// scripts/run-tests.js sets RUN_DIR to this run's folder (reports/iaf-viewer/<ENV>/<time>) and writes
+// the run summary there; a plain `npx playwright test` reports to reports/iaf-viewer/<ENV>/adhoc instead.
+const runDir = process.env.RUN_DIR || path.resolve(__dirname, '../../reports/iaf-viewer', env, 'adhoc');
 
 /**
  * @see https://playwright.dev/docs/test-configuration
  */
 export default defineConfig({
   testDir: './tests',
-  outputDir: 'C:/pw-test-results/iaf-viewer',
+  outputDir: path.resolve(__dirname, '../../artifacts/iaf-viewer'),
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -28,8 +40,11 @@ export default defineConfig({
   workers: process.env.CI ? 1 : 4,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
-    ['html'],
-    ['junit', { outputFile: '../../test-results/iaf-viewer/junit.xml' }]
+    ['html', { outputFolder: path.join(runDir, 'report'), open: 'never' }],
+    ['junit', { outputFile: path.join(runDir, 'junit.xml') }],
+    ['list'],
+    // Counts for run-summary.json (the JSON reporter is the only one that reports flaky tests).
+    ...(process.env.RUN_DIR ? [['json', { outputFile: path.join(runDir, '.results.json') }]] : []),
   ],
   snapshotPathTemplate: '{testDir}/snapshots/{testFileName}/{arg}-{projectName}{ext}',
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */

@@ -1,18 +1,17 @@
 /ReferenceApplication3/
 /target/
 node_modules/
-allure-results/
-allure-report/
-playwright-report/
-test-results/
-C:/pw-test-results/
 *.log
 .env
 
-# Screenshots written by test runs
-screenshots/
-# Allure single-file reports written by generate-allure-report.js
+# Test output: one folder per run (reports/<app>/<ENV>/<time>/), Playwright artifacts (outputDir),
+# and Allure's raw results (cleared before each Reference App run)
 reports/
+artifacts/
+allure-results/
+
+# Screenshots written by NavigatorPage during runs
+screenshots/
 
 # Local Claude Code settings
 .claude/settings.local.json

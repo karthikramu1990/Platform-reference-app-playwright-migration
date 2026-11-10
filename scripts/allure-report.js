@@ -1,42 +1,48 @@
+// Builds the Reference App's Allure single-file HTML report into <runDir>/report/index.html.
+// Called by scripts/run-tests.js after each Reference App run; can also be run by hand:
+//   node scripts/allure-report.js <runDir>
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
+const { ROOT, resolveEnv } = require('./report-paths');
 
-const now = new Date();
-const timestamp = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}_${String(now.getHours()).padStart(2,'0')}-${String(now.getMinutes()).padStart(2,'0')}-${String(now.getSeconds()).padStart(2,'0')}`;
+const resultsFolder = path.join(ROOT, 'allure-results');
 
-// Resolve environment: TEST_ENV var → config.json Env → fallback "qa1"
-let environment = process.env.TEST_ENV;
-if (!environment) {
-  try {
-    const config = JSON.parse(fs.readFileSync(path.join(__dirname, 'tests/reference-app/config/environments.json'), 'utf8'));
-    environment = config.Env || 'qa1';
-  } catch { environment = 'qa1'; }
+function generateAllureReport(runDir, environment) {
+  if (!fs.existsSync(resultsFolder)) {
+    console.log('No allure-results folder found, skipping Allure report.');
+    return null;
+  }
+
+  const now = new Date();
+  const p = n => String(n).padStart(2, '0');
+  fs.writeFileSync(path.join(resultsFolder, 'environment.properties'), [
+    `Environment=${environment.toUpperCase()}`,
+    'Project=Reference App Automation',
+    `Date=${now.getFullYear()}-${p(now.getMonth() + 1)}-${p(now.getDate())}`,
+    `Time=${p(now.getHours())}:${p(now.getMinutes())}:${p(now.getSeconds())}`,
+  ].join('\n'));
+
+  const reportDir = path.join(runDir, 'report');
+  const tempDir = path.join(runDir, '.allure-temp');
+  fs.mkdirSync(reportDir, { recursive: true });
+
+  console.log('Generating Allure single-file report...');
+  execSync(`npx allure awesome "${resultsFolder}" --single-file -o "${tempDir}"`, { cwd: ROOT, stdio: 'inherit' });
+  const htmlFile = path.join(reportDir, 'index.html');
+  fs.renameSync(path.join(tempDir, 'index.html'), htmlFile);
+  fs.rmSync(tempDir, { recursive: true, force: true });
+  return htmlFile;
 }
 
-const resultsFolder = path.join(__dirname, 'allure-results');
-const reportFolder  = path.join(__dirname, 'reports', `${environment.toUpperCase()}-${timestamp}`);
-const htmlOutput    = path.join(reportFolder, 'allure-report.html');
+module.exports = { generateAllureReport };
 
-const date = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
-const time = `${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}:${String(now.getSeconds()).padStart(2,'0')}`;
-
-const envProps = [
-  `Environment=${environment.toUpperCase()}`,
-  `Project=Reference App Automation`,
-  `Date=${date}`,
-  `Time=${time}`,
-].join('\n');
-
-fs.mkdirSync(resultsFolder, { recursive: true });
-fs.writeFileSync(path.join(resultsFolder, 'environment.properties'), envProps);
-
-fs.mkdirSync(reportFolder, { recursive: true });
-
-console.log(`Generating Allure single-file report: ${timestamp}`);
-execSync(`npx allure awesome "${resultsFolder}" --single-file -o "${path.join(reportFolder, 'allure-html')}"`, { stdio: 'inherit' });
-
-fs.renameSync(path.join(reportFolder, 'allure-html', 'index.html'), htmlOutput);
-fs.rmSync(path.join(reportFolder, 'allure-html'), { recursive: true });
-
-console.log(`Report saved: ${htmlOutput}`);
+if (require.main === module) {
+  const runDir = process.argv[2];
+  if (!runDir) {
+    console.error('Usage: node scripts/allure-report.js <runDir>');
+    process.exit(2);
+  }
+  const file = generateAllureReport(path.resolve(runDir), resolveEnv('reference-app'));
+  if (file) console.log(`Report saved: ${file}`);
+}

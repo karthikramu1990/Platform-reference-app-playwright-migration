@@ -1,10 +1,12 @@
-import { Page } from '@playwright/test';
+import { Page, expect } from '@playwright/test';
 
-// Waits for the model spinner to finish. The spinner appears a moment after a model starts
-// loading, so checking it straight away sees "not visible" and returns too early; give it a
-// chance to show first, then wait for it to go away.
+// Waits until the model has finished loading. Two details matter:
+// - The 3D and 2D viewers each render a spinner with the same id, so wait until none is visible
+//   (a single-element wait fails on the duplicate id).
+// - The spinner appears a moment after a model starts loading, so checking straight away sees
+//   "not visible" and returns too early; give it a chance to show first.
 export async function waitForModelLoaded(page: Page, timeout = 600000): Promise<void> {
-  const spinner = page.locator('#modelSpinner');
-  await spinner.waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
-  await spinner.waitFor({ state: 'hidden', timeout });
+  const visibleSpinners = page.locator('#modelSpinner:visible');
+  await visibleSpinners.first().waitFor({ state: 'visible', timeout: 10000 }).catch(() => {});
+  await expect(visibleSpinners).toHaveCount(0, { timeout });
 }
