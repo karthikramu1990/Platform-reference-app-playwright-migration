@@ -66,6 +66,11 @@ export async function createProject(page, credentials, project, timeout) {
   await expect(createBtn).toBeVisible({ timeout });
   await createBtn.click();
 
+  // "Choose a mode" dialog (added in 5.3): Basic is preselected; this test needs Advanced mode.
+  await expect(page.getByText('Choose a mode')).toBeVisible({ timeout });
+  await page.getByText('Advanced mode', { exact: true }).click();
+  await page.getByRole('button', { name: 'Continue' }).click();
+
   const nameInput = page.locator(`xpath=${Locator.setupProjectNameInput}`);
   await expect(nameInput).toBeVisible({ timeout });
   await nameInput.fill(project.name);
