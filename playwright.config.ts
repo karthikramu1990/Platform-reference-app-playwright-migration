@@ -32,6 +32,8 @@ if (process.env.RUN_DIR) reporter.push(['json', { outputFile: path.join(runDir, 
 
 export default defineConfig({
   testDir: './tests/reference-app/specs',
+  // 00/99-new-user-* run only in the new-user regression (playwright.new-user.config.ts).
+  testIgnore: /new-user-.*\.spec\.ts/,
   snapshotDir: './imagevalidation',
   snapshotPathTemplate: '{snapshotDir}/{arg}{ext}',
   timeout: 300000,

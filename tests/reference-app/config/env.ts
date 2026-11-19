@@ -1,3 +1,4 @@
+import fs from 'fs';
 import config from './environments.json';
 
 type EnvKey = keyof typeof config.Environments;
@@ -20,9 +21,20 @@ function requiredEnv(...names: string[]): string {
 
 const envSuffix = activeEnv.toUpperCase();
 
+// In the new-user regression run (playwright.new-user.config.ts) the specs sign in as the user its
+// setup stage created, read from NEWUSER_STATE_FILE when they ask for the credentials.
+function newUser(): { email: string; password: string } | undefined {
+  const file = process.env.NEWUSER_STATE_FILE;
+  return file && fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, 'utf8')) : undefined;
+}
+
 export const credentials = {
-  username: requiredEnv(`REFAPP_USERNAME_${envSuffix}`, 'REFAPP_USERNAME'),
-  password: requiredEnv(`REFAPP_PASSWORD_${envSuffix}`, 'REFAPP_PASSWORD'),
+  get username(): string {
+    return newUser()?.email ?? requiredEnv(`REFAPP_USERNAME_${envSuffix}`, 'REFAPP_USERNAME');
+  },
+  get password(): string {
+    return newUser()?.password ?? requiredEnv(`REFAPP_PASSWORD_${envSuffix}`, 'REFAPP_PASSWORD');
+  },
 };
 
 export const mapboxSecretToken = (): string => requiredEnv('REFAPP_MAPBOX_SECRET');

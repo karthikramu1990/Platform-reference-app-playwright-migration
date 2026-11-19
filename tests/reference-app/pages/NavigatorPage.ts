@@ -1,7 +1,7 @@
 import path from 'path';
 import fs from 'fs';
 import { PNG } from 'pngjs';
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { logStep } from '../utils/logger';
 import { waitForModelLoaded } from '../utils/model-loading';
 import { isImageFound } from '../utils/image-compare';
@@ -135,27 +135,29 @@ export class NavigatorPage {
   async ensureModel1801Selected(
     modelName: string = '1801KS-INV-01-ZZ-M3-Z-0001_Federated'
   ): Promise<void> {
-    try {
-      await this.navigatorModelSearchTable.waitFor({ state: 'visible', timeout: 15000 });
-      await this.navigatorModelSearchTable.click();
+    // After a reload the app is still loading its default model (e.g. EX11034, which has no Sensor
+    // category); switching before that finishes gets overridden when it does. So wait for it first,
+    // and after Change Model confirm 1801 is the model shown. Fails the test rather than carrying on
+    // with the wrong model.
+    await this.waitUntilLoadingDisappear();
+    await this.navigatorModelSearchTable.waitFor({ state: 'visible', timeout: 15000 });
+    await this.navigatorModelSearchTable.click();
 
-      await this.navigatorCurrentModelValue.waitFor({ state: 'visible', timeout: 15000 });
-      const currentModel = (await this.navigatorCurrentModelValue.textContent())?.trim() ?? '';
+    await this.navigatorCurrentModelValue.waitFor({ state: 'visible', timeout: 15000 });
+    const currentModel = (await this.navigatorCurrentModelValue.textContent())?.trim() ?? '';
 
-      if (currentModel.includes('1801')) {
-        await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
-        return;
-      }
-
-      await this.navigatorModelSelectDropdown.click();
-      await this.selectFromReactSelect(modelName);
-
-      await this.navigatorChangeModelButton.click();
-      await this.waitUntilLoadingDisappear();
-      await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
-    } catch (e: any) {
-      console.error('ERROR: Unable to ensure 1801 model selected:', e.message);
+    if (currentModel.includes('1801')) {
+      await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+      return;
     }
+
+    await this.navigatorModelSelectDropdown.click();
+    await this.selectFromReactSelect(modelName);
+
+    await this.navigatorChangeModelButton.click();
+    await this.waitUntilLoadingDisappear();
+    await expect(this.navigatorCurrentModelValue, `model did not switch to ${modelName}`).toContainText('1801', { timeout: 60000 });
+    await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
   }
 
   // AI Chat scenarios need the EX model - confirmed live as "EX11034-INV-Federated" in the Models dropdown.

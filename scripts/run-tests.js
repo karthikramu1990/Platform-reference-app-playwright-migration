@@ -1,7 +1,10 @@
-// Runs one application's Playwright suite, or both one after the other, and exits non-zero if
-// any run failed (cmd's `a & b` chaining reported only the last command's exit code).
+// Runs one application's Playwright suite and exits non-zero if it failed.
 //
-//   node scripts/run-tests.js <reference-app|iaf-viewer|all> [extra playwright args]
+//   node scripts/run-tests.js <reference-app|new-user|iaf-viewer|all> [env] [extra playwright args]
+//
+// env (e.g. qa2, qa1, staging) selects the environment; without it the default from
+// environments.json (Reference App) or IAFVIEWER_ENVIRONMENT in .env (IAF Viewer) is used.
+// The npm scripts are the usual way in:  npm run ref:regression -- qa2
 //
 // Every app run gets one self-contained folder (see report-paths.js):
 //   reports/<app>/<ENV>/<yyyy-mm-dd_hh-mm-ss>/  report/, junit.xml, run-summary.json
@@ -22,10 +25,27 @@ const APPS = {
     defaultArgs: [],
     allure: true,
   },
+  // New user > Console admin access > create project > every spec as that user > Console removal.
+  // Creates real users, so it's only run explicitly (npm run ref:regression:newuser), never by `all`.
+  'new-user': {
+    config: 'playwright.new-user.config.ts',
+    reportApp: 'reference-app', // its reports go with the Reference App's: reports/reference-app/<ENV>/
+    defaultArgs: [],
+    allure: true,
+  },
   'iaf-viewer': {
     config: 'tests/iaf-viewer/playwright.config.js',
     // Only chromium is maintained; 2 workers + 1 retry is what qa2 can sustain without load timeouts.
     defaultArgs: ['--project=chromium', '--workers=2', '--retries=1'],
+  },
+  // Same viewer suite, but rewrites every screenshot baseline (npm run viewer:regression:update).
+  // Its report is kept under reports/iaf-viewer/<ENV>/<time>/ but never copied to latest/, so an
+  // update run can't replace the regression results that xray:upload:viewer sends.
+  'iaf-viewer-update': {
+    config: 'tests/iaf-viewer/playwright.config.js',
+    reportApp: 'iaf-viewer',
+    defaultArgs: ['--project=chromium', '--workers=2', '--retries=1', '--update-snapshots=all'],
+    skipLatest: true,
   },
 };
 
@@ -69,9 +89,10 @@ function writeSummary(app, env, runDir, startedAt) {
 
 function run(appName, extraArgs) {
   const app = APPS[appName];
-  const env = resolveEnv(appName);
+  const reportApp = app.reportApp || appName;
+  const env = resolveEnv(reportApp);
   const startedAt = new Date();
-  const runDir = path.join(envDir(appName, env), timestamp(startedAt));
+  const runDir = path.join(envDir(reportApp, env), timestamp(startedAt));
   fs.mkdirSync(runDir, { recursive: true });
   console.log(`\n=== ${appName} (${env.toUpperCase()}) ===\nRun folder: ${runDir}\n`);
 
@@ -92,19 +113,24 @@ function run(appName, extraArgs) {
   }
   const summary = writeSummary(appName, env, runDir, startedAt);
 
-  const latest = latestDir(appName, env);
-  fs.rmSync(latest, { recursive: true, force: true });
-  fs.cpSync(runDir, latest, { recursive: true });
+  const latest = latestDir(reportApp, env);
+  if (!app.skipLatest) {
+    fs.rmSync(latest, { recursive: true, force: true });
+    fs.cpSync(runDir, latest, { recursive: true });
+  }
 
   console.log(`\n${appName}: ${summary.passed ?? '?'} passed, ${summary.failed ?? '?'} failed, `
     + `${summary.flaky ?? '?'} flaky, ${summary.skipped ?? '?'} skipped`);
   console.log(`Report: ${path.join(runDir, 'report', 'index.html')}`);
-  console.log(`Latest: ${latest}`);
+  if (!app.skipLatest) console.log(`Latest: ${latest}`);
   return result.status ?? 1;
 }
 
-const [target, ...extraArgs] = process.argv.slice(2);
-const targets = target === 'all' ? Object.keys(APPS) : [target];
+const [target, ...rest] = process.argv.slice(2);
+// The first argument after the app is the environment unless it is a Playwright flag (-g, --headed ...).
+if (rest.length && !rest[0].startsWith('-')) process.env.TEST_ENV = rest.shift().toLowerCase();
+const extraArgs = rest;
+const targets = target === 'all' ? ['reference-app', 'iaf-viewer'] : [target];
 
 if (!targets.every(name => APPS[name])) {
   console.error(`Usage: node scripts/run-tests.js <${[...Object.keys(APPS), 'all'].join('|')}> [playwright args]`);

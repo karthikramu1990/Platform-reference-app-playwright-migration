@@ -1,5 +1,5 @@
 import path from 'path';
-import { Page, Locator } from '@playwright/test';
+import { Page, Locator, expect } from '@playwright/test';
 import { logStep } from '../utils/logger';
 import { waitForModelLoaded } from '../utils/model-loading';
 import testData from '../data/test-data.json';
@@ -100,24 +100,24 @@ export class ModelElementPage {
   async ensureModel1801Selected(
     modelName: string = '1801KS-INV-01-ZZ-M3-Z-0001_Federated'
   ): Promise<void> {
-    try {
-      await this.currentModelValue.waitFor({ state: 'visible', timeout: 15000 });
-      const currentModel = (await this.currentModelValue.textContent())?.trim() ?? '';
+    // Same as NavigatorPage.ensureModel1801Selected: let the default model finish loading first,
+    // confirm 1801 after Change Model, and fail rather than carry on with the wrong model.
+    await this.waitUntilLoadingDisappear();
+    await this.currentModelValue.waitFor({ state: 'visible', timeout: 15000 });
+    const currentModel = (await this.currentModelValue.textContent())?.trim() ?? '';
 
-      if (currentModel.includes('1801')) {
-        await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
-        return;
-      }
-
-      await this.currentModelControl.click();
-      await this.selectFromReactSelect(modelName);
-
-      await this.changeModelButton.click();
-      await this.waitUntilLoadingDisappear();
-      await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
-    } catch (e: any) {
-      console.error('ERROR: Unable to ensure 1801 model selected:', e.message);
+    if (currentModel.includes('1801')) {
+      await logStep(`INFO: Model already set to "${currentModel}", skipping model switch`);
+      return;
     }
+
+    await this.currentModelControl.click();
+    await this.selectFromReactSelect(modelName);
+
+    await this.changeModelButton.click();
+    await this.waitUntilLoadingDisappear();
+    await expect(this.currentModelValue, `model did not switch to ${modelName}`).toContainText('1801', { timeout: 60000 });
+    await logStep(`PASS: Switched model from "${currentModel}" to "${modelName}"`);
   }
 
   async selectElementCategory(name: string): Promise<void> {

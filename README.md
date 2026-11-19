@@ -45,41 +45,40 @@ tests/reference-app/
 
 ## Running Tests
 
-The two applications run independently, each with its own config and report folder (see Reports):
+The environment goes after `--` (without it, `Env` in environments.json is used for the
+Reference App and `IAFVIEWER_ENVIRONMENT` in .env for the IAF Viewer):
 
 | Command | Runs |
 |---|---|
-| `npm run test:ref` (same as `npm test`) | Reference App (`playwright.config.ts`) |
-| `npm run test:viewer` | IAF Viewer (`tests/iaf-viewer/playwright.config.js`, chromium, 2 workers, 1 retry) |
-| `npm run test:all` | Reference App, then IAF Viewer, as two separate runs |
+| `npm run ref:regression -- qa2` | Reference App regression on the environment's existing project ("Automation" on qa1/qa2, "5.3 Testing" elsewhere) with the default account |
+| `npm run ref:regression:newuser -- qa2` | Reference App regression as a brand-new user (see below) |
+| `npm run viewer:regression -- qa2` | IAF Viewer regression (chromium, 2 workers, 1 retry) |
+| `npm run viewer:regression:update -- qa2` | IAF Viewer suite with `--update-snapshots=all`: rewrites every screenshot baseline. Its report is not copied to `latest/`, so it never replaces the results Xray uploads. Review the changed PNGs in git before committing |
 
-Extra Playwright arguments go after `--`, e.g. `npm run test:viewer -- -g "PLG-1479"`. The command fails
-(non-zero exit code) if any test fails.
+Reference App environments: `qa1`, `qa2`, `staging` (EU staging), `staging3` (OCI staging), `qa3` (OCI QA3).
 
+Extra Playwright arguments go after the environment, e.g. `npm run viewer:regression -- qa2 -g "PLG-1479"`
+or `npm run ref:regression -- qa2 --headed`. The command fails (non-zero exit code) if any test fails.
 
-### Default environment (uses `Env` from environments.json)
-```
-npm test
-```
+### New-user regression
 
-### Run against a specific environment
-| Command | Environment |
-|---|---|
-| `npm run test:qa1` | QA1 — https://apps.qa1.oci.in.twinit.io/reference/#/ |
-| `npm run test:qa2` | QA2 — https://qa2-app.in.invicara.com/reference/#/ |
-| `npm run test:eu-staging` | EU Staging — https://staging.invicara.com/reference/#/ |
-| `npm run test:oci-staging` | OCI Staging — https://apps.staging3.oci.in.twinit.io/reference/#/ |
-| `npm run test:oci-qa3` | OCI QA3 — https://apps.qa3.oci.in.twinit.io/reference/#/ |
+`ref:regression:newuser` is one Playwright run (`playwright.new-user.config.ts`) in three stages:
 
-### Other test commands
-```
-npm run test:headed   # Run with browser visible
-npm run test:debug    # Run in debug mode
-```
+1. **Setup** (`tests/reference-app/specs/00-new-user-setup.spec.ts`, NU-01 to NU-09): sign up a unique user
+   (`testuser<yyyyMMddHHmmss>@yopmail.com`), give it admin access in the Console (invite into "Application
+   Owner"), accept the invite, then create the project (same name as the environment's regression project,
+   Advanced mode).
+2. **Regression**: specs 01 to 08 in `tests/reference-app/specs`, signed in as the new user.
+3. **Teardown** (`99-new-user-teardown.spec.ts`, NU-10 to NU-14): the Console removes the admin access. Runs only
+   if every regression test passed.
+
+Needs `CONSOLE_USERNAME`, `CONSOLE_PASSWORD` and `NEWUSER_PASSWORD` in .env. Its report goes to
+`reports/reference-app/<ENV>/` like the normal regression (and replaces `latest/`). Don't run it at the same
+time as `ref:regression`: both use `artifacts/reference-app`, which Playwright empties when a run starts.
 
 ## Reports
 
-Every run of `npm run test:ref` / `test:viewer` / `test:all` produces one self-contained folder per app
+Every run of `npm run ref:regression` / `ref:regression:newuser` / `viewer:regression` produces one self-contained folder per app
 (all of this is gitignored):
 
 ```

@@ -35,6 +35,51 @@ export class ProjectSelectionPage {
     this.switchProject         = page.getByText('Switch Project', { exact: true });
   }
 
+  // Project Selection > "Pending invitations": accepts the invite (a new user has only one) and
+  // returns its text, e.g. "User Group: Application Developer Application Developer".
+  async acceptPendingInvite(): Promise<string> {
+    const invite = this.page.getByRole('heading', { name: 'Pending invitations' })
+      .locator('xpath=following-sibling::*').getByRole('listitem').first();
+    await invite.waitFor({ state: 'visible', timeout: 150000 });
+    const text = (await invite.innerText()).replace(/\s+/g, ' ').replace(/\b(Accept|Reject)\b/g, '').trim();
+    await invite.getByRole('button', { name: 'Accept' }).click();
+    await invite.waitFor({ state: 'detached', timeout: 60000 });
+    return text;
+  }
+
+  // Create Project > Choose a mode > Continue > Setup Project form > Set up > Agree > ... > Done.
+  // Same form locators as the IAF Viewer's createProject (PLG-1690), which runs on qa2.
+  async createProject(
+    project: { name: string; shortName: string; description: string },
+    mode: 'Basic' | 'Advanced' = 'Advanced',
+    setupTimeoutMs = 70 * 60 * 1000,
+  ): Promise<void> {
+    await this.createNewProjectBtn.click();
+
+    await this.page.getByText('Choose a mode').waitFor({ state: 'visible', timeout: 60000 });
+    await this.page.getByText(`${mode} mode`, { exact: true }).click();
+    await this.page.getByRole('button', { name: 'Continue' }).click();
+
+    const input = (label: string) => this.page.locator(`xpath=//*[normalize-space(text())="${label}"]/following::input[1]`);
+    await input('Name').waitFor({ state: 'visible', timeout: 60000 });
+    await input('Name').fill(project.name);
+    await input('Short Name').fill(project.shortName);
+    await input('Description').fill(project.description);
+    await this.page.locator("xpath=//label[text()='Enable multiple model support']/..//input[@type='checkbox']").check();
+
+    await this.page.getByRole('button', { name: 'Set Up' }).click();
+    await this.page.getByRole('button', { name: 'Agree', exact: true }).click();
+
+    // Fail fast on a setup error instead of waiting out the whole setup timeout.
+    const done = this.page.getByRole('button', { name: 'Done' });
+    const setupError = this.page.getByText('Setup did not complete');
+    await done.or(setupError).waitFor({ state: 'visible', timeout: setupTimeoutMs });
+    if (await setupError.isVisible()) {
+      throw new Error(`Project setup for "${project.name}" failed: "Setup did not complete. An error occured during setup!"`);
+    }
+    await done.click();
+  }
+
   async verifyProjectSelectionText(): Promise<boolean> {
     try {
       return await this.textProjectSelection.isVisible();

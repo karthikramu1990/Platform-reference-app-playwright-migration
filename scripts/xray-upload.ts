@@ -32,7 +32,7 @@ const RESULTS_FILE = path.resolve(
 // Checked before the Jira credentials so a missing file is reported even without them.
 if (!fs.existsSync(RESULTS_FILE)) {
   console.error(`Error: JUnit results not found at ${RESULTS_FILE}`);
-  console.error('Run the tests first (npm run test:ref / test:viewer), or set XRAY_RESULTS_FILE.');
+  console.error('Run the tests first (npm run ref:regression / viewer:regression), or set XRAY_RESULTS_FILE.');
   process.exit(1);
 }
 
