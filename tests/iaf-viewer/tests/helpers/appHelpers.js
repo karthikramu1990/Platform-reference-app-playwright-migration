@@ -2,6 +2,7 @@ import { expect } from '@playwright/test';
 import { CONFIG } from '../config';
 import { Locator } from "./locators"
 import { LayerType } from './modelHelpers';
+import { waitForAnySpinnerVisible, waitForSpinnersHidden } from './spinner.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
 
@@ -141,15 +142,8 @@ export async function goToNavigator(page, timeout) {
 }
 
 export async function waitForApplicationLoad(page, timeout = CONFIG.timeout.medium) {
-  await page.locator('#modelSpinner').waitFor({
-    state: 'visible',
-    timeout: CONFIG.timeout.short
-  }).catch(() => {});
-
-  await page.locator('#modelSpinner').waitFor({
-    state: 'hidden',
-    timeout
-  });
+  await waitForAnySpinnerVisible(page, CONFIG.timeout.short);
+  await waitForSpinnersHidden(page, timeout);
 }
 
 export function captureGraphicsSvcOrigin(page) {
@@ -646,7 +640,7 @@ export async function setupAndClickModel(page) {
 
   const canvas = page.locator(Locator.viewer3D);
   await expect(canvas).toBeVisible({ timeout: 60000 });
-  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
+  await waitForSpinnersHidden(page, 60000);
 
   const box = await canvas.boundingBox();
   expect(box).not.toBeNull();

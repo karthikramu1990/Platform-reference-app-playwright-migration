@@ -32,8 +32,8 @@ export const CONFIG = {
     password: requiredEnv('IAFVIEWER_INVICARA_PASSWORD'),
   },
   mapboxToken: process.env.IAFVIEWER_MAPBOX_TOKEN ?? '',
-  project: 'iputmodelsegmented',
-  userGroup: 'iputmodelsegmented Proj Admin',
+  project: 'iputsegmentedmodels',
+  userGroup: 'iputsegmentedmodels Proj Admin',
   switchModel: "EX11034-INV-Federated-4.6",
 
   federatedModelA: 'EX11034-INV-Federated-4.6',
@@ -44,8 +44,8 @@ export const CONFIG = {
       email: requiredEnv('IAFVIEWER_BIAL_USERNAME'),
       password: requiredEnv('IAFVIEWER_BIAL_PASSWORD'),
     },
-    project: 'Skinny_BIAL_AllModels',
-    userGroup: 'Skinny_BIAL_AllModels Proj Admin',
+    project: 'BIAL T2 Skinny',
+    userGroup: 'BIAL T2 Skinny Proj Admin',
     switchModel: 'T2-ELEC-Federated',
 
     secondSwitchModel: 'T2-HVAC-Federated',
@@ -79,8 +79,8 @@ export const CONFIG = {
       email: requiredEnv('IAFVIEWER_T2ALLFEDERATED_USERNAME'),
       password: requiredEnv('IAFVIEWER_T2ALLFEDERATED_PASSWORD'),
     },
-    project: 'T2_All_Federated',
-    userGroup: 'T2_All_Federated Proj Admin',
+    project: 'BIAL T2 All Federated',
+    userGroup: 'BIAL T2 All Federated Proj Admin',
   },
 
   // PLG-1690 - GIS enable-on-fresh-project regression; this account's Setup Project flow
@@ -104,8 +104,8 @@ export const CONFIG = {
       email: requiredEnv('IAFVIEWER_AUTOCAD2D_USERNAME'),
       password: requiredEnv('IAFVIEWER_AUTOCAD2D_PASSWORD'),
     },
-    project: 'autocad 2D animations',
-    userGroup: 'autocad 2D animations Proj Admin',
+    project: 'DWG Process Black 2D',
+    userGroup: 'DWG Process Black 2D Proj Admin',
     workflow: 'WF1',
   },
 

@@ -1,4 +1,5 @@
 import { expect } from '@playwright/test';
+import { waitForAnySpinnerVisible, waitForSpinnersHidden } from './spinner.js';
 
 export const LayerType = {
     Structural: "Structural"
@@ -23,13 +24,7 @@ export async function switchModel(page, modelName, timeout) {
     await expect(changeBtn).toBeVisible({ timeout });
     await changeBtn.click();
 
-    const spinners = page.locator('#modelSpinner');
-    const count = await spinners.count();
-
-    for (let i = 0; i < count; i++) {
-        await spinners.nth(i).waitFor({
-            state: 'hidden',
-            timeout: 120000
-        });
-    }
+    // Give the switch a moment to start loading, then wait for every viewer's spinner to clear.
+    await waitForAnySpinnerVisible(page, 15000);
+    await waitForSpinnersHidden(page, 120000);
 }

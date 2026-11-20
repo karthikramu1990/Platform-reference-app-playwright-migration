@@ -1,6 +1,7 @@
 import { expect } from '@playwright/test';
 import { Locator } from "./locators"
 import { CONFIG } from '../config';
+import { waitForSpinnersHidden } from './spinner.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
@@ -41,7 +42,7 @@ export async function runAnnotations(page) {
   const canvas = page.locator(Locator.viewer3D);
   await expect(canvas).toBeVisible({ timeout: 60000 });
 
-  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
+  await waitForSpinnersHidden(page, 60000);
 
   const box = await canvas.boundingBox();
   expect(box).not.toBeNull();

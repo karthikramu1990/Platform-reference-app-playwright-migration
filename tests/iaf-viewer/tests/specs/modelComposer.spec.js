@@ -5,6 +5,7 @@ import { clickHelpers, federatedShowAll, federatedHideAll, federatedSwitchToLoad
 import { Locator } from '../helpers/locators.js';
 import { EModelComposerQuality } from '../data/enums.js';
 import { LayerType } from '../helpers/modelHelpers.js';
+import { waitForSpinnersHidden } from '../helpers/spinner.js';
 
 // SKIPPED 2026-11-02: window.generateModelComposerBenchmark is only attached in non-production builds
 // (src/callbacks/viewerDevTools.js), so it does not exist on qa2. Run against a local dev build.
@@ -38,7 +39,7 @@ test('Model Composer - Auto Compose Visiblity', async ({ page }) => {
 
   await page.waitForTimeout(20000);
 
-  await page.locator('#modelSpinner').waitFor({ state: 'hidden', timeout: 60000 });
+  await waitForSpinnersHidden(page, 60000);
 
   await waitForModelcomposerEnabled(page, CONFIG.timeout.medium);
 
